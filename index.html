@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NVISCO — Hardware Design to Product</title>
     
-    <!-- Importing the Courier Prime typewriter font -->
+    <!-- Importing the Courier Prime typewriter font (used only for Capabilities) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -22,8 +22,8 @@
         }
 
         body {
-            /* Applied typewriter font globally */
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            /* Standard modern sans-serif font applied globally */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
             background: #fff;
             color: #000;
             line-height: 1.5;
@@ -71,6 +71,7 @@
             transition: filter 0.5s ease;
         }
 
+        /* Invert logo color when navbar is dark */
         nav.nav-scrolled .logo img {
             filter: invert(1);
         }
@@ -78,19 +79,20 @@
         .nav-links {
             display: flex;
             gap: 40px;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .nav-links a {
             color: #666;
             transition: all 0.3s ease;
-            font-weight: 700;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
             color: #000;
         }
 
+        /* Scrolled links get the metallic shine on hover */
         nav.nav-scrolled .nav-links a {
             color: #aaa;
         }
@@ -127,9 +129,9 @@
         }
 
         .hero h1 {
-            font-size: clamp(48px, 9vw, 80px);
+            font-size: clamp(56px, 10vw, 88px);
             line-height: 1.1;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
             max-width: 900px;
             font-weight: 700;
             margin-bottom: 40px;
@@ -138,7 +140,7 @@
         .hero-description {
             font-size: 18px;
             color: #666;
-            max-width: 550px;
+            max-width: 500px;
             line-height: 1.6;
             margin-bottom: 60px;
         }
@@ -147,8 +149,8 @@
             display: inline-block;
             border: 1px solid #000;
             padding: 12px 28px;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
             transition: all 0.2s;
             cursor: pointer;
         }
@@ -163,7 +165,7 @@
                 padding: 80px 6vw 60px;
             }
             .hero h1 {
-                font-size: clamp(36px, 8vw, 48px);
+                font-size: clamp(42px, 9vw, 56px);
             }
         }
 
@@ -182,7 +184,7 @@
         }
 
         .journey-header h2 {
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(36px, 6vw, 64px);
             line-height: 1.2;
             letter-spacing: -1px;
             font-weight: 700;
@@ -211,18 +213,18 @@
         .step-number {
             font-size: 14px;
             color: #999;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 1px;
         }
 
         .journey-step h3 {
             font-size: 20px;
             line-height: 1.3;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .journey-step p {
-            font-size: 15px;
+            font-size: 14px;
             color: #666;
             line-height: 1.6;
         }
@@ -232,7 +234,7 @@
                 padding: 80px 6vw;
             }
             .journey-header h2 {
-                font-size: clamp(26px, 7vw, 36px);
+                font-size: clamp(28px, 7vw, 42px);
             }
             .journey-grid {
                 gap: 32px;
@@ -261,10 +263,10 @@
         }
 
         .matter-title h2 {
-            font-size: clamp(28px, 4.5vw, 60px);
+            font-size: clamp(32px, 5vw, 65px);
             line-height: 1;
-            letter-spacing: -1px;
-            font-weight: 700;
+            letter-spacing: -2px;
+            font-weight: 900;
             color: #111;
             text-transform: uppercase;
             white-space: nowrap; 
@@ -295,10 +297,13 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .project-image img {
+        /* Video and Img share exact same sizing to prevent layout breaks */
+        .project-image img,
+        .project-image video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         @media(max-width: 700px) {
@@ -311,12 +316,13 @@
             }
             .matter-title h2 {
                 letter-spacing: -1px;
-                font-size: clamp(24px, 7vw, 36px); 
+                font-size: clamp(34px, 8vw, 42px); 
             }
         }
 
-        /* ============= CAPABILITIES ============= */
+        /* ============= CAPABILITIES (Typewriter Font) ============= */
         .capabilities {
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace; 
             padding: 120px 5vw;
             background: #000;
             color: #fff;
@@ -327,7 +333,7 @@
         }
 
         .capabilities h2 {
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(36px, 6vw, 64px);
             line-height: 1.2;
             letter-spacing: -1px;
             font-weight: 700;
@@ -342,14 +348,14 @@
         }
 
         .capability-item h3 {
-            font-size: 17px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             margin-bottom: 12px;
             color: #fff;
         }
 
         .capability-item p {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
             line-height: 1.6;
         }
@@ -359,7 +365,7 @@
                 padding: 80px 6vw;
             }
             .capabilities h2 {
-                font-size: clamp(26px, 7vw, 36px);
+                font-size: clamp(28px, 7vw, 42px);
                 margin-bottom: 60px;
             }
             .capabilities-grid {
@@ -377,9 +383,9 @@
         }
 
         .cta-content h2 {
-            font-size: clamp(40px, 7vw, 68px);
+            font-size: clamp(48px, 8vw, 76px);
             line-height: 1.15;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             font-weight: 700;
             margin-bottom: 50px;
             max-width: 800px;
@@ -399,8 +405,8 @@
         .cta-secondary {
             border: 1px solid #000;
             padding: 12px 28px;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
             transition: all 0.2s;
             cursor: pointer;
         }
@@ -414,7 +420,7 @@
                 padding: 80px 6vw;
             }
             .cta-content h2 {
-                font-size: clamp(32px, 8vw, 46px);
+                font-size: clamp(36px, 8vw, 52px);
             }
             .cta-buttons {
                 flex-direction: column;
@@ -444,8 +450,8 @@
         }
 
         .footer-col h4 {
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #000;
@@ -454,7 +460,7 @@
 
         .footer-col p,
         .footer-col a {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
             line-height: 1.8;
             display: block;
@@ -471,7 +477,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 12px;
             color: #999;
         }
 
@@ -571,7 +577,9 @@
             <h2><span>ENGINEERING MATTERS.</span></h2>
         </div>
         <div class="project-image">
-            <img src="watch-im.png" alt="Engineering Matters">
+            <video autoplay muted loop playsinline>
+                <source src="159021-818026286.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
 
