@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NVISCO — Hardware Design to Product</title>
+    
+    <!-- Importing the Courier Prime typewriter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -16,7 +22,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            /* Applied typewriter font globally */
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
             background: #fff;
             color: #000;
             line-height: 1.5;
@@ -71,13 +78,13 @@
         .nav-links {
             display: flex;
             gap: 40px;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .nav-links a {
             color: #666;
             transition: all 0.3s ease;
-            font-weight: 500;
+            font-weight: 700;
         }
 
         .nav-links a:hover {
@@ -120,9 +127,9 @@
         }
 
         .hero h1 {
-            font-size: clamp(56px, 10vw, 88px);
+            font-size: clamp(48px, 9vw, 80px);
             line-height: 1.1;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             max-width: 900px;
             font-weight: 700;
             margin-bottom: 40px;
@@ -131,7 +138,7 @@
         .hero-description {
             font-size: 18px;
             color: #666;
-            max-width: 500px;
+            max-width: 550px;
             line-height: 1.6;
             margin-bottom: 60px;
         }
@@ -140,8 +147,8 @@
             display: inline-block;
             border: 1px solid #000;
             padding: 12px 28px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             transition: all 0.2s;
             cursor: pointer;
         }
@@ -156,7 +163,7 @@
                 padding: 80px 6vw 60px;
             }
             .hero h1 {
-                font-size: clamp(42px, 9vw, 56px);
+                font-size: clamp(36px, 8vw, 48px);
             }
         }
 
@@ -175,7 +182,7 @@
         }
 
         .journey-header h2 {
-            font-size: clamp(36px, 6vw, 64px);
+            font-size: clamp(32px, 5vw, 56px);
             line-height: 1.2;
             letter-spacing: -1px;
             font-weight: 700;
@@ -204,18 +211,18 @@
         .step-number {
             font-size: 14px;
             color: #999;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
         .journey-step h3 {
             font-size: 20px;
             line-height: 1.3;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .journey-step p {
-            font-size: 14px;
+            font-size: 15px;
             color: #666;
             line-height: 1.6;
         }
@@ -225,7 +232,7 @@
                 padding: 80px 6vw;
             }
             .journey-header h2 {
-                font-size: clamp(28px, 7vw, 42px);
+                font-size: clamp(26px, 7vw, 36px);
             }
             .journey-grid {
                 gap: 32px;
@@ -254,10 +261,10 @@
         }
 
         .matter-title h2 {
-            font-size: clamp(32px, 5vw, 65px);
+            font-size: clamp(28px, 4.5vw, 60px);
             line-height: 1;
-            letter-spacing: -2px;
-            font-weight: 900;
+            letter-spacing: -1px;
+            font-weight: 700;
             color: #111;
             text-transform: uppercase;
             white-space: nowrap; 
@@ -297,14 +304,14 @@
         @media(max-width: 700px) {
             .matters-section {
                 padding: 60px 6vw;
-                gap: 70px; /* Much tighter vertical space between blocks on mobile */
+                gap: 70px; 
             }
             .matter-title {
-                margin-bottom: 12px; /* Tighter space between text and image */
+                margin-bottom: 12px; 
             }
             .matter-title h2 {
                 letter-spacing: -1px;
-                font-size: clamp(34px, 8vw, 42px); /* Forces larger, bolder text on mobile */
+                font-size: clamp(24px, 7vw, 36px); 
             }
         }
 
@@ -320,7 +327,7 @@
         }
 
         .capabilities h2 {
-            font-size: clamp(36px, 6vw, 64px);
+            font-size: clamp(32px, 5vw, 56px);
             line-height: 1.2;
             letter-spacing: -1px;
             font-weight: 700;
@@ -335,14 +342,14 @@
         }
 
         .capability-item h3 {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 17px;
+            font-weight: 700;
             margin-bottom: 12px;
             color: #fff;
         }
 
         .capability-item p {
-            font-size: 13px;
+            font-size: 14px;
             color: #888;
             line-height: 1.6;
         }
@@ -352,7 +359,7 @@
                 padding: 80px 6vw;
             }
             .capabilities h2 {
-                font-size: clamp(28px, 7vw, 42px);
+                font-size: clamp(26px, 7vw, 36px);
                 margin-bottom: 60px;
             }
             .capabilities-grid {
@@ -370,9 +377,9 @@
         }
 
         .cta-content h2 {
-            font-size: clamp(48px, 8vw, 76px);
+            font-size: clamp(40px, 7vw, 68px);
             line-height: 1.15;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             font-weight: 700;
             margin-bottom: 50px;
             max-width: 800px;
@@ -392,8 +399,8 @@
         .cta-secondary {
             border: 1px solid #000;
             padding: 12px 28px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             transition: all 0.2s;
             cursor: pointer;
         }
@@ -407,7 +414,7 @@
                 padding: 80px 6vw;
             }
             .cta-content h2 {
-                font-size: clamp(36px, 8vw, 52px);
+                font-size: clamp(32px, 8vw, 46px);
             }
             .cta-buttons {
                 flex-direction: column;
@@ -437,8 +444,8 @@
         }
 
         .footer-col h4 {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #000;
@@ -447,7 +454,7 @@
 
         .footer-col p,
         .footer-col a {
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
             line-height: 1.8;
             display: block;
@@ -464,7 +471,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
+            font-size: 13px;
             color: #999;
         }
 
@@ -574,7 +581,7 @@
             <h2><span>TIME MATTERS.</span></h2>
         </div>
         <div class="project-image">
-            <img src="watch-im.png" alt="Time Matters">
+            <img src="time-mat.png" alt="Time Matters">
         </div>
     </div>
 
