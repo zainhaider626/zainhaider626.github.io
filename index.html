@@ -30,7 +30,7 @@
 
         /* ============= NAV (Dynamic & Shiny) ============= */
         nav {
-            height: 70px; /* Reduced from 100px for laptops */
+            height: 70px;
             padding: 0 5vw;
             display: flex;
             align-items: center;
@@ -41,10 +41,9 @@
             z-index: 100;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            transition: all 0.5s ease; /* Smooth transition for scroll effect */
+            transition: all 0.5s ease;
         }
 
-        /* Scrolled State for Premium Dark Feel */
         nav.nav-scrolled {
             background: rgba(10, 10, 10, 0.85);
             border-bottom: 1px solid #333;
@@ -52,7 +51,7 @@
         }
 
         .logo {
-            height: 50px; /* Reduced from 80px */
+            height: 50px;
             display: flex;
             align-items: center;
         }
@@ -65,7 +64,6 @@
             transition: filter 0.5s ease;
         }
 
-        /* Invert logo color when navbar is dark */
         nav.nav-scrolled .logo img {
             filter: invert(1);
         }
@@ -86,7 +84,6 @@
             color: #000;
         }
 
-        /* Scrolled links get the metallic shine on hover */
         nav.nav-scrolled .nav-links a {
             color: #aaa;
         }
@@ -103,14 +100,14 @@
 
         @media(max-width: 700px) {
             nav {
-                height: 60px; /* Much slimmer on mobile */
+                height: 60px;
                 padding: 0 6vw;
             }
             .logo {
-                height: 40px; /* Shrinks the logo space on mobile */
+                height: 40px;
             }
             .nav-links {
-                gap: 15px; /* Tighter spacing on phone screens */
+                gap: 15px;
                 font-size: 12px;
             }
         }
@@ -242,13 +239,13 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 140px; /* Space between the 3 image blocks */
+            gap: 140px; 
         }
 
         .matter-block {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centers the content */
+            align-items: center; 
             text-align: center;
         }
 
@@ -257,17 +254,15 @@
         }
 
         .matter-title h2 {
-            /* Clamp ensures it scales down on mobile to stay on one line */
-            font-size: clamp(26px, 5vw, 65px);
+            font-size: clamp(32px, 5vw, 65px);
             line-height: 1;
             letter-spacing: -2px;
             font-weight: 900;
             color: #111;
             text-transform: uppercase;
-            white-space: nowrap; /* Forces text to stay on a single line */
+            white-space: nowrap; 
         }
 
-        /* The Premium Metallic Shine Effect Applied to the Whole Line */
         .matter-title h2 span {
             background: linear-gradient(110deg, #111 20%, #999 40%, #fff 50%, #999 60%, #111 80%);
             background-size: 200% auto;
@@ -286,7 +281,7 @@
 
         .project-image {
             width: 100%;
-            max-width: 900px; /* Restricts the image size */
+            max-width: 900px; 
             aspect-ratio: 16 / 9;
             overflow: hidden;
             background: #000;
@@ -301,11 +296,15 @@
 
         @media(max-width: 700px) {
             .matters-section {
-                padding: 80px 6vw;
-                gap: 100px;
+                padding: 60px 6vw;
+                gap: 70px; /* Much tighter vertical space between blocks on mobile */
+            }
+            .matter-title {
+                margin-bottom: 12px; /* Tighter space between text and image */
             }
             .matter-title h2 {
                 letter-spacing: -1px;
+                font-size: clamp(34px, 8vw, 42px); /* Forces larger, bolder text on mobile */
             }
         }
 
@@ -484,7 +483,6 @@
             }
         }
 
-        /* ============= SMOOTH SCROLL & TRANSITIONS ============= */
         @media (prefers-reduced-motion: no-preference) {
             a, button {
                 transition: all 0.2s ease;
@@ -509,40 +507,40 @@
 <!-- HERO -->
 <section class="hero">
     <h1>From your idea to a market-ready product.</h1>
-    <p class="hero-description">We design and engineer intelligent hardware systems. PCB design, enclosure engineering, firmware development, and manufacturing expertise — everything needed to bring your innovation to life.</p>
+    <p class="hero-description">We design and develop intelligent hardware systems. High-density PCB routing, complex enclosure design, and centralized firmware frameworks — everything needed to bring your innovation to life.</p>
     <a href="mailto:nvisco.pak@gmail.com" class="cta-primary">Start your project</a>
 </section>
 
-<!-- JOURNEY -->
+<!-- JOURNEY (Focuses on the Workflow/Process) -->
 <section class="journey-section" id="journey">
     <div class="journey-header">
-        <h2>The complete engineering journey</h2>
-        <p>A proven process that takes your concept from initial design through mass production.</p>
+        <h2>The complete design journey</h2>
+        <p>A structured development process that translates initial concepts into fully validated production hardware.</p>
     </div>
 
     <div class="journey-grid">
         <div class="journey-step">
-            <span class="step-number">STAGE 1</span>
-            <h3>Electronics Design</h3>
-            <p>Schematic design and PCB layout using KiCad. Component selection, power distribution, and signal integrity analysis for STM32, ESP32, and ARM-based systems.</p>
+            <span class="step-number">PHASE 1</span>
+            <h3>Concept & Scope</h3>
+            <p>Defining processing requirements, centralizing the system framework, and laying out the core architectural blueprint.</p>
         </div>
 
         <div class="journey-step">
-            <span class="step-number">STAGE 2</span>
-            <h3>Mechanical Design</h3>
-            <p>CAD enclosure design and mechanical engineering. Thermal analysis, assembly considerations, and design for manufacturability using Fusion 360 and SOLIDWORKS.</p>
+            <span class="step-number">PHASE 2</span>
+            <h3>Hardware Development</h3>
+            <p>Translating architectures into detailed schematics, optimizing component selection, and finalizing multi-layer layouts.</p>
         </div>
 
         <div class="journey-step">
-            <span class="step-number">STAGE 3</span>
-            <h3>Firmware & Control</h3>
-            <p>Embedded systems programming in C/C++. Real-time control, IoT connectivity, sensor integration, and machine learning deployment on microcontrollers.</p>
+            <span class="step-number">PHASE 3</span>
+            <h3>Mechanical Integration</h3>
+            <p>Developing robust parametric models, addressing thermal and physical constraints, and preparing for manufacturability.</p>
         </div>
 
         <div class="journey-step">
-            <span class="step-number">STAGE 4</span>
-            <h3>Product Ready</h3>
-            <p>Prototype validation, design verification, and manufacturing transition. Full documentation and support for production scaling and assembly.</p>
+            <span class="step-number">PHASE 4</span>
+            <h3>Prototyping & Validation</h3>
+            <p>Executing rapid physical builds, deploying targeted logic, and conducting rigorous real-world performance testing.</p>
         </div>
     </div>
 </section>
@@ -560,14 +558,13 @@
         </div>
     </div>
 
-    <!-- BLOCK 2: EXCELLENCE -->
+    <!-- BLOCK 2: ENGINEERING -->
     <div class="matter-block">
         <div class="matter-title">
-            <h2><span>EXCELLENCE MATTERS.</span></h2>
+            <h2><span>ENGINEERING MATTERS.</span></h2>
         </div>
         <div class="project-image">
-            <!-- Replace 'watch-im.png' below with your second image filename when ready -->
-            <img src="watch-im.png" alt="Excellence Matters">
+            <img src="watch-im.png" alt="Engineering Matters">
         </div>
     </div>
 
@@ -577,46 +574,45 @@
             <h2><span>TIME MATTERS.</span></h2>
         </div>
         <div class="project-image">
-            <!-- Replace 'watch-im.png' below with your third image filename when ready -->
             <img src="watch-im.png" alt="Time Matters">
         </div>
     </div>
 
 </section>
 
-<!-- CAPABILITIES (Dark Section) -->
+<!-- CAPABILITIES (Focuses on Deep Technical Skills) -->
 <section class="capabilities">
-    <h2>What we do</h2>
+    <h2>Complex Industrial Capabilities</h2>
     
     <div class="capabilities-grid">
         <div class="capability-item">
-            <h3>PCB Design</h3>
-            <p>Schematic capture, layout, signal integrity, impedance control, and manufacturing documentation using KiCad and Altium.</p>
+            <h3>High-Density PCB Layout</h3>
+            <p>Advanced routing capabilities for up to 16-layer carrier boards, prioritizing signal integrity and compact footprint integration.</p>
         </div>
         
         <div class="capability-item">
-            <h3>Robotics & Automation</h3>
-            <p>Motion control, sensor integration, computer vision, and autonomous systems programming for industrial and consumer applications.</p>
+            <h3>Parametric 3D CAD</h3>
+            <p>Utilizing structural joint constraints, non-linear load simulations, and precise cosmetic cleanup for mechanical assemblies.</p>
         </div>
         
         <div class="capability-item">
-            <h3>Embedded Systems</h3>
-            <p>Firmware development, real-time control, IoT connectivity, and edge AI for microcontroller platforms.</p>
+            <h3>Intelligent Firmware</h3>
+            <p>Developing centralized communication protocols, robust local logic mapping, and custom network routing algorithms.</p>
         </div>
         
         <div class="capability-item">
-            <h3>Mechanical Design</h3>
-            <p>CAD design, thermal analysis, structural optimization, and design for manufacturability across multiple platforms.</p>
+            <h3>Physical AI Integration</h3>
+            <p>Bridging the gap between software processing and physical actions through sensor fusion and advanced compute architectures.</p>
         </div>
         
         <div class="capability-item">
-            <h3>System Integration</h3>
-            <p>Hardware-software co-design, integration testing, performance validation, and production support.</p>
+            <h3>Soft Robotics Prototyping</h3>
+            <p>Experimenting with unconventional materials and articulated physical models to discover new actuation methods.</p>
         </div>
         
         <div class="capability-item">
-            <h3>Manufacturing Support</h3>
-            <p>Design documentation, supplier coordination, quality assurance, and manufacturing optimization for scale.</p>
+            <h3>Custom Hardware Builds</h3>
+            <p>End-to-end realization of bespoke hardware, ranging from localized networking infrastructure to portable gaming logic systems.</p>
         </div>
     </div>
 </section>
