@@ -20,6 +20,7 @@
             background: #fff;
             color: #000;
             line-height: 1.5;
+            transition: background 0.5s ease;
         }
 
         a {
@@ -27,7 +28,7 @@
             text-decoration: none;
         }
 
-        /* ============= NAV ============= */
+        /* ============= NAV (Dynamic & Shiny) ============= */
         nav {
             height: 100px;
             padding: 0 5vw;
@@ -40,6 +41,14 @@
             z-index: 100;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
+            transition: all 0.5s ease; /* Smooth transition for scroll effect */
+        }
+
+        /* Scrolled State for Premium Dark Feel */
+        nav.nav-scrolled {
+            background: rgba(10, 10, 10, 0.85);
+            border-bottom: 1px solid #333;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -53,6 +62,12 @@
             width: auto;
             object-fit: contain;
             transform: scale(2.5);
+            transition: filter 0.5s ease;
+        }
+
+        /* Invert logo color when navbar is dark */
+        nav.nav-scrolled .logo img {
+            filter: invert(1);
         }
 
         .nav-links {
@@ -63,12 +78,27 @@
 
         .nav-links a {
             color: #666;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: #000;
+        }
+
+        /* Scrolled links get the metallic shine on hover */
+        nav.nav-scrolled .nav-links a {
+            color: #aaa;
+        }
+
+        nav.nav-scrolled .nav-links a:hover {
+            background: linear-gradient(110deg, #fff 20%, #888 40%, #fff 50%, #888 60%, #fff 80%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
         }
 
         @media(max-width: 700px) {
@@ -200,28 +230,40 @@
             }
         }
 
-        /* ============= FEATURED PROJECT ============= */
-        .featured-section {
+        /* ============= TRIPLE MATTERS SECTION ============= */
+        .matters-section {
             padding: 120px 5vw;
             max-width: 1400px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 140px; /* Space between the 3 image blocks */
         }
 
-        .featured-hero-text {
-            margin-bottom: 40px;
+        .matter-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the content */
+            text-align: center;
         }
 
-        .featured-hero-text h2 {
-            font-size: clamp(65px, 11vw, 150px);
-            line-height: 0.83;
-            letter-spacing: -6px;
+        .matter-title {
+            margin-bottom: 30px;
+        }
+
+        .matter-title h2 {
+            /* Clamp ensures it scales down on mobile to stay on one line */
+            font-size: clamp(26px, 5vw, 65px);
+            line-height: 1;
+            letter-spacing: -2px;
             font-weight: 900;
             color: #111;
             text-transform: uppercase;
+            white-space: nowrap; /* Forces text to stay on a single line */
         }
 
-        /* The Premium Metallic Shine Effect */
-        .featured-hero-text h2 span {
+        /* The Premium Metallic Shine Effect Applied to the Whole Line */
+        .matter-title h2 span {
             background: linear-gradient(110deg, #111 20%, #999 40%, #fff 50%, #999 60%, #111 80%);
             background-size: 200% auto;
             color: #000;
@@ -239,10 +281,11 @@
 
         .project-image {
             width: 100%;
-            max-width: 900px; /* This restricts the image size so it isn't massive */
+            max-width: 900px; /* Restricts the image size */
             aspect-ratio: 16 / 9;
             overflow: hidden;
             background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .project-image img {
@@ -252,11 +295,12 @@
         }
 
         @media(max-width: 700px) {
-            .featured-section {
+            .matters-section {
                 padding: 80px 6vw;
+                gap: 100px;
             }
-            .featured-hero-text h2 {
-                letter-spacing: -3px;
+            .matter-title h2 {
+                letter-spacing: -1px;
             }
         }
 
@@ -447,7 +491,7 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
     <a href="#" class="logo">
         <img src="nvisco-logo.png" alt="NVISCO">
     </a>
@@ -498,15 +542,41 @@
     </div>
 </section>
 
-<!-- FEATURED PROJECT -->
-<section class="featured-section">
-    <div class="featured-hero-text">
-        <h2>QUALITY<br><span>MATTERS.</span></h2>
+<!-- THE 3 MATTERS BLOCKS -->
+<section class="matters-section">
+    
+    <!-- BLOCK 1: QUALITY -->
+    <div class="matter-block">
+        <div class="matter-title">
+            <h2><span>QUALITY MATTERS.</span></h2>
+        </div>
+        <div class="project-image">
+            <img src="watch-im.png" alt="Quality Matters">
+        </div>
     </div>
 
-    <div class="project-image">
-        <img src="watch-im.png" alt="Featured Hardware Project">
+    <!-- BLOCK 2: EXCELLENCE -->
+    <div class="matter-block">
+        <div class="matter-title">
+            <h2><span>EXCELLENCE MATTERS.</span></h2>
+        </div>
+        <div class="project-image">
+            <!-- Replace 'watch-im.png' below with your second image filename when ready -->
+            <img src="watch-im.png" alt="Excellence Matters">
+        </div>
     </div>
+
+    <!-- BLOCK 3: TIME -->
+    <div class="matter-block">
+        <div class="matter-title">
+            <h2><span>TIME MATTERS.</span></h2>
+        </div>
+        <div class="project-image">
+            <!-- Replace 'watch-im.png' below with your third image filename when ready -->
+            <img src="watch-im.png" alt="Time Matters">
+        </div>
+    </div>
+
 </section>
 
 <!-- CAPABILITIES (Dark Section) -->
@@ -561,7 +631,8 @@
 <footer>
     <div class="footer-content">
         <div class="footer-col">
-           
+            <p><strong>NVISCO</strong></p>
+            <p>Intelligent systems. Robotics. Hardware design.</p>
         </div>
         
         <div class="footer-col">
@@ -581,6 +652,18 @@
         <span>Hardware · Robotics · Intelligent Systems</span>
     </div>
 </footer>
+
+<!-- SCRIPT FOR NAVBAR SCROLL EFFECT -->
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('mainNav');
+        if (window.scrollY > 80) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    });
+</script>
 
 </body>
 </html>
