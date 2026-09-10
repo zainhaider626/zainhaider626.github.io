@@ -237,12 +237,9 @@
             }
         }
 
-        .featured-project-single {
-            width: 100%;
-        }
-
         .project-image {
             width: 100%;
+            max-width: 900px; /* This restricts the image size so it isn't massive */
             aspect-ratio: 16 / 9;
             overflow: hidden;
             background: #000;
@@ -312,63 +309,6 @@
             }
             .capabilities-grid {
                 gap: 40px;
-            }
-        }
-
-        /* ============= MISSION ============= */
-        .mission {
-            padding: 120px 5vw;
-            background: #fff;
-            border-top: 1px solid #e0e0e0;
-            border-bottom: 1px solid #e0e0e0;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .mission-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 40px;
-        }
-
-        .mission h2 {
-            font-size: clamp(36px, 6vw, 64px);
-            line-height: 1.2;
-            letter-spacing: -1px;
-            font-weight: 700;
-            color: #000;
-        }
-
-        .mission-statement {
-            font-size: clamp(48px, 8vw, 88px);
-            line-height: 1.15;
-            letter-spacing: -2px;
-            font-weight: 900;
-            color: #000;
-            max-width: 900px;
-        }
-
-        .mission-statement span {
-            color: #666;
-        }
-
-        .mission-description {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.8;
-            max-width: 700px;
-        }
-
-        @media(max-width: 700px) {
-            .mission {
-                padding: 80px 6vw;
-            }
-            .mission h2 {
-                font-size: clamp(28px, 7vw, 42px);
-            }
-            .mission-statement {
-                font-size: clamp(36px, 7vw, 56px);
             }
         }
 
@@ -513,7 +453,6 @@
     </a>
     <div class="nav-links">
         <a href="#journey">Work</a>
-        <a href="#mission">Mission</a>
         <a href="#cta">Contact</a>
     </div>
 </nav>
@@ -561,16 +500,13 @@
 
 <!-- FEATURED PROJECT -->
 <section class="featured-section">
-    
     <div class="featured-hero-text">
-        <h2>QUALITY<br><span>MATTERS</span></h2>
+        <h2>QUALITY<br><span>MATTERS.</span></h2>
     </div>
 
-        <div class="project-image">
-            <img src="watch-im.png" alt="Featured Hardware Project">
-        
+    <div class="project-image">
+        <img src="watch-im.png" alt="Featured Hardware Project">
     </div>
-
 </section>
 
 <!-- CAPABILITIES (Dark Section) -->
@@ -610,21 +546,6 @@
     </div>
 </section>
 
-<!-- MISSION -->
-<section class="mission" id="mission">
-    <div class="mission-content">
-        <h2>Our mission</h2>
-        <div class="mission-statement">
-            QUALITY.<br>
-            <span>TIME.</span><br>
-            MATTERS.
-        </div>
-        <p class="mission-description">
-            We believe in building intelligent hardware that's engineered with precision and delivered on time. Every product, every process, every design detail reflects our commitment to excellence and reliability. From concept to market, quality is non-negotiable.
-        </p>
-    </div>
-</section>
-
 <!-- CTA -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
@@ -640,15 +561,13 @@
 <footer>
     <div class="footer-content">
         <div class="footer-col">
-            <p><strong>NVISCO</strong></p>
-            <p>Intelligent systems. Robotics. Hardware design.</p>
+           
         </div>
         
         <div class="footer-col">
             <h4>Process</h4>
             <a href="#journey">The Journey</a>
             <a href="#journey">Our Capabilities</a>
-            <a href="#mission">Our Mission</a>
         </div>
         
         <div class="footer-col">
