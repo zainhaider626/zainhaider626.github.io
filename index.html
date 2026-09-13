@@ -49,7 +49,7 @@
             text-decoration: none;
         }
 
-        /* ============= NAV ============= */
+        /* ============= NAV (TRUE GLASSMORPHISM) ============= */
         nav {
             height: 70px;
             padding: 0 5vw;
@@ -62,13 +62,16 @@
             z-index: 100;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transition: all 0.5s ease;
         }
 
         nav.nav-scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid #333;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(10, 10, 10, 0.3); /* Highly transparent */
+            backdrop-filter: blur(25px); /* Heavy blur for background bleeding */
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         }
 
         .logo {
@@ -106,21 +109,12 @@
         }
 
         nav.nav-scrolled .nav-links a {
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         nav.nav-scrolled .nav-links a:hover {
-            background: linear-gradient(110deg, #fff 20%, #888 40%, #fff 50%, #888 60%, #fff 80%);
-            background-size: 200% auto;
             color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
         @media(max-width: 700px) {
@@ -138,21 +132,6 @@
             grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
             align-items: center;
-        }
-
-        .offer-badge {
-            display: inline-flex;
-            align-items: center;
-            background: #f9f9f9;
-            border: 1px solid #eaeaea;
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #333;
-            margin-bottom: 24px;
         }
 
         .hero-left h1 {
@@ -175,6 +154,7 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
+            margin-bottom: 35px;
         }
 
         .cta-primary {
@@ -205,6 +185,31 @@
         }
 
         .cta-secondary:hover { background: #f0f0f0; }
+
+        /* ============= TECHNOLOGY LOGOS ============= */
+        .tech-logos {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+
+        .tech-logos img {
+            height: 22px; /* Perfect laptop size */
+            opacity: 0.35; /* Transparent glass look */
+            filter: grayscale(100%) contrast(150%);
+            transition: all 0.3s ease;
+        }
+
+        .tech-logos img:hover {
+            opacity: 0.8;
+        }
+
+        @media(max-width: 700px) {
+            .tech-logos { gap: 15px; }
+            .tech-logos img { height: 18px; } /* Smaller mobile size */
+        }
 
 
         /* ============= LIVE COMMUNITY CHAT BOX ============= */
@@ -301,7 +306,7 @@
         }
 
         .chat-send-row {
-            display: none; /* Hidden until logged in */
+            display: none;
             gap: 8px;
         }
 
@@ -315,9 +320,7 @@
             transition: border-color 0.2s;
         }
 
-        .chat-send-row input:focus {
-            border-color: #000;
-        }
+        .chat-send-row input:focus { border-color: #000; }
 
         .chat-btn-submit {
             background: #000;
@@ -330,9 +333,7 @@
             transition: background 0.2s;
         }
 
-        .chat-btn-submit:hover {
-            background: #333;
-        }
+        .chat-btn-submit:hover { background: #333; }
 
         .google-login-btn {
             background: #fff;
@@ -350,14 +351,15 @@
             transition: 0.2s;
         }
 
-        .google-login-btn:hover {
-            background: #f0f0f0;
-        }
+        .google-login-btn:hover { background: #f0f0f0; }
 
         @media(max-width: 950px) {
             .hero {
                 grid-template-columns: 1fr;
                 gap: 50px;
+            }
+            .chat-container {
+                height: 380px; /* Smaller feed on mobile */
             }
         }
 
@@ -563,18 +565,27 @@
 <!-- HERO WITH EMBEDDED COMMUNITY CHAT ON THE RIGHT -->
 <section class="hero">
     <div class="hero-left">
-        <!-- New Offer Badge -->
-        <div class="offer-badge">
-            <span class="live-dot" style="display: inline-block; margin-right: 8px;"></span> Free Hardware Design Guidance
-        </div>
         
-        <!-- Updated Headline & Copy -->
         <h1>Innovation driven by quality, not cost.</h1>
-        <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer <strong>complimentary engineering consultations</strong> alongside our world-class 16-layer PCB and intelligent firmware designs. Let's make bringing your idea to life easier.</p>
+        <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer <strong>complimentary engineering consultations</strong> alongside our world class 16 layer PCB and intelligent firmware designs. Let's make bringing your idea to life easier.</p>
         
         <div class="hero-buttons">
             <a href="mailto:hello@nvisco.com" class="cta-primary">Claim free consultation</a>
             <a href="#work" class="cta-secondary">View our work</a>
+        </div>
+
+        <!-- NEW: Technology Logos (Transparent Glass Style) -->
+        <div class="tech-logos">
+            <!-- KiCAD -->
+            <img src="https://cdn.simpleicons.org/kicad/000000" alt="KiCad">
+            <!-- Fusion 360 / Autodesk -->
+            <img src="https://cdn.simpleicons.org/autodesk/000000" alt="Fusion 360">
+            <!-- Altium Designer -->
+            <img src="https://cdn.simpleicons.org/altiumdesigner/000000" alt="Altium">
+            <!-- Arduino -->
+            <img src="https://cdn.simpleicons.org/arduino/000000" alt="Arduino">
+            <!-- VS Code -->
+            <img src="https://cdn.simpleicons.org/visualstudiocode/000000" alt="VS Code">
         </div>
     </div>
 
@@ -664,7 +675,7 @@
                 <img src="preview (2).webp" alt="High Density PCB" class="aesthetic-image">
             </div>
             <h3>High-Density Carrier Boards</h3>
-            <p>16-layer complex routing designed for maximum signal integrity and minimized EMI footprints.</p>
+            <p>16 layer complex routing designed for maximum signal integrity and minimized EMI footprints.</p>
         </div>
 
         <div class="case-study">
