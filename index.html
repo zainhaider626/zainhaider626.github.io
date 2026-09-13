@@ -6,7 +6,7 @@
     <title>NVISCO — Hardware Design to Product</title>
     <link rel="canonical" href="https://nvisco.com/">
     <meta name="description" content="Nvisco specializes in Intelligent System and Robotics, complex hardware engineering, PCB Designing upto 16 layer, custom mechanical CAD assemblies, and intelligent embedded firmware.">
-    <meta name="keywords" content="Hardware design,NVISCO, nviso, robotics in pakistan , robotics in mandi bahauddin , pcb design company in pakistan , top robotics company in pakistan, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
+    <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
     
@@ -186,31 +186,32 @@
 
         .cta-secondary:hover { background: #f0f0f0; }
 
-        /* ============= TECHNOLOGY LOGOS ============= */
+        /* ============= TECHNOLOGY LOGOS (FIXED ALIGNMENT) ============= */
         .tech-logos {
             display: flex;
             gap: 30px;
             align-items: center;
             flex-wrap: wrap;
+            min-height: 45px; /* Ensures the container doesn't collapse if images load slowly */
         }
 
         .tech-logos img {
-            height: 28px; /* Increased Laptop Size */
-            /* Default to black/glass look */
+            height: 28px; /* Standard laptop size */
+            width: auto;
+            display: block; /* Prevents text-alignment weirdness */
+            object-fit: contain;
             filter: grayscale(100%) opacity(0.4) brightness(0); 
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .tech-logos img:hover {
-            /* Restores original brand colors on hover/touch */
             filter: grayscale(0%) opacity(1) brightness(1); 
             transform: scale(1.05);
         }
 
-        /* Specific fix for KiCAD because its graphic is naturally small */
         .kicad-logo {
-            height: 38px !important; 
+            height: 38px !important; /* KiCAD naturally has whitespace, this forces it to match the rest */
         }
 
         @media(max-width: 700px) {
@@ -218,7 +219,6 @@
             .tech-logos img { height: 20px; } /* Perfect Mobile Size */
             .kicad-logo { height: 28px !important; } /* Mobile KiCAD Size */
         }
-
 
         /* ============= LIVE COMMUNITY CHAT BOX ============= */
         .chat-container {
@@ -584,11 +584,14 @@
 
         <!-- NEW: Technology Logos (Transparent Glass Style & Full Color on Hover) -->
         <div class="tech-logos">
-            <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" class="kicad-logo">
-            <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360">
-            <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium">
-            <img src="https://cdn.simpleicons.org/arduino" alt="Arduino">
-            <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code">
+            <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
+            <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
+            <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium" title="Altium Designer">
+            <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
+            <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code" title="VS Code">
+            <!-- Robotics Additions -->
+            <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
+            <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
         </div>
     </div>
 
