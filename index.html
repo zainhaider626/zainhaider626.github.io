@@ -238,12 +238,12 @@
             padding: 10px 14px;
             border-radius: 4px;
             max-width: 90%;
+            align-self: flex-start;
         }
 
         .message.nvisco {
             background: #000;
             color: #fff;
-            align-self: flex-start;
             border: none;
         }
 
@@ -533,18 +533,7 @@
         </div>
 
         <div class="chat-messages" id="chatMessages">
-            <div class="message nvisco">
-                <div class="message-user">Nvisco Engineering</div>
-                We have world-class skills in 16-layer PCB layout & robotics, but like many startups, we love connecting directly with people who have bold hardware ideas! Drop your thoughts or project questions here.
-            </div>
-            <div class="message">
-                <div class="message-user">Visitor_Alex</div>
-                Hey! Can you handle impedance matching for high-speed USB3 routing on a custom CM4 carrier board?
-            </div>
-            <div class="message nvisco">
-                <div class="message-user">Nvisco Engineering</div>
-                @Visitor_Alex Absolutely. We route differential pairs with strict length-matching and controlled dielectric layers.
-            </div>
+            <!-- Messages will load here dynamically from Firebase -->
         </div>
 
         <div class="chat-input-area">
@@ -712,43 +701,101 @@
 </footer>
 
 <!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX -->
-<script>
+<script type="module">
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('mainNav');
-        if (window.scrollY > 80) {
-            nav.classList.add('nav-scrolled');
-        } else {
-            nav.classList.remove('nav-scrolled');
-        }
+        if (window.scrollY > 80) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
     });
 
-    // Local Chat Box Functionality (Keeps messages visible when pressing Enter)
+    // ==========================================
+    // FIREBASE REAL-TIME CHAT SETUP
+    // ==========================================
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+
+    // Your specific Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBr01w5Lb55inQ6W3gDm6_mShefkcNSD48",
+      authDomain: "nvisco-web.firebaseapp.com",
+      projectId: "nvisco-web",
+      storageBucket: "nvisco-web.firebasestorage.app",
+      messagingSenderId: "678478670979",
+      appId: "1:678478670979:web:b527cc7733991c44f7bfb6",
+      measurementId: "G-9PSZL74924"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const messagesCol = collection(db, "chat_messages");
+
+    // DOM Elements
     const chatInput = document.getElementById('chatInput');
     const userNameInput = document.getElementById('userNameInput');
     const sendChatBtn = document.getElementById('sendChatBtn');
     const chatMessages = document.getElementById('chatMessages');
 
-    function postMessage() {
+    // 1. LISTEN FOR REAL-TIME DATA (Reads from Database)
+    const q = query(messagesCol, orderBy("timestamp", "asc"));
+    
+    onSnapshot(q, (snapshot) => {
+        // Clear current messages so we don't duplicate them
+        chatMessages.innerHTML = ''; 
+        
+        // Add a permanent welcome message
+        chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed. Drop your hardware questions or project ideas here!</div>`;
+        
+        // Loop through all messages in the database
+        snapshot.forEach((doc) => {
+            const data = doc.data();
+            const msgDiv = document.createElement('div');
+            
+            // If you reply as "Nvisco", make the bubble dark black!
+            if (data.username && data.username.toLowerCase().includes('nvisco')) {
+                msgDiv.className = 'message nvisco';
+            } else {
+                msgDiv.className = 'message';
+            }
+            
+            msgDiv.innerHTML = `<div class="message-user">${escapeHtml(data.username)}</div>${escapeHtml(data.text)}`;
+            chatMessages.appendChild(msgDiv);
+        });
+        
+        // Auto-scroll to bottom of chat
+        chatMessages.scrollTop = chatMessages.scrollHeight; 
+    });
+
+    // 2. SEND NEW MESSAGE (Writes to Database)
+    async function postMessage() {
         const text = chatInput.value.trim();
-        const username = userNameInput.value.trim() || 'Guest';
+        const username = userNameInput.value.trim() || 'Visitor';
 
         if (text !== '') {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'message';
-            msgDiv.innerHTML = `<div class="message-user">${escapeHtml(username)}</div>${escapeHtml(text)}`;
+            chatInput.value = ''; // Clear input field instantly 
             
-            chatMessages.appendChild(msgDiv);
-            chatInput.value = ''; // Clear message box, text stays safely in chat history feed
-            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to bottom
+            try {
+                // Send data to Firebase
+                await addDoc(messagesCol, {
+                    username: username,
+                    text: text,
+                    timestamp: serverTimestamp()
+                });
+            } catch (error) {
+                console.error("Error adding message: ", error);
+                alert("Could not send message. Please try again.");
+            }
         }
     }
 
-    // Security helper to prevent HTML injection
+    // Security helper to prevent HTML injection hackers
     function escapeHtml(str) {
+        if (!str) return "";
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
+    // Event Listeners for the Chat Button and Enter Key
     sendChatBtn.addEventListener('click', postMessage);
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -756,6 +803,5 @@
         }
     });
 </script>
-
 </body>
 </html>
