@@ -442,12 +442,20 @@
         }
 
         .cta-content h2 {
-            font-size: clamp(48px, 8vw, 76px);
+            font-size: clamp(42px, 8vw, 64px);
             line-height: 1.15;
             letter-spacing: -1.5px;
             font-weight: 700;
-            margin-bottom: 50px;
+            margin-bottom: 24px;
             max-width: 800px;
+        }
+        
+        .cta-content p {
+            font-size: 18px; 
+            color: #555; 
+            max-width: 700px; 
+            margin-bottom: 40px; 
+            line-height: 1.6;
         }
 
         .cta-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -536,7 +544,7 @@
     <div class="hero-left">
         <h1>From your idea to a market ready product.</h1>
         <p class="hero-description">We design and develop intelligent hardware systems. High density PCB designing, complex enclosure design, and centralized firmware frameworks | everything needed to bring your innovation to life.</p>
-        <a href="mailto:nvisco.pak@gmail.com" class="cta-primary">Start your project</a>
+        <a href="#cta" class="cta-primary">Start your project</a>
     </div>
 
     <!-- Right Side Live Community Chat Interface -->
@@ -693,12 +701,13 @@
     </div>
 </section>
 
-<!-- CTA -->
+<!-- NEW REFINED CTA SECTION -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
-        <h2>Ready to build something real?</h2>
+        <h2>Innovation driven by quality, not cost.</h2>
+        <p>Hardware development shouldn't be gated by upfront barriers. Nvisco offer <strong>complimentary engineering consultations</strong> and <strong>free hardware design guidance</strong> to help bring your ideas to life. Let's make hardware easier.</p>
         <div class="cta-buttons">
-            <a href="mailto:hello@nvisco.com" class="cta-primary">Start a project</a>
+            <a href="mailto:hello@nvisco.com" class="cta-primary">Claim your free consultation</a>
             <a href="mailto:hello@nvisco.com" class="cta-secondary">Get in touch</a>
         </div>
     </div>
@@ -707,10 +716,6 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-content">
-        <div class="footer-col">
-            <p><strong>NVISCO</strong></p>
-            <p>Intelligent systems. Robotics. Hardware design.</p>
-        </div>
         
         <div class="footer-col">
             <h4>Process</h4>
@@ -822,7 +827,8 @@
     onSnapshot(q, (snapshot) => {
         chatMessages.innerHTML = ''; 
         
-        chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed. Sign in below to drop your hardware questions or project ideas here!</div>`;
+        // Updated Welcome Message
+        chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed! Sign in below to claim your free hardware design guidance, or drop your project questions here.</div>`;
         
         snapshot.forEach((doc) => {
             const data = doc.data();
