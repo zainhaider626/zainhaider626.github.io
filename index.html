@@ -87,6 +87,34 @@
             transition: filter 0.5s ease;
         }
 
+
+        /* ============= COMMUNITY CHAT BUTTON ============= */
+        .chat-btn {
+            background: #000;
+            color: #fff !important; /* Forces text to stay white */
+            padding: 8px 18px;
+            font-weight: 600;
+            border: 1px solid #000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            background: transparent;
+            color: #000 !important;
+        }
+
+        /* Adapts the button when the navbar becomes dark on scroll */
+        nav.nav-scrolled .chat-btn {
+            background: #fff;
+            color: #000 !important;
+            border: 1px solid #fff;
+        }
+
+        nav.nav-scrolled .chat-btn:hover {
+            background: transparent;
+            color: #fff !important;
+        }
+
         /* Invert logo color when navbar is dark */
         nav.nav-scrolled .logo img {
             filter: invert(1);
@@ -527,9 +555,12 @@
     <a href="#" class="logo">
         <img src="nvisco-logo.png" alt="NVISCO">
     </a>
-    <div class="nav-links">
+    <!-- Note the added align-items below to keep everything vertically centered -->
+    <div class="nav-links" style="align-items: center;">
         <a href="#journey">Work</a>
         <a href="#cta">Contact</a>
+        <!-- Replace the '#' below with your Discord, LinkedIn, or chat link -->
+        <a href="#" target="_blank" class="chat-btn">Community Chat</a>
     </div>
 </nav>
 
