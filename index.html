@@ -154,7 +154,7 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .cta-primary {
@@ -189,26 +189,34 @@
         /* ============= TECHNOLOGY LOGOS ============= */
         .tech-logos {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
             flex-wrap: wrap;
-            opacity: 0.8;
         }
 
         .tech-logos img {
-            height: 22px; /* Perfect laptop size */
-            opacity: 0.35; /* Transparent glass look */
-            filter: grayscale(100%) contrast(150%);
+            height: 28px; /* Increased Laptop Size */
+            /* Default to black/glass look */
+            filter: grayscale(100%) opacity(0.4) brightness(0); 
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .tech-logos img:hover {
-            opacity: 0.8;
+            /* Restores original brand colors on hover/touch */
+            filter: grayscale(0%) opacity(1) brightness(1); 
+            transform: scale(1.05);
+        }
+
+        /* Specific fix for KiCAD because its graphic is naturally small */
+        .kicad-logo {
+            height: 38px !important; 
         }
 
         @media(max-width: 700px) {
-            .tech-logos { gap: 15px; }
-            .tech-logos img { height: 18px; } /* Smaller mobile size */
+            .tech-logos { gap: 18px; }
+            .tech-logos img { height: 20px; } /* Perfect Mobile Size */
+            .kicad-logo { height: 28px !important; } /* Mobile KiCAD Size */
         }
 
 
@@ -306,7 +314,7 @@
         }
 
         .chat-send-row {
-            display: none;
+            display: none; /* Hidden until logged in */
             gap: 8px;
         }
 
@@ -359,7 +367,7 @@
                 gap: 50px;
             }
             .chat-container {
-                height: 380px; /* Smaller feed on mobile */
+                height: 380px; /* Small layout for mobile */
             }
         }
 
@@ -574,18 +582,13 @@
             <a href="#work" class="cta-secondary">View our work</a>
         </div>
 
-        <!-- NEW: Technology Logos (Transparent Glass Style) -->
+        <!-- NEW: Technology Logos (Transparent Glass Style & Full Color on Hover) -->
         <div class="tech-logos">
-            <!-- KiCAD -->
-            <img src="https://cdn.simpleicons.org/kicad/000000" alt="KiCad">
-            <!-- Fusion 360 / Autodesk -->
-            <img src="https://cdn.simpleicons.org/autodesk/000000" alt="Fusion 360">
-            <!-- Altium Designer -->
-            <img src="https://cdn.simpleicons.org/altiumdesigner/000000" alt="Altium">
-            <!-- Arduino -->
-            <img src="https://cdn.simpleicons.org/arduino/000000" alt="Arduino">
-            <!-- VS Code -->
-            <img src="https://cdn.simpleicons.org/visualstudiocode/000000" alt="VS Code">
+            <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" class="kicad-logo">
+            <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360">
+            <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium">
+            <img src="https://cdn.simpleicons.org/arduino" alt="Arduino">
+            <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code">
         </div>
     </div>
 
