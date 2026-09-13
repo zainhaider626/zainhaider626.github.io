@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NVISCO — Hardware Design to Product</title>
     <link rel="canonical" href="https://nvisco.com/">
-
     <meta name="description" content="Nvisco specializes in Intelligent System and Robotics, complex hardware engineering, PCB Designing upto 16 layer, custom mechanical CAD assemblies, and intelligent embedded firmware.">
     <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
+    
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -20,8 +20,7 @@
 }
 </script>
     
-    
-    <!-- Importing the Courier Prime typewriter font (used only for Capabilities) -->
+    <!-- Importing Courier Prime font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -38,7 +37,6 @@
         }
 
         body {
-            /* Standard modern sans-serif font applied globally */
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
             background: #fff;
             color: #000;
@@ -51,7 +49,7 @@
             text-decoration: none;
         }
 
-        /* ============= NAV (Dynamic & Shiny) ============= */
+        /* ============= NAV ============= */
         nav {
             height: 70px;
             padding: 0 5vw;
@@ -68,7 +66,7 @@
         }
 
         nav.nav-scrolled {
-            background: rgba(10, 10, 10, 0.85);
+            background: rgba(10, 10, 10, 0.95);
             border-bottom: 1px solid #333;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
@@ -87,35 +85,6 @@
             transition: filter 0.5s ease;
         }
 
-
-        /* ============= COMMUNITY CHAT BUTTON ============= */
-        .chat-btn {
-            background: #000;
-            color: #fff !important; /* Forces text to stay white */
-            padding: 8px 18px;
-            font-weight: 600;
-            border: 1px solid #000;
-            transition: all 0.3s ease;
-        }
-
-        .chat-btn:hover {
-            background: transparent;
-            color: #000 !important;
-        }
-
-        /* Adapts the button when the navbar becomes dark on scroll */
-        nav.nav-scrolled .chat-btn {
-            background: #fff;
-            color: #000 !important;
-            border: 1px solid #fff;
-        }
-
-        nav.nav-scrolled .chat-btn:hover {
-            background: transparent;
-            color: #fff !important;
-        }
-
-        /* Invert logo color when navbar is dark */
         nav.nav-scrolled .logo img {
             filter: invert(1);
         }
@@ -136,7 +105,6 @@
             color: #000;
         }
 
-        /* Scrolled links get the metallic shine on hover */
         nav.nav-scrolled .nav-links a {
             color: #aaa;
         }
@@ -151,66 +119,216 @@
             animation: shine 3s linear infinite;
         }
 
-        @media(max-width: 700px) {
-            nav {
-                height: 60px;
-                padding: 0 6vw;
-            }
-            .logo {
-                height: 40px;
-            }
-            .nav-links {
-                gap: 15px;
-                font-size: 12px;
-            }
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
-        /* ============= HERO ============= */
+        @media(max-width: 700px) {
+            nav { height: 60px; padding: 0 6vw; }
+            .logo { height: 40px; }
+            .nav-links { gap: 15px; font-size: 12px; }
+        }
+
+        /* ============= HERO SPLIT SECTION ============= */
         .hero {
-            padding: 120px 5vw 100px;
+            padding: 80px 5vw;
             max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-size: clamp(56px, 10vw, 88px);
+        .hero-left h1 {
+            font-size: clamp(42px, 6vw, 72px);
             line-height: 1.1;
             letter-spacing: -2px;
-            max-width: 900px;
             font-weight: 700;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .hero-description {
-            font-size: 18px;
+            font-size: 16px;
             color: #666;
-            max-width: 500px;
             line-height: 1.6;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .cta-primary {
             display: inline-block;
+            background: #000;
+            color: #fff;
             border: 1px solid #000;
-            padding: 12px 28px;
-            font-size: 13px;
+            padding: 14px 32px;
+            font-size: 14px;
             font-weight: 600;
             transition: all 0.2s;
             cursor: pointer;
         }
 
         .cta-primary:hover {
-            background: #000;
-            color: #fff;
+            background: #fff;
+            color: #000;
         }
 
-        @media(max-width: 700px) {
+        /* ============= LIVE COMMUNITY CHAT BOX (Right Side) ============= */
+        .chat-container {
+            width: 100%;
+            height: 480px;
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .chat-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 13px;
+        }
+
+        .message {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            padding: 10px 14px;
+            border-radius: 4px;
+            max-width: 90%;
+        }
+
+        .message.nvisco {
+            background: #000;
+            color: #fff;
+            align-self: flex-start;
+            border: none;
+        }
+
+        .message-user {
+            font-weight: 600;
+            font-size: 11px;
+            margin-bottom: 3px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .chat-input-area input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            font-size: 13px;
+            outline: none;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input-area input:focus {
+            border-color: #000;
+        }
+
+        .chat-send-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-send-row input {
+            flex: 1;
+        }
+
+        .chat-btn-submit {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .chat-btn-submit:hover {
+            background: #333;
+        }
+
+        @media(max-width: 950px) {
             .hero {
-                padding: 80px 6vw 60px;
+                grid-template-columns: 1fr;
+                gap: 50px;
             }
-            .hero h1 {
-                font-size: clamp(42px, 9vw, 56px);
-            }
+        }
+
+        /* ============= HORIZONTAL BANNER ============= */
+        .hardware-banner { 
+            width: 100%; 
+            height: 250px; 
+            overflow: hidden; 
+            border-top: 1px solid #e0e0e0; 
+            border-bottom: 1px solid #e0e0e0; 
+            background: #111; 
+        }
+        
+        .hardware-banner img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            filter: grayscale(100%) contrast(130%); 
+        }
+
+        @media(max-width: 768px) {
+            .hardware-banner { height: 120px; }
         }
 
         /* ============= THE JOURNEY ============= */
@@ -223,10 +341,7 @@
             width: 100%;
         }
 
-        .journey-header {
-            margin-bottom: 80px;
-        }
-
+        .journey-header { margin-bottom: 80px; }
         .journey-header h2 {
             font-size: clamp(36px, 6vw, 64px);
             line-height: 1.2;
@@ -234,12 +349,7 @@
             font-weight: 700;
             margin-bottom: 20px;
         }
-
-        .journey-header p {
-            font-size: 16px;
-            color: #666;
-            max-width: 600px;
-        }
+        .journey-header p { font-size: 16px; color: #666; max-width: 600px; }
 
         .journey-grid {
             display: grid;
@@ -248,125 +358,37 @@
             margin-bottom: 60px;
         }
 
-        .journey-step {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .journey-step { display: flex; flex-direction: column; gap: 16px; }
+        .step-number { font-size: 14px; color: #999; font-weight: 600; letter-spacing: 1px; }
+        .journey-step h3 { font-size: 20px; line-height: 1.3; font-weight: 600; }
+        .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
+
+        /* ============= PORTFOLIO / CASE STUDIES ============= */
+        .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; }
+        .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .case-study { display: flex; flex-direction: column; gap: 15px; }
+        .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid #e0e0e0; background: #111; }
+        
+        .aesthetic-image {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%) contrast(120%) brightness(90%);
+            transition: filter 0.4s ease; 
+        }
+        .aesthetic-image:hover { filter: grayscale(30%) contrast(110%) brightness(100%); }
+        .invert-mode { filter: invert(1) grayscale(100%) contrast(150%); }
+        .invert-mode:hover { filter: invert(1) grayscale(50%) contrast(150%); }
+
+        .case-study h3 { font-size: 20px; font-weight: 600; }
+        .case-study p { color: #666; font-size: 14px; line-height: 1.6; }
+
+        @media(max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
         }
 
-        .step-number {
-            font-size: 14px;
-            color: #999;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .journey-step h3 {
-            font-size: 20px;
-            line-height: 1.3;
-            font-weight: 600;
-        }
-
-        .journey-step p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        @media(max-width: 700px) {
-            .journey-section {
-                padding: 80px 6vw;
-            }
-            .journey-header h2 {
-                font-size: clamp(28px, 7vw, 42px);
-            }
-            .journey-grid {
-                gap: 32px;
-            }
-        }
-
-        /* ============= TRIPLE MATTERS SECTION ============= */
-        .matters-section {
-            padding: 120px 5vw;
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 140px; 
-        }
-
-        .matter-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            text-align: center;
-        }
-
-        .matter-title {
-            margin-bottom: 30px;
-        }
-
-        .matter-title h2 {
-            font-size: clamp(32px, 5vw, 65px);
-            line-height: 1;
-            letter-spacing: -2px;
-            font-weight: 900;
-            color: #111;
-            text-transform: uppercase;
-            white-space: nowrap; 
-        }
-
-        .matter-title h2 span {
-            background: linear-gradient(110deg, #111 20%, #999 40%, #fff 50%, #999 60%, #111 80%);
-            background-size: 200% auto;
-            color: #000;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 6s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        .project-image {
-            width: 100%;
-            max-width: 900px; 
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background: #000;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        /* Video and Img share exact same sizing to prevent layout breaks */
-        .project-image img,
-        .project-image video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        @media(max-width: 700px) {
-            .matters-section {
-                padding: 60px 6vw;
-                gap: 70px; 
-            }
-            .matter-title {
-                margin-bottom: 12px; 
-            }
-            .matter-title h2 {
-                letter-spacing: -1px;
-                font-size: clamp(34px, 8vw, 42px); 
-            }
-        }
-
-        /* ============= CAPABILITIES (Typewriter Font) ============= */
+        /* ============= CAPABILITIES ============= */
         .capabilities {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace; 
+            font-family: 'Courier Prime', Courier, monospace; 
             padding: 120px 5vw;
             background: #000;
             color: #fff;
@@ -391,31 +413,8 @@
             gap: 60px;
         }
 
-        .capability-item h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .capability-item p {
-            font-size: 13px;
-            color: #888;
-            line-height: 1.6;
-        }
-
-        @media(max-width: 700px) {
-            .capabilities {
-                padding: 80px 6vw;
-            }
-            .capabilities h2 {
-                font-size: clamp(28px, 7vw, 42px);
-                margin-bottom: 60px;
-            }
-            .capabilities-grid {
-                gap: 40px;
-            }
-        }
+        .capability-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #fff; }
+        .capability-item p { font-size: 13px; color: #888; line-height: 1.6; }
 
         /* ============= CTA SECTION ============= */
         .cta-section {
@@ -435,46 +434,19 @@
             max-width: 800px;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .cta-primary {
-            background: #000;
-            color: #fff;
-        }
-
+        .cta-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
+        
         .cta-secondary {
             border: 1px solid #000;
-            padding: 12px 28px;
-            font-size: 13px;
+            padding: 14px 32px;
+            font-size: 14px;
             font-weight: 600;
             transition: all 0.2s;
             cursor: pointer;
+            background: transparent;
         }
 
-        .cta-secondary:hover {
-            background: #f0f0f0;
-        }
-
-        @media(max-width: 700px) {
-            .cta-section {
-                padding: 80px 6vw;
-            }
-            .cta-content h2 {
-                font-size: clamp(36px, 8vw, 52px);
-            }
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .cta-primary,
-            .cta-secondary {
-                width: 100%;
-                text-align: center;
-            }
-        }
+        .cta-secondary:hover { background: #f0f0f0; }
 
         /* ============= FOOTER ============= */
         footer {
@@ -511,9 +483,7 @@
             transition: color 0.2s;
         }
 
-        .footer-col a:hover {
-            color: #000;
-        }
+        .footer-col a:hover { color: #000; }
 
         .footer-bottom {
             padding-top: 40px;
@@ -526,24 +496,8 @@
         }
 
         @media(max-width: 700px) {
-            footer {
-                padding: 50px 6vw;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            a, button {
-                transition: all 0.2s ease;
-            }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
 
     </style>
@@ -555,23 +509,60 @@
     <a href="#" class="logo">
         <img src="nvisco-logo.png" alt="NVISCO">
     </a>
-    <!-- Note the added align-items below to keep everything vertically centered -->
-    <div class="nav-links" style="align-items: center;">
-        <a href="#journey">Work</a>
+    <div class="nav-links">
+        <a href="#work">Work</a>
         <a href="#cta">Contact</a>
-        <!-- Replace the '#' below with your Discord, LinkedIn, or chat link -->
-        <a href="#" target="_blank" class="chat-btn">Community Chat</a>
     </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO WITH EMBEDDED COMMUNITY CHAT ON THE RIGHT -->
 <section class="hero">
-    <h1>From your idea to a market ready product.</h1>
-    <p class="hero-description">We design and develop intelligent hardware systems. High density PCB designing, complex enclosure design, and centralized firmware frameworks | everything needed to bring your innovation to life.</p>
-    <a href="mailto:nvisco.pak@gmail.com" class="cta-primary">Start your project</a>
+    <div class="hero-left">
+        <h1>From your idea to a market ready product.</h1>
+        <p class="hero-description">We design and develop intelligent hardware systems. High density PCB designing, complex enclosure design, and centralized firmware frameworks | everything needed to bring your innovation to life.</p>
+        <a href="mailto:nvisco.pak@gmail.com" class="cta-primary">Start your project</a>
+    </div>
+
+    <!-- Right Side Live Community Chat Interface -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <h3>Nvisco Community Feed</h3>
+            <div class="live-indicator">
+                <span class="live-dot"></span> Live Discussion
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message nvisco">
+                <div class="message-user">Nvisco Engineering</div>
+                We have world-class skills in 16-layer PCB layout & robotics, but like many startups, we love connecting directly with people who have bold hardware ideas! Drop your thoughts or project questions here.
+            </div>
+            <div class="message">
+                <div class="message-user">Visitor_Alex</div>
+                Hey! Can you handle impedance matching for high-speed USB3 routing on a custom CM4 carrier board?
+            </div>
+            <div class="message nvisco">
+                <div class="message-user">Nvisco Engineering</div>
+                @Visitor_Alex Absolutely. We route differential pairs with strict length-matching and controlled dielectric layers.
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="userNameInput" placeholder="Your Name / Handle..." />
+            <div class="chat-send-row">
+                <input type="text" id="chatInput" placeholder="Ask a question or share feedback..." />
+                <button class="chat-btn-submit" id="sendChatBtn">Send</button>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- JOURNEY (Focuses on the Workflow/Process) -->
+<!-- HORIZONTAL BANNER -->
+<div class="hardware-banner">
+    <img src="Screenshot 2026-07-05 041620.png" alt="Hardware Architecture Timeline">
+</div>
+
+<!-- JOURNEY -->
 <section class="journey-section" id="journey">
     <div class="journey-header">
         <h2>The complete design journey</h2>
@@ -605,44 +596,48 @@
     </div>
 </section>
 
-<!-- THE 3 MATTERS BLOCKS -->
-<section class="matters-section">
+<!-- FEATURED ENGINEERING -->
+<section class="portfolio" id="work">
+    <h2>Featured Engineering</h2>
     
-    <!-- BLOCK 1: QUALITY -->
-    <div class="matter-block">
-        <div class="matter-title">
-            <h2><span>QUALITY MATTERS.</span></h2>
+    <div class="grid-2">
+        <div class="case-study">
+            <div class="img-container">
+                <img src="preview (2).webp" alt="High Density PCB" class="aesthetic-image">
+            </div>
+            <h3>High-Density Carrier Boards</h3>
+            <p>16-layer complex routing designed for maximum signal integrity and minimized EMI footprints.</p>
         </div>
-        <div class="project-image">
-            <img src="watch-im.png" alt="Quality Matters">
+
+        <div class="case-study">
+            <div class="img-container">
+                <img src="Screenshot 2025-12-18 040208.png" alt="ESP32 Integration" class="aesthetic-image">
+            </div>
+            <h3>IoT & Wireless Integration</h3>
+            <p>Custom ESP32-based logic systems with strict keep-out zones and optimized antenna tuning.</p>
         </div>
     </div>
 
-    <!-- BLOCK 2: ENGINEERING -->
-    <div class="matter-block">
-        <div class="matter-title">
-            <h2><span>ENGINEERING MATTERS.</span></h2>
+    <div class="grid-2">
+        <div class="case-study">
+            <div class="img-container">
+                <img src="Screenshot 2025-10-11 165427.jpg" alt="Compute Module" class="aesthetic-image">
+            </div>
+            <h3>Compute Module Architectures</h3>
+            <p>Bespoke Raspberry Pi CM4 and industrial compute interfaces designed for harsh environments.</p>
         </div>
-        <div class="project-image">
-            <video autoplay muted loop playsinline>
-                <source src="159021-818026286.mp4" type="video/mp4">
-            </video>
+
+        <div class="case-study">
+            <div class="img-container" style="background:#000;">
+                <img src="Screenshot 2025-10-11 165314.png" alt="Schematic Design" class="aesthetic-image invert-mode">
+            </div>
+            <h3>System Level Blueprinting</h3>
+            <p>Centralized communication protocols and meticulous schematic validation before layout begins.</p>
         </div>
     </div>
-
-    <!-- BLOCK 3: TIME -->
-    <div class="matter-block">
-        <div class="matter-title">
-            <h2><span>TIME MATTERS.</span></h2>
-        </div>
-        <div class="project-image">
-            <img src="time-mat.png" alt="Time Matters">
-        </div>
-    </div>
-
 </section>
 
-<!-- CAPABILITIES (Focuses on Deep Technical Skills) -->
+<!-- CAPABILITIES -->
 <section class="capabilities">
     <h2>Complex Industrial Capabilities</h2>
     
@@ -684,8 +679,8 @@
     <div class="cta-content">
         <h2>Ready to build something real?</h2>
         <div class="cta-buttons">
-            <a href="mailto:nvisco.pak@gmail.com" class="cta-primary">Start a project</a>
-            <a href="mailto:nvisco.pak@gmail.com" class="cta-secondary">Get in touch</a>
+            <a href="mailto:hello@nvisco.com" class="cta-primary">Start a project</a>
+            <a href="mailto:hello@nvisco.com" class="cta-secondary">Get in touch</a>
         </div>
     </div>
 </section>
@@ -701,12 +696,12 @@
         <div class="footer-col">
             <h4>Process</h4>
             <a href="#journey">The Journey</a>
-            <a href="#journey">Our Capabilities</a>
+            <a href="#work">Featured Engineering</a>
         </div>
         
         <div class="footer-col">
             <h4>Contact</h4>
-            <a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a>
+            <a href="mailto:hello@nvisco.com">hello@nvisco.com</a>
             <p style="margin-top: 16px;">Mandi Bahauddin, Punjab, PK</p>
         </div>
     </div>
@@ -716,14 +711,48 @@
     </div>
 </footer>
 
-<!-- SCRIPT FOR NAVBAR SCROLL EFFECT -->
+<!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX -->
 <script>
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('mainNav');
         if (window.scrollY > 80) {
             nav.classList.add('nav-scrolled');
         } else {
             nav.classList.remove('nav-scrolled');
+        }
+    });
+
+    // Local Chat Box Functionality (Keeps messages visible when pressing Enter)
+    const chatInput = document.getElementById('chatInput');
+    const userNameInput = document.getElementById('userNameInput');
+    const sendChatBtn = document.getElementById('sendChatBtn');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function postMessage() {
+        const text = chatInput.value.trim();
+        const username = userNameInput.value.trim() || 'Guest';
+
+        if (text !== '') {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message';
+            msgDiv.innerHTML = `<div class="message-user">${escapeHtml(username)}</div>${escapeHtml(text)}`;
+            
+            chatMessages.appendChild(msgDiv);
+            chatInput.value = ''; // Clear message box, text stays safely in chat history feed
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to bottom
+        }
+    }
+
+    // Security helper to prevent HTML injection
+    function escapeHtml(str) {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    sendChatBtn.addEventListener('click', postMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            postMessage();
         }
     });
 </script>
