@@ -172,7 +172,7 @@
             color: #000;
         }
 
-        /* ============= LIVE COMMUNITY CHAT BOX (Right Side) ============= */
+        /* ============= LIVE COMMUNITY CHAT BOX ============= */
         .chat-container {
             width: 100%;
             height: 480px;
@@ -265,8 +265,13 @@
             gap: 8px;
         }
 
-        .chat-input-area input {
-            width: 100%;
+        .chat-send-row {
+            display: none; /* Hidden until logged in */
+            gap: 8px;
+        }
+
+        .chat-send-row input {
+            flex: 1;
             padding: 10px 14px;
             border: 1px solid #ddd;
             font-size: 13px;
@@ -275,17 +280,8 @@
             transition: border-color 0.2s;
         }
 
-        .chat-input-area input:focus {
+        .chat-send-row input:focus {
             border-color: #000;
-        }
-
-        .chat-send-row {
-            display: flex;
-            gap: 8px;
-        }
-
-        .chat-send-row input {
-            flex: 1;
         }
 
         .chat-btn-submit {
@@ -301,6 +297,26 @@
 
         .chat-btn-submit:hover {
             background: #333;
+        }
+
+        .google-login-btn {
+            background: #fff;
+            border: 1px solid #000;
+            color: #000;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .google-login-btn:hover {
+            background: #f0f0f0;
         }
 
         @media(max-width: 950px) {
@@ -537,11 +553,25 @@
         </div>
 
         <div class="chat-input-area">
-            <input type="text" id="userNameInput" placeholder="Your Name / Handle..." />
-            <div class="chat-send-row">
+            
+            <!-- Auth Section -->
+            <button id="googleLoginBtn" class="google-login-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                Sign in with Google to Chat
+            </button>
+
+            <!-- User Info (Hidden until logged in) -->
+            <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #333;"></span>
+                <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
+            </div>
+
+            <!-- Chat Input (Hidden until logged in) -->
+            <div class="chat-send-row" id="chatSendRow">
                 <input type="text" id="chatInput" placeholder="Ask a question or share feedback..." />
                 <button class="chat-btn-submit" id="sendChatBtn">Send</button>
             </div>
+            
         </div>
     </div>
 </section>
@@ -700,7 +730,7 @@
     </div>
 </footer>
 
-<!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX -->
+<!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX WITH GOOGLE AUTH -->
 <script type="module">
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
@@ -710,10 +740,11 @@
     });
 
     // ==========================================
-    // FIREBASE REAL-TIME CHAT SETUP
+    // FIREBASE REAL-TIME CHAT & AUTH SETUP
     // ==========================================
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
     import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
     // Your specific Firebase configuration
     const firebaseConfig = {
@@ -729,30 +760,68 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
     const messagesCol = collection(db, "chat_messages");
 
     // DOM Elements
     const chatInput = document.getElementById('chatInput');
-    const userNameInput = document.getElementById('userNameInput');
     const sendChatBtn = document.getElementById('sendChatBtn');
     const chatMessages = document.getElementById('chatMessages');
+    
+    // Auth DOM Elements
+    const googleLoginBtn = document.getElementById('googleLoginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const userInfo = document.getElementById('userInfo');
+    const welcomeText = document.getElementById('welcomeText');
+    const chatSendRow = document.getElementById('chatSendRow');
 
-    // 1. LISTEN FOR REAL-TIME DATA (Reads from Database)
+    let currentUser = null;
+
+    // 1. AUTHENTICATION LISTENER
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is logged in
+            currentUser = user;
+            googleLoginBtn.style.display = 'none';
+            userInfo.style.display = 'flex';
+            chatSendRow.style.display = 'flex';
+            welcomeText.innerText = `Posting as ${user.displayName}`;
+        } else {
+            // User is logged out
+            currentUser = null;
+            googleLoginBtn.style.display = 'flex';
+            userInfo.style.display = 'none';
+            chatSendRow.style.display = 'none';
+        }
+    });
+
+    // Login Action
+    googleLoginBtn.addEventListener('click', () => {
+        signInWithPopup(auth, provider).catch((error) => {
+            console.error("Login Error: ", error);
+        });
+    });
+
+    // Logout Action
+    logoutBtn.addEventListener('click', () => {
+        signOut(auth).catch((error) => {
+            console.error("Logout Error: ", error);
+        });
+    });
+
+    // 2. LISTEN FOR REAL-TIME DATA (Reads from Database)
     const q = query(messagesCol, orderBy("timestamp", "asc"));
     
     onSnapshot(q, (snapshot) => {
-        // Clear current messages so we don't duplicate them
         chatMessages.innerHTML = ''; 
         
-        // Add a permanent welcome message
-        chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed. Drop your hardware questions or project ideas here!</div>`;
+        chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed. Sign in below to drop your hardware questions or project ideas here!</div>`;
         
-        // Loop through all messages in the database
         snapshot.forEach((doc) => {
             const data = doc.data();
             const msgDiv = document.createElement('div');
             
-            // If you reply as "Nvisco", make the bubble dark black!
             if (data.username && data.username.toLowerCase().includes('nvisco')) {
                 msgDiv.className = 'message nvisco';
             } else {
@@ -763,23 +832,24 @@
             chatMessages.appendChild(msgDiv);
         });
         
-        // Auto-scroll to bottom of chat
         chatMessages.scrollTop = chatMessages.scrollHeight; 
     });
 
-    // 2. SEND NEW MESSAGE (Writes to Database)
+    // 3. SEND NEW MESSAGE (Writes to Database)
     async function postMessage() {
+        if (!currentUser) return; // Prevent sending if not logged in
+
         const text = chatInput.value.trim();
-        const username = userNameInput.value.trim() || 'Visitor';
+        const username = currentUser.displayName || 'Visitor';
 
         if (text !== '') {
-            chatInput.value = ''; // Clear input field instantly 
+            chatInput.value = ''; 
             
             try {
-                // Send data to Firebase
                 await addDoc(messagesCol, {
                     username: username,
                     text: text,
+                    uid: currentUser.uid, // Saves their unique Google ID securely
                     timestamp: serverTimestamp()
                 });
             } catch (error) {
@@ -789,13 +859,13 @@
         }
     }
 
-    // Security helper to prevent HTML injection hackers
+    // Security helper
     function escapeHtml(str) {
         if (!str) return "";
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    // Event Listeners for the Chat Button and Enter Key
+    // Event Listeners for Chat
     sendChatBtn.addEventListener('click', postMessage);
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
