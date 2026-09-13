@@ -744,7 +744,7 @@
     // ==========================================
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
     import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
     // Your specific Firebase configuration
     const firebaseConfig = {
@@ -763,6 +763,12 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
     const messagesCol = collection(db, "chat_messages");
+
+    // FORCE BROWSER TO REMEMBER LOGIN AFTER REFRESH
+    setPersistence(auth, browserLocalPersistence)
+      .catch((error) => {
+        console.error("Auth persistence error:", error);
+      });
 
     // DOM Elements
     const chatInput = document.getElementById('chatInput');
@@ -849,7 +855,7 @@
                 await addDoc(messagesCol, {
                     username: username,
                     text: text,
-                    uid: currentUser.uid, // Saves their unique Google ID securely
+                    uid: currentUser.uid, 
                     timestamp: serverTimestamp()
                 });
             } catch (error) {
