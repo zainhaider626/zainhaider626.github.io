@@ -49,9 +49,11 @@
             text-decoration: none;
         }
 
-        /* ============= SMART "PRO" NAVBAR (THIN & MINIMALIST) ============= */
+        /* ============= SMART "PRO" NAVBAR (DYNAMIC FLOATING PILL) ============= */
         nav {
-            height: 55px; /* Extremely thin, sleek profile */
+            height: 55px;
+            width: 100%;
+            margin: 0 auto; /* Needed for centering when it shrinks */
             padding: 0 5vw;
             display: flex;
             align-items: center;
@@ -61,16 +63,23 @@
             z-index: 100;
             background: rgba(255, 255, 255, 0.98);
             border-bottom: 1px solid #eaeaea;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 0px; /* Flat at the top */
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* The Dark Glassmorphism Effect on Scroll */
+        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll */
         nav.nav-scrolled {
-            background: rgba(18, 18, 18, 0.75); /* Dark Apple-style glass */
+            top: 15px; /* Floats down slightly */
+            width: 80%; /* Shrinks to the middle */
+            max-width: 1100px;
+            border-radius: 50px; /* Fully rounded ends */
+            padding: 0 3vw;
+            background: rgba(18, 18, 18, 0.75); 
             backdrop-filter: blur(20px); 
             -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             color: #fff;
         }
 
@@ -93,7 +102,7 @@
             object-fit: contain;
             transform: scale(2.5);
             transform-origin: left center;
-            transition: filter 0.4s ease;
+            transition: filter 0.5s ease;
         }
 
         /* Invert logo to white on dark scroll */
@@ -105,7 +114,7 @@
             width: 1px;
             height: 16px;
             background: #ccc;
-            transition: 0.4s;
+            transition: 0.5s;
             margin-left: 20px;
         }
         nav.nav-scrolled .nav-brand-divider { background: #444; }
@@ -114,7 +123,7 @@
             height: 20px;
             width: 20px;
             fill: #000;
-            transition: 0.4s;
+            transition: 0.5s;
         }
         nav.nav-scrolled .nav-robot-icon { fill: #fff; }
 
@@ -171,14 +180,6 @@
 
         .nav-btn-preorder:hover { background: #0077ED; transform: scale(1.02); }
 
-        @media(max-width: 768px) {
-            nav { height: 50px; padding: 0 5vw; }
-            .nav-center { display: none; } /* Clean minimalistic mobile look */
-            .nav-btn-explore { display: none; } /* Hide secondary button to save space */
-            .nav-brand-divider { display: none; }
-            .nav-robot-icon { display: none; }
-        }
-
         /* ============= HERO SPLIT SECTION ============= */
         .hero {
             padding: 80px 5vw;
@@ -206,6 +207,44 @@
             max-width: 600px;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            border: 1px solid #000;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .cta-primary:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .cta-secondary {
+            border: 1px solid #000;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            background: transparent;
+            text-align: center;
+        }
+
+        .cta-secondary:hover { background: #f0f0f0; }
+
         /* ============= TECHNOLOGY LOGOS ============= */
         .tech-logos {
             display: flex;
@@ -232,12 +271,6 @@
 
         .kicad-logo {
             height: 38px !important; 
-        }
-
-        @media(max-width: 700px) {
-            .tech-logos { gap: 18px; }
-            .tech-logos img { height: 20px; } 
-            .kicad-logo { height: 28px !important; } 
         }
 
         /* ============= LIVE COMMUNITY CHAT BOX ============= */
@@ -381,16 +414,6 @@
 
         .google-login-btn:hover { background: #f0f0f0; }
 
-        @media(max-width: 950px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-            .chat-container {
-                height: 380px; 
-            }
-        }
-
         /* ============= THIN ANIMATED CAPABILITY TICKER ============= */
         .ticker-wrap {
             width: 100%;
@@ -436,11 +459,6 @@
         @keyframes tickerScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); } 
-        }
-
-        @media(max-width: 768px) {
-            .ticker-wrap { height: 45px; }
-            .ticker-item { font-size: 11px; padding: 0 20px; }
         }
 
         /* ============= THE JOURNEY ============= */
@@ -502,10 +520,6 @@
 
         .case-study h3 { font-size: 20px; font-weight: 600; }
         .case-study p { color: #666; font-size: 14px; line-height: 1.6; }
-
-        @media(max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-        }
 
         /* ============= CAPABILITIES ============= */
         .capabilities {
@@ -614,6 +628,19 @@
            MOBILE OPTIMIZATION & OVERRIDES
            ======================================================= */
         @media(max-width: 768px) {
+            /* Mobile Nav Overrides */
+            nav { height: 50px; padding: 0 5vw; }
+            .nav-center { display: none; } 
+            .nav-btn-explore { display: none; } 
+            .nav-brand-divider { display: none; }
+            .nav-robot-icon { display: none; }
+
+            nav.nav-scrolled {
+                width: 95%; /* Keep it wide enough on mobile so it doesn't squish */
+                top: 10px;
+                padding: 0 4vw;
+            }
+
             /* Hero adjustments */
             .hero { 
                 grid-template-columns: 1fr; 
@@ -622,6 +649,10 @@
             }
             .hero-left h1 { font-size: 38px; margin-bottom: 16px; }
             .hero-description { font-size: 15px; margin-bottom: 30px; }
+
+            .tech-logos { gap: 18px; }
+            .tech-logos img { height: 20px; } 
+            .kicad-logo { height: 28px !important; } 
 
             /* Standardized Tighter Spacing Across All Sections */
             .journey-section, 
@@ -650,6 +681,10 @@
             .chat-header { padding: 12px 15px; }
             .chat-messages { padding: 15px; }
             .chat-input-area { padding: 12px; }
+
+            /* Ticker scaling */
+            .ticker-wrap { height: 45px; }
+            .ticker-item { font-size: 11px; padding: 0 20px; }
 
             /* Footer Alignment */
             footer { padding: 50px 6vw 30px; }
@@ -680,7 +715,7 @@
 </head>
 <body>
 
-<!-- SMART "PRO" NAVBAR -->
+<!-- SMART "PRO" NAVBAR WITH FLOATING PILL EFFECT -->
 <nav id="mainNav">
     <div class="nav-left">
         <a href="#" class="logo">
@@ -712,6 +747,11 @@
         <h1>Innovation driven by quality, not cost.</h1>
         <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer <strong>complimentary engineering consultations</strong> alongside our world class 16 layer PCB and intelligent firmware designs. Let's make bringing your idea to life easier.</p>
         
+        <div class="hero-buttons">
+            <a href="mailto:hello@nvisco.com" class="cta-primary">Claim free consultation</a>
+            <a href="#work" class="cta-secondary">View our work</a>
+        </div>
+
         <!-- Technology Logos -->
         <div class="tech-logos">
             <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
