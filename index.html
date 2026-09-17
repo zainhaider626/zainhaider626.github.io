@@ -53,7 +53,7 @@
            SMART "APPLE PRO" NAVBAR (DYNAMIC FLOATING DARK PILL) 
            ========================================================= */
         .header-wrapper {
-            background-color: #000; /* Dark Pro aesthetic starts here */
+            background-color: #000; 
         }
 
         nav {
@@ -67,20 +67,20 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: #000; /* Solid black at the top */
+            background: #000; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 0px; 
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll */
+        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll (Desktop) */
         nav.nav-scrolled {
             top: 15px; 
-            width: 75%; /* Shrinks to the middle */
+            width: 75%; 
             max-width: 1000px;
-            border-radius: 50px; /* Fully rounded Apple pill */
+            border-radius: 50px; 
             padding: 0 3vw;
-            background: rgba(29, 29, 31, 0.72); /* Apple Dark Glass */
+            background: rgba(29, 29, 31, 0.72); 
             backdrop-filter: blur(20px) saturate(180%); 
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -125,7 +125,6 @@
             gap: 12px;
         }
 
-        /* Exact Apple "Explore" Outline Style */
         .nav-btn-explore {
             font-size: 12px;
             font-weight: 500;
@@ -142,7 +141,6 @@
             border-color: #fff; 
         }
 
-        /* Exact Apple "Pre-order" Blue Pill Style */
         .nav-btn-preorder {
             font-size: 12px;
             font-weight: 600;
@@ -165,7 +163,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 0.85fr; /* Adjusted for chat box */
+            grid-template-columns: 1fr 0.85fr; 
             gap: 60px;
             align-items: center;
             background: #000;
@@ -176,7 +174,7 @@
             width: 140px;
             height: auto;
             margin-bottom: 20px;
-            mix-blend-mode: screen; /* Blends black background of video smoothly */
+            mix-blend-mode: screen; 
         }
 
         .hero-left h1 {
@@ -185,7 +183,6 @@
             letter-spacing: -2px;
             font-weight: 700;
             margin-bottom: 24px;
-            /* Apple Pro Metallic Gradient Text */
             background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -193,7 +190,7 @@
 
         .hero-description {
             font-size: 18px;
-            color: #a1a1a6; /* Apple's exact secondary gray */
+            color: #a1a1a6; 
             line-height: 1.5;
             margin-bottom: 40px;
             max-width: 600px;
@@ -214,7 +211,6 @@
             width: auto;
             display: block; 
             object-fit: contain;
-            /* White/Grey flat look for dark mode */
             filter: grayscale(100%) brightness(200%) opacity(0.5); 
             transition: all 0.3s ease;
             cursor: pointer;
@@ -234,7 +230,7 @@
             width: 100%;
             height: 480px;
             border: 1px solid #333;
-            background: #151516; /* Dark background */
+            background: #151516; 
             display: flex;
             flex-direction: column;
             border-radius: 16px;
@@ -271,7 +267,7 @@
         .live-dot {
             width: 8px;
             height: 8px;
-            background: #34c759; /* Apple Green */
+            background: #34c759; 
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -294,7 +290,7 @@
         }
 
         .message {
-            background: #2c2c2e; /* Dark gray bubble */
+            background: #2c2c2e; 
             color: #f5f5f7;
             padding: 10px 14px;
             border-radius: 12px;
@@ -303,9 +299,9 @@
         }
 
         .message.nvisco {
-            background: #0071e3; /* Apple Blue iMessage style */
+            background: #0071e3; 
             color: #fff;
-            align-self: flex-end; /* Nvisco replies align right */
+            align-self: flex-end; 
         }
 
         .message-user {
@@ -430,7 +426,7 @@
         /* ============= THE JOURNEY ============= */
         .journey-section {
             padding: 120px 5vw;
-            background: #fff; /* Rest of site remains bright and clean */
+            background: #fff; 
             border-bottom: 1px solid #e0e0e0;
             max-width: 1400px;
             margin: 0 auto;
@@ -543,7 +539,6 @@
             line-height: 1.6;
         }
         
-        /* Hero buttons reused in CTA */
         .cta-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
         .cta-primary-w { background: #000; color: #fff; border: 1px solid #000; padding: 14px 32px; font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; }
         .cta-primary-w:hover { background: #333; }
@@ -599,15 +594,16 @@
            MOBILE OPTIMIZATION & OVERRIDES
            ======================================================= */
         @media(max-width: 768px) {
-            /* Mobile Nav Overrides */
+            /* Mobile Nav Overrides - Stay full width till end! */
             nav { height: 55px; padding: 0 5vw; }
-            .nav-title { display: none; } /* Hide title text on mobile to save space */
+            .nav-title { display: none; } 
             .nav-btn-explore { display: none; } 
 
             nav.nav-scrolled {
-                width: 95%; 
-                top: 10px;
-                padding: 0 4vw;
+                width: 100%; /* Stretches edge-to-edge on mobile */
+                top: 0;      /* Sticks to the very top */
+                border-radius: 0; /* Removes pill corners on mobile */
+                padding: 0 5vw;
             }
 
             /* Hero adjustments */
@@ -625,9 +621,8 @@
             .tech-logos img { height: 20px; } 
             .kicad-logo { height: 28px !important; } 
 
-            /* Standardized Tighter Spacing Across All Sections */
+            /* Standardized Tighter Spacing */
             .journey-section, 
-            .portfolio, 
             .capabilities, 
             .cta-section { 
                 padding: 70px 6vw; 
@@ -642,7 +637,7 @@
             }
             
             .journey-header { margin-bottom: 40px; }
-            .journey-grid, .capabilities-grid, .grid-2 { gap: 35px; }
+            .journey-grid, .capabilities-grid { gap: 35px; }
 
             /* Chat Container Tweak */
             .chat-container { height: 400px; }
@@ -656,14 +651,39 @@
             .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
 
+            /* ===================================================
+               PORTFOLIO EDGE-TO-EDGE BIGGER MOBILE LAYOUT 
+               =================================================== */
+            
+            /* Remove side padding completely for the portfolio section */
+            .portfolio {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                padding-bottom: 40px !important; 
+            }
+
+            /* Make sure header inside portfolio still has side margins */
+            .portfolio h2 {
+                padding: 0 6vw;
+                margin-bottom: 30px;
+            }
+
+            /* Stack items perfectly with gap */
+            .grid-2 { 
+                grid-template-columns: 1fr; 
+                gap: 20px; /* Space between images */
+                margin-bottom: 20px;
+            }
+
             /* Remove descriptions on mobile */
             .case-study h3, 
             .case-study p { display: none; }
 
-            /* Make portfolio images larger by reducing side padding */
-            .portfolio {
-                padding-left: 2vw !important;
-                padding-right: 2vw !important;
+            /* Ensure images stretch fully to edges and maintain 16:9 */
+            .img-container {
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
             }
 
             /* Ensure original full color on mobile by default */
@@ -680,7 +700,7 @@
 <body>
 
 <div class="header-wrapper">
-    <!-- SMART "PRO" NAVBAR WITH FLOATING PILL EFFECT -->
+    <!-- SMART "PRO" NAVBAR WITH FLOATING PILL EFFECT (EDGE-TO-EDGE ON MOBILE) -->
     <nav id="mainNav">
         <div class="nav-left">
             <a href="#" class="logo">
