@@ -461,20 +461,19 @@
         .journey-step h3 { font-size: 20px; line-height: 1.3; font-weight: 600; }
         .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
 
-        /* ============= PORTFOLIO / CASE STUDIES (GLASSMORPHISM CARDS) ============= */
+        /* ============= PORTFOLIO / CASE STUDIES ============= */
         .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; background: #fff;}
         .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
         
-        .case-study { 
-            position: relative;
+        .case-study { display: flex; flex-direction: column; gap: 15px; }
+
+        .img-container { 
             width: 100%; 
             aspect-ratio: 16/9; 
-            border-radius: 16px;
             overflow: hidden; 
-            background: #000; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0; 
+            background: #111; 
             transform: translateZ(0); /* Hardware accelerate masking */
         }
         
@@ -493,40 +492,8 @@
             transform: scale(1.03) translateZ(0);
         }
 
-        .glass-panel {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 24px;
-            background: rgba(20, 20, 25, 0.55); 
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            color: #fff;
-            z-index: 10;
-            transform: translateZ(0); /* Smooth rendering over video */
-        }
-
-        .glass-text h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;}
-        .glass-text p { color: #d1d1d6; font-size: 13px; line-height: 1.5; margin: 0;}
-
-        .glass-logos {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            margin-top: 4px;
-        }
-
-        .glass-logos img {
-            height: 16px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(100%) brightness(200%) opacity(0.85); 
-        }
+        .case-study h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;}
+        .case-study p { color: #666; font-size: 14px; line-height: 1.6; margin: 0;}
 
         /* ============= CAPABILITIES ============= */
         .capabilities {
@@ -804,21 +771,16 @@
             .portfolio { padding-left: 0 !important; padding-right: 0 !important; padding-bottom: 40px !important; }
             .portfolio h2 { padding: 0 6vw; margin-bottom: 30px; }
             .grid-2 { grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
-            .case-study { border-radius: 0; border-left: none; border-right: none; }
             
-            /* Hide description on mobile to keep focus on titles + logos */
-            .glass-text p { display: none; }
+            /* Hide description on mobile to keep focus on visual */
+            .case-study h3, .case-study p { display: none; }
             
-            /* Tighter glass panel for mobile */
-            .glass-panel {
-                padding: 16px 5vw;
-                gap: 8px;
-            }
-            .glass-text h3 { font-size: 16px; margin-bottom: 0; }
-
+            /* Remove borders so image reaches the absolute edges */
             .img-container { border-radius: 0; border-left: none; border-right: none; }
-            .aesthetic-image { filter: none !important; }
-            .aesthetic-image:active { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
+
+            /* Mobile Active State colors */
+            .aesthetic-image { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
+            .aesthetic-image:active { filter: grayscale(0%) contrast(110%) brightness(100%) !important; }
 
             /* About Modal Mobile Tweaks */
             .about-modal {
@@ -871,7 +833,6 @@
             
             <div class="tech-logos">
                 <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
-                <!-- Python represents robust pure robotics / Edge AI processing -->
                 <img src="https://cdn.simpleicons.org/python" alt="Python" title="Python">
                 <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
                 <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
@@ -1007,69 +968,43 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING WITH GLASSMORPHISM OVERLAYS -->
+<!-- FEATURED ENGINEERING (CLASSIC LAYOUT) -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
     <div class="grid-2">
         <div class="case-study">
-            <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>High-Density PCB Design</h3>
-                    <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/kicad" alt="KiCad">
-                    <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium">
-                </div>
+            <div class="img-container">
+                <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
             </div>
+            <h3>High-Density PCB Design</h3>
+            <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
         </div>
 
         <div class="case-study">
-            <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>Industry Machinery Excellence</h3>
-                    <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/ros" alt="ROS">
-                    <img src="https://cdn.simpleicons.org/siemens" alt="Siemens">
-                    <img src="https://cdn.simpleicons.org/opencv" alt="OpenCV">
-                </div>
+            <div class="img-container">
+                <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
             </div>
+            <h3>Industry Machinery Excellence</h3>
+            <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
         </div>
     </div>
 
     <div class="grid-2">
         <div class="case-study">
-            <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>Advanced CAD Design</h3>
-                    <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/autodesk" alt="Autodesk">
-                    <img src="https://cdn.simpleicons.org/arduino" alt="Arduino">
-                </div>
+            <div class="img-container">
+                <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
             </div>
+            <h3>Advanced CAD Design</h3>
+            <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
         <div class="case-study">
-            <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>Architectural & System Blueprinting</h3>
-                    <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code">
-                    <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi">
-                    <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA">
-                </div>
+            <div class="img-container">
+                <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
             </div>
+            <h3>Architectural & System Blueprinting</h3>
+            <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
         </div>
     </div>
 </section>
