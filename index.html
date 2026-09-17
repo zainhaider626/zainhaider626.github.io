@@ -49,11 +49,17 @@
             text-decoration: none;
         }
 
-        /* ============= SMART "PRO" NAVBAR (DYNAMIC FLOATING PILL) ============= */
+        /* =========================================================
+           SMART "APPLE PRO" NAVBAR (DYNAMIC FLOATING DARK PILL) 
+           ========================================================= */
+        .header-wrapper {
+            background-color: #000; /* Dark Pro aesthetic starts here */
+        }
+
         nav {
             height: 55px;
             width: 100%;
-            margin: 0 auto; /* Needed for centering when it shrinks */
+            margin: 0 auto; 
             padding: 0 5vw;
             display: flex;
             align-items: center;
@@ -61,29 +67,27 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #eaeaea;
-            border-radius: 0px; /* Flat at the top */
+            background: #000; /* Solid black at the top */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0px; 
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         /* The Dark Glassmorphism "Floating Pill" Effect on Scroll */
         nav.nav-scrolled {
-            top: 15px; /* Floats down slightly */
-            width: 80%; /* Shrinks to the middle */
-            max-width: 1100px;
-            border-radius: 50px; /* Fully rounded ends */
+            top: 15px; 
+            width: 75%; /* Shrinks to the middle */
+            max-width: 1000px;
+            border-radius: 50px; /* Fully rounded Apple pill */
             padding: 0 3vw;
-            background: rgba(18, 18, 18, 0.75); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(29, 29, 31, 0.72); /* Apple Dark Glass */
+            backdrop-filter: blur(20px) saturate(180%); 
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        /* Left side: Logo + Robot Icon */
         .nav-left {
             display: flex;
             align-items: center;
@@ -91,60 +95,28 @@
         }
 
         .logo {
-            height: 24px;
+            height: 20px;
             display: flex;
             align-items: center;
         }
 
+        /* Always White Logo for Dark Theme */
         .logo img {
             height: 100%;
             width: auto;
             object-fit: contain;
             transform: scale(2.5);
             transform-origin: left center;
-            transition: filter 0.5s ease;
+            filter: invert(1); 
         }
 
-        /* Invert logo to white on dark scroll */
-        nav.nav-scrolled .logo img {
-            filter: invert(1);
-        }
-
-        .nav-brand-divider {
-            width: 1px;
-            height: 16px;
-            background: #ccc;
-            transition: 0.5s;
+        .nav-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
             margin-left: 20px;
         }
-        nav.nav-scrolled .nav-brand-divider { background: #444; }
-
-        .nav-robot-icon {
-            height: 20px;
-            width: 20px;
-            fill: #000;
-            transition: 0.5s;
-        }
-        nav.nav-scrolled .nav-robot-icon { fill: #fff; }
-
-        /* Center Links */
-        .nav-center {
-            display: flex;
-            gap: 32px;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-center a {
-            color: #555;
-            transition: 0.3s;
-        }
-
-        .nav-center a:hover { color: #000; }
-
-        nav.nav-scrolled .nav-center a { color: #aaa; }
-        nav.nav-scrolled .nav-center a:hover { color: #fff; }
 
         /* Right Side Apple-style Buttons */
         .nav-right {
@@ -153,97 +125,80 @@
             gap: 12px;
         }
 
+        /* Exact Apple "Explore" Outline Style */
         .nav-btn-explore {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 14px;
             border-radius: 50px;
-            border: 1px solid #ccc;
-            color: #333;
+            border: 1px solid #424245;
+            color: #f5f5f7;
             transition: 0.3s;
         }
         
-        .nav-btn-explore:hover { border-color: #000; color: #000; }
+        .nav-btn-explore:hover { 
+            background: #fff; 
+            color: #000; 
+            border-color: #fff; 
+        }
 
-        nav.nav-scrolled .nav-btn-explore { border-color: #555; color: #fff; }
-        nav.nav-scrolled .nav-btn-explore:hover { background: rgba(255,255,255,0.1); border-color: #888; }
-
+        /* Exact Apple "Pre-order" Blue Pill Style */
         .nav-btn-preorder {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             padding: 6px 14px;
             border-radius: 50px;
-            background: #0071e3; /* Classic Apple Blue */
+            background: #0071e3; 
             color: #fff;
+            border: none;
             transition: 0.3s;
         }
 
-        .nav-btn-preorder:hover { background: #0077ED; transform: scale(1.02); }
+        .nav-btn-preorder:hover { 
+            background: #0077ED; 
+            transform: scale(1.03); 
+        }
 
-        /* ============= HERO SPLIT SECTION ============= */
+        /* ============= DARK "APPLE PRO" HERO SECTION ============= */
         .hero {
-            padding: 80px 5vw;
+            padding: 60px 5vw 100px;
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1fr 0.85fr; /* Adjusted for chat box */
             gap: 60px;
             align-items: center;
+            background: #000;
+            color: #fff;
+        }
+
+        .hero-robot-video {
+            width: 140px;
+            height: auto;
+            margin-bottom: 20px;
+            mix-blend-mode: screen; /* Blends black background of video smoothly */
         }
 
         .hero-left h1 {
-            font-size: clamp(40px, 6vw, 68px);
-            line-height: 1.1;
+            font-size: clamp(44px, 6vw, 76px);
+            line-height: 1.05;
             letter-spacing: -2px;
             font-weight: 700;
             margin-bottom: 24px;
+            /* Apple Pro Metallic Gradient Text */
+            background: linear-gradient(180deg, #ffffff 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-description {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.6;
+            font-size: 18px;
+            color: #a1a1a6; /* Apple's exact secondary gray */
+            line-height: 1.5;
             margin-bottom: 40px;
             max-width: 600px;
+            font-weight: 400;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .cta-primary {
-            display: inline-block;
-            background: #000;
-            color: #fff;
-            border: 1px solid #000;
-            padding: 14px 32px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .cta-primary:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        .cta-secondary {
-            border: 1px solid #000;
-            padding: 14px 32px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-            cursor: pointer;
-            background: transparent;
-            text-align: center;
-        }
-
-        .cta-secondary:hover { background: #f0f0f0; }
 
         /* ============= TECHNOLOGY LOGOS ============= */
         .tech-logos {
@@ -259,7 +214,8 @@
             width: auto;
             display: block; 
             object-fit: contain;
-            filter: grayscale(100%) opacity(0.4) brightness(0); 
+            /* White/Grey flat look for dark mode */
+            filter: grayscale(100%) brightness(200%) opacity(0.5); 
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -273,28 +229,31 @@
             height: 38px !important; 
         }
 
-        /* ============= LIVE COMMUNITY CHAT BOX ============= */
+        /* ============= DARK MODE LIVE CHAT BOX ============= */
         .chat-container {
             width: 100%;
             height: 480px;
-            border: 1px solid #e0e0e0;
-            background: #fafafa;
+            border: 1px solid #333;
+            background: #151516; /* Dark background */
             display: flex;
             flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .chat-header {
             padding: 15px 20px;
-            border-bottom: 1px solid #e0e0e0;
-            background: #fff;
+            border-bottom: 1px solid #333;
+            background: #1d1d1f;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: #f5f5f7;
         }
 
         .chat-header h3 {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -305,14 +264,14 @@
             align-items: center;
             gap: 6px;
             font-size: 11px;
-            color: #666;
+            color: #a1a1a6;
             font-weight: 500;
         }
 
         .live-dot {
             width: 8px;
             height: 8px;
-            background: #22c55e;
+            background: #34c759; /* Apple Green */
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -331,27 +290,28 @@
             flex-direction: column;
             gap: 14px;
             font-size: 13px;
+            background: #000;
         }
 
         .message {
-            background: #fff;
-            border: 1px solid #eaeaea;
+            background: #2c2c2e; /* Dark gray bubble */
+            color: #f5f5f7;
             padding: 10px 14px;
-            border-radius: 4px;
+            border-radius: 12px;
             max-width: 90%;
             align-self: flex-start;
         }
 
         .message.nvisco {
-            background: #000;
+            background: #0071e3; /* Apple Blue iMessage style */
             color: #fff;
-            border: none;
+            align-self: flex-end; /* Nvisco replies align right */
         }
 
         .message-user {
             font-weight: 600;
             font-size: 11px;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
             opacity: 0.7;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -359,8 +319,8 @@
 
         .chat-input-area {
             padding: 15px;
-            border-top: 1px solid #e0e0e0;
-            background: #fff;
+            border-top: 1px solid #333;
+            background: #1d1d1f;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -374,19 +334,24 @@
         .chat-send-row input {
             flex: 1;
             padding: 10px 14px;
-            border: 1px solid #ddd;
+            border: 1px solid #424245;
+            background: #000;
+            color: #fff;
+            border-radius: 8px;
             font-size: 13px;
             outline: none;
             font-family: inherit;
             transition: border-color 0.2s;
         }
 
-        .chat-send-row input:focus { border-color: #000; }
+        .chat-send-row input:focus { border-color: #0071e3; }
+        .chat-send-row input::placeholder { color: #888; }
 
         .chat-btn-submit {
-            background: #000;
-            color: #fff;
+            background: #fff;
+            color: #000;
             border: none;
+            border-radius: 8px;
             padding: 0 16px;
             font-size: 12px;
             font-weight: 600;
@@ -394,12 +359,13 @@
             transition: background 0.2s;
         }
 
-        .chat-btn-submit:hover { background: #333; }
+        .chat-btn-submit:hover { background: #ddd; }
 
         .google-login-btn {
             background: #fff;
-            border: 1px solid #000;
+            border: 1px solid #fff;
             color: #000;
+            border-radius: 8px;
             padding: 10px;
             font-size: 13px;
             font-weight: 600;
@@ -464,7 +430,7 @@
         /* ============= THE JOURNEY ============= */
         .journey-section {
             padding: 120px 5vw;
-            background: #fff;
+            background: #fff; /* Rest of site remains bright and clean */
             border-bottom: 1px solid #e0e0e0;
             max-width: 1400px;
             margin: 0 auto;
@@ -494,7 +460,7 @@
         .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
 
         /* ============= PORTFOLIO / CASE STUDIES ============= */
-        .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; }
+        .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; background: #fff;}
         .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
         .case-study { display: flex; flex-direction: column; gap: 15px; }
@@ -576,6 +542,11 @@
             margin-bottom: 40px; 
             line-height: 1.6;
         }
+        
+        /* Hero buttons reused in CTA */
+        .cta-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .cta-primary-w { background: #000; color: #fff; border: 1px solid #000; padding: 14px 32px; font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; }
+        .cta-primary-w:hover { background: #333; }
 
         /* ============= FOOTER ============= */
         footer {
@@ -629,14 +600,12 @@
            ======================================================= */
         @media(max-width: 768px) {
             /* Mobile Nav Overrides */
-            nav { height: 50px; padding: 0 5vw; }
-            .nav-center { display: none; } 
+            nav { height: 55px; padding: 0 5vw; }
+            .nav-title { display: none; } /* Hide title text on mobile to save space */
             .nav-btn-explore { display: none; } 
-            .nav-brand-divider { display: none; }
-            .nav-robot-icon { display: none; }
 
             nav.nav-scrolled {
-                width: 95%; /* Keep it wide enough on mobile so it doesn't squish */
+                width: 95%; 
                 top: 10px;
                 padding: 0 4vw;
             }
@@ -645,10 +614,12 @@
             .hero { 
                 grid-template-columns: 1fr; 
                 gap: 40px; 
-                padding: 50px 6vw; 
+                padding: 30px 6vw 70px; 
             }
-            .hero-left h1 { font-size: 38px; margin-bottom: 16px; }
-            .hero-description { font-size: 15px; margin-bottom: 30px; }
+            
+            .hero-robot-video { width: 100px; margin-bottom: 10px; }
+            .hero-left h1 { font-size: 42px; margin-bottom: 16px; }
+            .hero-description { font-size: 16px; margin-bottom: 30px; }
 
             .tech-logos { gap: 18px; }
             .tech-logos img { height: 20px; } 
@@ -662,7 +633,6 @@
                 padding: 70px 6vw; 
             }
 
-            /* Scaled Headings to prevent awkward wraps */
             .journey-header h2, 
             .portfolio h2, 
             .capabilities h2, 
@@ -672,15 +642,10 @@
             }
             
             .journey-header { margin-bottom: 40px; }
-
-            /* Grid Gaps Reduced for Mobile Flow */
             .journey-grid, .capabilities-grid, .grid-2 { gap: 35px; }
 
             /* Chat Container Tweak */
             .chat-container { height: 400px; }
-            .chat-header { padding: 12px 15px; }
-            .chat-messages { padding: 15px; }
-            .chat-input-area { padding: 12px; }
 
             /* Ticker scaling */
             .ticker-wrap { height: 45px; }
@@ -689,7 +654,6 @@
             /* Footer Alignment */
             footer { padding: 50px 6vw 30px; }
             .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
-            .footer-col h4 { margin-bottom: 12px; }
             .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
 
             /* Remove descriptions on mobile */
@@ -715,94 +679,81 @@
 </head>
 <body>
 
-<!-- SMART "PRO" NAVBAR WITH FLOATING PILL EFFECT -->
-<nav id="mainNav">
-    <div class="nav-left">
-        <a href="#" class="logo">
-            <img src="nvisco-logo.png" alt="NVISCO">
-        </a>
-        <div class="nav-brand-divider"></div>
-        <!-- Minimal Robot SVG Icon -->
-        <svg class="nav-robot-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a3 3 0 0 1 3 3v2h2v4h-2v1a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3v-1H5v-4h2v-2a3 3 0 0 1 3-3h1V5.73A2 2 0 1 1 12 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm3 5h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-4 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-        </svg>
-    </div>
-    
-    <div class="nav-center">
-        <a href="#journey">Process</a>
-        <a href="#work">Engineering</a>
-        <a href="#cta">About</a>
-    </div>
-
-    <div class="nav-right">
-        <a href="#work" class="nav-btn-explore">View Work</a>
-        <a href="mailto:hello@nvisco.com" class="nav-btn-preorder">Free Consultation</a>
-    </div>
-</nav>
-
-<!-- HERO WITH EMBEDDED COMMUNITY CHAT ON THE RIGHT -->
-<section class="hero">
-    <div class="hero-left">
-        
-        <h1>Innovation driven by quality, not cost.</h1>
-        <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer <strong>complimentary engineering consultations</strong> alongside our world class 16 layer PCB and intelligent firmware designs. Let's make bringing your idea to life easier.</p>
-        
-        <div class="hero-buttons">
-            <a href="mailto:hello@nvisco.com" class="cta-primary">Claim free consultation</a>
-            <a href="#work" class="cta-secondary">View our work</a>
+<div class="header-wrapper">
+    <!-- SMART "PRO" NAVBAR WITH FLOATING PILL EFFECT -->
+    <nav id="mainNav">
+        <div class="nav-left">
+            <a href="#" class="logo">
+                <img src="nvisco-logo.png" alt="NVISCO">
+            </a>
+            <span class="nav-title">Nvisco Pro</span>
         </div>
 
-        <!-- Technology Logos -->
-        <div class="tech-logos">
-            <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
-            <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
-            <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
-            <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
-            <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
+        <div class="nav-right">
+            <a href="#work" class="nav-btn-explore">View Work</a>
+            <a href="mailto:hello@nvisco.com" class="nav-btn-preorder">Free Consultation</a>
         </div>
-    </div>
+    </nav>
 
-    <!-- Right Side Live Community Chat Interface -->
-    <div class="chat-container">
-        <div class="chat-header">
-            <h3>Nvisco Community Feed</h3>
-            <div class="live-indicator">
-                <span class="live-dot"></span> Live Discussion
-            </div>
-        </div>
-
-        <div class="chat-messages" id="chatMessages">
-            <!-- Messages will load here dynamically from Firebase -->
-        </div>
-
-        <div class="chat-input-area">
+    <!-- DARK "PRO" HERO WITH EMBEDDED COMMUNITY CHAT -->
+    <section class="hero">
+        <div class="hero-left">
             
-            <!-- Auth Section -->
-            <button id="googleLoginBtn" class="google-login-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                Sign in with Google to Chat
-            </button>
-
-            <!-- User Info -->
-            <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #333;"></span>
-                <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
-            </div>
-
-            <!-- Chat Input -->
-            <div class="chat-send-row" id="chatSendRow">
-                <input type="text" id="chatInput" placeholder="Ask a question or share feedback..." />
-                <button class="chat-btn-submit" id="sendChatBtn">Send</button>
-            </div>
+            <!-- Sleek Robot Video Presentation -->
+            <video src="Recording 2026-02-08 023307.mp4" autoplay loop muted playsinline class="hero-robot-video"></video>
             
+            <h1>Innovation driven by quality, not cost.</h1>
+            <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer complimentary engineering consultations alongside our world class 22 layer PCB and intelligent firmware designs.</p>
+            
+            <!-- Technology Logos -->
+            <div class="tech-logos">
+                <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
+                <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
+                <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
+                <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
+                <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
+            </div>
         </div>
-    </div>
-</section>
+
+        <!-- Right Side Dark Mode Live Community Chat -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Nvisco Community Feed</h3>
+                <div class="live-indicator">
+                    <span class="live-dot"></span> Live
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will load here dynamically -->
+            </div>
+
+            <div class="chat-input-area">
+                <!-- Auth Section -->
+                <button id="googleLoginBtn" class="google-login-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Sign in to Chat
+                </button>
+
+                <!-- User Info -->
+                <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #a1a1a6;"></span>
+                    <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="chat-send-row" id="chatSendRow">
+                    <input type="text" id="chatInput" placeholder="Ask a question..." />
+                    <button class="chat-btn-submit" id="sendChatBtn">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 <!-- SLEEK CAPABILITY TICKER BANNER -->
 <div class="ticker-wrap">
     <div class="ticker">
-        
         <!-- Group 1 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
@@ -855,7 +806,6 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
-
     </div>
 </div>
 
@@ -927,7 +877,7 @@
             <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
-        <!-- Item 4: System Blueprinting -->
+        <!-- Item 4: System Blueprinting (Green and Pink Blueprint) -->
         <div class="case-study">
             <div class="img-container">
                 <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
@@ -980,8 +930,8 @@
     <div class="cta-content">
         <h2>Ready to build something real?</h2>
         <p>Whether you need a full prototype or quick design guidance, we're here to help.</p>
-        <div class="hero-buttons">
-            <a href="mailto:hello@nvisco.com" class="cta-primary">Contact Engineering</a>
+        <div class="cta-buttons">
+            <a href="mailto:hello@nvisco.com" class="cta-primary-w">Contact Engineering</a>
         </div>
     </div>
 </section>
