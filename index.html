@@ -20,7 +20,6 @@
 }
 </script>
     
-    <!-- Importing Courier Prime font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -117,6 +116,12 @@
             text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
+        @media(max-width: 700px) {
+            nav { height: 60px; padding: 0 6vw; }
+            .logo { height: 40px; }
+            .nav-links { gap: 15px; font-size: 12px; }
+        }
+
         /* ============= HERO SPLIT SECTION ============= */
         .hero {
             padding: 80px 5vw;
@@ -161,7 +166,6 @@
             font-weight: 600;
             transition: all 0.2s;
             cursor: pointer;
-            text-align: center;
         }
 
         .cta-primary:hover {
@@ -177,10 +181,43 @@
             transition: all 0.2s;
             cursor: pointer;
             background: transparent;
-            text-align: center;
         }
 
         .cta-secondary:hover { background: #f0f0f0; }
+
+        /* ============= TECHNOLOGY LOGOS ============= */
+        .tech-logos {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+            min-height: 45px; 
+        }
+
+        .tech-logos img {
+            height: 28px; 
+            width: auto;
+            display: block; 
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.4) brightness(0); 
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-logos img:hover {
+            filter: grayscale(0%) opacity(1) brightness(1); 
+            transform: scale(1.05);
+        }
+
+        .kicad-logo {
+            height: 38px !important; 
+        }
+
+        @media(max-width: 700px) {
+            .tech-logos { gap: 18px; }
+            .tech-logos img { height: 20px; } 
+            .kicad-logo { height: 28px !important; } 
+        }
 
         /* ============= LIVE COMMUNITY CHAT BOX ============= */
         .chat-container {
@@ -323,6 +360,16 @@
 
         .google-login-btn:hover { background: #f0f0f0; }
 
+        @media(max-width: 950px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .chat-container {
+                height: 380px; 
+            }
+        }
+
         /* ============= THIN ANIMATED CAPABILITY TICKER ============= */
         .ticker-wrap {
             width: 100%;
@@ -342,7 +389,7 @@
         }
 
         .ticker:hover {
-            animation-play-state: paused;
+            animation-play-state: paused; /* Pauses when hovered so users can read */
         }
 
         .ticker-group {
@@ -368,6 +415,11 @@
         @keyframes tickerScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); } 
+        }
+
+        @media(max-width: 768px) {
+            .ticker-wrap { height: 45px; }
+            .ticker-item { font-size: 11px; padding: 0 20px; }
         }
 
         /* ============= THE JOURNEY ============= */
@@ -410,7 +462,7 @@
         
         .img-container { 
             width: 100%; 
-            aspect-ratio: 16/9; 
+            aspect-ratio: 16/9; /* Forces images AND videos to have the exact same size box */
             overflow: hidden; 
             border: 1px solid #e0e0e0; 
             background: #111; 
@@ -419,7 +471,7 @@
         .aesthetic-image {
             width: 100%; 
             height: 100%; 
-            object-fit: cover; 
+            object-fit: cover; /* Prevents stretching and fills the 16:9 box perfectly */
             display: block;
             filter: grayscale(100%) contrast(120%) brightness(90%);
             transition: filter 0.4s ease; 
@@ -429,6 +481,10 @@
 
         .case-study h3 { font-size: 20px; font-weight: 600; }
         .case-study p { color: #666; font-size: 14px; line-height: 1.6; }
+
+        @media(max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
 
         /* ============= CAPABILITIES ============= */
         .capabilities {
@@ -533,72 +589,42 @@
             color: #999;
         }
 
+        @media(max-width: 700px) {
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+
         /* =======================================================
-           MOBILE OPTIMIZATION: THE MINIMALIST POLISH
+           MOBILE SPECIFIC IMAGE OVERRIDES 
            ======================================================= */
         @media(max-width: 768px) {
-            /* Navbar */
-            nav { height: 60px; padding: 0 6vw; }
-            .logo { height: 40px; }
-            .nav-links { gap: 15px; font-size: 12px; }
-
-            /* Hero adjustments */
-            .hero { 
-                grid-template-columns: 1fr; 
-                gap: 40px; 
-                padding: 50px 6vw; /* Tighter padding */
-            }
-            .hero-left h1 { font-size: 38px; margin-bottom: 16px; }
-            .hero-description { font-size: 15px; margin-bottom: 30px; }
-            
-            /* Professional Button Stacking */
-            .hero-buttons { flex-direction: column; gap: 12px; margin-bottom: 0px; }
-            .cta-primary, .cta-secondary { width: 100%; display: block; padding: 16px 20px;}
-
-            /* Standardized Tighter Spacing Across All Sections */
-            .journey-section, 
-            .portfolio, 
-            .capabilities, 
-            .cta-section { 
-                padding: 70px 6vw; /* Reduced from 120px to 70px to eliminate voids */
+            /* Remove descriptions on mobile */
+            .case-study h3, 
+            .case-study p {
+                display: none;
             }
 
-            /* Scaled Headings to prevent awkward wraps */
-            .journey-header h2, 
-            .portfolio h2, 
-            .capabilities h2, 
-            .cta-content h2 { 
-                font-size: 32px; 
-                margin-bottom: 25px; 
+            /* Make portfolio images larger by reducing side padding */
+            .portfolio {
+                padding-left: 2vw !important;
+                padding-right: 2vw !important;
             }
-            
-            .journey-header { margin-bottom: 40px; }
 
-            /* Grid Gaps Reduced for Mobile Flow */
-            .journey-grid, .capabilities-grid, .grid-2 { gap: 35px; }
+            /* Ensure original full color on mobile by default */
+            .aesthetic-image {
+                filter: none !important; 
+            }
 
-            /* Chat Container Tweak */
-            .chat-container { height: 400px; }
-            .chat-header { padding: 12px 15px; }
-            .chat-messages { padding: 15px; }
-            .chat-input-area { padding: 12px; }
-
-            /* Ticker scaling */
-            .ticker-wrap { height: 40px; }
-            .ticker-item { font-size: 11px; padding: 0 15px; }
-
-            /* Footer Alignment */
-            footer { padding: 50px 6vw 30px; }
-            .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
-            .footer-col h4 { margin-bottom: 12px; }
-            .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
+            /* Turn black/grayscale when clicked (active state) on mobile */
+            .aesthetic-image:active {
+                filter: grayscale(100%) contrast(120%) brightness(90%) !important;
+            }
         }
 
     </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="mainNav">
     <a href="#" class="logo">
         <img src="nvisco-logo.png" alt="NVISCO">
@@ -609,7 +635,6 @@
     </div>
 </nav>
 
-<!-- HERO WITH EMBEDDED COMMUNITY CHAT ON THE RIGHT -->
 <section class="hero">
     <div class="hero-left">
         
@@ -620,9 +645,16 @@
             <a href="mailto:hello@nvisco.com" class="cta-primary">Claim free consultation</a>
             <a href="#work" class="cta-secondary">View our work</a>
         </div>
+
+        <div class="tech-logos">
+            <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
+            <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
+            <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
+            <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
+            <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
+        </div>
     </div>
 
-    <!-- Right Side Live Community Chat Interface -->
     <div class="chat-container">
         <div class="chat-header">
             <h3>Nvisco Community Feed</h3>
@@ -632,24 +664,20 @@
         </div>
 
         <div class="chat-messages" id="chatMessages">
-            <!-- Messages will load here dynamically from Firebase -->
-        </div>
+            </div>
 
         <div class="chat-input-area">
             
-            <!-- Auth Section -->
             <button id="googleLoginBtn" class="google-login-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                 Sign in with Google to Chat
             </button>
 
-            <!-- User Info -->
             <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #333;"></span>
                 <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
             </div>
 
-            <!-- Chat Input -->
             <div class="chat-send-row" id="chatSendRow">
                 <input type="text" id="chatInput" placeholder="Ask a question or share feedback..." />
                 <button class="chat-btn-submit" id="sendChatBtn">Send</button>
@@ -659,11 +687,8 @@
     </div>
 </section>
 
-<!-- SLEEK CAPABILITY TICKER BANNER -->
 <div class="ticker-wrap">
     <div class="ticker">
-        
-        <!-- Group 1 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -676,7 +701,6 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
-        <!-- Group 2 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -689,7 +713,6 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
-        <!-- Group 3 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -702,7 +725,6 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
-        <!-- Group 4 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -719,7 +741,6 @@
     </div>
 </div>
 
-<!-- JOURNEY -->
 <section class="journey-section" id="journey">
     <div class="journey-header">
         <h2>The complete design journey</h2>
@@ -753,12 +774,10 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
     <div class="grid-2">
-        <!-- Item 1: High Density PCB -->
         <div class="case-study">
             <div class="img-container">
                 <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
@@ -767,7 +786,6 @@
             <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
         </div>
 
-        <!-- Item 2: Machinery Video -->
         <div class="case-study">
             <div class="img-container">
                 <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
@@ -778,7 +796,6 @@
     </div>
 
     <div class="grid-2">
-        <!-- Item 3: CAD Design Robot Welding -->
         <div class="case-study">
             <div class="img-container">
                 <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
@@ -787,7 +804,6 @@
             <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
-        <!-- Item 4: System Blueprinting -->
         <div class="case-study">
             <div class="img-container">
                 <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
@@ -798,7 +814,6 @@
     </div>
 </section>
 
-<!-- CAPABILITIES -->
 <section class="capabilities">
     <h2>Complex Industrial Capabilities</h2>
     
@@ -835,7 +850,6 @@
     </div>
 </section>
 
-<!-- CTA SECTION -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
         <h2>Ready to build something real?</h2>
@@ -846,7 +860,6 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-content">
         <div class="footer-col">
@@ -872,7 +885,6 @@
     </div>
 </footer>
 
-<!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX WITH GOOGLE AUTH -->
 <script type="module">
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('mainNav');
