@@ -67,8 +67,8 @@
         }
 
         nav.nav-scrolled {
-            background: rgba(10, 10, 10, 0.3); /* Highly transparent */
-            backdrop-filter: blur(25px); /* Heavy blur for background bleeding */
+            background: rgba(10, 10, 10, 0.3); 
+            backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -186,19 +186,19 @@
 
         .cta-secondary:hover { background: #f0f0f0; }
 
-        /* ============= TECHNOLOGY LOGOS (FIXED ALIGNMENT) ============= */
+        /* ============= TECHNOLOGY LOGOS ============= */
         .tech-logos {
             display: flex;
             gap: 30px;
             align-items: center;
             flex-wrap: wrap;
-            min-height: 45px; /* Ensures the container doesn't collapse if images load slowly */
+            min-height: 45px; 
         }
 
         .tech-logos img {
-            height: 28px; /* Standard laptop size */
+            height: 28px; 
             width: auto;
-            display: block; /* Prevents text-alignment weirdness */
+            display: block; 
             object-fit: contain;
             filter: grayscale(100%) opacity(0.4) brightness(0); 
             transition: all 0.3s ease;
@@ -211,13 +211,13 @@
         }
 
         .kicad-logo {
-            height: 38px !important; /* KiCAD naturally has whitespace, this forces it to match the rest */
+            height: 38px !important; 
         }
 
         @media(max-width: 700px) {
             .tech-logos { gap: 18px; }
-            .tech-logos img { height: 20px; } /* Perfect Mobile Size */
-            .kicad-logo { height: 28px !important; } /* Mobile KiCAD Size */
+            .tech-logos img { height: 20px; } 
+            .kicad-logo { height: 28px !important; } 
         }
 
         /* ============= LIVE COMMUNITY CHAT BOX ============= */
@@ -314,7 +314,7 @@
         }
 
         .chat-send-row {
-            display: none; /* Hidden until logged in */
+            display: none; 
             gap: 8px;
         }
 
@@ -367,7 +367,7 @@
                 gap: 50px;
             }
             .chat-container {
-                height: 380px; /* Small layout for mobile */
+                height: 380px; 
             }
         }
 
@@ -429,16 +429,25 @@
         .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
         .case-study { display: flex; flex-direction: column; gap: 15px; }
-        .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid #e0e0e0; background: #111; }
+        
+        .img-container { 
+            width: 100%; 
+            aspect-ratio: 16/9; /* Forces images AND videos to have the exact same size box */
+            overflow: hidden; 
+            border: 1px solid #e0e0e0; 
+            background: #111; 
+        }
         
         .aesthetic-image {
-            width: 100%; height: 100%; object-fit: cover;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Prevents stretching and fills the 16:9 box perfectly */
+            display: block;
             filter: grayscale(100%) contrast(120%) brightness(90%);
             transition: filter 0.4s ease; 
         }
+        
         .aesthetic-image:hover { filter: grayscale(30%) contrast(110%) brightness(100%); }
-        .invert-mode { filter: invert(1) grayscale(100%) contrast(150%); }
-        .invert-mode:hover { filter: invert(1) grayscale(50%) contrast(150%); }
 
         .case-study h3 { font-size: 20px; font-weight: 600; }
         .case-study p { color: #666; font-size: 14px; line-height: 1.6; }
@@ -582,14 +591,11 @@
             <a href="#work" class="cta-secondary">View our work</a>
         </div>
 
-        <!-- NEW: Technology Logos (Transparent Glass Style & Full Color on Hover) -->
+        <!-- NEW: Technology Logos (Altium/VS Code removed, ROS & Raspberry Pi added) -->
         <div class="tech-logos">
             <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
             <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
-            <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium" title="Altium Designer">
             <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
-            <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code" title="VS Code">
-            <!-- Robotics Additions -->
             <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
             <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
         </div>
@@ -616,13 +622,13 @@
                 Sign in with Google to Chat
             </button>
 
-            <!-- User Info (Hidden until logged in) -->
+            <!-- User Info -->
             <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #333;"></span>
                 <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
             </div>
 
-            <!-- Chat Input (Hidden until logged in) -->
+            <!-- Chat Input -->
             <div class="chat-send-row" id="chatSendRow">
                 <input type="text" id="chatInput" placeholder="Ask a question or share feedback..." />
                 <button class="chat-btn-submit" id="sendChatBtn">Send</button>
@@ -671,43 +677,48 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING -->
+<!-- UPDATED FEATURED ENGINEERING -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
     <div class="grid-2">
+        <!-- Item 1: High Density PCB -->
         <div class="case-study">
             <div class="img-container">
-                <img src="preview (2).webp" alt="High Density PCB" class="aesthetic-image">
+                <img src="Screenshot 2025-10-11 165427_2.jpg" alt="High Density PCB" class="aesthetic-image">
             </div>
-            <h3>High-Density Carrier Boards</h3>
-            <p>16 layer complex routing designed for maximum signal integrity and minimized EMI footprints.</p>
+            <h3>High-Density PCB Design</h3>
+            <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
         </div>
 
+        <!-- Item 2: Machinery Video -->
         <div class="case-study">
             <div class="img-container">
-                <img src="Screenshot 2025-12-18 040208.png" alt="ESP32 Integration" class="aesthetic-image">
+                <!-- IMPORTANT: If your 11-second video has a different name, change '11-sec-video.mp4' below! -->
+                <video src="11-sec-video.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
             </div>
-            <h3>IoT & Wireless Integration</h3>
-            <p>Custom ESP32-based logic systems with strict keep-out zones and optimized antenna tuning.</p>
+            <h3>Industry Machinery Excellence</h3>
+            <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
         </div>
     </div>
 
     <div class="grid-2">
+        <!-- Item 3: CAD Design Robot Welding -->
         <div class="case-study">
             <div class="img-container">
-                <img src="Screenshot 2025-10-11 165427.jpg" alt="Compute Module" class="aesthetic-image">
+                <img src="R (2).jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
             </div>
-            <h3>Compute Module Architectures</h3>
-            <p>Bespoke Raspberry Pi CM4 and industrial compute interfaces designed for harsh environments.</p>
+            <h3>Advanced CAD Design</h3>
+            <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
+        <!-- Item 4: System Blueprinting (Green and Pink Blueprint) -->
         <div class="case-study">
-            <div class="img-container" style="background:#000;">
-                <img src="Screenshot 2025-10-11 165314.png" alt="Schematic Design" class="aesthetic-image invert-mode">
+            <div class="img-container">
+                <img src="a02ac2e6c72196b8dbc68093c62f8989.gif" alt="System Blueprinting" class="aesthetic-image">
             </div>
-            <h3>System Level Blueprinting</h3>
-            <p>Centralized communication protocols and meticulous schematic validation before layout begins.</p>
+            <h3>Architectural & System Blueprinting</h3>
+            <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
         </div>
     </div>
 </section>
@@ -788,21 +799,16 @@
 
 <!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX WITH GOOGLE AUTH -->
 <script type="module">
-    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('mainNav');
         if (window.scrollY > 80) nav.classList.add('nav-scrolled');
         else nav.classList.remove('nav-scrolled');
     });
 
-    // ==========================================
-    // FIREBASE REAL-TIME CHAT & AUTH SETUP
-    // ==========================================
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
     import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
     import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
-    // Your specific Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBr01w5Lb55inQ6W3gDm6_mShefkcNSD48",
       authDomain: "nvisco-web.firebaseapp.com",
@@ -813,25 +819,17 @@
       measurementId: "G-9PSZL74924"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
     const messagesCol = collection(db, "chat_messages");
 
-    // FORCE BROWSER TO REMEMBER LOGIN AFTER REFRESH
-    setPersistence(auth, browserLocalPersistence)
-      .catch((error) => {
-        console.error("Auth persistence error:", error);
-      });
+    setPersistence(auth, browserLocalPersistence).catch((error) => console.error(error));
 
-    // DOM Elements
     const chatInput = document.getElementById('chatInput');
     const sendChatBtn = document.getElementById('sendChatBtn');
     const chatMessages = document.getElementById('chatMessages');
-    
-    // Auth DOM Elements
     const googleLoginBtn = document.getElementById('googleLoginBtn');
     const logoutBtn = document.getElementById('logoutBtn');
     const userInfo = document.getElementById('userInfo');
@@ -840,17 +838,14 @@
 
     let currentUser = null;
 
-    // 1. AUTHENTICATION LISTENER
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // User is logged in
             currentUser = user;
             googleLoginBtn.style.display = 'none';
             userInfo.style.display = 'flex';
             chatSendRow.style.display = 'flex';
             welcomeText.innerText = `Posting as ${user.displayName}`;
         } else {
-            // User is logged out
             currentUser = null;
             googleLoginBtn.style.display = 'flex';
             userInfo.style.display = 'none';
@@ -858,27 +853,18 @@
         }
     });
 
-    // Login Action
     googleLoginBtn.addEventListener('click', () => {
-        signInWithPopup(auth, provider).catch((error) => {
-            console.error("Login Error: ", error);
-        });
+        signInWithPopup(auth, provider).catch((error) => console.error(error));
     });
 
-    // Logout Action
     logoutBtn.addEventListener('click', () => {
-        signOut(auth).catch((error) => {
-            console.error("Logout Error: ", error);
-        });
+        signOut(auth).catch((error) => console.error(error));
     });
 
-    // 2. LISTEN FOR REAL-TIME DATA (Reads from Database)
     const q = query(messagesCol, orderBy("timestamp", "asc"));
     
     onSnapshot(q, (snapshot) => {
         chatMessages.innerHTML = ''; 
-        
-        // Updated Welcome Message
         chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed! Sign in below to claim your free hardware design guidance, or drop your project questions here.</div>`;
         
         snapshot.forEach((doc) => {
@@ -898,9 +884,8 @@
         chatMessages.scrollTop = chatMessages.scrollHeight; 
     });
 
-    // 3. SEND NEW MESSAGE (Writes to Database)
     async function postMessage() {
-        if (!currentUser) return; // Prevent sending if not logged in
+        if (!currentUser) return;
 
         const text = chatInput.value.trim();
         const username = currentUser.displayName || 'Visitor';
@@ -916,24 +901,19 @@
                     timestamp: serverTimestamp()
                 });
             } catch (error) {
-                console.error("Error adding message: ", error);
-                alert("Could not send message. Please try again.");
+                console.error(error);
             }
         }
     }
 
-    // Security helper
     function escapeHtml(str) {
         if (!str) return "";
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    // Event Listeners for Chat
     sendChatBtn.addEventListener('click', postMessage);
     chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            postMessage();
-        }
+        if (e.key === 'Enter') postMessage();
     });
 </script>
 </body>
