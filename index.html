@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NVISCO — Hardware Design to Product</title>
     <link rel="canonical" href="https://nvisco.com/">
-    <meta name="description" content="Nvisco specializes in Intelligent System and Robotics, complex hardware engineering, PCB Designing upto 16 layer, custom mechanical CAD assemblies, and intelligent embedded firmware.">
+    <meta name="description" content="Nvisco specializes in Intelligent System and Robotics, complex hardware engineering, PCB Designing upto 22 layer, custom mechanical CAD assemblies, and intelligent embedded firmware.">
     <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
@@ -20,7 +20,6 @@
 }
 </script>
     
-    <!-- Importing Courier Prime font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -67,8 +66,8 @@
         }
 
         nav.nav-scrolled {
-            background: rgba(10, 10, 10, 0.3); 
-            backdrop-filter: blur(25px); 
+            background: rgba(10, 10, 10, 0.3); /* Highly transparent */
+            backdrop-filter: blur(25px); /* Heavy blur for background bleeding */
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -568,7 +567,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="mainNav">
     <a href="#" class="logo">
         <img src="nvisco-logo.png" alt="NVISCO">
@@ -579,7 +577,6 @@
     </div>
 </nav>
 
-<!-- HERO WITH EMBEDDED COMMUNITY CHAT ON THE RIGHT -->
 <section class="hero">
     <div class="hero-left">
         
@@ -591,7 +588,6 @@
             <a href="#work" class="cta-secondary">View our work</a>
         </div>
 
-        <!-- NEW: Technology Logos (Altium/VS Code removed, ROS & Raspberry Pi added) -->
         <div class="tech-logos">
             <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
             <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
@@ -601,7 +597,6 @@
         </div>
     </div>
 
-    <!-- Right Side Live Community Chat Interface -->
     <div class="chat-container">
         <div class="chat-header">
             <h3>Nvisco Community Feed</h3>
@@ -611,24 +606,20 @@
         </div>
 
         <div class="chat-messages" id="chatMessages">
-            <!-- Messages will load here dynamically from Firebase -->
-        </div>
+            </div>
 
         <div class="chat-input-area">
             
-            <!-- Auth Section -->
             <button id="googleLoginBtn" class="google-login-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                 Sign in with Google to Chat
             </button>
 
-            <!-- User Info -->
             <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #333;"></span>
                 <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
             </div>
 
-            <!-- Chat Input -->
             <div class="chat-send-row" id="chatSendRow">
                 <input type="text" id="chatInput" placeholder="Ask a question or share feedback..." />
                 <button class="chat-btn-submit" id="sendChatBtn">Send</button>
@@ -638,12 +629,10 @@
     </div>
 </section>
 
-<!-- HORIZONTAL BANNER -->
 <div class="hardware-banner">
     <img src="Screenshot 2026-07-05 041620.png" alt="Hardware Architecture Timeline">
 </div>
 
-<!-- JOURNEY -->
 <section class="journey-section" id="journey">
     <div class="journey-header">
         <h2>The complete design journey</h2>
@@ -677,25 +666,21 @@
     </div>
 </section>
 
-<!-- UPDATED FEATURED ENGINEERING -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
     <div class="grid-2">
-        <!-- Item 1: High Density PCB -->
         <div class="case-study">
             <div class="img-container">
-                <img src="Screenshot 2025-10-11 165427_2.jpg" alt="High Density PCB" class="aesthetic-image">
+                <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
             </div>
             <h3>High-Density PCB Design</h3>
             <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
         </div>
 
-        <!-- Item 2: Machinery Video -->
         <div class="case-study">
             <div class="img-container">
-                <!-- IMPORTANT: If your 11-second video has a different name, change '11-sec-video.mp4' below! -->
-                <video src="11-sec-video.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
+                <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
             </div>
             <h3>Industry Machinery Excellence</h3>
             <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
@@ -703,19 +688,17 @@
     </div>
 
     <div class="grid-2">
-        <!-- Item 3: CAD Design Robot Welding -->
         <div class="case-study">
             <div class="img-container">
-                <img src="R (2).jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
+                <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
             </div>
             <h3>Advanced CAD Design</h3>
             <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
-        <!-- Item 4: System Blueprinting (Green and Pink Blueprint) -->
         <div class="case-study">
             <div class="img-container">
-                <img src="a02ac2e6c72196b8dbc68093c62f8989.gif" alt="System Blueprinting" class="aesthetic-image">
+                <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
             </div>
             <h3>Architectural & System Blueprinting</h3>
             <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
@@ -723,7 +706,6 @@
     </div>
 </section>
 
-<!-- CAPABILITIES -->
 <section class="capabilities">
     <h2>Complex Industrial Capabilities</h2>
     
@@ -760,7 +742,6 @@
     </div>
 </section>
 
-<!-- CTA SECTION -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
         <h2>Ready to build something real?</h2>
@@ -771,7 +752,6 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-content">
         <div class="footer-col">
@@ -797,7 +777,6 @@
     </div>
 </footer>
 
-<!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX WITH GOOGLE AUTH -->
 <script type="module">
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('mainNav');
