@@ -20,6 +20,7 @@
 }
 </script>
     
+    <!-- Importing Courier Prime font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -49,7 +50,7 @@
         }
 
         /* =========================================================
-           SMART MINIMALIST NAVBAR (EDGE-TO-EDGE) 
+           SMART "PRO" NAVBAR (DYNAMIC FLOATING DARK PILL) 
            ========================================================= */
         .header-wrapper {
             background-color: #000; 
@@ -68,29 +69,33 @@
             z-index: 100;
             background: #000; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0px; 
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* The Dark Glassmorphism Effect on Scroll */
+        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll */
         nav.nav-scrolled {
-            top: 0; 
-            width: 100%; 
-            padding: 0 5vw;
-            background: rgba(29, 29, 31, 0.72); 
-            backdrop-filter: blur(20px) saturate(180%); 
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            top: 15px; 
+            width: 85%; /* Shrinks to the middle */
+            max-width: 800px;
+            border-radius: 50px; /* Fully rounded Apple pill */
+            padding: 0 24px;
+            background: rgba(28, 28, 30, 0.75); /* Dark One-Color Glass */
+            backdrop-filter: blur(24px) saturate(180%); 
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #fff;
         }
 
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 16px;
         }
 
         .logo {
-            height: 28px; /* Increased Logo Size for both Mobile and Laptop */
+            height: 30px; /* Enlarged Logo */
             display: flex;
             align-items: center;
         }
@@ -103,9 +108,10 @@
             transform: scale(2.5);
             transform-origin: left center;
             filter: invert(1); 
+            transition: filter 0.4s ease;
         }
 
-        /* Right Side Apple-style Buttons */
+        /* Right Side Apple-style Button */
         .nav-right {
             display: flex;
             align-items: center;
@@ -116,7 +122,7 @@
             font-weight: 600;
             padding: 6px 14px;
             border-radius: 50px;
-            background: #0071e3; 
+            background: #0071e3; /* Classic Apple Blue */
             color: #fff;
             border: none;
             transition: 0.3s;
@@ -191,9 +197,8 @@
             transform: scale(1.05);
         }
 
-        .kicad-logo {
-            height: 38px !important; 
-        }
+        .kicad-logo { height: 38px !important; }
+        .siemens-logo { height: 38px !important; } /* Enlarged Siemens Logo */
 
         /* ============= DARK MODE LIVE CHAT BOX ============= */
         .chat-container {
@@ -425,20 +430,18 @@
         .journey-step h3 { font-size: 20px; line-height: 1.3; font-weight: 600; }
         .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
 
-        /* ============= PORTFOLIO / CASE STUDIES (GLASSMORPHISM CARDS) ============= */
+        /* ============= PORTFOLIO / CASE STUDIES ============= */
         .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; background: #fff;}
         .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .case-study { display: flex; flex-direction: column; gap: 15px; }
         
-        .case-study { 
-            position: relative;
+        .img-container { 
             width: 100%; 
             aspect-ratio: 16/9; 
-            border-radius: 16px;
             overflow: hidden; 
-            background: #000; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0; 
+            background: #111; 
         }
         
         .aesthetic-image {
@@ -447,49 +450,13 @@
             object-fit: cover; 
             display: block;
             filter: grayscale(100%) contrast(120%) brightness(90%);
-            transition: transform 0.6s ease, filter 0.6s ease; 
+            transition: filter 0.4s ease; 
         }
         
-        .case-study:hover .aesthetic-image { 
-            filter: grayscale(10%) contrast(110%) brightness(100%); 
-            transform: scale(1.03);
-        }
+        .aesthetic-image:hover { filter: grayscale(30%) contrast(110%) brightness(100%); }
 
-        /* Glassmorphism Panel overlaying the image */
-        .glass-panel {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 24px;
-            background: rgba(20, 20, 25, 0.55); 
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            color: #fff;
-            z-index: 10;
-        }
-
-        .glass-text h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;}
-        .glass-text p { color: #d1d1d6; font-size: 13px; line-height: 1.5; margin: 0;}
-
-        /* Logos inside Glass Panel */
-        .glass-logos {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            margin-top: 4px;
-        }
-
-        .glass-logos img {
-            height: 16px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(100%) brightness(200%) opacity(0.85); 
-        }
+        .case-study h3 { font-size: 20px; font-weight: 600; }
+        .case-study p { color: #666; font-size: 14px; line-height: 1.6; }
 
         /* ============= CAPABILITIES ============= */
         .capabilities {
@@ -602,7 +569,16 @@
            MOBILE OPTIMIZATION & OVERRIDES
            ======================================================= */
         @media(max-width: 768px) {
-            nav { height: 55px; padding: 0 5vw; }
+            /* Mobile Nav Overrides - DYNAMIC PILL ON MOBILE TOO */
+            nav { height: 50px; padding: 0 5vw; }
+
+            nav.nav-scrolled {
+                width: 92%; /* Pill shape maintained on mobile */
+                top: 12px;
+                padding: 0 20px;
+                border-radius: 50px; 
+            }
+            .logo { height: 26px; }
 
             /* Hero adjustments */
             .hero { 
@@ -618,6 +594,7 @@
             .tech-logos { gap: 18px; }
             .tech-logos img { height: 20px; } 
             .kicad-logo { height: 28px !important; } 
+            .siemens-logo { height: 28px !important; } 
 
             .journey-section, 
             .capabilities, 
@@ -635,6 +612,7 @@
             
             .journey-header { margin-bottom: 40px; }
             .journey-grid, .capabilities-grid { gap: 35px; }
+
             .chat-container { height: 400px; }
 
             .ticker-wrap { height: 45px; }
@@ -644,10 +622,7 @@
             .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
 
-            /* ===================================================
-               PORTFOLIO EDGE-TO-EDGE BIGGER MOBILE LAYOUT 
-               =================================================== */
-            
+            /* Portfolio Edge-to-Edge Mobile */
             .portfolio {
                 padding-left: 0 !important;
                 padding-right: 0 !important;
@@ -661,25 +636,20 @@
 
             .grid-2 { 
                 grid-template-columns: 1fr; 
-                gap: 15px; 
-                margin-bottom: 15px;
+                gap: 20px; 
+                margin-bottom: 20px;
             }
 
-            .case-study {
+            /* Remove descriptions on mobile */
+            .case-study h3, 
+            .case-study p { display: none; }
+
+            /* Ensure images stretch fully to edges */
+            .img-container {
                 border-radius: 0;
                 border-left: none;
                 border-right: none;
             }
-
-            /* Hide descriptions on mobile to focus on visual + logos */
-            .glass-text p { display: none; }
-            
-            /* Tighter glass panel for mobile */
-            .glass-panel {
-                padding: 16px 5vw;
-                gap: 8px;
-            }
-            .glass-text h3 { font-size: 16px; margin-bottom: 0; }
 
             .aesthetic-image { filter: none !important; }
             .aesthetic-image:active {
@@ -692,6 +662,7 @@
 <body>
 
 <div class="header-wrapper">
+    <!-- MINIMALIST NAVBAR (DYNAMIC PILL) -->
     <nav id="mainNav">
         <div class="nav-left">
             <a href="#" class="logo">
@@ -704,26 +675,29 @@
         </div>
     </nav>
 
+    <!-- DARK "PRO" HERO WITH EMBEDDED COMMUNITY CHAT -->
     <section class="hero">
         <div class="hero-left">
             
+            <!-- Sleek Robot Video Presentation -->
             <video src="Recording 2026-02-08 023307.mp4" autoplay loop muted playsinline class="hero-robot-video"></video>
             
             <h1>Innovation driven by quality, not cost.</h1>
             <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer complimentary engineering consultations alongside our world class 22 layer PCB and intelligent firmware designs.</p>
             
+            <!-- Technology Logos -->
             <div class="tech-logos">
                 <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
-                <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
                 <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
                 <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
                 <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
-                <img src="https://cdn.simpleicons.org/siemens" alt="Siemens / PLCSIM" title="Siemens PLCSIM">
+                <img src="https://cdn.simpleicons.org/siemens" alt="Siemens / PLCSIM" title="Siemens PLCSIM" class="siemens-logo">
                 <img src="https://cdn.simpleicons.org/opencv" alt="OpenCV" title="OpenCV">
                 <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" title="NVIDIA Jetson / Edge AI">
             </div>
         </div>
 
+        <!-- Right Side Dark Mode Live Community Chat -->
         <div class="chat-container">
             <div class="chat-header">
                 <h3>Nvisco Community Feed</h3>
@@ -733,19 +707,23 @@
             </div>
 
             <div class="chat-messages" id="chatMessages">
-                </div>
+                <!-- Messages will load here dynamically -->
+            </div>
 
             <div class="chat-input-area">
+                <!-- Auth Section -->
                 <button id="googleLoginBtn" class="google-login-btn">
                     <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                     Sign in to Chat
                 </button>
 
+                <!-- User Info -->
                 <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                     <span id="welcomeText" style="font-size: 12px; font-weight: 600; color: #a1a1a6;"></span>
                     <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign Out</button>
                 </div>
 
+                <!-- Chat Input -->
                 <div class="chat-send-row" id="chatSendRow">
                     <input type="text" id="chatInput" placeholder="Ask a question..." />
                     <button class="chat-btn-submit" id="sendChatBtn">Send</button>
@@ -755,8 +733,10 @@
     </section>
 </div>
 
+<!-- SLEEK CAPABILITY TICKER BANNER -->
 <div class="ticker-wrap">
     <div class="ticker">
+        <!-- Group 1 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -769,6 +749,7 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
+        <!-- Group 2 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -781,6 +762,7 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
+        <!-- Group 3 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -793,6 +775,7 @@
             <span class="ticker-item">EMBEDDED FIRMWARE</span>
             <span class="ticker-separator">✦</span>
         </div>
+        <!-- Group 4 -->
         <div class="ticker-group">
             <span class="ticker-item">INTELLIGENT SYSTEMS</span>
             <span class="ticker-separator">✦</span>
@@ -808,6 +791,7 @@
     </div>
 </div>
 
+<!-- JOURNEY -->
 <section class="journey-section" id="journey">
     <div class="journey-header">
         <h2>The complete design journey</h2>
@@ -841,72 +825,52 @@
     </div>
 </section>
 
+<!-- FEATURED ENGINEERING -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
     <div class="grid-2">
+        <!-- Item 1: High Density PCB -->
         <div class="case-study">
-            <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>High-Density PCB Design</h3>
-                    <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/kicad" alt="KiCad">
-                    <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium">
-                </div>
+            <div class="img-container">
+                <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
             </div>
+            <h3>High-Density PCB Design</h3>
+            <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
         </div>
 
+        <!-- Item 2: Machinery Video -->
         <div class="case-study">
-            <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>Industry Machinery Excellence</h3>
-                    <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/ros" alt="ROS">
-                    <img src="https://cdn.simpleicons.org/siemens" alt="Siemens">
-                    <img src="https://cdn.simpleicons.org/opencv" alt="OpenCV">
-                </div>
+            <div class="img-container">
+                <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
             </div>
+            <h3>Industry Machinery Excellence</h3>
+            <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
         </div>
     </div>
 
     <div class="grid-2">
+        <!-- Item 3: CAD Design Robot Welding -->
         <div class="case-study">
-            <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>Advanced CAD Design</h3>
-                    <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/autodesk" alt="Autodesk">
-                    <img src="https://cdn.simpleicons.org/arduino" alt="Arduino">
-                </div>
+            <div class="img-container">
+                <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
             </div>
+            <h3>Advanced CAD Design</h3>
+            <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
+        <!-- Item 4: System Blueprinting -->
         <div class="case-study">
-            <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
-            <div class="glass-panel">
-                <div class="glass-text">
-                    <h3>Architectural & System Blueprinting</h3>
-                    <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
-                </div>
-                <div class="glass-logos">
-                    <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code">
-                    <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi">
-                    <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA">
-                </div>
+            <div class="img-container">
+                <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
             </div>
+            <h3>Architectural & System Blueprinting</h3>
+            <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
         </div>
     </div>
 </section>
 
+<!-- CAPABILITIES -->
 <section class="capabilities">
     <h2>Complex Industrial Capabilities</h2>
     
@@ -943,6 +907,7 @@
     </div>
 </section>
 
+<!-- CTA SECTION -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
         <h2>Ready to build something real?</h2>
@@ -953,6 +918,7 @@
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-content">
         <div class="footer-col">
@@ -978,6 +944,7 @@
     </div>
 </footer>
 
+<!-- SCRIPTS FOR NAVBAR SCROLL & INTERACTIVE CHAT BOX WITH GOOGLE AUTH -->
 <script type="module">
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('mainNav');
