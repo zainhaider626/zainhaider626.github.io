@@ -50,7 +50,7 @@
         }
 
         /* =========================================================
-           SMART "APPLE PRO" NAVBAR (DYNAMIC FLOATING DARK PILL) 
+           SMART MINIMALIST NAVBAR (EDGE-TO-EDGE) 
            ========================================================= */
         .header-wrapper {
             background-color: #000; 
@@ -69,21 +69,17 @@
             z-index: 100;
             background: #000; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 0px; 
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll (Desktop) */
+        /* The Dark Glassmorphism Effect on Scroll */
         nav.nav-scrolled {
-            top: 15px; 
-            width: 75%; 
-            max-width: 1000px;
-            border-radius: 50px; 
-            padding: 0 3vw;
+            top: 0; 
+            width: 100%; 
+            padding: 0 5vw;
             background: rgba(29, 29, 31, 0.72); 
             backdrop-filter: blur(20px) saturate(180%); 
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
@@ -95,7 +91,7 @@
         }
 
         .logo {
-            height: 20px;
+            height: 28px; /* Increased Logo Size for both Mobile and Laptop */
             display: flex;
             align-items: center;
         }
@@ -110,35 +106,10 @@
             filter: invert(1); 
         }
 
-        .nav-title {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-            margin-left: 20px;
-        }
-
         /* Right Side Apple-style Buttons */
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .nav-btn-explore {
-            font-size: 12px;
-            font-weight: 500;
-            padding: 5px 14px;
-            border-radius: 50px;
-            border: 1px solid #424245;
-            color: #f5f5f7;
-            transition: 0.3s;
-        }
-        
-        .nav-btn-explore:hover { 
-            background: #fff; 
-            color: #000; 
-            border-color: #fff; 
         }
 
         .nav-btn-preorder {
@@ -596,15 +567,6 @@
         @media(max-width: 768px) {
             /* Mobile Nav Overrides - Stay full width till end! */
             nav { height: 55px; padding: 0 5vw; }
-            .nav-title { display: none; } 
-            .nav-btn-explore { display: none; } 
-
-            nav.nav-scrolled {
-                width: 100%; /* Stretches edge-to-edge on mobile */
-                top: 0;      /* Sticks to the very top */
-                border-radius: 0; /* Removes pill corners on mobile */
-                padding: 0 5vw;
-            }
 
             /* Hero adjustments */
             .hero { 
@@ -621,7 +583,7 @@
             .tech-logos img { height: 20px; } 
             .kicad-logo { height: 28px !important; } 
 
-            /* Standardized Tighter Spacing */
+            /* Standardized Tighter Spacing Across All Sections */
             .journey-section, 
             .capabilities, 
             .cta-section { 
@@ -700,17 +662,15 @@
 <body>
 
 <div class="header-wrapper">
-    <!-- SMART "PRO" NAVBAR WITH FLOATING PILL EFFECT (EDGE-TO-EDGE ON MOBILE) -->
+    <!-- MINIMALIST NAVBAR (EDGE-TO-EDGE) -->
     <nav id="mainNav">
         <div class="nav-left">
             <a href="#" class="logo">
                 <img src="nvisco-logo.png" alt="NVISCO">
             </a>
-            <span class="nav-title">Nvisco Pro</span>
         </div>
 
         <div class="nav-right">
-            <a href="#work" class="nav-btn-explore">View Work</a>
             <a href="mailto:hello@nvisco.com" class="nav-btn-preorder">Free Consultation</a>
         </div>
     </nav>
