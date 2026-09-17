@@ -33,7 +33,7 @@
         }
 
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Smooth scrolling for all anchor links */
         }
 
         body {
@@ -41,7 +41,9 @@
             background: #fff;
             color: #000;
             line-height: 1.5;
-            transition: background 0.5s ease;
+            overflow-x: hidden; /* Prevents horizontal jitter */
+            -webkit-font-smoothing: antialiased; /* Crisp text rendering */
+            -moz-osx-font-smoothing: grayscale;
         }
 
         a {
@@ -50,7 +52,7 @@
         }
 
         /* =========================================================
-           SMART MINIMALIST NAVBAR (EDGE-TO-EDGE) 
+           SMART MINIMALIST NAVBAR (DYNAMIC FLOATING PILL)
            ========================================================= */
         .header-wrapper {
             background-color: #000; 
@@ -69,25 +71,32 @@
             z-index: 100;
             background: #000; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 0px; 
+            /* Buttery smooth easing for the navbar morph */
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: width, top, border-radius, background, backdrop-filter;
         }
 
-        /* The Dark Glassmorphism Effect on Scroll */
+        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll */
         nav.nav-scrolled {
-            top: 0; 
-            width: 100%; 
-            padding: 0 5vw;
-            background: rgba(29, 29, 31, 0.72); 
-            backdrop-filter: blur(20px) saturate(180%); 
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            top: 15px; 
+            width: 85%; /* Shrinks to the middle */
+            max-width: 800px;
+            border-radius: 50px; /* Fully rounded Apple pill */
+            padding: 0 24px;
+            background: rgba(28, 28, 30, 0.75); 
+            backdrop-filter: blur(24px) saturate(180%); 
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            transform: translate3d(0,0,0); /* Hardware Acceleration */
         }
 
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 16px;
         }
 
         .logo {
@@ -96,7 +105,6 @@
             align-items: center;
         }
 
-        /* Always White Logo for Dark Theme */
         .logo img {
             height: 100%;
             width: auto;
@@ -118,8 +126,9 @@
             font-weight: 500;
             color: #d1d1d6;
             cursor: pointer;
-            transition: 0.3s;
+            transition: color 0.3s ease;
         }
+        
         .nav-btn-about:hover {
             color: #fff;
         }
@@ -132,13 +141,14 @@
             background: #0071e3; 
             color: #fff;
             border: none;
-            transition: 0.3s;
             cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateZ(0); /* Hardware Acceleration */
         }
 
         .nav-btn-preorder:hover { 
             background: #0077ED; 
-            transform: scale(1.03); 
+            transform: scale(1.03) translateZ(0); 
         }
 
         /* ============= DARK "APPLE PRO" HERO SECTION ============= */
@@ -159,6 +169,7 @@
             height: auto;
             margin-bottom: 20px;
             mix-blend-mode: screen; 
+            transform: translateZ(0); /* Prevents video judder */
         }
 
         .hero-left h1 {
@@ -196,13 +207,14 @@
             display: block; 
             object-fit: contain;
             filter: grayscale(100%) brightness(200%) opacity(0.5); 
-            transition: all 0.3s ease;
+            transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
+            will-change: transform, filter;
         }
 
         .tech-logos img:hover {
             filter: grayscale(0%) opacity(1) brightness(1); 
-            transform: scale(1.05);
+            transform: scale(1.05) translateZ(0);
         }
 
         .kicad-logo { height: 38px !important; }
@@ -219,6 +231,7 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: translateZ(0);
         }
 
         .chat-header {
@@ -252,7 +265,7 @@
             height: 8px;
             background: #34c759; 
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
@@ -270,6 +283,7 @@
             gap: 14px;
             font-size: 13px;
             background: #000;
+            scroll-behavior: smooth;
         }
 
         .message {
@@ -279,6 +293,12 @@
             border-radius: 12px;
             max-width: 90%;
             align-self: flex-start;
+            animation: messageFadeIn 0.3s ease forwards;
+        }
+
+        @keyframes messageFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .message.nvisco {
@@ -320,7 +340,7 @@
             font-size: 13px;
             outline: none;
             font-family: inherit;
-            transition: border-color 0.2s;
+            transition: border-color 0.3s ease;
         }
 
         .chat-send-row input:focus { border-color: #0071e3; }
@@ -335,7 +355,7 @@
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.3s ease;
         }
 
         .chat-btn-submit:hover { background: #ddd; }
@@ -354,7 +374,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
+            transition: background 0.3s ease;
         }
 
         .google-login-btn:hover { background: #f0f0f0; }
@@ -369,12 +389,14 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            transform: translateZ(0); /* Hardware accelerate container */
         }
 
         .ticker {
             display: flex;
             width: max-content;
             animation: tickerScroll 40s linear infinite;
+            will-change: transform; /* Hint GPU for smooth scrolling */
         }
 
         .ticker:hover {
@@ -401,9 +423,10 @@
             font-size: 14px;
         }
 
+        /* Uses translate3d for buttery smooth sub-pixel rendering */
         @keyframes tickerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); } 
         }
 
         /* ============= THE JOURNEY ============= */
@@ -438,18 +461,21 @@
         .journey-step h3 { font-size: 20px; line-height: 1.3; font-weight: 600; }
         .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
 
-        /* ============= PORTFOLIO / CASE STUDIES ============= */
+        /* ============= PORTFOLIO / CASE STUDIES (GLASSMORPHISM CARDS) ============= */
         .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; background: #fff;}
         .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .case-study { display: flex; flex-direction: column; gap: 15px; }
         
-        .img-container { 
+        .case-study { 
+            position: relative;
             width: 100%; 
             aspect-ratio: 16/9; 
+            border-radius: 16px;
             overflow: hidden; 
-            border: 1px solid #e0e0e0; 
-            background: #111; 
+            background: #000; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+            transform: translateZ(0); /* Hardware accelerate masking */
         }
         
         .aesthetic-image {
@@ -458,13 +484,49 @@
             object-fit: cover; 
             display: block;
             filter: grayscale(100%) contrast(120%) brightness(90%);
-            transition: filter 0.4s ease; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease; 
+            will-change: transform, filter;
         }
         
-        .aesthetic-image:hover { filter: grayscale(30%) contrast(110%) brightness(100%); }
+        .case-study:hover .aesthetic-image { 
+            filter: grayscale(10%) contrast(110%) brightness(100%); 
+            transform: scale(1.03) translateZ(0);
+        }
 
-        .case-study h3 { font-size: 20px; font-weight: 600; }
-        .case-study p { color: #666; font-size: 14px; line-height: 1.6; }
+        .glass-panel {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px;
+            background: rgba(20, 20, 25, 0.55); 
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: #fff;
+            z-index: 10;
+            transform: translateZ(0); /* Smooth rendering over video */
+        }
+
+        .glass-text h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;}
+        .glass-text p { color: #d1d1d6; font-size: 13px; line-height: 1.5; margin: 0;}
+
+        .glass-logos {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .glass-logos img {
+            height: 16px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(200%) opacity(0.85); 
+        }
 
         /* ============= CAPABILITIES ============= */
         .capabilities {
@@ -523,7 +585,7 @@
         }
         
         .cta-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-        .cta-primary-w { background: #000; color: #fff; border: 1px solid #000; padding: 14px 32px; font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; }
+        .cta-primary-w { background: #000; color: #fff; border: 1px solid #000; padding: 14px 32px; font-size: 14px; font-weight: 600; transition: background 0.3s ease; cursor: pointer; }
         .cta-primary-w:hover { background: #333; }
 
         /* ============= FOOTER ============= */
@@ -558,7 +620,7 @@
             color: #666;
             line-height: 1.8;
             display: block;
-            transition: color 0.2s;
+            transition: color 0.3s ease;
         }
 
         .footer-col a:hover { color: #000; }
@@ -592,6 +654,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
+            transform: translateZ(0); /* Hardware accelerate modal background */
         }
 
         .about-overlay.active {
@@ -600,7 +663,7 @@
         }
 
         .about-modal {
-            background: rgba(28, 28, 30, 0.85); /* Apple Dark Mode Glass */
+            background: rgba(28, 28, 30, 0.85); 
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 40px;
@@ -611,12 +674,13 @@
             align-items: center;
             position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            transform: translateY(20px);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateY(20px) translateZ(0);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
         }
 
         .about-overlay.active .about-modal {
-            transform: translateY(0);
+            transform: translateY(0) translateZ(0);
         }
 
         .close-btn {
@@ -628,7 +692,7 @@
             color: #888;
             font-size: 28px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: color 0.3s ease;
         }
 
         .close-btn:hover { color: #fff; }
@@ -661,7 +725,7 @@
         }
 
         .about-desc-mobile {
-            display: none; /* Hidden on desktop */
+            display: none; 
         }
 
         .about-socials {
@@ -674,21 +738,28 @@
             width: 24px;
             height: 24px;
             fill: #888;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, fill;
         }
 
-        /* Hover Colors for Socials */
-        .linkedin-icon:hover { fill: #0a66c2; transform: translateY(-2px); }
-        .github-icon:hover { fill: #ffffff; transform: translateY(-2px); }
+        .linkedin-icon:hover { fill: #0a66c2; transform: translateY(-3px); }
+        .github-icon:hover { fill: #ffffff; transform: translateY(-3px); }
 
         /* =======================================================
            MOBILE OPTIMIZATION & OVERRIDES
            ======================================================= */
         @media(max-width: 768px) {
+            /* Restoring the Pill Shape Navbar on Mobile! */
             nav { height: 55px; padding: 0 5vw; }
             .nav-right { gap: 12px; }
 
-            /* Hero adjustments */
+            nav.nav-scrolled {
+                width: 92%; /* Pill shape maintained on mobile */
+                top: 12px;
+                padding: 0 20px;
+                border-radius: 50px; 
+            }
+
             .hero { 
                 grid-template-columns: 1fr; 
                 gap: 40px; 
@@ -750,9 +821,9 @@
                 width: 140px;
                 height: 140px;
             }
-            .about-desc-desktop { display: none; } /* Hide long text */
+            .about-desc-desktop { display: none; } 
             .about-desc-mobile { 
-                display: block; /* Show short text */
+                display: block; 
                 font-size: 14px; 
                 line-height: 1.5; 
                 color: #a1a1a6; 
@@ -761,13 +832,12 @@
             .about-socials { justify-content: center; }
             .close-btn { top: 10px; right: 15px; }
         }
-
     </style>
 </head>
 <body>
 
 <div class="header-wrapper">
-    <!-- MINIMALIST NAVBAR (EDGE-TO-EDGE) -->
+    <!-- MINIMALIST NAVBAR (DYNAMIC FLOATING PILL) -->
     <nav id="mainNav">
         <div class="nav-left">
             <a href="#" class="logo">
@@ -776,7 +846,6 @@
         </div>
 
         <div class="nav-right">
-            <!-- New About Button -->
             <div id="aboutBtn" class="nav-btn-about">About</div>
             <a href="mailto:hello@nvisco.com" class="nav-btn-preorder">Free Consultation</a>
         </div>
@@ -785,7 +854,6 @@
     <!-- DARK "PRO" HERO WITH EMBEDDED COMMUNITY CHAT -->
     <section class="hero">
         <div class="hero-left">
-            
             <video src="Recording 2026-02-08 023307.mp4" autoplay loop muted playsinline class="hero-robot-video"></video>
             
             <h1>Innovation driven by quality, not cost.</h1>
@@ -928,43 +996,69 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING -->
+<!-- FEATURED ENGINEERING WITH GLASSMORPHISM OVERLAYS -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
     <div class="grid-2">
         <div class="case-study">
-            <div class="img-container">
-                <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
+            <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
+            <div class="glass-panel">
+                <div class="glass-text">
+                    <h3>High-Density PCB Design</h3>
+                    <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
+                </div>
+                <div class="glass-logos">
+                    <img src="https://cdn.simpleicons.org/kicad" alt="KiCad">
+                    <img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium">
+                </div>
             </div>
-            <h3>High-Density PCB Design</h3>
-            <p>Engineered for maximum performance, our high-density PCB routing scales up to 22 layers. We prioritize signal integrity and minimal EMI footprints for complex industrial applications.</p>
         </div>
 
         <div class="case-study">
-            <div class="img-container">
-                <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
+            <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
+            <div class="glass-panel">
+                <div class="glass-text">
+                    <h3>Industry Machinery Excellence</h3>
+                    <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
+                </div>
+                <div class="glass-logos">
+                    <img src="https://cdn.simpleicons.org/ros" alt="ROS">
+                    <img src="https://cdn.simpleicons.org/siemens" alt="Siemens">
+                    <img src="https://cdn.simpleicons.org/opencv" alt="OpenCV">
+                </div>
             </div>
-            <h3>Industry Machinery Excellence</h3>
-            <p>Delivering continuous precision and reliability through automated machinery systems. Our robotic solutions are designed to run flawlessly in demanding manufacturing environments.</p>
         </div>
     </div>
 
     <div class="grid-2">
         <div class="case-study">
-            <div class="img-container">
-                <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
+            <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
+            <div class="glass-panel">
+                <div class="glass-text">
+                    <h3>Advanced CAD Design</h3>
+                    <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
+                </div>
+                <div class="glass-logos">
+                    <img src="https://cdn.simpleicons.org/autodesk" alt="Autodesk">
+                    <img src="https://cdn.simpleicons.org/arduino" alt="Arduino">
+                </div>
             </div>
-            <h3>Advanced CAD Design</h3>
-            <p>Robust mechanical assemblies and robotic welding machine models designed in parametric 3D CAD. We ensure zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
         <div class="case-study">
-            <div class="img-container">
-                <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
+            <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
+            <div class="glass-panel">
+                <div class="glass-text">
+                    <h3>Architectural & System Blueprinting</h3>
+                    <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
+                </div>
+                <div class="glass-logos">
+                    <img src="https://cdn.simpleicons.org/visualstudiocode" alt="VS Code">
+                    <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi">
+                    <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA">
+                </div>
             </div>
-            <h3>Architectural & System Blueprinting</h3>
-            <p>Meticulous structural and layout schematics form the foundation of our work. We map out complex spatial geometry and infrastructure plans before any physical prototyping begins.</p>
         </div>
     </div>
 </section>
@@ -1052,17 +1146,13 @@
         <img src="unnamed.jpg" alt="Zain Haider" class="about-img">
         <div class="about-text">
             <h2>I'm Zain Haider</h2>
-            <!-- Detailed Professional Desktop Description -->
-            <p class="about-desc-desktop">I am a multidisciplinary Enginner and Systems Architect. My focus lies in bridging the gap between visionary concepts and tangible, high-performance products. By combining robust engineering principles with cutting edge technological integration, I strive to build solutions that are not only efficient but fundamentally transformative for modern industrial applications.</p>
-            <!-- Concise Professional Mobile Description -->
-            <p class="about-desc-mobile">Hi, I’m Zain, a robotics engineer. I specialize in developing intelligent embedded systems by integrating electronics, control engineering, and precision mechanical design. From microcontroller integration to real time control, I build complete and high performance robotic systems.</p>
+            <p class="about-desc-desktop">I am a multidisciplinary innovator and systems architect. My focus lies in bridging the gap between visionary concepts and tangible, high-performance products. By combining robust engineering principles with cutting-edge technological integration, I strive to build solutions that are not only efficient but fundamentally transformative for modern industrial applications.</p>
+            <p class="about-desc-mobile">I am a multidisciplinary innovator dedicated to bridging the gap between visionary concepts and tangible, high-performance products.</p>
             
             <div class="about-socials">
-                <!-- LinkedIn Icon -->
                 <a href="https://www.linkedin.com/in/zain-haider" target="_blank" aria-label="LinkedIn">
                     <svg class="social-icon linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 </a>
-                <!-- GitHub Icon -->
                 <a href="https://github.com/zainhaider626" target="_blank" aria-label="GitHub">
                     <svg class="social-icon github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 </a>
@@ -1071,7 +1161,6 @@
     </div>
 </div>
 
-<!-- SCRIPTS FOR NAVBAR SCROLL, INTERACTIVE CHAT, & ABOUT MODAL -->
 <script type="module">
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
@@ -1093,16 +1182,12 @@
         aboutOverlay.classList.remove('active');
     });
 
-    // Close when clicking outside the modal box
     aboutOverlay.addEventListener('click', (e) => {
         if(e.target === aboutOverlay) {
             aboutOverlay.classList.remove('active');
         }
     });
 
-    // ==========================================
-    // FIREBASE REAL-TIME CHAT & AUTH SETUP
-    // ==========================================
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
     import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
     import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
