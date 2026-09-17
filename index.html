@@ -805,7 +805,17 @@
             .portfolio h2 { padding: 0 6vw; margin-bottom: 30px; }
             .grid-2 { grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
             .case-study { border-radius: 0; border-left: none; border-right: none; }
-            .case-study h3, .case-study p { display: none; }
+            
+            /* Hide description on mobile to keep focus on titles + logos */
+            .glass-text p { display: none; }
+            
+            /* Tighter glass panel for mobile */
+            .glass-panel {
+                padding: 16px 5vw;
+                gap: 8px;
+            }
+            .glass-text h3 { font-size: 16px; margin-bottom: 0; }
+
             .img-container { border-radius: 0; border-left: none; border-right: none; }
             .aesthetic-image { filter: none !important; }
             .aesthetic-image:active { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
@@ -861,7 +871,8 @@
             
             <div class="tech-logos">
                 <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
-                <img src="https://cdn.simpleicons.org/autodesk" alt="Fusion 360" title="Autodesk Fusion 360">
+                <!-- Python represents robust pure robotics / Edge AI processing -->
+                <img src="https://cdn.simpleicons.org/python" alt="Python" title="Python">
                 <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
                 <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
                 <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
