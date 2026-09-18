@@ -20,10 +20,10 @@
 }
 </script>
     
-    <!-- Importing Courier Prime font -->
+    <!-- Importing Courier Prime and Dancing Script fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -33,7 +33,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Smooth scrolling for all anchor links */
+            scroll-behavior: smooth; 
         }
 
         body {
@@ -41,8 +41,8 @@
             background: #fff;
             color: #000;
             line-height: 1.5;
-            overflow-x: hidden; /* Prevents horizontal jitter */
-            -webkit-font-smoothing: antialiased; /* Crisp text rendering */
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale;
         }
 
@@ -72,17 +72,15 @@
             background: #000; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 0px; 
-            /* Buttery smooth easing for the navbar morph */
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: width, top, border-radius, background, backdrop-filter;
         }
 
-        /* The Dark Glassmorphism "Floating Pill" Effect on Scroll */
         nav.nav-scrolled {
             top: 15px; 
-            width: 85%; /* Shrinks to the middle */
+            width: 85%; 
             max-width: 800px;
-            border-radius: 50px; /* Fully rounded Apple pill */
+            border-radius: 50px; 
             padding: 0 24px;
             background: rgba(28, 28, 30, 0.75); 
             backdrop-filter: blur(24px) saturate(180%); 
@@ -91,7 +89,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             color: #fff;
-            transform: translate3d(0,0,0); /* Hardware Acceleration */
+            transform: translate3d(0,0,0); 
         }
 
         .nav-left {
@@ -114,7 +112,6 @@
             filter: invert(1); 
         }
 
-        /* Right Side Apple-style Buttons */
         .nav-right {
             display: flex;
             align-items: center;
@@ -143,7 +140,7 @@
             border: none;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            transform: translateZ(0); /* Hardware Acceleration */
+            transform: translateZ(0); 
         }
 
         .nav-btn-preorder:hover { 
@@ -169,7 +166,7 @@
             height: auto;
             margin-bottom: 20px;
             mix-blend-mode: screen; 
-            transform: translateZ(0); /* Prevents video judder */
+            transform: translateZ(0); 
         }
 
         .hero-left h1 {
@@ -389,14 +386,14 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            transform: translateZ(0); /* Hardware accelerate container */
+            transform: translateZ(0); 
         }
 
         .ticker {
             display: flex;
             width: max-content;
             animation: tickerScroll 40s linear infinite;
-            will-change: transform; /* Hint GPU for smooth scrolling */
+            will-change: transform; 
         }
 
         .ticker:hover {
@@ -423,7 +420,6 @@
             font-size: 14px;
         }
 
-        /* Uses translate3d for buttery smooth sub-pixel rendering */
         @keyframes tickerScroll {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); } 
@@ -474,7 +470,7 @@
             overflow: hidden; 
             border: 1px solid #e0e0e0; 
             background: #111; 
-            transform: translateZ(0); /* Hardware accelerate masking */
+            transform: translateZ(0); 
         }
         
         .aesthetic-image {
@@ -501,7 +497,6 @@
             padding: 120px 5vw;
             background: #000;
             color: #fff;
-            border-bottom: 1px solid #333;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
@@ -514,6 +509,7 @@
             font-weight: 700;
             margin-bottom: 80px;
             max-width: 800px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
 
         .capabilities-grid {
@@ -524,6 +520,42 @@
 
         .capability-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #fff; }
         .capability-item p { font-size: 13px; color: #888; line-height: 1.6; }
+
+        /* ============= NEW: PROBLEM-SOLVING VALUE PROPS ============= */
+        .value-props-section {
+            padding: 80px 5vw 120px;
+            background: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+        }
+
+        .value-prop-line {
+            font-family: 'Dancing Script', cursive; /* Elegant Script Font */
+            font-size: clamp(28px, 4.5vw, 48px);
+            text-align: center;
+            color: #e5e5ea;
+            opacity: 0;
+            transform: translateX(50vw) scale(0.8) translateZ(0);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1);
+            will-change: transform, opacity;
+            max-width: 1000px;
+        }
+
+        .value-prop-line.animate {
+            opacity: 1;
+            transform: translateX(0) scale(1) translateZ(0);
+        }
+
+        /* Staggered entrance delays */
+        .value-prop-line:nth-child(1) { transition-delay: 0.1s; }
+        .value-prop-line:nth-child(2) { transition-delay: 0.3s; }
+        .value-prop-line:nth-child(3) { transition-delay: 0.5s; }
+        .value-prop-line:nth-child(4) { transition-delay: 0.7s; }
 
         /* ============= CTA SECTION ============= */
         .cta-section {
@@ -621,7 +653,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
-            transform: translateZ(0); /* Hardware accelerate modal background */
+            transform: translateZ(0); 
         }
 
         .about-overlay.active {
@@ -716,12 +748,11 @@
            MOBILE OPTIMIZATION & OVERRIDES
            ======================================================= */
         @media(max-width: 768px) {
-            /* Restoring the Pill Shape Navbar on Mobile! */
             nav { height: 55px; padding: 0 5vw; }
             .nav-right { gap: 12px; }
 
             nav.nav-scrolled {
-                width: 92%; /* Pill shape maintained on mobile */
+                width: 92%; 
                 top: 12px;
                 padding: 0 20px;
                 border-radius: 50px; 
@@ -745,6 +776,16 @@
             .capabilities, 
             .cta-section { 
                 padding: 70px 6vw; 
+            }
+
+            .value-props-section {
+                padding: 60px 6vw 80px;
+                gap: 20px;
+            }
+            
+            .value-prop-line {
+                font-size: 24px;
+                line-height: 1.4;
             }
 
             .journey-header h2, 
@@ -771,16 +812,14 @@
             .portfolio { padding-left: 0 !important; padding-right: 0 !important; padding-bottom: 40px !important; }
             .portfolio h2 { padding: 0 6vw; margin-bottom: 30px; }
             .grid-2 { grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
+            .case-study { border-radius: 0; border-left: none; border-right: none; }
             
-            /* Hide description on mobile to keep focus on visual */
+            /* Hide descriptions */
             .case-study h3, .case-study p { display: none; }
             
-            /* Remove borders so image reaches the absolute edges */
             .img-container { border-radius: 0; border-left: none; border-right: none; }
-
-            /* Mobile Active State colors */
-            .aesthetic-image { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
-            .aesthetic-image:active { filter: grayscale(0%) contrast(110%) brightness(100%) !important; }
+            .aesthetic-image { filter: none !important; }
+            .aesthetic-image:active { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
 
             /* About Modal Mobile Tweaks */
             .about-modal {
@@ -833,6 +872,7 @@
             
             <div class="tech-logos">
                 <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
+                <!-- Added Python for high-level Robotics/AI -->
                 <img src="https://cdn.simpleicons.org/python" alt="Python" title="Python">
                 <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
                 <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
@@ -968,7 +1008,7 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING (CLASSIC LAYOUT) -->
+<!-- FEATURED ENGINEERING (CLASSIC LAYOUT WITH CLEAN TEXT BELOW) -->
 <section class="portfolio" id="work">
     <h2>Featured Engineering</h2>
     
@@ -1046,6 +1086,15 @@
     </div>
 </section>
 
+<!-- NEW: HARDWARE ANIMATED VALUE PROPS -->
+<section class="value-props-section" id="valueProps">
+    <!-- Staggered animated lines addressing client problems -->
+    <div class="value-prop-line">𝓦𝓮 𝓮𝓵𝓲𝓶𝓲𝓷𝓪𝓽𝓮 𝓱𝓪𝓻𝓭𝔀𝓪𝓻𝓮 𝓫𝓸𝓽𝓽𝓵𝓮𝓷𝓮𝓬𝓴𝓼 𝓫𝓮𝓯𝓸𝓻𝓮 𝓽𝓱𝓮𝔂 𝓭𝓮𝓻𝓪𝓲𝓵 𝔂𝓸𝓾𝓻 𝓹𝓻𝓸𝓭𝓾𝓬𝓽𝓲𝓸𝓷 𝓼𝓬𝓱𝓮𝓭𝓾𝓵𝓮.</div>
+    <div class="value-prop-line">𝓦𝓮 𝓽𝓻𝓪𝓷𝓼𝓯𝓸𝓻𝓶 𝓼𝓵𝓸𝔀 𝓶𝓪𝓷𝓾𝓪𝓵 𝓹𝓻𝓸𝓬𝓮𝓼𝓼𝓮𝓼 𝓲𝓷𝓽𝓸 𝓻𝓮𝓵𝓮𝓷𝓽𝓵𝓮𝓼𝓼, 𝓮𝓻𝓻𝓸𝓻-𝓯𝓻𝓮𝓮 𝓪𝓾𝓽𝓸𝓶𝓪𝓽𝓲𝓸𝓷.</div>
+    <div class="value-prop-line">𝓦𝓮 𝓫𝓻𝓲𝓭𝓰𝓮 𝓽𝓱𝓮 𝓹𝓪𝓲𝓷𝓯𝓾𝓵 𝓰𝓪𝓹 𝓫𝓮𝓽𝔀𝓮𝓮𝓷 𝓽𝓱𝓮𝓸𝓻𝓮𝓽𝓲𝓬𝓪𝓵 𝓼𝓸𝓯𝓽𝔀𝓪𝓻𝓮 𝓪𝓷𝓭 𝓹𝓱𝔂𝓼𝓲𝓬𝓪𝓵 𝓮𝔁𝓮𝓬𝓾𝓽𝓲𝓸𝓷.</div>
+    <div class="value-prop-line">𝓦𝓮 𝓻𝓮𝓼𝓬𝓾𝓮 𝓫𝓻𝓲𝓵𝓵𝓲𝓪𝓷𝓽 𝓬𝓸𝓷𝓬𝓮𝓹𝓽𝓼 𝓯𝓻𝓸𝓶 𝓹𝓻𝓸𝓽𝓸𝓽𝔂𝓹𝓮 𝓹𝓾𝓻𝓰𝓪𝓽𝓸𝓻𝔂 𝓪𝓷𝓭 𝓼𝓬𝓪𝓵𝓮 𝓽𝓱𝓮𝓶 𝓽𝓸 𝓶𝓪𝓻𝓴𝓮𝓽.</div>
+</section>
+
 <!-- CTA SECTION -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
@@ -1074,7 +1123,7 @@
         <div class="footer-col">
             <h4>Contact</h4>
             <a href="mailto:hello@nvisco.com">hello@nvisco.com</a>
-            <p style="margin-top: 16px;">Mandi Bahauddin, Punjab, PK</p>
+            <p style="margin-top: 16px;">Mandi Bahauddin, Punjab, PK[cite: 17]</p>
         </div>
     </div>
 
@@ -1114,6 +1163,18 @@
         if (window.scrollY > 80) nav.classList.add('nav-scrolled');
         else nav.classList.remove('nav-scrolled');
     });
+
+    // Observer for Animated Value Props (Triggers when scrolling into view)
+    const valueProps = document.querySelectorAll('.value-prop-line');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    valueProps.forEach(prop => observer.observe(prop));
 
     // About Modal Logic
     const aboutBtn = document.getElementById('aboutBtn');
