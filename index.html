@@ -20,10 +20,10 @@
 }
 </script>
     
-    <!-- Importing Courier Prime and Dancing Script fonts -->
+    <!-- Importing Courier Prime font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -521,47 +521,54 @@
         .capability-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #fff; }
         .capability-item p { font-size: 13px; color: #888; line-height: 1.6; }
 
-        /* ============= NEW: PROBLEM-SOLVING VALUE PROPS ============= */
+        /* ============= NEW: WHITE BACKGROUND TEXT CAROUSEL ============= */
         .value-props-section {
-            padding: 80px 5vw 120px;
-            background: #000;
-            color: #fff;
+            padding: 0 5vw;
+            background: #fff;
+            color: #000;
             display: flex;
-            flex-direction: column;
-            gap: 25px;
             align-items: center;
             justify-content: center;
+            position: relative;
+            height: 350px; /* Fixed height prevents layout shift */
             overflow: hidden; 
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .value-prop-line {
-            font-family: 'Dancing Script', cursive; /* Elegant Script Font */
-            font-size: clamp(28px, 4.5vw, 48px);
+            font-size: clamp(24px, 4vw, 48px);
+            font-weight: 700;
             text-align: center;
-            color: #e5e5ea;
-            opacity: 0;
-            transform: translateX(50vw) scale(0.8) translateZ(0);
-            transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1);
-            will-change: transform, opacity;
+            letter-spacing: -1px;
+            position: absolute;
+            width: 90%;
             max-width: 1000px;
+            opacity: 0;
+            /* 16s infinite loop: 4 text strings * 4 seconds each */
+            animation: textCarousel 16s infinite cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
+            transform: translate3d(50px, 0, 0); /* GPU accelerated */
         }
 
-        .value-prop-line.animate {
-            opacity: 1;
-            transform: translateX(0) scale(1) translateZ(0);
-        }
+        /* Staggered animation delays for the 4 strings */
+        .value-prop-line:nth-child(1) { animation-delay: 0s; }
+        .value-prop-line:nth-child(2) { animation-delay: 4s; }
+        .value-prop-line:nth-child(3) { animation-delay: 8s; }
+        .value-prop-line:nth-child(4) { animation-delay: 12s; }
 
-        /* Staggered entrance delays */
-        .value-prop-line:nth-child(1) { transition-delay: 0.1s; }
-        .value-prop-line:nth-child(2) { transition-delay: 0.3s; }
-        .value-prop-line:nth-child(3) { transition-delay: 0.5s; }
-        .value-prop-line:nth-child(4) { transition-delay: 0.7s; }
+        /* Keyframes for the carousel effect */
+        @keyframes textCarousel {
+            0% { opacity: 0; transform: translate3d(50px, 0, 0); }
+            5% { opacity: 1; transform: translate3d(0, 0, 0); }   /* Fly in quickly */
+            20% { opacity: 1; transform: translate3d(0, 0, 0); }  /* Hold visible so user can read */
+            25% { opacity: 0; transform: translate3d(-50px, 0, 0); } /* Fly out to the left */
+            100% { opacity: 0; transform: translate3d(-50px, 0, 0); } /* Stay hidden until next loop */
+        }
 
         /* ============= CTA SECTION ============= */
         .cta-section {
             padding: 120px 5vw;
             background: #fff;
-            border-top: 1px solid #e0e0e0;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -778,15 +785,9 @@
                 padding: 70px 6vw; 
             }
 
-            .value-props-section {
-                padding: 60px 6vw 80px;
-                gap: 20px;
-            }
-            
-            .value-prop-line {
-                font-size: 24px;
-                line-height: 1.4;
-            }
+            /* Adjust carousel section height on mobile */
+            .value-props-section { height: 250px; padding: 0 6vw; }
+            .value-prop-line { font-size: 24px; line-height: 1.4; }
 
             .journey-header h2, 
             .portfolio h2, 
@@ -872,7 +873,6 @@
             
             <div class="tech-logos">
                 <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" title="KiCad" class="kicad-logo">
-                <!-- Added Python for high-level Robotics/AI -->
                 <img src="https://cdn.simpleicons.org/python" alt="Python" title="Python">
                 <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
                 <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
@@ -1086,13 +1086,12 @@
     </div>
 </section>
 
-<!-- NEW: HARDWARE ANIMATED VALUE PROPS -->
+<!-- NEW: WHITE BACKGROUND TEXT CAROUSEL -->
 <section class="value-props-section" id="valueProps">
-    <!-- Staggered animated lines addressing client problems -->
-    <div class="value-prop-line">𝓦𝓮 𝓮𝓵𝓲𝓶𝓲𝓷𝓪𝓽𝓮 𝓱𝓪𝓻𝓭𝔀𝓪𝓻𝓮 𝓫𝓸𝓽𝓽𝓵𝓮𝓷𝓮𝓬𝓴𝓼 𝓫𝓮𝓯𝓸𝓻𝓮 𝓽𝓱𝓮𝔂 𝓭𝓮𝓻𝓪𝓲𝓵 𝔂𝓸𝓾𝓻 𝓹𝓻𝓸𝓭𝓾𝓬𝓽𝓲𝓸𝓷 𝓼𝓬𝓱𝓮𝓭𝓾𝓵𝓮.</div>
-    <div class="value-prop-line">𝓦𝓮 𝓽𝓻𝓪𝓷𝓼𝓯𝓸𝓻𝓶 𝓼𝓵𝓸𝔀 𝓶𝓪𝓷𝓾𝓪𝓵 𝓹𝓻𝓸𝓬𝓮𝓼𝓼𝓮𝓼 𝓲𝓷𝓽𝓸 𝓻𝓮𝓵𝓮𝓷𝓽𝓵𝓮𝓼𝓼, 𝓮𝓻𝓻𝓸𝓻-𝓯𝓻𝓮𝓮 𝓪𝓾𝓽𝓸𝓶𝓪𝓽𝓲𝓸𝓷.</div>
-    <div class="value-prop-line">𝓦𝓮 𝓫𝓻𝓲𝓭𝓰𝓮 𝓽𝓱𝓮 𝓹𝓪𝓲𝓷𝓯𝓾𝓵 𝓰𝓪𝓹 𝓫𝓮𝓽𝔀𝓮𝓮𝓷 𝓽𝓱𝓮𝓸𝓻𝓮𝓽𝓲𝓬𝓪𝓵 𝓼𝓸𝓯𝓽𝔀𝓪𝓻𝓮 𝓪𝓷𝓭 𝓹𝓱𝔂𝓼𝓲𝓬𝓪𝓵 𝓮𝔁𝓮𝓬𝓾𝓽𝓲𝓸𝓷.</div>
-    <div class="value-prop-line">𝓦𝓮 𝓻𝓮𝓼𝓬𝓾𝓮 𝓫𝓻𝓲𝓵𝓵𝓲𝓪𝓷𝓽 𝓬𝓸𝓷𝓬𝓮𝓹𝓽𝓼 𝓯𝓻𝓸𝓶 𝓹𝓻𝓸𝓽𝓸𝓽𝔂𝓹𝓮 𝓹𝓾𝓻𝓰𝓪𝓽𝓸𝓻𝔂 𝓪𝓷𝓭 𝓼𝓬𝓪𝓵𝓮 𝓽𝓱𝓮𝓶 𝓽𝓸 𝓶𝓪𝓻𝓴𝓮𝓽.</div>
+    <div class="value-prop-line">We eliminate hardware bottlenecks before they derail your production schedule.</div>
+    <div class="value-prop-line">We transform slow manual processes into relentless, error-free automation.</div>
+    <div class="value-prop-line">We bridge the painful gap between theoretical software and physical execution.</div>
+    <div class="value-prop-line">We rescue brilliant concepts from prototype purgatory and scale them to market.</div>
 </section>
 
 <!-- CTA SECTION -->
@@ -1163,18 +1162,6 @@
         if (window.scrollY > 80) nav.classList.add('nav-scrolled');
         else nav.classList.remove('nav-scrolled');
     });
-
-    // Observer for Animated Value Props (Triggers when scrolling into view)
-    const valueProps = document.querySelectorAll('.value-prop-line');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    valueProps.forEach(prop => observer.observe(prop));
 
     // About Modal Logic
     const aboutBtn = document.getElementById('aboutBtn');
