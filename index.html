@@ -457,7 +457,7 @@
         .journey-step h3 { font-size: 20px; line-height: 1.3; font-weight: 600; }
         .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
 
-        /* ============= PORTFOLIO / CASE STUDIES (CLASSIC) ============= */
+        /* ============= PORTFOLIO / CASE STUDIES ============= */
         .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; background: #fff;}
         .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
@@ -530,16 +530,16 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            height: 350px; 
+            height: 300px; 
             overflow: hidden; 
             border-bottom: 1px solid #e0e0e0;
         }
 
         .value-prop-line {
-            /* Beautiful "Math Bold Italic" look but fully readable/responsive */
+            /* Bold Italic Serif (Math-like aesthetic) */
             font-family: Georgia, 'Times New Roman', Times, serif; 
             font-style: italic;
-            font-size: clamp(26px, 4vw, 52px);
+            font-size: clamp(28px, 4.5vw, 56px);
             font-weight: 700;
             text-align: center;
             position: absolute;
@@ -551,6 +551,11 @@
             animation: textCarouselFast 15s infinite cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform, opacity;
             transform: translate3d(60px, 0, 0); 
+        }
+
+        /* Highlighting the specific result word in blue */
+        .value-prop-line .highlight {
+            color: #0071e3;
         }
 
         /* Staggered animation delays for the 5 lines */
@@ -791,7 +796,7 @@
 
             /* Adjust carousel section height on mobile */
             .value-props-section { height: 200px; padding: 0 6vw; }
-            .value-prop-line { font-size: 22px; line-height: 1.3; }
+            .value-prop-line { font-size: 24px; line-height: 1.3; }
 
             .journey-header h2, 
             .portfolio h2, 
@@ -1092,11 +1097,11 @@
 
 <!-- NEW: FAST, PUNCHY PROBLEM SOLVING CAROUSEL -->
 <section class="value-props-section" id="valueProps">
-    <div class="value-prop-line">Nvisco eliminates hardware bottlenecks before they derail your production timeline.</div>
-    <div class="value-prop-line">Nvisco transforms manual inefficiencies into relentless, error-free automation.</div>
-    <div class="value-prop-line">Nvisco bridges the painful gap between theoretical software and physical execution.</div>
-    <div class="value-prop-line">Nvisco prevents costly thermal and clearance failures before the first prototype.</div>
-    <div class="value-prop-line">Nvisco rescues brilliant concepts from prototype purgatory and scales them to market.</div>
+    <div class="value-prop-line">Nvisco brings intelligent <span class="highlight">robotics</span> to life.</div>
+    <div class="value-prop-line">Nvisco prevents complex routing <span class="highlight">bottlenecks</span>.</div>
+    <div class="value-prop-line">Nvisco turns manual labor into pure <span class="highlight">automation</span>.</div>
+    <div class="value-prop-line">Nvisco eliminates mechanical clearance <span class="highlight">failures</span>.</div>
+    <div class="value-prop-line">Nvisco bridges software with physical <span class="highlight">execution</span>.</div>
 </section>
 
 <!-- CTA SECTION -->
