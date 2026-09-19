@@ -497,6 +497,7 @@
             padding: 120px 5vw;
             background: #000;
             color: #fff;
+            border-bottom: 1px solid #333;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
@@ -530,16 +531,16 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            height: 300px; 
+            height: 250px; 
             overflow: hidden; 
             border-bottom: 1px solid #e0e0e0;
         }
 
         .value-prop-line {
-            /* Bold Italic Serif (Math-like aesthetic) */
+            /* Clean Bold Italic Serif */
             font-family: Georgia, 'Times New Roman', Times, serif; 
             font-style: italic;
-            font-size: clamp(28px, 4.5vw, 56px);
+            font-size: clamp(26px, 4vw, 56px);
             font-weight: 700;
             text-align: center;
             position: absolute;
@@ -547,8 +548,8 @@
             max-width: 1100px;
             opacity: 0;
             
-            /* Fast 15 second loop for 5 sentences (3s each) */
-            animation: textCarouselFast 15s infinite cubic-bezier(0.25, 1, 0.5, 1);
+            /* 10 Items * 3 seconds each = 30 seconds infinite loop */
+            animation: textCarouselFast 30s infinite cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform, opacity;
             transform: translate3d(60px, 0, 0); 
         }
@@ -558,19 +559,24 @@
             color: #0071e3;
         }
 
-        /* Staggered animation delays for the 5 lines */
+        /* Staggered animation delays for exactly 10 lines (3 seconds apart) */
         .value-prop-line:nth-child(1) { animation-delay: 0s; }
         .value-prop-line:nth-child(2) { animation-delay: 3s; }
         .value-prop-line:nth-child(3) { animation-delay: 6s; }
         .value-prop-line:nth-child(4) { animation-delay: 9s; }
         .value-prop-line:nth-child(5) { animation-delay: 12s; }
+        .value-prop-line:nth-child(6) { animation-delay: 15s; }
+        .value-prop-line:nth-child(7) { animation-delay: 18s; }
+        .value-prop-line:nth-child(8) { animation-delay: 21s; }
+        .value-prop-line:nth-child(9) { animation-delay: 24s; }
+        .value-prop-line:nth-child(10) { animation-delay: 27s; }
 
-        /* Very fast entry, steady read time, fast exit */
+        /* Fast entry, steady hold, fast exit based on a 30s timeline */
         @keyframes textCarouselFast {
             0% { opacity: 0; transform: translate3d(60px, 0, 0); }
-            3% { opacity: 1; transform: translate3d(0, 0, 0); }    /* Super fast fly in */
-            17% { opacity: 1; transform: translate3d(0, 0, 0); }   /* Hold perfectly still to read */
-            20% { opacity: 0; transform: translate3d(-60px, 0, 0); } /* Fast fly out */
+            1.5% { opacity: 1; transform: translate3d(0, 0, 0); }    /* Very fast fly in (0.45s) */
+            8.5% { opacity: 1; transform: translate3d(0, 0, 0); }   /* Hold perfectly still to read */
+            10% { opacity: 0; transform: translate3d(-60px, 0, 0); } /* Fast fly out */
             100% { opacity: 0; transform: translate3d(-60px, 0, 0); } 
         }
 
@@ -795,8 +801,8 @@
             }
 
             /* Adjust carousel section height on mobile */
-            .value-props-section { height: 200px; padding: 0 6vw; }
-            .value-prop-line { font-size: 24px; line-height: 1.3; }
+            .value-props-section { height: 180px; padding: 0 6vw; }
+            .value-prop-line { font-size: 22px; line-height: 1.3; }
 
             .journey-header h2, 
             .portfolio h2, 
@@ -1095,13 +1101,18 @@
     </div>
 </section>
 
-<!-- NEW: FAST, PUNCHY PROBLEM SOLVING CAROUSEL -->
+<!-- NEW: FAST, PUNCHY PROBLEM SOLVING CAROUSEL (10 LINES) -->
 <section class="value-props-section" id="valueProps">
-    <div class="value-prop-line">Nvisco brings intelligent <span class="highlight">robotics</span> to life.</div>
-    <div class="value-prop-line">Nvisco prevents complex routing <span class="highlight">bottlenecks</span>.</div>
-    <div class="value-prop-line">Nvisco turns manual labor into pure <span class="highlight">automation</span>.</div>
-    <div class="value-prop-line">Nvisco eliminates mechanical clearance <span class="highlight">failures</span>.</div>
-    <div class="value-prop-line">Nvisco bridges software with physical <span class="highlight">execution</span>.</div>
+    <div class="value-prop-line">Ending production delays with autonomous <span class="highlight">robotics</span>.</div>
+    <div class="value-prop-line">Solving complex high-density PCB <span class="highlight">routing</span>.</div>
+    <div class="value-prop-line">Turning manual inefficiency into relentless <span class="highlight">automation</span>.</div>
+    <div class="value-prop-line">Preventing costly mechanical clearance <span class="highlight">failures</span>.</div>
+    <div class="value-prop-line">Bridging theoretical logic with physical <span class="highlight">execution</span>.</div>
+    <div class="value-prop-line">Rescuing concepts from prototype <span class="highlight">purgatory</span>.</div>
+    <div class="value-prop-line">Transforming raw sensor data into intelligent <span class="highlight">action</span>.</div>
+    <div class="value-prop-line">Accelerating the journey from blueprint to <span class="highlight">market</span>.</div>
+    <div class="value-prop-line">Bulletproofing industrial hardware <span class="highlight">architectures</span>.</div>
+    <div class="value-prop-line">Deploying edge AI into robust electromechanical <span class="highlight">systems</span>.</div>
 </section>
 
 <!-- CTA SECTION -->
