@@ -9,20 +9,20 @@
     <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Nvisco",
-      "url": "https://nvisco.com/",
-      "logo": "https://nvisco.com/nvisco-logo.png"
-    }
-    </script>
-
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nvisco",
+  "url": "https://nvisco.com/",
+  "logo": "https://nvisco.com/nvisco-logo.png"
+}
+</script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -35,8 +35,9 @@
             --grey: #6e6e6c;
             --grey-soft: #9a9a96;
             --grey-on-dark: #9c9c9a;
-            --copper: #b2632f;
-            --copper-deep: #8f4e24;
+            /* Converted all orange accents to pure white */
+            --copper: #ffffff;
+            --copper-deep: #e0e0e0;
             --radius-sm: 4px;
             --radius-md: 6px;
             --maxw: 1320px;
@@ -53,6 +54,17 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Applying the elegant Serif font to specific headings */
+        .hero-left h1, 
+        .journey-header h2, .journey-step h3, 
+        .portfolio-header h2, .case-study h3, 
+        .capabilities-minimal h2, .cap-min-item h3,
+        .project-carousel-section h2,
+        .cta-content h2,
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
         }
 
         a { color: inherit; text-decoration: none; }
@@ -76,7 +88,7 @@
             }
         }
 
-        /* registration-mark frame, borrowed from PCB fiducial marks */
+        /* registration-mark frame */
         .frame { position: relative; }
         .frame::before,
         .frame::after {
@@ -147,11 +159,16 @@
             border-radius: var(--radius-sm);
             background: var(--paper-white);
             color: var(--ink);
-            border: 1px solid transparent;
+            border: 1px solid var(--paper-white);
             cursor: pointer;
             transition: background 0.25s ease, color 0.25s ease;
         }
-        .nav-btn-preorder:hover { background: var(--copper); color: #fff; }
+        
+        /* Updated Hover to invert cleanly to white outline */
+        .nav-btn-preorder:hover { 
+            background: transparent; 
+            color: var(--paper-white); 
+        }
 
         /* =========================================================
            HERO
@@ -240,7 +257,7 @@
             color: #f2f2f0;
         }
 
-        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; }
+        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; font-family: 'Space Grotesk', sans-serif;}
 
         .live-indicator { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--grey-on-dark); }
         .live-dot { width: 7px; height: 7px; background: #4caf6a; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
@@ -307,7 +324,7 @@
             background: #fff; color: var(--ink); border: none; border-radius: var(--radius-sm);
             padding: 0 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: background 0.25s ease;
         }
-        .chat-btn-submit:hover { background: var(--copper); color: #fff; }
+        .chat-btn-submit:hover { background: var(--copper); color: var(--ink); }
 
         .google-login-btn {
             background: #fff; border: 1px solid #fff; color: var(--ink); border-radius: var(--radius-sm);
@@ -341,8 +358,8 @@
         .journey-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 44px; }
 
         .journey-step { display: flex; flex-direction: column; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); }
-        .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--copper); font-weight: 500; }
-        .journey-step h3 { font-size: 19px; line-height: 1.3; font-weight: 600; }
+        .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink); font-weight: 500; opacity: 0.7;}
+        .journey-step h3 { font-size: 22px; line-height: 1.3; font-weight: 600; }
         .journey-step p { font-size: 14px; color: var(--grey); line-height: 1.65; }
 
         /* =========================================================
@@ -374,8 +391,7 @@
         .case-study:hover .aesthetic-image { filter: grayscale(10%) contrast(110%) brightness(100%); transform: scale(1.03); }
 
         .case-study-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-        .case-study h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-        .case-fig { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--grey-soft); white-space: nowrap; }
+        .case-study h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
         .case-study p { color: var(--grey); font-size: 14px; line-height: 1.65; max-width: 46ch; }
 
         /* =========================================================
@@ -398,8 +414,18 @@
         .cap-min-item { padding: 38px 40px; border-bottom: 1px solid var(--ink-border); border-right: 1px solid var(--ink-border); transition: border-color 0.3s ease; }
         .cap-min-item:nth-child(even) { border-right: none; }
 
-        .cap-min-item h3 { font-size: 21px; font-weight: 600; margin-bottom: 12px; color: #fff; letter-spacing: -0.01em; transition: color 0.25s ease; }
-        .cap-min-item:hover h3 { color: var(--copper); }
+        .cap-min-item h3 { 
+            font-size: 23px; 
+            font-weight: 600; 
+            margin-bottom: 12px; 
+            color: var(--grey-on-dark); 
+            letter-spacing: -0.01em; 
+            transition: color 0.25s ease; 
+        }
+        
+        /* Updated Hover to transition smoothly to pure white */
+        .cap-min-item:hover h3 { color: #ffffff; }
+        
         .cap-min-item p { font-size: 14.5px; color: var(--grey-on-dark); line-height: 1.65; max-width: 40ch; }
 
         /* =========================================================
@@ -428,7 +454,7 @@
             width: 46px; height: 46px; border-radius: 50%; cursor: pointer; z-index: 10;
             display: flex; align-items: center; justify-content: center; transition: all 0.25s ease;
         }
-        .carousel-up:hover, .carousel-down:hover { background: var(--copper); border-color: var(--copper); }
+        .carousel-up:hover, .carousel-down:hover { background: var(--copper); border-color: var(--copper); color: var(--ink); }
         .carousel-up { position: absolute; top: -6px; }
         .carousel-down { position: absolute; bottom: -6px; }
 
@@ -468,7 +494,7 @@
             background: var(--ink); color: #fff; border: 1px solid var(--ink); padding: 14px 30px;
             font-size: 14px; font-weight: 500; border-radius: var(--radius-sm); transition: background 0.25s ease, border-color 0.25s ease; cursor: pointer;
         }
-        .cta-primary-w:hover { background: var(--copper); border-color: var(--copper); }
+        .cta-primary-w:hover { background: var(--copper); border-color: var(--copper); color: var(--ink); }
 
         .cta-visual { width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px; }
         .cta-video { width: 100%; height: auto; border-radius: var(--radius-md); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
@@ -482,7 +508,7 @@
 
         .footer-col h4 { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--grey-soft); margin-bottom: 18px; }
         .footer-col p, .footer-col a { font-size: 13.5px; color: var(--grey); line-height: 1.85; display: block; transition: color 0.25s ease; }
-        .footer-col a:hover { color: var(--copper); }
+        .footer-col a:hover { color: var(--ink); }
         .footer-col strong { color: var(--ink); font-size: 15px; font-weight: 600; }
 
         .footer-bottom { padding-top: 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--grey-soft); flex-wrap: wrap; gap: 10px; }
@@ -511,7 +537,7 @@
         .about-img { width: 200px; height: 200px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0; }
         .about-text { color: #fff; }
         .about-text h2 { font-size: 28px; font-weight: 600; margin-bottom: 14px; letter-spacing: -0.01em; }
-        .about-desc-desktop { font-size: 14.5px; line-height: 1.65; color: var(--grey-on-dark); margin-bottom: 24px; max-width: 42ch; }
+        .about-desc-desktop { font-size: 14.5px; line-height: 1.65; color: var(--grey-on-dark); margin-bottom: 24px; max-width: 42ch; font-family: 'Space Grotesk', sans-serif;}
         .about-desc-mobile { display: none; }
 
         .about-socials { display: flex; gap: 20px; align-items: center; }
@@ -543,13 +569,10 @@
 
             .portfolio-header { margin-bottom: 36px; }
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
-            .case-study h3 { font-size: 17px; }
+            .case-study h3 { font-size: 20px; margin-top: 8px;}
 
-            .capabilities-minimal { padding: 76px 6vw; }
-            .capabilities-minimal h2 { margin-bottom: 40px; }
-            .cap-min-grid { grid-template-columns: 1fr; }
-            .cap-min-item { border-right: none; padding: 28px 0; }
-            .cap-min-item h3 { font-size: 20px; }
+            /* Completely hide capabilities on mobile */
+            .capabilities-minimal { display: none !important; }
 
             .project-carousel-section { padding: 76px 6vw; }
             .project-carousel-section h2 { margin-bottom: 40px; }
@@ -569,7 +592,7 @@
             .about-modal { flex-direction: column; text-align: center; padding: 40px 24px 30px; gap: 20px; }
             .about-img { width: 130px; height: 130px; }
             .about-desc-desktop { display: none; }
-            .about-desc-mobile { display: block; font-size: 13.5px; line-height: 1.6; color: var(--grey-on-dark); margin-bottom: 22px; max-width: none; }
+            .about-desc-mobile { display: block; font-size: 13.5px; line-height: 1.6; color: var(--grey-on-dark); margin-bottom: 22px; max-width: none; font-family: 'Space Grotesk', sans-serif;}
             .about-socials { justify-content: center; }
             .close-btn { top: 12px; right: 16px; }
         }
@@ -681,7 +704,7 @@
             <div class="img-frame frame"><div class="img-container">
                 <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
             </div></div>
-            <div class="case-study-meta"><h3>High-density PCB design</h3><span class="case-fig mono">Fig. 01</span></div>
+            <div class="case-study-meta"><h3>High-density PCB design</h3></div>
             <p>Routing scales up to 22 layers, engineered for signal integrity and a minimal EMI footprint in complex industrial applications.</p>
         </div>
 
@@ -689,7 +712,7 @@
             <div class="img-frame frame"><div class="img-container">
                 <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
             </div></div>
-            <div class="case-study-meta"><h3>Industry machinery excellence</h3><span class="case-fig mono">Fig. 02</span></div>
+            <div class="case-study-meta"><h3>Industry machinery excellence</h3></div>
             <p>Automated machinery systems built for continuous precision, running reliably in demanding manufacturing environments.</p>
         </div>
     </div>
@@ -699,7 +722,7 @@
             <div class="img-frame frame"><div class="img-container">
                 <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
             </div></div>
-            <div class="case-study-meta"><h3>Advanced CAD design</h3><span class="case-fig mono">Fig. 03</span></div>
+            <div class="case-study-meta"><h3>Advanced CAD design</h3></div>
             <p>Robotic welding assemblies modeled in parametric 3D CAD, with zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
@@ -707,7 +730,7 @@
             <div class="img-frame frame"><div class="img-container">
                 <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
             </div></div>
-            <div class="case-study-meta"><h3>Architectural & system blueprinting</h3><span class="case-fig mono">Fig. 04</span></div>
+            <div class="case-study-meta"><h3>Architectural & system blueprinting</h3></div>
             <p>Structural and layout schematics mapping complex spatial geometry and infrastructure before any physical prototyping begins.</p>
         </div>
     </div>
