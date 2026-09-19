@@ -9,17 +9,17 @@
     <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
-    
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Nvisco",
-  "url": "https://nvisco.com/",
-  "logo": "https://nvisco.com/nvisco-logo.png"
-}
-</script>
-    
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nvisco",
+      "url": "https://nvisco.com/",
+      "logo": "https://nvisco.com/nvisco-logo.png"
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -35,7 +35,6 @@
             --grey: #6e6e6c;
             --grey-soft: #9a9a96;
             --grey-on-dark: #9c9c9a;
-            /* Converted all orange accents to pure white */
             --copper: #ffffff;
             --copper-deep: #e0e0e0;
             --radius-sm: 4px;
@@ -56,7 +55,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Applying the elegant Serif font to specific headings */
         .hero-left h1, 
         .journey-header h2, .journey-step h3, 
         .portfolio-header h2, .case-study h3, 
@@ -88,7 +86,6 @@
             }
         }
 
-        /* registration-mark frame */
         .frame { position: relative; }
         .frame::before,
         .frame::after {
@@ -139,8 +136,32 @@
         }
 
         .nav-left { display: flex; align-items: center; }
-        .logo { height: 22px; display: flex; align-items: center; }
-        .logo img { height: 100%; width: auto; object-fit: contain; transform: scale(2.3); transform-origin: left center; filter: invert(1); }
+        
+        /* Enlarged Logo Container */
+        .logo { height: 28px; display: flex; align-items: center; }
+        .logo img { 
+            height: 100%; 
+            width: auto; 
+            object-fit: contain; 
+            transform: scale(2.6); 
+            transform-origin: left center; 
+            filter: invert(1); 
+            transition: filter 0.4s ease; 
+        }
+
+        /* Desktop specific hover for logo */
+        @media (min-width: 769px) {
+            .logo img:hover {
+                /* Vivid Blue filter */
+                filter: invert(36%) sepia(90%) saturate(2853%) hue-rotate(192deg) brightness(97%) contrast(105%);
+            }
+        }
+
+        /* Mobile specific continuous loop animation for logo */
+        @keyframes mobileLogoPulse {
+            0%, 100% { filter: invert(1); } /* Pure White */
+            50% { filter: invert(12%) sepia(74%) saturate(4641%) hue-rotate(218deg) brightness(93%) contrast(110%); } /* Dark Blue */
+        }
 
         .nav-right { display: flex; align-items: center; gap: 22px; }
 
@@ -163,12 +184,7 @@
             cursor: pointer;
             transition: background 0.25s ease, color 0.25s ease;
         }
-        
-        /* Updated Hover to invert cleanly to white outline */
-        .nav-btn-preorder:hover { 
-            background: transparent; 
-            color: var(--paper-white); 
-        }
+        .nav-btn-preorder:hover { background: transparent; color: var(--paper-white); }
 
         /* =========================================================
            HERO
@@ -191,13 +207,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-mark {
-            width: 132px;
-            margin: 0 0 32px 8px;
-        }
-
-        .hero-mark video { width: 100%; height: auto; display: block; mix-blend-mode: screen; }
-
         .hero-left h1 {
             font-size: clamp(40px, 5.6vw, 72px);
             line-height: 1.08;
@@ -205,6 +214,26 @@
             font-weight: 600;
             margin-bottom: 24px;
             max-width: 15ch;
+        }
+
+        /* SHINING TEXT EFFECT FOR DARK BACKGROUNDS */
+        .hero-shine {
+            background: linear-gradient(
+                120deg, 
+                #fff 0%, 
+                #fff 40%, 
+                #555 50%, 
+                #fff 60%, 
+                #fff 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3.5s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
         .hero-description {
@@ -257,16 +286,10 @@
             color: #f2f2f0;
         }
 
-        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; font-family: 'Space Grotesk', sans-serif;}
+        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; }
 
         .live-indicator { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--grey-on-dark); }
         .live-dot { width: 7px; height: 7px; background: #4caf6a; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1.15); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.7; }
-        }
 
         .chat-messages {
             flex: 1;
@@ -289,7 +312,6 @@
             align-self: flex-start;
             animation: messageFadeIn 0.25s ease forwards;
         }
-        @keyframes messageFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .message.nvisco { border-left: 2px solid var(--copper); align-self: flex-end; }
 
@@ -422,10 +444,7 @@
             letter-spacing: -0.01em; 
             transition: color 0.25s ease; 
         }
-        
-        /* Updated Hover to transition smoothly to pure white */
         .cap-min-item:hover h3 { color: #ffffff; }
-        
         .cap-min-item p { font-size: 14.5px; color: var(--grey-on-dark); line-height: 1.65; max-width: 40ch; }
 
         /* =========================================================
@@ -554,7 +573,13 @@
             nav.nav-scrolled { width: 92%; top: 12px; padding: 0 8px 0 18px; border-radius: 40px; }
 
             .hero { grid-template-columns: 1fr; gap: 40px; padding: 36px 6vw 70px; }
-            .hero-mark { width: 96px; margin-bottom: 20px; }
+            
+            /* Logo sizing and mobile color loop */
+            .logo { height: 26px; }
+            .logo img {
+                animation: mobileLogoPulse 4s ease-in-out infinite;
+            }
+
             .hero-left h1 { font-size: 38px; margin-bottom: 18px; max-width: none; }
             .hero-description { font-size: 15.5px; margin-bottom: 30px; }
 
@@ -615,11 +640,7 @@
 
     <section class="hero">
         <div class="hero-left">
-            <div class="hero-mark frame">
-                <video src="Recording 2026-02-08 023307.mp4" autoplay loop muted playsinline></video>
-            </div>
-
-            <h1>Precision hardware, engineered without compromise.</h1>
+            <h1 class="hero-shine">Precision hardware, engineered without compromise.</h1>
             <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers, so every engagement opens with a complimentary consultation — followed by 22-layer PCB design and embedded firmware built to run in the field.</p>
 
             <p class="tech-logos-label mono">Tooling</p>
