@@ -20,7 +20,6 @@
 }
 </script>
     
-    <!-- Importing Courier Prime font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -376,55 +375,6 @@
 
         .google-login-btn:hover { background: #f0f0f0; }
 
-        /* ============= THIN ANIMATED CAPABILITY TICKER ============= */
-        .ticker-wrap {
-            width: 100%;
-            height: 60px;
-            background: #000;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            transform: translateZ(0); 
-        }
-
-        .ticker {
-            display: flex;
-            width: max-content;
-            animation: tickerScroll 40s linear infinite;
-            will-change: transform; 
-        }
-
-        .ticker:hover {
-            animation-play-state: paused; 
-        }
-
-        .ticker-group {
-            display: flex;
-            align-items: center;
-        }
-
-        .ticker-item {
-            font-family: 'Courier Prime', Courier, monospace;
-            font-size: 13px;
-            font-weight: 600;
-            color: #fff;
-            letter-spacing: 1.5px;
-            padding: 0 30px;
-            white-space: nowrap;
-        }
-
-        .ticker-separator {
-            color: #444;
-            font-size: 14px;
-        }
-
-        @keyframes tickerScroll {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); } 
-        }
-
         /* ============= THE JOURNEY ============= */
         .journey-section {
             padding: 120px 5vw;
@@ -458,8 +408,13 @@
         .journey-step p { font-size: 14px; color: #666; line-height: 1.6; }
 
         /* ============= PORTFOLIO / CASE STUDIES ============= */
-        .portfolio { padding: 120px 5vw; max-width: 1400px; margin: 0 auto; background: #fff;}
-        .portfolio h2 { font-size: clamp(36px, 6vw, 64px); letter-spacing: -1px; margin-bottom: 60px; font-weight: 700; }
+        .portfolio { 
+            padding: 120px 5vw; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            background: #fff;
+        }
+        
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
         
         .case-study { display: flex; flex-direction: column; gap: 15px; }
@@ -491,13 +446,54 @@
         .case-study h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;}
         .case-study p { color: #666; font-size: 14px; line-height: 1.6; margin: 0;}
 
+        /* ============= ANIMATED PORTFOLIO HEADER ============= */
+        .portfolio-header-container {
+            position: relative;
+            height: 100px; 
+            margin-bottom: 60px;
+            overflow: hidden; 
+        }
+
+        .portfolio-animated-title {
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+            font-style: italic;
+            font-size: clamp(28px, 4vw, 52px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            animation: textCarouselFast 15s infinite cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
+            transform: translate3d(60px, 0, 0); 
+        }
+
+        .portfolio-animated-title .highlight {
+            color: #0071e3;
+        }
+
+        /* 5 Lines * 3 Seconds Each */
+        .portfolio-animated-title:nth-child(1) { animation-delay: 0s; }
+        .portfolio-animated-title:nth-child(2) { animation-delay: 3s; }
+        .portfolio-animated-title:nth-child(3) { animation-delay: 6s; }
+        .portfolio-animated-title:nth-child(4) { animation-delay: 9s; }
+        .portfolio-animated-title:nth-child(5) { animation-delay: 12s; }
+
+        @keyframes textCarouselFast {
+            0% { opacity: 0; transform: translate3d(60px, 0, 0); }
+            3% { opacity: 1; transform: translate3d(0, 0, 0); }    
+            17% { opacity: 1; transform: translate3d(0, 0, 0); }   
+            20% { opacity: 0; transform: translate3d(-60px, 0, 0); } 
+            100% { opacity: 0; transform: translate3d(-60px, 0, 0); } 
+        }
+
+
         /* ============= CAPABILITIES ============= */
         .capabilities {
             font-family: 'Courier Prime', Courier, monospace; 
             padding: 120px 5vw;
             background: #000;
             color: #fff;
-            border-bottom: 1px solid #333;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
@@ -522,7 +518,8 @@
         .capability-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #fff; }
         .capability-item p { font-size: 13px; color: #888; line-height: 1.6; }
 
-        /* ============= NEW: FAST, PUNCHY PROBLEM SOLVING CAROUSEL ============= */
+
+        /* ============= FAST, PUNCHY PROBLEM SOLVING CAROUSEL ============= */
         .value-props-section {
             padding: 0 5vw;
             background: #fff;
@@ -537,7 +534,6 @@
         }
 
         .value-prop-line {
-            /* Clean Bold Italic Serif */
             font-family: Georgia, 'Times New Roman', Times, serif; 
             font-style: italic;
             font-size: clamp(26px, 4vw, 56px);
@@ -547,19 +543,13 @@
             width: 90%;
             max-width: 1100px;
             opacity: 0;
-            
-            /* 10 Items * 3 seconds each = 30 seconds infinite loop */
-            animation: textCarouselFast 30s infinite cubic-bezier(0.25, 1, 0.5, 1);
+            animation: textCarouselFast10 30s infinite cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform, opacity;
             transform: translate3d(60px, 0, 0); 
         }
 
-        /* Highlighting the specific result word in blue */
-        .value-prop-line .highlight {
-            color: #0071e3;
-        }
+        .value-prop-line .highlight { color: #0071e3; }
 
-        /* Staggered animation delays for exactly 10 lines (3 seconds apart) */
         .value-prop-line:nth-child(1) { animation-delay: 0s; }
         .value-prop-line:nth-child(2) { animation-delay: 3s; }
         .value-prop-line:nth-child(3) { animation-delay: 6s; }
@@ -571,12 +561,11 @@
         .value-prop-line:nth-child(9) { animation-delay: 24s; }
         .value-prop-line:nth-child(10) { animation-delay: 27s; }
 
-        /* Fast entry, steady hold, fast exit based on a 30s timeline */
-        @keyframes textCarouselFast {
+        @keyframes textCarouselFast10 {
             0% { opacity: 0; transform: translate3d(60px, 0, 0); }
-            1.5% { opacity: 1; transform: translate3d(0, 0, 0); }    /* Very fast fly in (0.45s) */
-            8.5% { opacity: 1; transform: translate3d(0, 0, 0); }   /* Hold perfectly still to read */
-            10% { opacity: 0; transform: translate3d(-60px, 0, 0); } /* Fast fly out */
+            1.5% { opacity: 1; transform: translate3d(0, 0, 0); }    
+            8.5% { opacity: 1; transform: translate3d(0, 0, 0); }   
+            10% { opacity: 0; transform: translate3d(-60px, 0, 0); } 
             100% { opacity: 0; transform: translate3d(-60px, 0, 0); } 
         }
 
@@ -800,12 +789,10 @@
                 padding: 70px 6vw; 
             }
 
-            /* Adjust carousel section height on mobile */
             .value-props-section { height: 180px; padding: 0 6vw; }
             .value-prop-line { font-size: 22px; line-height: 1.3; }
 
             .journey-header h2, 
-            .portfolio h2, 
             .capabilities h2, 
             .cta-content h2 { 
                 font-size: 32px; 
@@ -817,16 +804,15 @@
 
             .chat-container { height: 400px; }
 
-            .ticker-wrap { height: 45px; }
-            .ticker-item { font-size: 11px; padding: 0 20px; }
-
             footer { padding: 50px 6vw 30px; }
             .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
 
             /* Portfolio Edge-to-Edge */
             .portfolio { padding-left: 0 !important; padding-right: 0 !important; padding-bottom: 40px !important; }
-            .portfolio h2 { padding: 0 6vw; margin-bottom: 30px; }
+            .portfolio-header-container { margin-bottom: 40px; height: 60px; padding: 0 6vw; }
+            .portfolio-animated-title { font-size: 24px; line-height: 1.3; }
+
             .grid-2 { grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
             .case-study { border-radius: 0; border-left: none; border-right: none; }
             
@@ -864,7 +850,6 @@
 <body>
 
 <div class="header-wrapper">
-    <!-- MINIMALIST NAVBAR (DYNAMIC FLOATING PILL) -->
     <nav id="mainNav">
         <div class="nav-left">
             <a href="#" class="logo">
@@ -878,7 +863,6 @@
         </div>
     </nav>
 
-    <!-- DARK "PRO" HERO WITH EMBEDDED COMMUNITY CHAT -->
     <section class="hero">
         <div class="hero-left">
             <video src="Recording 2026-02-08 023307.mp4" autoplay loop muted playsinline class="hero-robot-video"></video>
@@ -898,7 +882,6 @@
             </div>
         </div>
 
-        <!-- Right Side Dark Mode Live Community Chat -->
         <div class="chat-container">
             <div class="chat-header">
                 <h3>Nvisco Community Feed</h3>
@@ -908,8 +891,7 @@
             </div>
 
             <div class="chat-messages" id="chatMessages">
-                <!-- Messages will load here dynamically -->
-            </div>
+                </div>
 
             <div class="chat-input-area">
                 <button id="googleLoginBtn" class="google-login-btn">
@@ -931,65 +913,6 @@
     </section>
 </div>
 
-<!-- SLEEK CAPABILITY TICKER BANNER -->
-<div class="ticker-wrap">
-    <div class="ticker">
-        <!-- Group 1 -->
-        <div class="ticker-group">
-            <span class="ticker-item">INTELLIGENT SYSTEMS</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">22-LAYER PCB DESIGN</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ROS 2 INTEGRATION</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ADVANCED CAD MODELING</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">EMBEDDED FIRMWARE</span>
-            <span class="ticker-separator">✦</span>
-        </div>
-        <!-- Group 2 -->
-        <div class="ticker-group">
-            <span class="ticker-item">INTELLIGENT SYSTEMS</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">22-LAYER PCB DESIGN</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ROS 2 INTEGRATION</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ADVANCED CAD MODELING</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">EMBEDDED FIRMWARE</span>
-            <span class="ticker-separator">✦</span>
-        </div>
-        <!-- Group 3 -->
-        <div class="ticker-group">
-            <span class="ticker-item">INTELLIGENT SYSTEMS</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">22-LAYER PCB DESIGN</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ROS 2 INTEGRATION</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ADVANCED CAD MODELING</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">EMBEDDED FIRMWARE</span>
-            <span class="ticker-separator">✦</span>
-        </div>
-        <!-- Group 4 -->
-        <div class="ticker-group">
-            <span class="ticker-item">INTELLIGENT SYSTEMS</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">22-LAYER PCB DESIGN</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ROS 2 INTEGRATION</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">ADVANCED CAD MODELING</span>
-            <span class="ticker-separator">✦</span>
-            <span class="ticker-item">EMBEDDED FIRMWARE</span>
-            <span class="ticker-separator">✦</span>
-        </div>
-    </div>
-</div>
-
-<!-- JOURNEY -->
 <section class="journey-section" id="journey">
     <div class="journey-header">
         <h2>The complete design journey</h2>
@@ -1023,9 +946,15 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING (CLASSIC LAYOUT) -->
 <section class="portfolio" id="work">
-    <h2>Featured Engineering</h2>
+    
+    <div class="portfolio-header-container">
+        <div class="portfolio-animated-title">Executing flawless high-density PCB <span class="highlight">routing</span>.</div>
+        <div class="portfolio-animated-title">Deploying relentless industrial <span class="highlight">automation</span>.</div>
+        <div class="portfolio-animated-title">Validating zero-clearance mechanical <span class="highlight">CAD</span>.</div>
+        <div class="portfolio-animated-title">Bridging intelligence with physical <span class="highlight">robotics</span>.</div>
+        <div class="portfolio-animated-title">Mapping complex system <span class="highlight">architectures</span>.</div>
+    </div>
     
     <div class="grid-2">
         <div class="case-study">
@@ -1064,7 +993,6 @@
     </div>
 </section>
 
-<!-- CAPABILITIES -->
 <section class="capabilities">
     <h2>Complex Industrial Capabilities</h2>
     
@@ -1101,7 +1029,6 @@
     </div>
 </section>
 
-<!-- NEW: FAST, PUNCHY PROBLEM SOLVING CAROUSEL (10 LINES) -->
 <section class="value-props-section" id="valueProps">
     <div class="value-prop-line">Ending production delays with autonomous <span class="highlight">robotics</span>.</div>
     <div class="value-prop-line">Solving complex high-density PCB <span class="highlight">routing</span>.</div>
@@ -1115,7 +1042,6 @@
     <div class="value-prop-line">Deploying edge AI into robust electromechanical <span class="highlight">systems</span>.</div>
 </section>
 
-<!-- CTA SECTION -->
 <section class="cta-section" id="cta">
     <div class="cta-content">
         <h2>Ready to build something real?</h2>
@@ -1126,7 +1052,6 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-content">
         <div class="footer-col">
@@ -1152,9 +1077,6 @@
     </div>
 </footer>
 
-<!-- ==========================================
-     GLASSMORPHISM "ABOUT" OVERLAY
-     ========================================== -->
 <div id="aboutOverlay" class="about-overlay">
     <div class="about-modal">
         <button id="closeAboutBtn" class="close-btn">&times;</button>
