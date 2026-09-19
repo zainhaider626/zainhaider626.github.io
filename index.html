@@ -487,74 +487,180 @@
         .case-study h3 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;}
         .case-study p { color: #666; font-size: 14px; line-height: 1.6; margin: 0;}
 
-        /* ============= COMPLEX INDUSTRIAL CAPABILITIES (ALTERNATING LAYOUT) ============= */
-        .capabilities {
+        /* ============= CAPABILITIES (MINIMALIST) ============= */
+        .capabilities-minimal {
             padding: 120px 5vw;
             background: #000;
             color: #fff;
-            max-width: 1400px;
-            margin: 0 auto;
             width: 100%;
         }
 
-        .capabilities h2 {
+        .cap-min-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .capabilities-minimal h2 {
             font-size: clamp(36px, 6vw, 64px);
             line-height: 1.2;
             letter-spacing: -1px;
             font-weight: 700;
-            margin-bottom: 80px;
-            max-width: 800px;
+            margin-bottom: 60px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 24px;
         }
 
-        .cap-row {
+        .cap-min-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .cap-min-item {
+            padding: 40px;
+            border-bottom: 1px solid #333;
+            border-right: 1px solid #333;
+            transition: background 0.3s ease;
+        }
+
+        .cap-min-item:nth-child(even) {
+            border-right: none;
+        }
+
+        .cap-min-item:hover {
+            background: #0a0a0c;
+        }
+
+        .cap-min-item h3 { 
+            font-size: 24px; 
+            font-weight: 700; 
+            margin-bottom: 12px; 
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        
+        .cap-min-item p { 
+            font-size: 15px; 
+            color: #a1a1a6; 
+            line-height: 1.6; 
+        }
+
+        /* ============= VERTICAL PROJECT CAROUSEL (3D EFFECT) ============= */
+        .project-carousel-section {
+            padding: 100px 5vw;
+            background: #0b0b0c; /* Deep premium dark tone */
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+            border-top: 1px solid #1a1a1c;
+        }
+
+        .project-carousel-section h2 {
+            font-size: clamp(36px, 6vw, 64px);
+            letter-spacing: -1px;
+            font-weight: 700;
+            margin-bottom: 60px;
+        }
+
+        .carousel-container {
+            position: relative;
+            height: 600px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
-            gap: 60px;
-            margin-bottom: 100px;
+            justify-content: center;
+            perspective: 1200px;
+            transform-style: preserve-3d;
         }
 
-        .cap-row:last-child {
-            margin-bottom: 0;
+        .carousel-img {
+            position: absolute;
+            width: 85%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            pointer-events: none;
+            will-change: transform, opacity, filter;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .cap-text-col {
-            flex: 1;
+        .carousel-img.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) translateZ(0);
+            filter: blur(0px) grayscale(0%);
+            z-index: 3;
+            pointer-events: auto;
         }
 
-        .cap-text-col h3 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+        .carousel-img.prev {
+            opacity: 0.4;
+            transform: translateY(-160px) scale(0.85) translateZ(-100px);
+            filter: blur(12px) grayscale(100%);
+            z-index: 2;
         }
 
-        .cap-text-col p {
-            font-size: 16px;
-            color: #a1a1a6;
-            line-height: 1.6;
+        .carousel-img.next {
+            opacity: 0.4;
+            transform: translateY(160px) scale(0.85) translateZ(-100px);
+            filter: blur(12px) grayscale(100%);
+            z-index: 2;
         }
 
-        .cap-img-col {
-            flex: 1;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transform: translateZ(0); /* Hardware accelerate container */
+        .carousel-img.hidden-up {
+            opacity: 0;
+            transform: translateY(-300px) scale(0.7) translateZ(-200px);
+            z-index: 1;
         }
 
-        .cap-img-col img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: grayscale(100%) contrast(110%);
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
-            will-change: transform, filter;
+        .carousel-img.hidden-down {
+            opacity: 0;
+            transform: translateY(300px) scale(0.7) translateZ(-200px);
+            z-index: 1;
         }
 
-        .cap-row:hover .cap-img-col img {
-            filter: grayscale(0%) contrast(100%);
-            transform: scale(1.03) translateZ(0);
+        /* Nav Arrows for Carousel */
+        .carousel-up, .carousel-down {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
+
+        .carousel-up:hover, .carousel-down:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .carousel-up { position: absolute; top: -10px; }
+        .carousel-down { position: absolute; bottom: -10px; }
+
 
         /* ============= FAST, PUNCHY PROBLEM SOLVING CAROUSEL ============= */
         .value-props-section {
@@ -829,7 +935,7 @@
            ======================================================= */
         @media(max-width: 768px) {
             /* Make almost all headings bold for mobile minimalist touch */
-            h1, h2, h3, .portfolio h2, .capabilities h2, .journey-header h2, .cta-content h2 {
+            h1, h2, h3, .portfolio h2, .capabilities-minimal h2, .journey-header h2, .cta-content h2, .project-carousel-section h2 {
                 font-weight: 800 !important;
             }
 
@@ -853,20 +959,12 @@
             .hero-left h1 { font-size: 42px; margin-bottom: 16px; }
             .hero-description { font-size: 16px; margin-bottom: 30px; }
 
-            /* Fixed: Bold, readable Tech Logos on Mobile */
-            .tech-logos { 
-                gap: 20px; 
-                justify-content: flex-start;
-            }
-            .tech-logos img { 
-                height: 24px; 
-                opacity: 0.8; 
-            } 
+            .tech-logos { gap: 20px; justify-content: flex-start; }
+            .tech-logos img { height: 24px; opacity: 0.8; } 
             .kicad-logo { height: 32px !important; } 
             .siemens-logo { height: 32px !important; }
 
             .journey-section, 
-            .capabilities, 
             .cta-section { 
                 padding: 70px 6vw; 
             }
@@ -890,78 +988,44 @@
             .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
 
-            /* Portfolio Mobile with Rounded Corners */
+            /* Portfolio Mobile Formatting */
             .portfolio { padding-left: 6vw !important; padding-right: 6vw !important; padding-bottom: 40px !important; }
-            .shine-text { margin-bottom: 30px; }
+            .shine-text { margin-bottom: 30px; font-size: 32px; }
             .grid-2 { grid-template-columns: 1fr; gap: 25px; margin-bottom: 25px; }
             .case-study { border-radius: 20px; border: none; }
-            
-            /* Hide descriptions */
             .case-study h3, .case-study p { display: none; }
-            
-            /* Ensure images retain their curves and shadows on mobile */
             .img-container { 
                 border-radius: 20px; 
                 border: 1px solid rgba(0,0,0,0.05);
                 box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             }
-
             .aesthetic-image { filter: none !important; }
             .aesthetic-image:active { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
 
-            /* Complex Industrial Capabilities Mobile Layout */
-            .cap-row {
-                flex-direction: column;
-                gap: 30px;
-                margin-bottom: 60px;
-            }
-            .cap-img-col {
-                order: 1; /* Always stack image on top on mobile */
-                border-radius: 16px;
-            }
-            .cap-text-col {
-                order: 2; /* Text below image */
-            }
-            .cap-text-col h3 {
-                font-size: 28px;
-                margin-bottom: 15px;
-            }
-            .cap-text-col p { font-size: 15px; }
+            /* Minimalist Capabilities Mobile Formatting */
+            .capabilities-minimal { padding: 70px 6vw; }
+            .cap-min-grid { grid-template-columns: 1fr; }
+            .cap-min-item { border-right: none; padding: 30px 0; }
+            .cap-min-item h3 { font-size: 22px; }
+
+            /* Vertical Carousel Mobile Formatting */
+            .project-carousel-section { padding: 70px 6vw; }
+            .carousel-container { height: 450px; }
+            .carousel-img.prev { transform: translateY(-120px) scale(0.85) translateZ(-100px); }
+            .carousel-img.next { transform: translateY(120px) scale(0.85) translateZ(-100px); }
+            .carousel-up { top: -20px; }
+            .carousel-down { bottom: -20px; }
 
             /* CTA Split Section on Mobile */
             .cta-split { grid-template-columns: 1fr; gap: 40px; }
-            
-            .cta-visual { 
-                width: 100%; 
-                max-width: 450px; 
-                margin: 0 auto; 
-                background: transparent;
-            }
-
-            .cta-video {
-                border-radius: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Clean mobile floating shadow */
-            }
+            .cta-visual { width: 100%; max-width: 450px; margin: 0 auto; background: transparent; }
+            .cta-video { border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 
             /* About Modal Mobile Tweaks */
-            .about-modal {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 24px 30px;
-                gap: 20px;
-            }
-            .about-img {
-                width: 140px;
-                height: 140px;
-            }
+            .about-modal { flex-direction: column; text-align: center; padding: 40px 24px 30px; gap: 20px; }
+            .about-img { width: 140px; height: 140px; }
             .about-desc-desktop { display: none; } 
-            .about-desc-mobile { 
-                display: block; 
-                font-size: 14px; 
-                line-height: 1.5; 
-                color: #a1a1a6; 
-                margin-bottom: 24px; 
-            }
+            .about-desc-mobile { display: block; font-size: 14px; line-height: 1.5; color: #a1a1a6; margin-bottom: 24px; }
             .about-socials { justify-content: center; }
             .close-btn { top: 10px; right: 15px; }
         }
@@ -989,7 +1053,6 @@
         <div class="hero-left">
             <video src="Recording 2026-02-08 023307.mp4" autoplay loop muted playsinline class="hero-robot-video"></video>
             
-            <!-- Hero title with custom dark-mode shine -->
             <h1 class="hero-shine">Innovation driven by quality, not cost.</h1>
             <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers. That is why we offer complimentary engineering consultations alongside our world class 22 layer PCB and intelligent firmware designs.</p>
             
@@ -1072,7 +1135,7 @@
     </div>
 </section>
 
-<!-- FEATURED ENGINEERING (CLASSIC WITH SHINING TITLE) -->
+<!-- FEATURED ENGINEERING -->
 <section class="portfolio" id="work">
     
     <h2 class="shine-text">Featured Engineering</h2>
@@ -1114,43 +1177,82 @@
     </div>
 </section>
 
-<!-- COMPLEX INDUSTRIAL CAPABILITIES (ALTERNATING LAYOUT) -->
-<section class="capabilities">
-    <h2>Complex Industrial Capabilities</h2>
-    
-    <!-- Row 1: Text Left, Image Right -->
-    <div class="cap-row">
-        <div class="cap-text-col">
-            <h3>Precision in Every Detail</h3>
-            <p>Engineering high-density multi-layer PCBs and intelligent embedded systems tailored for compact, high-performance applications.</p>
-        </div>
-        <div class="cap-img-col">
-            <img src="watch-im.png" alt="Precision Electronics">
-        </div>
-    </div>
-
-    <!-- Row 2: Image Left, Text Right -->
-    <div class="cap-row">
-        <div class="cap-img-col">
-            <img src="time-mat.png" alt="Time Matters">
-        </div>
-        <div class="cap-text-col">
-            <h3>Time Matters</h3>
-            <p>Accelerating the journey from concept to production. We deploy intelligent logic and scalable manufacturing strategies to ensure your market success.</p>
-        </div>
-    </div>
-
-    <!-- Row 3: Text Left, Image Right -->
-    <div class="cap-row">
-        <div class="cap-text-col">
-            <h3>Unified System Architecture</h3>
-            <p>Seamlessly bridging firmware, electronics, and mechanical design into a single, cohesive robotic ecosystem ready for real-world deployment.</p>
-        </div>
-        <div class="cap-img-col">
-            <img src="tame.png" alt="System Architecture">
+<!-- CAPABILITIES (MINIMALIST TYPOGRAPHY GRID) -->
+<section class="capabilities-minimal">
+    <div class="cap-min-container">
+        <h2>Industrial Capabilities</h2>
+        <div class="cap-min-grid">
+            <div class="cap-min-item">
+                <h3>High-Density PCB Layout</h3>
+                <p>Advanced routing capabilities for up to 22 layer carrier boards, prioritizing signal integrity and compact footprint integration.</p>
+            </div>
+            <div class="cap-min-item">
+                <h3>Parametric 3D CAD</h3>
+                <p>Utilizing structural joint constraints, zero-clearance modeling, and non-linear load simulations for mechanical assemblies.</p>
+            </div>
+            <div class="cap-min-item">
+                <h3>Intelligent Firmware</h3>
+                <p>Developing centralized communication protocols, robust local logic mapping, and custom network routing algorithms.</p>
+            </div>
+            <div class="cap-min-item">
+                <h3>Physical AI Integration</h3>
+                <p>Bridging the gap between software processing and physical actions through sensor fusion and edge-compute architectures.</p>
+            </div>
+            <div class="cap-min-item">
+                <h3>Soft Robotics Prototyping</h3>
+                <p>Experimenting with unconventional materials and articulated physical models to discover new industrial actuation methods.</p>
+            </div>
+            <div class="cap-min-item">
+                <h3>Custom Hardware Builds</h3>
+                <p>End-to-end realization of bespoke hardware, ranging from localized networking infrastructure to portable robotic logic systems.</p>
+            </div>
         </div>
     </div>
+</section>
 
+<!-- NEW: 3D VERTICAL PROJECT CAROUSEL -->
+<section class="project-carousel-section" id="projects">
+    <h2>Engineering Archive</h2>
+    <div class="carousel-container">
+        
+        <button class="carousel-up" aria-label="Previous Project">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+        
+        <div class="carousel-track">
+            <img src="po1.png" class="carousel-img">
+            <img src="po2.webp" class="carousel-img">
+            <img src="po3.png" class="carousel-img">
+            <img src="po4.png" class="carousel-img">
+            <img src="po5.webp" class="carousel-img">
+            <img src="po6.webp" class="carousel-img">
+            <img src="po7.webp" class="carousel-img">
+            <img src="po8.png" class="carousel-img">
+            <img src="po9.webp" class="carousel-img">
+            <img src="po10.png" class="carousel-img">
+            <img src="po11.jpeg" class="carousel-img">
+            <img src="po12.png" class="carousel-img">
+            <img src="po13.png" class="carousel-img">
+            <img src="po14.jpg" class="carousel-img">
+            <img src="po15.jpeg" class="carousel-img">
+            <img src="po16.webp" class="carousel-img">
+            <img src="po17.png" class="carousel-img">
+            <img src="po18.png" class="carousel-img">
+            <img src="po19.png" class="carousel-img">
+            <img src="po20.jpg" class="carousel-img">
+            <img src="po21.png" class="carousel-img">
+            <img src="po22.png" class="carousel-img">
+            <img src="po23.jpeg" class="carousel-img">
+            <img src="po24.png" class="carousel-img">
+            <img src="po25.png" class="carousel-img">
+            <img src="po26.png" class="carousel-img">
+        </div>
+
+        <button class="carousel-down" aria-label="Next Project">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        
+    </div>
 </section>
 
 <!-- VALUE PROPS (CAROUSEL) -->
@@ -1178,7 +1280,6 @@
             </div>
         </div>
         
-        <!-- Premium Minimalistic Video Container -->
         <div class="cta-visual">
             <video src="cadd.mp4" autoplay loop muted playsinline class="cta-video"></video>
         </div>
@@ -1242,6 +1343,50 @@
         if (window.scrollY > 80) nav.classList.add('nav-scrolled');
         else nav.classList.remove('nav-scrolled');
     });
+
+    // 3D Vertical Carousel Logic
+    const carouselImages = document.querySelectorAll('.carousel-img');
+    const upBtn = document.querySelector('.carousel-up');
+    const downBtn = document.querySelector('.carousel-down');
+    let currentImageIndex = 0;
+    const totalImages = carouselImages.length;
+
+    function updateCarousel() {
+        carouselImages.forEach((img, index) => {
+            img.className = 'carousel-img'; // Reset all classes
+            
+            if (index === currentImageIndex) {
+                img.classList.add('active');
+            } else if (index === (currentImageIndex - 1 + totalImages) % totalImages) {
+                img.classList.add('prev');
+            } else if (index === (currentImageIndex + 1) % totalImages) {
+                img.classList.add('next');
+            } else {
+                let diff = (index - currentImageIndex + totalImages) % totalImages;
+                if (diff < totalImages / 2) {
+                    img.classList.add('hidden-down');
+                } else {
+                    img.classList.add('hidden-up');
+                }
+            }
+        });
+    }
+
+    if (upBtn && downBtn && totalImages > 0) {
+        upBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+
+        downBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            updateCarousel();
+        });
+        
+        // Initialize Carousel
+        updateCarousel();
+    }
+
 
     // About Modal Logic
     const aboutBtn = document.getElementById('aboutBtn');
@@ -1368,10 +1513,14 @@
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
 
-    sendChatBtn.addEventListener('click', postMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') postMessage();
-    });
+    if (sendChatBtn) {
+        sendChatBtn.addEventListener('click', postMessage);
+    }
+    if (chatInput) {
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') postMessage();
+        });
+    }
 </script>
 </body>
 </html>
