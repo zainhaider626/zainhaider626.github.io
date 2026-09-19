@@ -602,43 +602,30 @@
         .cta-primary-w { background: #000; color: #fff; border: 1px solid #000; padding: 14px 32px; font-size: 14px; font-weight: 600; transition: background 0.3s ease; cursor: pointer; }
         .cta-primary-w:hover { background: #333; }
 
-        /* Premium Video Container for Smooth Playback */
+        /* Premium Minimalistic Video Container for Smooth Playback */
         .cta-visual {
             width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: #000;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            background: transparent;
             position: relative;
-            transform: translateZ(0); /* Hardware accelerate container */
+            transform: translateZ(0); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cta-video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+            background: #fff; /* Ensure transparent videos blend seamlessly */
             transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            transform: translateZ(0); /* Force hardware decoding to fix lag */
+            transform: translateZ(0); 
             will-change: transform;
         }
 
-        /* Using a lightweight overlay instead of an expensive live CSS filter */
-        .cta-visual-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3);
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-
         .cta-visual:hover .cta-video {
-            transform: scale(1.03) translateZ(0);
-        }
-
-        .cta-visual:hover .cta-visual-overlay {
-            opacity: 0;
+            transform: scale(1.02) translateZ(0);
         }
 
         /* ============= FOOTER ============= */
@@ -822,9 +809,17 @@
             .hero-left h1 { font-size: 42px; margin-bottom: 16px; }
             .hero-description { font-size: 16px; margin-bottom: 30px; }
 
-            .tech-logos { gap: 18px; }
-            .tech-logos img { height: 20px; } 
-            .kicad-logo { height: 28px !important; } 
+            /* Fixed: Bold, readable Tech Logos on Mobile */
+            .tech-logos { 
+                gap: 20px; 
+                justify-content: flex-start;
+            }
+            .tech-logos img { 
+                height: 24px; /* Larger base size */
+                opacity: 0.8; /* Much higher visibility */
+            } 
+            .kicad-logo { height: 32px !important; } 
+            .siemens-logo { height: 32px !important; }
 
             .journey-section, 
             .capabilities, 
@@ -864,9 +859,20 @@
             .aesthetic-image { filter: none !important; }
             .aesthetic-image:active { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
 
-            /* CTA Split Section on Mobile */
+            /* CTA Split Section on Mobile (Minimalist Floating Video) */
             .cta-split { grid-template-columns: 1fr; gap: 40px; }
-            .cta-visual { border-radius: 0; border-left: none; border-right: none; }
+            
+            .cta-visual { 
+                width: 100%; 
+                max-width: 450px; 
+                margin: 0 auto; 
+                background: transparent;
+            }
+
+            .cta-video {
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Clean mobile floating shadow */
+            }
 
             /* About Modal Mobile Tweaks */
             .about-modal {
@@ -1101,10 +1107,9 @@
             </div>
         </div>
         
-        <!-- Appended 16:9 Video Player (Hardware Accelerated) -->
+        <!-- Premium Minimalistic Video Container -->
         <div class="cta-visual">
             <video src="cadd.mp4" autoplay loop muted playsinline class="cta-video"></video>
-            <div class="cta-visual-overlay"></div>
         </div>
     </div>
 </section>
