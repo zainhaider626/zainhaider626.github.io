@@ -435,6 +435,7 @@
             letter-spacing: -1px;
             margin-bottom: 60px;
             font-weight: 700;
+            /* Linear Gradient with a Silver/Grey Shine passing through */
             background: linear-gradient(
                 120deg, 
                 #000 0%, 
@@ -457,12 +458,14 @@
         
         .case-study { display: flex; flex-direction: column; gap: 15px; }
 
+        /* Premium Rounded Image/Video Container */
         .img-container { 
             width: 100%; 
             aspect-ratio: 16/9; 
             overflow: hidden; 
-            border: 1px solid #e0e0e0; 
             background: #111; 
+            border-radius: 24px; /* Apple-style smooth corners */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); /* Premium soft shadow */
             transform: translateZ(0); 
         }
         
@@ -652,8 +655,8 @@
         .cta-video {
             width: 100%;
             height: auto;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+            border-radius: 24px; /* Premium Rounded Corner */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); /* Premium Shadow */
             background: #fff; 
             transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             transform: translateZ(0); 
@@ -850,9 +853,17 @@
             .hero-left h1 { font-size: 42px; margin-bottom: 16px; }
             .hero-description { font-size: 16px; margin-bottom: 30px; }
 
-            .tech-logos { gap: 18px; }
-            .tech-logos img { height: 20px; } 
-            .kicad-logo { height: 28px !important; } 
+            /* Fixed: Bold, readable Tech Logos on Mobile */
+            .tech-logos { 
+                gap: 20px; 
+                justify-content: flex-start;
+            }
+            .tech-logos img { 
+                height: 24px; 
+                opacity: 0.8; 
+            } 
+            .kicad-logo { height: 32px !important; } 
+            .siemens-logo { height: 32px !important; }
 
             .journey-section, 
             .capabilities, 
@@ -879,16 +890,22 @@
             .footer-content { grid-template-columns: 1fr; gap: 35px; margin-bottom: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; padding-top: 25px; text-align: center; }
 
-            /* Portfolio Edge-to-Edge */
-            .portfolio { padding-left: 0 !important; padding-right: 0 !important; padding-bottom: 40px !important; }
-            .shine-text { padding: 0 6vw; margin-bottom: 30px; }
-            .grid-2 { grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
-            .case-study { border-radius: 0; border-left: none; border-right: none; }
+            /* Portfolio Mobile with Rounded Corners */
+            .portfolio { padding-left: 6vw !important; padding-right: 6vw !important; padding-bottom: 40px !important; }
+            .shine-text { margin-bottom: 30px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 25px; margin-bottom: 25px; }
+            .case-study { border-radius: 20px; border: none; }
             
             /* Hide descriptions */
             .case-study h3, .case-study p { display: none; }
             
-            .img-container { border-radius: 0; border-left: none; border-right: none; }
+            /* Ensure images retain their curves and shadows on mobile */
+            .img-container { 
+                border-radius: 20px; 
+                border: 1px solid rgba(0,0,0,0.05);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            }
+
             .aesthetic-image { filter: none !important; }
             .aesthetic-image:active { filter: grayscale(100%) contrast(120%) brightness(90%) !important; }
 
@@ -900,7 +917,7 @@
             }
             .cap-img-col {
                 order: 1; /* Always stack image on top on mobile */
-                border-radius: 12px;
+                border-radius: 16px;
             }
             .cap-text-col {
                 order: 2; /* Text below image */
@@ -913,7 +930,18 @@
 
             /* CTA Split Section on Mobile */
             .cta-split { grid-template-columns: 1fr; gap: 40px; }
-            .cta-visual { border-radius: 0; border-left: none; border-right: none; }
+            
+            .cta-visual { 
+                width: 100%; 
+                max-width: 450px; 
+                margin: 0 auto; 
+                background: transparent;
+            }
+
+            .cta-video {
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Clean mobile floating shadow */
+            }
 
             /* About Modal Mobile Tweaks */
             .about-modal {
