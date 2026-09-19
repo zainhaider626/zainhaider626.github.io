@@ -35,8 +35,9 @@
             --grey: #6e6e6c;
             --grey-soft: #9a9a96;
             --grey-on-dark: #9c9c9a;
-            --copper: #b2632f;
-            --copper-deep: #8f4e24;
+            /* CHANGED: Copper replaced with Blue */
+            --accent: #2563eb; 
+            --accent-deep: #1d4ed8;
             --radius-sm: 4px;
             --radius-md: 6px;
             --maxw: 1320px;
@@ -63,7 +64,7 @@
         }
 
         :focus-visible {
-            outline: 2px solid var(--copper);
+            outline: 2px solid var(--accent);
             outline-offset: 3px;
         }
 
@@ -83,7 +84,7 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            border: 1px solid var(--copper);
+            border: 1px solid var(--accent);
             opacity: 0.6;
             pointer-events: none;
         }
@@ -147,7 +148,7 @@
             cursor: pointer;
             transition: background 0.25s ease, color 0.25s ease;
         }
-        .nav-btn-preorder:hover { background: var(--copper); color: #fff; }
+        .nav-btn-preorder:hover { background: var(--accent); color: #fff; }
 
         .hero {
             padding: 72px 5vw 110px;
@@ -266,7 +267,7 @@
         }
         @keyframes messageFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .message.nvisco { border-left: 2px solid var(--copper); align-self: flex-end; }
+        .message.nvisco { border-left: 2px solid var(--accent); align-self: flex-end; }
 
         .message-user {
             font-family: 'IBM Plex Mono', monospace;
@@ -292,14 +293,14 @@
             font-family: inherit;
             transition: border-color 0.25s ease;
         }
-        .chat-send-row input:focus { border-color: var(--copper); }
+        .chat-send-row input:focus { border-color: var(--accent); }
         .chat-send-row input::placeholder { color: #77776f; }
 
         .chat-btn-submit {
             background: #fff; color: var(--ink); border: none; border-radius: var(--radius-sm);
             padding: 0 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: background 0.25s ease;
         }
-        .chat-btn-submit:hover { background: var(--copper); color: #fff; }
+        .chat-btn-submit:hover { background: var(--accent); color: #fff; }
 
         .google-login-btn {
             background: #fff; border: 1px solid #fff; color: var(--ink); border-radius: var(--radius-sm);
@@ -330,7 +331,7 @@
         .journey-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 44px; }
 
         .journey-step { display: flex; flex-direction: column; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); }
-        .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--copper); font-weight: 500; }
+        .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500; }
         .journey-step h3 { font-size: 19px; line-height: 1.3; font-weight: 600; }
         .journey-step p { font-size: 14px; color: var(--grey); line-height: 1.65; }
 
@@ -364,38 +365,77 @@
         .case-fig { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--grey-soft); white-space: nowrap; }
         .case-study p { color: var(--grey); font-size: 14px; line-height: 1.65; max-width: 46ch; }
 
-        .capabilities-minimal { padding: 130px 5vw; background: var(--ink); color: #fff; width: 100%; }
-        .cap-min-container { max-width: var(--maxw); margin: 0 auto; }
+        /* CHANGED: Reduced Details in Capabilities */
+        .capabilities-minimal { padding: 80px 5vw; background: var(--ink); color: #fff; width: 100%; }
+        .cap-min-container { max-width: var(--maxw); margin: 0 auto; text-align: center; }
 
         .capabilities-minimal h2 {
-            font-size: clamp(32px, 4.6vw, 50px);
+            font-size: clamp(28px, 4vw, 40px);
             letter-spacing: -0.01em;
             font-weight: 600;
-            margin-bottom: 64px;
-            border-bottom: 1px solid var(--ink-border);
-            padding-bottom: 28px;
-            max-width: 640px;
+            margin-bottom: 40px;
         }
 
-        .cap-min-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-        .cap-min-item { padding: 38px 40px; border-bottom: 1px solid var(--ink-border); border-right: 1px solid var(--ink-border); transition: border-color 0.3s ease; }
-        .cap-min-item:nth-child(even) { border-right: none; }
+        .cap-min-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .cap-min-item { padding: 10px 20px; background: rgba(255,255,255,0.05); border-radius: 40px; border: 1px solid var(--ink-border); font-size: 15px; color: #e8e8e6; transition: border-color 0.25s ease, color 0.25s ease; }
+        .cap-min-item:hover { border-color: var(--accent); color: var(--accent); }
 
-        .cap-min-item h3 { font-size: 21px; font-weight: 600; margin-bottom: 12px; color: #fff; letter-spacing: -0.01em; transition: color 0.25s ease; }
-        .cap-min-item:hover h3 { color: var(--copper); }
-        .cap-min-item p { font-size: 14.5px; color: var(--grey-on-dark); line-height: 1.65; max-width: 40ch; }
+        /* CHANGED: Project Carousel now separate, white, glossy, animated text */
+        .project-carousel-section { 
+            padding: 110px 5vw; 
+            background: #ffffff; 
+            position: relative; 
+            overflow: hidden; 
+            border-top: 1px solid var(--line); 
+            border-bottom: 1px solid var(--line); 
+        }
 
-        .project-carousel-section { padding: 110px 5vw; background: var(--ink); color: #fff; text-align: center; overflow: hidden; border-top: 1px solid var(--ink-border); }
-        .project-carousel-section h2 { font-size: clamp(32px, 4.6vw, 50px); letter-spacing: -0.01em; font-weight: 600; margin-bottom: 60px; }
+        /* Glossy Blur Overlay inside the section */
+        .project-carousel-section::before {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 80%; height: 80%;
+            background: radial-gradient(circle, rgba(240,244,248,0.8) 0%, rgba(255,255,255,0) 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(40px);
+        }
 
-        .carousel-container { position: relative; height: 580px; width: 100%; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        /* Animated Text entering (Replacing Header) */
+        .animated-text-container {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .animated-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(40px, 8vw, 100px);
+            font-weight: 700;
+            color: rgba(0,0,0,0.03); /* subtle watermark effect */
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            animation: slideText 25s linear infinite;
+        }
+
+        @keyframes slideText {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .carousel-container { position: relative; height: 580px; width: 100%; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; }
         .carousel-track { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; perspective: 1200px; transform-style: preserve-3d; }
 
         .carousel-img {
             position: absolute; width: 84%; max-width: 780px; aspect-ratio: 16/9; object-fit: cover;
-            border-radius: var(--radius-md); box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+            border-radius: var(--radius-md); box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* Softer shadow for light bg */
             transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(0,0,0,0.06);
         }
         .carousel-img.active { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) grayscale(0%); z-index: 3; pointer-events: auto; }
         .carousel-img.prev { opacity: 0.35; transform: translateY(-155px) scale(0.85) translateZ(-100px); filter: blur(10px) grayscale(100%); z-index: 2; }
@@ -404,11 +444,11 @@
         .carousel-img.hidden-down { opacity: 0; transform: translateY(300px) scale(0.7) translateZ(-200px); z-index: 1; }
 
         .carousel-up, .carousel-down {
-            background: rgba(255,255,255,0.05); border: 1px solid var(--ink-border); color: #fff;
+            background: rgba(0,0,0,0.05); border: 1px solid var(--line); color: var(--ink);
             width: 46px; height: 46px; border-radius: 50%; cursor: pointer; z-index: 10;
             display: flex; align-items: center; justify-content: center; transition: all 0.25s ease;
         }
-        .carousel-up:hover, .carousel-down:hover { background: var(--copper); border-color: var(--copper); }
+        .carousel-up:hover, .carousel-down:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
         .carousel-up { position: absolute; top: -6px; }
         .carousel-down { position: absolute; bottom: -6px; }
 
@@ -442,18 +482,14 @@
             background: var(--ink); color: #fff; border: 1px solid var(--ink); padding: 14px 30px;
             font-size: 14px; font-weight: 500; border-radius: var(--radius-sm); transition: background 0.25s ease, border-color 0.25s ease; cursor: pointer;
         }
-        .cta-primary-w:hover { background: var(--copper); border-color: var(--copper); }
-
-        .cta-visual { width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px; }
-        .cta-video { width: 100%; height: auto; border-radius: var(--radius-md); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .cta-visual:hover .cta-video { transform: scale(1.015); }
+        .cta-primary-w:hover { background: var(--accent); border-color: var(--accent); }
 
         footer { padding: 60px 5vw 50px; border-top: 1px solid var(--line); background: var(--paper-white); max-width: var(--maxw); margin: 0 auto; width: 100%; }
         .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 50px; }
 
         .footer-col h4 { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--grey-soft); margin-bottom: 18px; }
         .footer-col p, .footer-col a { font-size: 13.5px; color: var(--grey); line-height: 1.85; display: block; transition: color 0.25s ease; }
-        .footer-col a:hover { color: var(--copper); }
+        .footer-col a:hover { color: var(--accent); }
         .footer-col strong { color: var(--ink); font-size: 15px; font-weight: 600; }
 
         .footer-bottom { padding-top: 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--grey-soft); flex-wrap: wrap; gap: 10px; }
@@ -510,14 +546,10 @@
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
             .case-study h3 { font-size: 17px; }
 
-            .capabilities-minimal { padding: 76px 6vw; }
-            .capabilities-minimal h2 { margin-bottom: 40px; }
-            .cap-min-grid { grid-template-columns: 1fr; }
-            .cap-min-item { border-right: none; padding: 28px 0; }
-            .cap-min-item h3 { font-size: 20px; }
-
+            .capabilities-minimal { padding: 60px 6vw; }
+            .capabilities-minimal h2 { margin-bottom: 30px; }
+            
             .project-carousel-section { padding: 76px 6vw; }
-            .project-carousel-section h2 { margin-bottom: 40px; }
             .carousel-container { height: 420px; }
             .carousel-img.prev { transform: translateY(-115px) scale(0.85) translateZ(-100px); }
             .carousel-img.next { transform: translateY(115px) scale(0.85) translateZ(-100px); }
@@ -562,7 +594,7 @@
             </div>
 
             <h1>Precision hardware, engineered without compromise.</h1>
-            <p class="hero-description">We believe hardware development shouldn't be gated by upfront barriers, so every engagement opens with a complimentary consultation — followed by 22-layer PCB design and embedded firmware built to run in the field.</p>
+            <p class="hero-description">We believe hardware development should not be gated by upfront barriers, so every engagement opens with a complimentary consultation followed by multi layer PCB design and embedded firmware built to run in the field.</p>
 
             <p class="tech-logos-label mono">Tooling</p>
             <div class="tech-logos">
@@ -571,9 +603,9 @@
                 <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" title="Arduino">
                 <img src="https://cdn.simpleicons.org/ros" alt="ROS" title="Robot Operating System (ROS)">
                 <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" title="Raspberry Pi">
-                <img src="https://cdn.simpleicons.org/siemens" alt="Siemens / PLCSIM" title="Siemens PLCSIM" class="siemens-logo">
+                <img src="https://cdn.simpleicons.org/siemens" alt="Siemens" title="Siemens PLCSIM" class="siemens-logo">
                 <img src="https://cdn.simpleicons.org/opencv" alt="OpenCV" title="OpenCV">
-                <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" title="NVIDIA Jetson / Edge AI">
+                <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" title="NVIDIA Jetson">
             </div>
         </div>
 
@@ -620,7 +652,7 @@
         <div class="journey-step">
             <span class="step-number mono">02</span>
             <h3>Hardware development</h3>
-            <p>Translating architectures into detailed schematics, optimizing component selection, and finalizing multi-layer layouts.</p>
+            <p>Translating architectures into detailed schematics, optimizing component selection, and finalizing multi layer layouts.</p>
         </div>
         <div class="journey-step">
             <span class="step-number mono">03</span>
@@ -630,7 +662,7 @@
         <div class="journey-step">
             <span class="step-number mono">04</span>
             <h3>Prototyping & validation</h3>
-            <p>Executing rapid physical builds, deploying targeted logic, and conducting rigorous real-world performance testing.</p>
+            <p>Executing rapid physical builds, deploying targeted logic, and conducting rigorous performance testing.</p>
         </div>
     </div>
 </section>
@@ -646,8 +678,8 @@
             <div class="img-frame frame"><div class="img-container">
                 <img src="https://zainhaider626.github.io/YOUR_REPO_NAME/pcb.png" alt="High Density PCB Design" class="aesthetic-image">
             </div></div>
-            <div class="case-study-meta"><h3>High-density PCB design</h3><span class="case-fig mono">Fig. 01</span></div>
-            <p>Routing scales up to 22 layers, engineered for signal integrity and a minimal EMI footprint in complex industrial applications.</p>
+            <div class="case-study-meta"><h3>High density PCB design</h3><span class="case-fig mono">Fig. 01</span></div>
+            <p>Routing engineered for signal integrity and a minimal EMI footprint in complex industrial applications.</p>
         </div>
 
         <div class="case-study">
@@ -665,7 +697,7 @@
                 <img src="https://zainhaider626.github.io/YOUR_REPO_NAME/CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
             </div></div>
             <div class="case-study-meta"><h3>Advanced CAD design</h3><span class="case-fig mono">Fig. 03</span></div>
-            <p>Robotic welding assemblies modeled in parametric 3D CAD, with zero thermal clearance issues and seamless electromechanical integration.</p>
+            <p>Robotic welding assemblies modeled in parametric 3D CAD, with zero thermal clearance issues and seamless integration.</p>
         </div>
 
         <div class="case-study">
@@ -673,7 +705,7 @@
                 <img src="https://zainhaider626.github.io/YOUR_REPO_NAME/system.gif" alt="System Blueprinting" class="aesthetic-image">
             </div></div>
             <div class="case-study-meta"><h3>Architectural & system blueprinting</h3><span class="case-fig mono">Fig. 04</span></div>
-            <p>Structural and layout schematics mapping complex spatial geometry and infrastructure before any physical prototyping begins.</p>
+            <p>Structural and layout schematics mapping complex spatial geometry and infrastructure before physical prototyping begins.</p>
         </div>
     </div>
 </section>
@@ -681,37 +713,22 @@
 <section class="capabilities-minimal">
     <div class="cap-min-container">
         <h2>Industrial capabilities</h2>
-        <div class="cap-min-grid">
-            <div class="cap-min-item">
-                <h3>High-density PCB layout</h3>
-                <p>Advanced routing for up to 22-layer boards, prioritizing signal integrity and compact footprint integration.</p>
-            </div>
-            <div class="cap-min-item">
-                <h3>Parametric 3D CAD</h3>
-                <p>Structural joint constraints, zero-clearance modeling, and non-linear load simulations for mechanical assemblies.</p>
-            </div>
-            <div class="cap-min-item">
-                <h3>Intelligent firmware</h3>
-                <p>Centralized communication protocols, robust local logic mapping, and custom network routing algorithms.</p>
-            </div>
-            <div class="cap-min-item">
-                <h3>Physical AI integration</h3>
-                <p>Bridging software processing and physical action through sensor fusion and edge-compute architectures.</p>
-            </div>
-            <div class="cap-min-item">
-                <h3>Soft robotics prototyping</h3>
-                <p>Unconventional materials and articulated physical models, in search of new industrial actuation methods.</p>
-            </div>
-            <div class="cap-min-item">
-                <h3>Custom hardware builds</h3>
-                <p>End-to-end realization of bespoke hardware, from localized networking infrastructure to portable robotic logic systems.</p>
-            </div>
+        <div class="cap-min-list">
+            <div class="cap-min-item">High density PCB layout</div>
+            <div class="cap-min-item">Parametric 3D CAD</div>
+            <div class="cap-min-item">Intelligent firmware</div>
+            <div class="cap-min-item">Physical AI integration</div>
+            <div class="cap-min-item">Soft robotics prototyping</div>
+            <div class="cap-min-item">Custom hardware builds</div>
         </div>
     </div>
 </section>
 
 <section class="project-carousel-section" id="projects">
-    <h2>Engineering archive</h2>
+    <div class="animated-text-container">
+        <div class="animated-text">ENGINEERING ARCHIVE ENGINEERING ARCHIVE ENGINEERING ARCHIVE</div>
+    </div>
+    
     <div class="carousel-container">
         <button class="carousel-up" aria-label="Previous project">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
@@ -755,7 +772,7 @@
 <section class="value-props-section" id="valueProps">
     <div class="marquee-track">
         <span>Ending production delays with autonomous robotics</span>
-        <span>Solving complex high-density PCB routing</span>
+        <span>Solving complex high density PCB routing</span>
         <span>Turning manual inefficiency into relentless automation</span>
         <span>Preventing costly mechanical clearance failures</span>
         <span>Bridging theoretical logic with physical execution</span>
@@ -765,7 +782,7 @@
         <span>Bulletproofing industrial hardware architectures</span>
         <span>Deploying edge AI into robust electromechanical systems</span>
         <span>Ending production delays with autonomous robotics</span>
-        <span>Solving complex high-density PCB routing</span>
+        <span>Solving complex high density PCB routing</span>
         <span>Turning manual inefficiency into relentless automation</span>
         <span>Preventing costly mechanical clearance failures</span>
         <span>Bridging theoretical logic with physical execution</span>
@@ -781,7 +798,7 @@
     <div class="cta-split">
         <div class="cta-content">
             <h2>Ready to build something real?</h2>
-            <p>Whether you need a full prototype or quick design guidance, we're here to help.</p>
+            <p>Whether you need a full prototype or quick design guidance, we are here to help.</p>
             <div class="cta-buttons">
                 <a href="mailto:hello@nvisco.com" class="cta-primary-w">Contact engineering</a>
             </div>
@@ -822,9 +839,9 @@
         <button id="closeAboutBtn" class="close-btn">&times;</button>
         <img src="https://zainhaider626.github.io/YOUR_REPO_NAME/unnamed.jpg" alt="Zain Haider" class="about-img">
         <div class="about-text">
-            <h2>I'm Zain Haider</h2>
-            <p class="about-desc-desktop">I am a multidisciplinary innovator and systems architect. My focus lies in bridging the gap between visionary concepts and tangible, high-performance products, combining robust engineering with cutting-edge technological integration.</p>
-            <p class="about-desc-mobile">I am a multidisciplinary innovator dedicated to bridging the gap between visionary concepts and tangible, high-performance products.</p>
+            <h2>I am Zain Haider</h2>
+            <p class="about-desc-desktop">I am a multidisciplinary innovator and systems architect. My focus lies in bridging the gap between visionary concepts and tangible, high performance products, combining robust engineering with cutting edge technological integration.</p>
+            <p class="about-desc-mobile">I am a multidisciplinary innovator dedicated to bridging the gap between visionary concepts and tangible, high performance products.</p>
 
             <div class="about-socials">
                 <a href="https://www.linkedin.com/in/zain-haider" target="_blank" aria-label="LinkedIn">
