@@ -9,17 +9,17 @@
     <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco, Nvisco, Nvisco.com, nvisco.com, nivisco">
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Nvisco",
-      "url": "https://nvisco.com/",
-      "logo": "https://nvisco.com/nvisco-logo.png"
-    }
-    </script>
-
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nvisco",
+  "url": "https://nvisco.com/",
+  "logo": "https://nvisco.com/nvisco-logo.png"
+}
+</script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -86,20 +86,6 @@
             }
         }
 
-        .frame { position: relative; }
-        .frame::before,
-        .frame::after {
-            content: "";
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            border: 1px solid var(--copper);
-            opacity: 0.6;
-            pointer-events: none;
-        }
-        .frame::before { top: -8px; left: -8px; border-right: none; border-bottom: none; }
-        .frame::after  { bottom: -8px; right: -8px; border-left: none; border-top: none; }
-
         /* =========================================================
            NAVIGATION
            ========================================================= */
@@ -137,7 +123,6 @@
 
         .nav-left { display: flex; align-items: center; }
         
-        /* Enlarged Logo Container */
         .logo { height: 28px; display: flex; align-items: center; }
         .logo img { 
             height: 100%; 
@@ -145,22 +130,7 @@
             object-fit: contain; 
             transform: scale(2.6); 
             transform-origin: left center; 
-            filter: invert(1); 
-            transition: filter 0.4s ease; 
-        }
-
-        /* Desktop specific hover for logo */
-        @media (min-width: 769px) {
-            .logo img:hover {
-                /* Vivid Blue filter */
-                filter: invert(36%) sepia(90%) saturate(2853%) hue-rotate(192deg) brightness(97%) contrast(105%);
-            }
-        }
-
-        /* Mobile specific continuous loop animation for logo */
-        @keyframes mobileLogoPulse {
-            0%, 100% { filter: invert(1); } /* Pure White */
-            50% { filter: invert(12%) sepia(74%) saturate(4641%) hue-rotate(218deg) brightness(93%) contrast(110%); } /* Dark Blue */
+            filter: invert(1); /* Pure white, no hover changes */
         }
 
         .nav-right { display: flex; align-items: center; gap: 22px; }
@@ -182,9 +152,15 @@
             color: var(--ink);
             border: 1px solid var(--paper-white);
             cursor: pointer;
-            transition: background 0.25s ease, color 0.25s ease;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
         }
-        .nav-btn-preorder:hover { background: transparent; color: var(--paper-white); }
+        
+        /* Updated Hover for Free Consultation button */
+        .nav-btn-preorder:hover { 
+            background: #0071e3; 
+            border-color: #0071e3; 
+            color: #ffffff; 
+        }
 
         /* =========================================================
            HERO
@@ -258,12 +234,22 @@
             width: auto;
             object-fit: contain;
             filter: grayscale(100%) brightness(200%) opacity(0.45);
-            transition: filter 0.35s ease, transform 0.35s ease;
+            transition: transform 0.35s ease;
             will-change: transform, filter;
+            /* Animated color pulse loop */
+            animation: techLogoColorPulse 5s ease-in-out infinite;
         }
-        .tech-logos img:hover { filter: grayscale(0%) opacity(1) brightness(1); transform: translateY(-2px); }
+        
+        .tech-logos img:hover { transform: translateY(-2px); }
+        
         .kicad-logo { height: 30px !important; }
         .siemens-logo { height: 30px !important; }
+
+        @keyframes techLogoColorPulse {
+            0%, 10% { filter: grayscale(100%) brightness(200%) opacity(0.45); }
+            45%, 55% { filter: grayscale(0%) brightness(100%) opacity(1); }
+            90%, 100% { filter: grayscale(100%) brightness(200%) opacity(0.45); }
+        }
 
         /* live chat panel */
         .chat-container {
@@ -286,10 +272,16 @@
             color: #f2f2f0;
         }
 
-        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; }
+        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; font-family: 'Space Grotesk', sans-serif;}
 
         .live-indicator { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--grey-on-dark); }
         .live-dot { width: 7px; height: 7px; background: #4caf6a; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
 
         .chat-messages {
             flex: 1;
@@ -312,6 +304,7 @@
             align-self: flex-start;
             animation: messageFadeIn 0.25s ease forwards;
         }
+        @keyframes messageFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .message.nvisco { border-left: 2px solid var(--copper); align-self: flex-end; }
 
@@ -396,13 +389,14 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-bottom: 44px; }
         .case-study { display: flex; flex-direction: column; gap: 14px; }
 
-        .img-frame { margin: 10px; }
         .img-container {
             width: 100%;
             aspect-ratio: 16/9;
             overflow: hidden;
             background: #111;
-            border-radius: var(--radius-md);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+            transform: translateZ(0); 
         }
 
         .aesthetic-image {
@@ -458,7 +452,7 @@
 
         .carousel-img {
             position: absolute; width: 84%; max-width: 780px; aspect-ratio: 16/9; object-fit: cover;
-            border-radius: var(--radius-md); box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+            border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.55);
             transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none;
             border: 1px solid rgba(255,255,255,0.06);
         }
@@ -478,28 +472,6 @@
         .carousel-down { position: absolute; bottom: -6px; }
 
         /* =========================================================
-           VALUE PROPS — marquee
-           ========================================================= */
-        .value-props-section {
-            background: var(--paper-white); color: var(--ink); border-bottom: 1px solid var(--line);
-            padding: 46px 0; overflow: hidden; white-space: nowrap;
-        }
-
-        .marquee-track { display: inline-flex; animation: marquee 42s linear infinite; }
-        .marquee-track span {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: clamp(14px, 1.6vw, 17px);
-            padding: 0 28px;
-            color: var(--grey);
-            border-right: 1px solid var(--line);
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* =========================================================
            CTA
            ========================================================= */
         .cta-section { padding: 130px 5vw; background: var(--paper-white); max-width: var(--maxw); margin: 0 auto; }
@@ -516,7 +488,7 @@
         .cta-primary-w:hover { background: var(--copper); border-color: var(--copper); color: var(--ink); }
 
         .cta-visual { width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px; }
-        .cta-video { width: 100%; height: auto; border-radius: var(--radius-md); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .cta-video { width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .cta-visual:hover .cta-video { transform: scale(1.015); }
 
         /* =========================================================
@@ -574,11 +546,8 @@
 
             .hero { grid-template-columns: 1fr; gap: 40px; padding: 36px 6vw 70px; }
             
-            /* Logo sizing and mobile color loop */
+            /* Logo sizing (Animation removed to keep pure white) */
             .logo { height: 26px; }
-            .logo img {
-                animation: mobileLogoPulse 4s ease-in-out infinite;
-            }
 
             .hero-left h1 { font-size: 38px; margin-bottom: 18px; max-width: none; }
             .hero-description { font-size: 15.5px; margin-bottom: 30px; }
@@ -604,8 +573,6 @@
             .carousel-container { height: 420px; }
             .carousel-img.prev { transform: translateY(-115px) scale(0.85) translateZ(-100px); }
             .carousel-img.next { transform: translateY(115px) scale(0.85) translateZ(-100px); }
-
-            .value-props-section { padding: 32px 0; }
 
             .cta-split { grid-template-columns: 1fr; gap: 36px; }
             .cta-content h2 { max-width: none; }
@@ -716,23 +683,23 @@
 
 <section class="portfolio" id="work">
     <div class="portfolio-header">
-        <h2>Featured engineering</h2>
+        <h2 class="hero-shine">Featured engineering</h2>
         <p>A selection of recent hardware, mechanical, and systems work.</p>
     </div>
 
     <div class="grid-2">
         <div class="case-study">
-            <div class="img-frame frame"><div class="img-container">
+            <div class="img-container">
                 <img src="pcb.png" alt="High Density PCB Design" class="aesthetic-image">
-            </div></div>
+            </div>
             <div class="case-study-meta"><h3>High-density PCB design</h3></div>
             <p>Routing scales up to 22 layers, engineered for signal integrity and a minimal EMI footprint in complex industrial applications.</p>
         </div>
 
         <div class="case-study">
-            <div class="img-frame frame"><div class="img-container">
+            <div class="img-container">
                 <video src="159021-818026286.mp4" autoplay loop muted playsinline class="aesthetic-image"></video>
-            </div></div>
+            </div>
             <div class="case-study-meta"><h3>Industry machinery excellence</h3></div>
             <p>Automated machinery systems built for continuous precision, running reliably in demanding manufacturing environments.</p>
         </div>
@@ -740,17 +707,17 @@
 
     <div class="grid-2">
         <div class="case-study">
-            <div class="img-frame frame"><div class="img-container">
+            <div class="img-container">
                 <img src="CAD_WELD.jpg" alt="CAD Design Robot Welding" class="aesthetic-image">
-            </div></div>
+            </div>
             <div class="case-study-meta"><h3>Advanced CAD design</h3></div>
             <p>Robotic welding assemblies modeled in parametric 3D CAD, with zero thermal clearance issues and seamless electromechanical integration.</p>
         </div>
 
         <div class="case-study">
-            <div class="img-frame frame"><div class="img-container">
+            <div class="img-container">
                 <img src="system.gif" alt="System Blueprinting" class="aesthetic-image">
-            </div></div>
+            </div>
             <div class="case-study-meta"><h3>Architectural & system blueprinting</h3></div>
             <p>Structural and layout schematics mapping complex spatial geometry and infrastructure before any physical prototyping begins.</p>
         </div>
@@ -790,7 +757,7 @@
 </section>
 
 <section class="project-carousel-section" id="projects">
-    <h2>Engineering archive</h2>
+    <h2 class="hero-shine">Engineering archive</h2>
     <div class="carousel-container">
         <button class="carousel-up" aria-label="Previous project">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
@@ -831,31 +798,6 @@
     </div>
 </section>
 
-<section class="value-props-section" id="valueProps">
-    <div class="marquee-track">
-        <span>Ending production delays with autonomous robotics</span>
-        <span>Solving complex high-density PCB routing</span>
-        <span>Turning manual inefficiency into relentless automation</span>
-        <span>Preventing costly mechanical clearance failures</span>
-        <span>Bridging theoretical logic with physical execution</span>
-        <span>Rescuing concepts from prototype purgatory</span>
-        <span>Turning raw sensor data into intelligent action</span>
-        <span>Accelerating the journey from blueprint to market</span>
-        <span>Bulletproofing industrial hardware architectures</span>
-        <span>Deploying edge AI into robust electromechanical systems</span>
-        <span>Ending production delays with autonomous robotics</span>
-        <span>Solving complex high-density PCB routing</span>
-        <span>Turning manual inefficiency into relentless automation</span>
-        <span>Preventing costly mechanical clearance failures</span>
-        <span>Bridging theoretical logic with physical execution</span>
-        <span>Rescuing concepts from prototype purgatory</span>
-        <span>Turning raw sensor data into intelligent action</span>
-        <span>Accelerating the journey from blueprint to market</span>
-        <span>Bulletproofing industrial hardware architectures</span>
-        <span>Deploying edge AI into robust electromechanical systems</span>
-    </div>
-</section>
-
 <section class="cta-section" id="cta">
     <div class="cta-split">
         <div class="cta-content">
@@ -866,7 +808,7 @@
             </div>
         </div>
 
-        <div class="cta-visual frame">
+        <div class="cta-visual">
             <video src="cadd.mp4" autoplay loop muted playsinline class="cta-video"></video>
         </div>
     </div>
