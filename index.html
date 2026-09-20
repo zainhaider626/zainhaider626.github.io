@@ -674,7 +674,7 @@
         }
 
         /* =========================================================
-           NEW: 3D HORIZONTAL INWARD CURVE ARCHIVE
+           HORIZONTAL 3D INWARD CURVE ARCHIVE
            ========================================================= */
         .project-carousel-section { 
             padding: 120px 5vw 160px; 
@@ -728,7 +728,7 @@
             position: absolute;
             width: 28%;
             max-width: 320px;
-            aspect-ratio: 3/4; /* Taller, vertical card ratio */
+            aspect-ratio: 3/4;
             object-fit: cover;
             border-radius: 16px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
@@ -739,7 +739,6 @@
             background: var(--ink-raised);
         }
 
-        /* 3D Cover Flow Math */
         .carousel-3d-item.active {
             transform: translateX(0) translateZ(150px) rotateY(0deg);
             opacity: 1;
@@ -796,7 +795,6 @@
             z-index: 1;
         }
 
-        /* Side Navigation Arrows */
         .car-btn {
             position: absolute;
             top: 50%;
@@ -826,7 +824,6 @@
         .car-btn.prev-btn { left: 0; }
         .car-btn.next-btn { right: 0; }
 
-        /* Bottom 3-Column Details */
         .archive-details {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -871,11 +868,10 @@
 
         .cta-visual { width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px; }
         
-        /* INCREASED BORDER RADIUS FOR CTA VIDEO */
         .cta-video { 
             width: 100%; 
             height: auto; 
-            border-radius: 48px; /* More rounded corner for Laptop/PC */
+            border-radius: 48px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
             background: #fff; 
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
@@ -979,27 +975,27 @@
 
             /* 3D Archive Mobile Formatting */
             .project-carousel-section { padding: 80px 6vw; }
-            .carousel-3d-track { height: 360px; perspective: 1000px; }
-            .carousel-3d-item { width: 60%; } /* Thinner vertical ratio on mobile */
+            .carousel-3d-track { height: 320px; perspective: 800px; }
+            .carousel-3d-item { width: 75%; }
             
-            /* Tighter mobile curve math */
-            .carousel-3d-item.prev-1 { transform: translateX(-48%) translateZ(-50px) rotateY(30deg); opacity: 0.8;}
-            .carousel-3d-item.next-1 { transform: translateX(48%) translateZ(-50px) rotateY(-30deg); opacity: 0.8;}
-            .carousel-3d-item.prev-2 { transform: translateX(-80%) translateZ(-150px) rotateY(40deg); opacity: 0.3;}
-            .carousel-3d-item.next-2 { transform: translateX(80%) translateZ(-150px) rotateY(-40deg); opacity: 0.3;}
-            .carousel-3d-item.prev-3, .carousel-3d-item.next-3 { opacity: 0; pointer-events: none; }
+            .carousel-3d-item.prev-1 { transform: translateX(-45%) translateZ(-50px) rotateY(30deg); opacity: 0.8;}
+            .carousel-3d-item.next-1 { transform: translateX(45%) translateZ(-50px) rotateY(-30deg); opacity: 0.8;}
+            .carousel-3d-item.prev-2, .carousel-3d-item.next-2, .carousel-3d-item.prev-3, .carousel-3d-item.next-3 { opacity: 0; pointer-events: none; }
             
             .car-btn { width: 40px; height: 40px; }
             .car-btn.prev-btn { left: -10px; }
             .car-btn.next-btn { right: -10px; }
 
-            .archive-details { grid-template-columns: 1fr; gap: 30px; margin-top: 20px; }
+            .archive-details {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 20px;
+            }
             .archive-detail-item h4 { font-size: 18px; }
 
             .cta-split { grid-template-columns: 1fr; gap: 36px; }
             .cta-content h2 { max-width: none; }
             
-            /* Softer rounded corners for mobile video */
             .cta-video { border-radius: 32px; } 
 
             footer { padding: 50px 6vw 30px; }
@@ -1234,14 +1230,14 @@
         </button>
 
         <div class="carousel-3d-track" id="carousel3DTrack">
-            <!-- 7 Curated HD Projects, strictly 3:4 ratio -->
-            <img src="po14.jpg" class="carousel-3d-item">
+            <!-- 7 New Requested Images -->
+            <img src="cad12.png" class="carousel-3d-item">
+            <img src="po2.webp" class="carousel-3d-item">
+            <img src="po8.png" class="carousel-3d-item">
+            <img src="po9.webp" class="carousel-3d-item">
             <img src="po16.webp" class="carousel-3d-item">
-            <img src="po20.jpg" class="carousel-3d-item">
-            <img src="po23.jpeg" class="carousel-3d-item">
-            <img src="po24.png" class="carousel-3d-item">
-            <img src="po25.png" class="carousel-3d-item">
-            <img src="po26.png" class="carousel-3d-item">
+            <img src="po21.png" class="carousel-3d-item">
+            <img src="po22.png" class="carousel-3d-item">
         </div>
 
         <button class="car-btn next-btn" id="carNext">
