@@ -665,24 +665,40 @@
         }
 
         /* =========================================================
+           WHITE SEPARATOR BAND
+           ========================================================= */
+        .section-divider {
+            width: 100%;
+            height: 80px;
+            background-color: var(--paper-white);
+        }
+
+        /* =========================================================
            NEW: 3D HORIZONTAL INWARD CURVE ARCHIVE
            ========================================================= */
         .project-carousel-section { 
-            padding: 160px 5vw; 
-            background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.15) 0%, var(--ink) 70%); /* Aesthetic blue light */
+            padding: 120px 5vw 160px; 
+            background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.15) 0%, var(--ink) 70%);
             background-color: var(--ink);
             color: #fff; 
             text-align: center; 
             overflow: hidden; 
-            border-top: 1px solid var(--ink-border); 
         }
 
         .project-carousel-section h2 { 
-            font-size: clamp(32px, 4.6vw, 50px); 
+            font-size: clamp(36px, 5vw, 54px); 
             letter-spacing: -0.01em; 
             font-weight: 600; 
-            margin-bottom: 60px; 
+            margin-bottom: 20px; 
             color: #fff;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .archive-subtitle {
+            font-size: 16px;
+            color: #a1a1a6;
+            margin-bottom: 60px;
             position: relative;
             z-index: 20;
         }
@@ -710,9 +726,9 @@
 
         .carousel-3d-item {
             position: absolute;
-            width: 60%;
-            max-width: 420px;
-            aspect-ratio: 16/9; /* Perfect standard ratio */
+            width: 28%;
+            max-width: 320px;
+            aspect-ratio: 3/4; /* Taller, vertical card ratio */
             object-fit: cover;
             border-radius: 16px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
@@ -723,55 +739,55 @@
             background: var(--ink-raised);
         }
 
-        /* The 3D Inward Curve Math */
+        /* 3D Cover Flow Math */
         .carousel-3d-item.active {
             transform: translateX(0) translateZ(150px) rotateY(0deg);
             opacity: 1;
             z-index: 10;
-            filter: brightness(1.1);
+            filter: brightness(1) drop-shadow(0 0 20px rgba(0, 113, 227, 0.4));
             pointer-events: auto;
         }
 
         .carousel-3d-item.prev-1 {
             transform: translateX(-40%) translateZ(0px) rotateY(25deg);
-            opacity: 0.7;
+            opacity: 0.8;
             z-index: 9;
-            filter: brightness(0.5) blur(2px);
+            filter: brightness(0.6) blur(1px);
         }
 
         .carousel-3d-item.next-1 {
             transform: translateX(40%) translateZ(0px) rotateY(-25deg);
-            opacity: 0.7;
+            opacity: 0.8;
             z-index: 9;
-            filter: brightness(0.5) blur(2px);
+            filter: brightness(0.6) blur(1px);
         }
 
         .carousel-3d-item.prev-2 {
-            transform: translateX(-70%) translateZ(-150px) rotateY(35deg);
-            opacity: 0.4;
+            transform: translateX(-75%) translateZ(-150px) rotateY(35deg);
+            opacity: 0.5;
             z-index: 8;
-            filter: brightness(0.2) blur(4px);
+            filter: brightness(0.3) blur(3px);
         }
 
         .carousel-3d-item.next-2 {
-            transform: translateX(70%) translateZ(-150px) rotateY(-35deg);
-            opacity: 0.4;
+            transform: translateX(75%) translateZ(-150px) rotateY(-35deg);
+            opacity: 0.5;
             z-index: 8;
-            filter: brightness(0.2) blur(4px);
+            filter: brightness(0.3) blur(3px);
         }
 
         .carousel-3d-item.prev-3 {
-            transform: translateX(-90%) translateZ(-300px) rotateY(45deg);
-            opacity: 0.15;
+            transform: translateX(-100%) translateZ(-300px) rotateY(45deg);
+            opacity: 0.2;
             z-index: 7;
-            filter: brightness(0.1) blur(6px);
+            filter: brightness(0.1) blur(5px);
         }
 
         .carousel-3d-item.next-3 {
-            transform: translateX(90%) translateZ(-300px) rotateY(-45deg);
-            opacity: 0.15;
+            transform: translateX(100%) translateZ(-300px) rotateY(-45deg);
+            opacity: 0.2;
             z-index: 7;
-            filter: brightness(0.1) blur(6px);
+            filter: brightness(0.1) blur(5px);
         }
 
         .carousel-3d-item.hidden {
@@ -838,28 +854,6 @@
         }
 
         /* =========================================================
-           VALUE PROPS — marquee
-           ========================================================= */
-        .value-props-section {
-            background: var(--paper-white); color: var(--ink); border-bottom: 1px solid var(--line);
-            padding: 46px 0; overflow: hidden; white-space: nowrap;
-        }
-
-        .marquee-track { display: inline-flex; animation: marquee 42s linear infinite; }
-        .marquee-track span {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: clamp(14px, 1.6vw, 17px);
-            padding: 0 28px;
-            color: var(--grey);
-            border-right: 1px solid var(--line);
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* =========================================================
            CTA
            ========================================================= */
         .cta-section { padding: 130px 5vw; background: var(--paper-white); max-width: var(--maxw); margin: 0 auto; border-top: 1px solid var(--line); }
@@ -876,7 +870,16 @@
         .cta-primary-w:hover { background: var(--copper); border-color: var(--copper); color: var(--ink); }
 
         .cta-visual { width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px; }
-        .cta-video { width: 100%; height: auto; border-radius: var(--radius-md); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        
+        /* INCREASED BORDER RADIUS FOR CTA VIDEO */
+        .cta-video { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 48px; /* More rounded corner for Laptop/PC */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+            background: #fff; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
         .cta-visual:hover .cta-video { transform: scale(1.015); }
 
         /* =========================================================
@@ -955,95 +958,49 @@
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
             .case-study h3 { font-size: 20px; margin-top: 8px;}
 
-            /* Capabilities Slider for Perfect Mobile Alignment */
+            /* Capabilities Slider Mobile */
             .capabilities-slider-section { padding: 50px 0 70px; overflow: hidden; }
             .slider-wrapper { grid-template-columns: 1fr; gap: 30px; padding: 0 6vw; }
             
-            .slider-left { 
-                flex-direction: column; 
-                width: 100%; 
-                align-items: center; 
-                text-align: center; 
-                gap: 20px; 
-            }
-            
-            .slider-timeline {
-                flex-direction: row;
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-                padding: 0;
-            }
-            .timeline-line {
-                width: 100%;
-                height: 2px;
-                top: 50%;
-                left: 0;
-                bottom: auto;
-                transform: translateY(-50%);
-            }
+            .slider-left { flex-direction: column; width: 100%; align-items: center; text-align: center; gap: 20px; }
+            .slider-timeline { flex-direction: row; width: 100%; max-width: 300px; justify-content: center; padding: 0; }
+            .timeline-line { width: 100%; height: 2px; top: 50%; left: 0; bottom: auto; transform: translateY(-50%); }
             .timeline-dot { margin: 0 10px; }
             
-            .slider-info-container { 
-                width: 100%; 
-                min-height: 180px; 
-                display: grid; 
-                place-items: center; 
-            }
-            
-            .slider-info { 
-                display: flex; 
-                flex-direction: column; 
-                align-items: center; 
-                text-align: center; 
-            }
-            
+            .slider-info-container { width: 100%; min-height: 180px; display: grid; place-items: center; }
+            .slider-info { display: flex; flex-direction: column; align-items: center; text-align: center; }
             .slider-info h2 { font-size: 28px; margin-bottom: 12px; }
             .slider-info p { max-width: 100%; font-size: 14.5px; margin-bottom: 20px; }
             
-            .slider-right { 
-                width: 100vw; 
-                margin-left: -6vw; 
-                position: relative; 
-                padding: 10px 0; 
-            }
+            .slider-right { width: 100vw; margin-left: -6vw; position: relative; padding: 10px 0; }
             .slider-cards-viewport { width: 100%; overflow: visible; }
-            
-            .slider-cards-track { 
-                padding-left: calc(50vw - 110px); 
-                gap: 16px; 
-            }
-            .slider-card {
-                flex: 0 0 220px;
-                height: 280px;
-                border-radius: 20px;
-            }
+            .slider-cards-track { padding-left: calc(50vw - 110px); gap: 16px; }
+            .slider-card { flex: 0 0 220px; height: 280px; border-radius: 20px; }
 
             /* 3D Archive Mobile Formatting */
             .project-carousel-section { padding: 80px 6vw; }
-            .carousel-3d-track { height: 320px; perspective: 800px; }
-            .carousel-3d-item { width: 75%; }
+            .carousel-3d-track { height: 360px; perspective: 1000px; }
+            .carousel-3d-item { width: 60%; } /* Thinner vertical ratio on mobile */
             
-            /* Tighter mobile curves */
-            .carousel-3d-item.prev-1 { transform: translateX(-45%) translateZ(-50px) rotateY(30deg); }
-            .carousel-3d-item.next-1 { transform: translateX(45%) translateZ(-50px) rotateY(-30deg); }
-            .carousel-3d-item.prev-2, .carousel-3d-item.next-2, .carousel-3d-item.prev-3, .carousel-3d-item.next-3 { opacity: 0; pointer-events: none; }
+            /* Tighter mobile curve math */
+            .carousel-3d-item.prev-1 { transform: translateX(-48%) translateZ(-50px) rotateY(30deg); opacity: 0.8;}
+            .carousel-3d-item.next-1 { transform: translateX(48%) translateZ(-50px) rotateY(-30deg); opacity: 0.8;}
+            .carousel-3d-item.prev-2 { transform: translateX(-80%) translateZ(-150px) rotateY(40deg); opacity: 0.3;}
+            .carousel-3d-item.next-2 { transform: translateX(80%) translateZ(-150px) rotateY(-40deg); opacity: 0.3;}
+            .carousel-3d-item.prev-3, .carousel-3d-item.next-3 { opacity: 0; pointer-events: none; }
             
             .car-btn { width: 40px; height: 40px; }
             .car-btn.prev-btn { left: -10px; }
             .car-btn.next-btn { right: -10px; }
 
-            .archive-details {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                margin-top: 20px;
-            }
+            .archive-details { grid-template-columns: 1fr; gap: 30px; margin-top: 20px; }
             .archive-detail-item h4 { font-size: 18px; }
-
-            .value-props-section { padding: 32px 0; }
 
             .cta-split { grid-template-columns: 1fr; gap: 36px; }
             .cta-content h2 { max-width: none; }
+            
+            /* Softer rounded corners for mobile video */
+            .cta-video { border-radius: 32px; } 
 
             footer { padding: 50px 6vw 30px; }
             .footer-content { grid-template-columns: 1fr; gap: 32px; margin-bottom: 30px; }
@@ -1263,21 +1220,21 @@
     </div>
 </section>
 
+<!-- WHITE SEPARATOR BLOCK -->
+<div class="section-divider"></div>
+
 <!-- HORIZONTAL 3D INWARD CURVE ARCHIVE -->
 <section class="project-carousel-section" id="projects">
-    <h2 class="hero-shine">Engineering archive</h2>
+    <h2>Engineering archive</h2>
+    <p class="archive-subtitle">Explore a curated selection of our highest-fidelity prototypes and systems.</p>
     
     <div class="carousel-3d-wrapper">
         <button class="car-btn prev-btn" id="carPrev">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6-6-6"/></svg>
         </button>
 
         <div class="carousel-3d-track" id="carousel3DTrack">
-            <!-- 11 Curated HD Projects, strictly 16:9 -->
-            <img src="po2.webp" class="carousel-3d-item">
-            <img src="po6.webp" class="carousel-3d-item">
-            <img src="po9.webp" class="carousel-3d-item">
-            <img src="po11.jpeg" class="carousel-3d-item">
+            <!-- 7 Curated HD Projects, strictly 3:4 ratio -->
             <img src="po14.jpg" class="carousel-3d-item">
             <img src="po16.webp" class="carousel-3d-item">
             <img src="po20.jpg" class="carousel-3d-item">
