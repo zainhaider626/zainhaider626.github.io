@@ -59,7 +59,7 @@
         .journey-header h2, .journey-step h3, 
         .portfolio-header h2, .case-study h3, 
         .capabilities-slider-section h2, .slider-info h3, .slider-info h2,
-        .project-carousel-section h2,
+        .project-carousel-section h2, .archive-detail-item h4,
         .cta-content h2,
         .about-text h2 {
             font-family: 'Playfair Display', serif;
@@ -101,7 +101,7 @@
             align-items: center;
             justify-content: center;
             animation: preloaderBackgroundFade 0.6s cubic-bezier(0.25, 1, 0.5, 1) 2s forwards;
-            pointer-events: none; /* Allows scrolling immediately as it fades */
+            pointer-events: none; 
         }
 
         .preloader-brand {
@@ -215,7 +215,6 @@
             align-items: center;
             background: var(--ink);
             color: #fff;
-            /* Delayed entry to sync with preloader */
             animation: heroIn 0.9s cubic-bezier(0.25, 1, 0.5, 1) 1.8s both;
         }
 
@@ -666,34 +665,199 @@
         }
 
         /* =========================================================
-           ENGINEERING ARCHIVE — vertical carousel
+           NEW: 3D HORIZONTAL INWARD CURVE ARCHIVE
            ========================================================= */
-        .project-carousel-section { padding: 110px 5vw; background: var(--ink); color: #fff; text-align: center; overflow: hidden; border-top: 1px solid var(--ink-border); }
-        .project-carousel-section h2 { font-size: clamp(32px, 4.6vw, 50px); letter-spacing: -0.01em; font-weight: 600; margin-bottom: 60px; }
-
-        .carousel-container { position: relative; height: 580px; width: 100%; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .carousel-track { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; perspective: 1200px; transform-style: preserve-3d; }
-
-        .carousel-img {
-            position: absolute; width: 84%; max-width: 780px; aspect-ratio: 16/9; object-fit: cover;
-            border-radius: var(--radius-md); box-shadow: 0 30px 60px rgba(0,0,0,0.55);
-            transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.06);
+        .project-carousel-section { 
+            padding: 160px 5vw; 
+            background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.15) 0%, var(--ink) 70%); /* Aesthetic blue light */
+            background-color: var(--ink);
+            color: #fff; 
+            text-align: center; 
+            overflow: hidden; 
+            border-top: 1px solid var(--ink-border); 
         }
-        .carousel-img.active { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) grayscale(0%); z-index: 3; pointer-events: auto; }
-        .carousel-img.prev { opacity: 0.35; transform: translateY(-155px) scale(0.85) translateZ(-100px); filter: blur(10px) grayscale(100%); z-index: 2; }
-        .carousel-img.next { opacity: 0.35; transform: translateY(155px) scale(0.85) translateZ(-100px); filter: blur(10px) grayscale(100%); z-index: 2; }
-        .carousel-img.hidden-up { opacity: 0; transform: translateY(-300px) scale(0.7) translateZ(-200px); z-index: 1; }
-        .carousel-img.hidden-down { opacity: 0; transform: translateY(300px) scale(0.7) translateZ(-200px); z-index: 1; }
 
-        .carousel-up, .carousel-down {
-            background: rgba(255,255,255,0.05); border: 1px solid var(--ink-border); color: #fff;
-            width: 46px; height: 46px; border-radius: 50%; cursor: pointer; z-index: 10;
-            display: flex; align-items: center; justify-content: center; transition: all 0.25s ease;
+        .project-carousel-section h2 { 
+            font-size: clamp(32px, 4.6vw, 50px); 
+            letter-spacing: -0.01em; 
+            font-weight: 600; 
+            margin-bottom: 60px; 
+            color: #fff;
+            position: relative;
+            z-index: 20;
         }
-        .carousel-up:hover, .carousel-down:hover { background: var(--copper); border-color: var(--copper); color: var(--ink); }
-        .carousel-up { position: absolute; top: -6px; }
-        .carousel-down { position: absolute; bottom: -6px; }
+
+        .carousel-3d-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-3d-track {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1500px;
+            transform-style: preserve-3d;
+        }
+
+        .carousel-3d-item {
+            position: absolute;
+            width: 60%;
+            max-width: 420px;
+            aspect-ratio: 16/9; /* Perfect standard ratio */
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease, filter 0.8s ease;
+            pointer-events: none;
+            will-change: transform, opacity, filter;
+            background: var(--ink-raised);
+        }
+
+        /* The 3D Inward Curve Math */
+        .carousel-3d-item.active {
+            transform: translateX(0) translateZ(150px) rotateY(0deg);
+            opacity: 1;
+            z-index: 10;
+            filter: brightness(1.1);
+            pointer-events: auto;
+        }
+
+        .carousel-3d-item.prev-1 {
+            transform: translateX(-40%) translateZ(0px) rotateY(25deg);
+            opacity: 0.7;
+            z-index: 9;
+            filter: brightness(0.5) blur(2px);
+        }
+
+        .carousel-3d-item.next-1 {
+            transform: translateX(40%) translateZ(0px) rotateY(-25deg);
+            opacity: 0.7;
+            z-index: 9;
+            filter: brightness(0.5) blur(2px);
+        }
+
+        .carousel-3d-item.prev-2 {
+            transform: translateX(-70%) translateZ(-150px) rotateY(35deg);
+            opacity: 0.4;
+            z-index: 8;
+            filter: brightness(0.2) blur(4px);
+        }
+
+        .carousel-3d-item.next-2 {
+            transform: translateX(70%) translateZ(-150px) rotateY(-35deg);
+            opacity: 0.4;
+            z-index: 8;
+            filter: brightness(0.2) blur(4px);
+        }
+
+        .carousel-3d-item.prev-3 {
+            transform: translateX(-90%) translateZ(-300px) rotateY(45deg);
+            opacity: 0.15;
+            z-index: 7;
+            filter: brightness(0.1) blur(6px);
+        }
+
+        .carousel-3d-item.next-3 {
+            transform: translateX(90%) translateZ(-300px) rotateY(-45deg);
+            opacity: 0.15;
+            z-index: 7;
+            filter: brightness(0.1) blur(6px);
+        }
+
+        .carousel-3d-item.hidden {
+            transform: translateX(0) translateZ(-500px) rotateY(0deg);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* Side Navigation Arrows */
+        .car-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .car-btn:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .car-btn.prev-btn { left: 0; }
+        .car-btn.next-btn { right: 0; }
+
+        /* Bottom 3-Column Details */
+        .archive-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 20;
+        }
+
+        .archive-detail-item h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .archive-detail-item p {
+            font-size: 14.5px;
+            color: var(--grey-on-dark);
+            line-height: 1.65;
+            max-width: 32ch;
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           VALUE PROPS — marquee
+           ========================================================= */
+        .value-props-section {
+            background: var(--paper-white); color: var(--ink); border-bottom: 1px solid var(--line);
+            padding: 46px 0; overflow: hidden; white-space: nowrap;
+        }
+
+        .marquee-track { display: inline-flex; animation: marquee 42s linear infinite; }
+        .marquee-track span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(14px, 1.6vw, 17px);
+            padding: 0 28px;
+            color: var(--grey);
+            border-right: 1px solid var(--line);
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
 
         /* =========================================================
            CTA
@@ -764,7 +928,7 @@
            MOBILE
            ========================================================= */
         @media (max-width: 768px) {
-            h1, h2, h3, .portfolio h2, .capabilities-slider-section h2, .journey-header h2, .cta-content h2, .project-carousel-section h2 {
+            h1, h2, h3, .portfolio h2, .capabilities-slider-section h2, .journey-header h2, .cta-content h2, .project-carousel-section h2, .archive-detail-item h4 {
                 font-weight: 800 !important;
             }
 
@@ -791,7 +955,7 @@
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
             .case-study h3 { font-size: 20px; margin-top: 8px;}
 
-            /* Adjusted Capabilities Slider for Perfect Mobile Alignment */
+            /* Capabilities Slider for Perfect Mobile Alignment */
             .capabilities-slider-section { padding: 50px 0 70px; overflow: hidden; }
             .slider-wrapper { grid-template-columns: 1fr; gap: 30px; padding: 0 6vw; }
             
@@ -837,7 +1001,6 @@
             .slider-info h2 { font-size: 28px; margin-bottom: 12px; }
             .slider-info p { max-width: 100%; font-size: 14.5px; margin-bottom: 20px; }
             
-            /* Full-Bleed Mobile Carousel Container */
             .slider-right { 
                 width: 100vw; 
                 margin-left: -6vw; 
@@ -846,7 +1009,6 @@
             }
             .slider-cards-viewport { width: 100%; overflow: visible; }
             
-            /* The padding-left calculation exactly centers a 220px card on the screen when index is 0 */
             .slider-cards-track { 
                 padding-left: calc(50vw - 110px); 
                 gap: 16px; 
@@ -857,11 +1019,28 @@
                 border-radius: 20px;
             }
 
-            .project-carousel-section { padding: 76px 6vw; }
-            .project-carousel-section h2 { margin-bottom: 40px; }
-            .carousel-container { height: 420px; }
-            .carousel-img.prev { transform: translateY(-115px) scale(0.85) translateZ(-100px); }
-            .carousel-img.next { transform: translateY(115px) scale(0.85) translateZ(-100px); }
+            /* 3D Archive Mobile Formatting */
+            .project-carousel-section { padding: 80px 6vw; }
+            .carousel-3d-track { height: 320px; perspective: 800px; }
+            .carousel-3d-item { width: 75%; }
+            
+            /* Tighter mobile curves */
+            .carousel-3d-item.prev-1 { transform: translateX(-45%) translateZ(-50px) rotateY(30deg); }
+            .carousel-3d-item.next-1 { transform: translateX(45%) translateZ(-50px) rotateY(-30deg); }
+            .carousel-3d-item.prev-2, .carousel-3d-item.next-2, .carousel-3d-item.prev-3, .carousel-3d-item.next-3 { opacity: 0; pointer-events: none; }
+            
+            .car-btn { width: 40px; height: 40px; }
+            .car-btn.prev-btn { left: -10px; }
+            .car-btn.next-btn { right: -10px; }
+
+            .archive-details {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 20px;
+            }
+            .archive-detail-item h4 { font-size: 18px; }
+
+            .value-props-section { padding: 32px 0; }
 
             .cta-split { grid-template-columns: 1fr; gap: 36px; }
             .cta-content h2 { max-width: none; }
@@ -1021,7 +1200,6 @@
 <!-- INDUSTRIAL CAPABILITIES SLIDER & STAGE CAROUSEL -->
 <section class="capabilities-slider-section" id="capabilities">
     <div class="slider-wrapper">
-        <!-- Left Column: Stepper Track + Content -->
         <div class="slider-left">
             <div class="slider-timeline">
                 <div class="timeline-line"></div>
@@ -1061,11 +1239,9 @@
             </div>
         </div>
 
-        <!-- Right Column: Horizontal Cards Stage -->
         <div class="slider-right">
             <div class="slider-cards-viewport">
                 <div class="slider-cards-track" id="sliderCardsTrack">
-                    <!-- Your requested images mapped correctly -->
                     <div class="slider-card active" data-index="0">
                         <img src="pcb11.jpg" alt="High-density PCB layout">
                     </div>
@@ -1087,45 +1263,49 @@
     </div>
 </section>
 
+<!-- HORIZONTAL 3D INWARD CURVE ARCHIVE -->
 <section class="project-carousel-section" id="projects">
     <h2 class="hero-shine">Engineering archive</h2>
-    <div class="carousel-container">
-        <button class="carousel-up" aria-label="Previous project">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    
+    <div class="carousel-3d-wrapper">
+        <button class="car-btn prev-btn" id="carPrev">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
 
-        <div class="carousel-track">
-            <img src="po1.png" class="carousel-img">
-            <img src="po2.webp" class="carousel-img">
-            <img src="po3.png" class="carousel-img">
-            <img src="po4.png" class="carousel-img">
-            <img src="po5.webp" class="carousel-img">
-            <img src="po6.webp" class="carousel-img">
-            <img src="po7.webp" class="carousel-img">
-            <img src="po8.png" class="carousel-img">
-            <img src="po9.webp" class="carousel-img">
-            <img src="po10.png" class="carousel-img">
-            <img src="po11.jpeg" class="carousel-img">
-            <img src="po12.png" class="carousel-img">
-            <img src="po13.png" class="carousel-img">
-            <img src="po14.jpg" class="carousel-img">
-            <img src="po15.jpeg" class="carousel-img">
-            <img src="po16.webp" class="carousel-img">
-            <img src="po17.png" class="carousel-img">
-            <img src="po18.png" class="carousel-img">
-            <img src="po19.png" class="carousel-img">
-            <img src="po20.jpg" class="carousel-img">
-            <img src="po21.png" class="carousel-img">
-            <img src="po22.png" class="carousel-img">
-            <img src="po23.jpeg" class="carousel-img">
-            <img src="po24.png" class="carousel-img">
-            <img src="po25.png" class="carousel-img">
-            <img src="po26.png" class="carousel-img">
+        <div class="carousel-3d-track" id="carousel3DTrack">
+            <!-- 11 Curated HD Projects, strictly 16:9 -->
+            <img src="po2.webp" class="carousel-3d-item">
+            <img src="po6.webp" class="carousel-3d-item">
+            <img src="po9.webp" class="carousel-3d-item">
+            <img src="po11.jpeg" class="carousel-3d-item">
+            <img src="po14.jpg" class="carousel-3d-item">
+            <img src="po16.webp" class="carousel-3d-item">
+            <img src="po20.jpg" class="carousel-3d-item">
+            <img src="po23.jpeg" class="carousel-3d-item">
+            <img src="po24.png" class="carousel-3d-item">
+            <img src="po25.png" class="carousel-3d-item">
+            <img src="po26.png" class="carousel-3d-item">
         </div>
 
-        <button class="carousel-down" aria-label="Next project">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <button class="car-btn next-btn" id="carNext">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
+    </div>
+
+    <!-- 3-Column Detailed Information -->
+    <div class="archive-details">
+        <div class="archive-detail-item">
+            <h4>High-Fidelity Prototyping</h4>
+            <p>Translating conceptual designs into precision 3D mechanical models and layered architectures.</p>
+        </div>
+        <div class="archive-detail-item">
+            <h4>Complex Layer Routing</h4>
+            <p>Advanced high-density PCB layouts engineered for maximum performance and industrial scalability.</p>
+        </div>
+        <div class="archive-detail-item">
+            <h4>Unified Systems</h4>
+            <p>Seamlessly merging mechanical hardware, electronics, and logic firmware into production-ready robotics.</p>
+        </div>
     </div>
 </section>
 
@@ -1216,7 +1396,6 @@
         sliderCards.forEach(card => card.classList.remove('active'));
         if (sliderCards[index]) sliderCards[index].classList.add('active');
 
-        // Center card dynamically on mobile
         if (window.innerWidth <= 768) {
             const cardW = 220; 
             const gap = 16;    
@@ -1246,41 +1425,51 @@
         goToSlide(currentSlide);
     });
 
-    /* Engineering Archive Carousel Logic */
-    const carouselImages = document.querySelectorAll('.carousel-img');
-    const upBtn = document.querySelector('.carousel-up');
-    const downBtn = document.querySelector('.carousel-down');
-    let currentImageIndex = 0;
-    const totalImages = carouselImages.length;
+    /* 3D Horizontal Engineering Archive Carousel Logic */
+    const carousel3DItems = document.querySelectorAll('.carousel-3d-item');
+    const carPrev = document.getElementById('carPrev');
+    const carNext = document.getElementById('carNext');
+    let current3DIndex = 0;
 
-    function updateCarousel() {
-        if(!carouselImages.length) return;
-        carouselImages.forEach((img, index) => {
-            img.className = 'carousel-img';
-            if (index === currentImageIndex) {
-                img.classList.add('active');
-            } else if (index === (currentImageIndex - 1 + totalImages) % totalImages) {
-                img.classList.add('prev');
-            } else if (index === (currentImageIndex + 1) % totalImages) {
-                img.classList.add('next');
+    function update3DCarousel() {
+        if (!carousel3DItems.length) return;
+        const total = carousel3DItems.length;
+        
+        carousel3DItems.forEach((item, index) => {
+            item.className = 'carousel-3d-item'; // Reset classes
+            
+            let diff = (index - current3DIndex + total) % total;
+            
+            if (diff === 0) {
+                item.classList.add('active');
+            } else if (diff === 1) {
+                item.classList.add('next-1');
+            } else if (diff === 2) {
+                item.classList.add('next-2');
+            } else if (diff === 3) {
+                item.classList.add('next-3');
+            } else if (diff === total - 1) {
+                item.classList.add('prev-1');
+            } else if (diff === total - 2) {
+                item.classList.add('prev-2');
+            } else if (diff === total - 3) {
+                item.classList.add('prev-3');
             } else {
-                let diff = (index - currentImageIndex + totalImages) % totalImages;
-                if (diff < totalImages / 2) img.classList.add('hidden-down');
-                else img.classList.add('hidden-up');
+                item.classList.add('hidden');
             }
         });
     }
 
-    if (upBtn && downBtn && totalImages > 0) {
-        upBtn.addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
-            updateCarousel();
+    if (carPrev && carNext) {
+        carPrev.addEventListener('click', () => {
+            current3DIndex = (current3DIndex - 1 + carousel3DItems.length) % carousel3DItems.length;
+            update3DCarousel();
         });
-        downBtn.addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex + 1) % totalImages;
-            updateCarousel();
+        carNext.addEventListener('click', () => {
+            current3DIndex = (current3DIndex + 1) % carousel3DItems.length;
+            update3DCarousel();
         });
-        updateCarousel();
+        update3DCarousel();
     }
 
     const aboutBtn = document.getElementById('aboutBtn');
