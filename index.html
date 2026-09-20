@@ -58,7 +58,7 @@
         .hero-left h1, 
         .journey-header h2, .journey-step h3, 
         .portfolio-header h2, .case-study h3, 
-        .capabilities-minimal h2, .cap-min-item h3,
+        .capabilities-interactive h2, .cap-panel h3,
         .project-carousel-section h2,
         .cta-content h2,
         .about-text h2 {
@@ -382,7 +382,6 @@
             will-change: color;
         }
         
-        /* Stagger the animation by 1s for each item to create a sequence */
         .journey-step:nth-child(1) h3 { animation-delay: 0s; }
         .journey-step:nth-child(2) h3 { animation-delay: 1s; }
         .journey-step:nth-child(3) h3 { animation-delay: 2s; }
@@ -390,7 +389,7 @@
 
         @keyframes journeyColorPulse {
             0%, 50%, 100% { color: var(--ink); }
-            10%, 30% { color: #0071e3; } /* Apple Blue Highlight */
+            10%, 30% { color: #0071e3; } 
         }
 
         .journey-step p { font-size: 14px; color: var(--grey); line-height: 1.65; }
@@ -429,35 +428,95 @@
         .case-study p { color: var(--grey); font-size: 14px; line-height: 1.65; max-width: 46ch; }
 
         /* =========================================================
-           CAPABILITIES
+           INDUSTRIAL CAPABILITIES (MINIMALIST INTERACTIVE DOTS)
            ========================================================= */
-        .capabilities-minimal { padding: 130px 5vw; background: var(--ink); color: #fff; width: 100%; }
-        .cap-min-container { max-width: var(--maxw); margin: 0 auto; }
+        .capabilities-interactive {
+            padding: 110px 5vw;
+            background: var(--ink);
+            color: #fff;
+            text-align: center;
+        }
 
-        .capabilities-minimal h2 {
+        .cap-inter-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .capabilities-interactive h2 {
             font-size: clamp(32px, 4.6vw, 50px);
             letter-spacing: -0.01em;
             font-weight: 600;
-            margin-bottom: 64px;
-            border-bottom: 1px solid var(--ink-border);
-            padding-bottom: 28px;
-            max-width: 640px;
+            margin-bottom: 40px;
         }
 
-        .cap-min-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-        .cap-min-item { padding: 38px 40px; border-bottom: 1px solid var(--ink-border); border-right: 1px solid var(--ink-border); transition: border-color 0.3s ease; }
-        .cap-min-item:nth-child(even) { border-right: none; }
-
-        .cap-min-item h3 { 
-            font-size: 23px; 
-            font-weight: 600; 
-            margin-bottom: 12px; 
-            color: var(--grey-on-dark); 
-            letter-spacing: -0.01em; 
-            transition: color 0.25s ease; 
+        .cap-dots-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 50px;
         }
-        .cap-min-item:hover h3 { color: #ffffff; }
-        .cap-min-item p { font-size: 14.5px; color: var(--grey-on-dark); line-height: 1.65; max-width: 40ch; }
+
+        .cap-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 0;
+        }
+
+        .cap-dot:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        /* Active state expands into a premium pill shape */
+        .cap-dot.active {
+            background: #fff;
+            width: 36px;
+        }
+
+        .cap-content-display {
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cap-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .cap-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .cap-panel h3 {
+            font-size: 26px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .cap-panel p {
+            font-size: 15.5px;
+            color: var(--grey-on-dark);
+            line-height: 1.65;
+            max-width: 50ch;
+            margin: 0 auto;
+        }
 
         /* =========================================================
            ENGINEERING ARCHIVE — vertical carousel
@@ -580,7 +639,7 @@
            MOBILE
            ========================================================= */
         @media (max-width: 768px) {
-            h1, h2, h3, .portfolio h2, .capabilities h2, .journey-header h2, .cta-content h2, .project-carousel-section h2 {
+            h1, h2, h3, .portfolio h2, .capabilities-interactive h2, .journey-header h2, .cta-content h2, .project-carousel-section h2 {
                 font-weight: 800 !important;
             }
 
@@ -608,8 +667,12 @@
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
             .case-study h3 { font-size: 20px; margin-top: 8px;}
 
-            /* Completely hide capabilities on mobile */
-            .capabilities-minimal { display: none !important; }
+            /* Adjusted Capabilities Interactive for Mobile */
+            .capabilities-interactive { padding: 80px 6vw; }
+            .capabilities-interactive h2 { font-size: 32px; margin-bottom: 30px; }
+            .cap-panel h3 { font-size: 24px; }
+            .cap-panel p { font-size: 15px; }
+            .cap-dots-nav { gap: 12px; margin-bottom: 40px; }
 
             .project-carousel-section { padding: 76px 6vw; }
             .project-carousel-section h2 { margin-bottom: 40px; }
@@ -728,7 +791,7 @@
 
 <section class="portfolio" id="work">
     <div class="portfolio-header">
-        <h2>Featured engineering</h2>
+        <h2 class="hero-shine">Featured engineering</h2>
         <p>A selection of recent hardware, mechanical, and systems work.</p>
     </div>
 
@@ -769,31 +832,44 @@
     </div>
 </section>
 
-<section class="capabilities-minimal">
-    <div class="cap-min-container">
+<!-- NEW: INTERACTIVE DOTS INDUSTRIAL CAPABILITIES -->
+<section class="capabilities-interactive">
+    <div class="cap-inter-container">
         <h2>Industrial capabilities</h2>
-        <div class="cap-min-grid">
-            <div class="cap-min-item">
+        
+        <!-- Interactive Dots -->
+        <div class="cap-dots-nav">
+            <button class="cap-dot active" data-index="0" aria-label="High-density PCB layout"></button>
+            <button class="cap-dot" data-index="1" aria-label="Parametric 3D CAD"></button>
+            <button class="cap-dot" data-index="2" aria-label="Intelligent firmware"></button>
+            <button class="cap-dot" data-index="3" aria-label="Physical AI integration"></button>
+            <button class="cap-dot" data-index="4" aria-label="Soft robotics prototyping"></button>
+            <button class="cap-dot" data-index="5" aria-label="Custom hardware builds"></button>
+        </div>
+
+        <!-- Capability Content Panels -->
+        <div class="cap-content-display">
+            <div class="cap-panel active" id="cap-panel-0">
                 <h3>High-density PCB layout</h3>
                 <p>Advanced routing for up to 22-layer boards, prioritizing signal integrity and compact footprint integration.</p>
             </div>
-            <div class="cap-min-item">
+            <div class="cap-panel" id="cap-panel-1">
                 <h3>Parametric 3D CAD</h3>
                 <p>Structural joint constraints, zero-clearance modeling, and non-linear load simulations for mechanical assemblies.</p>
             </div>
-            <div class="cap-min-item">
+            <div class="cap-panel" id="cap-panel-2">
                 <h3>Intelligent firmware</h3>
                 <p>Centralized communication protocols, robust local logic mapping, and custom network routing algorithms.</p>
             </div>
-            <div class="cap-min-item">
+            <div class="cap-panel" id="cap-panel-3">
                 <h3>Physical AI integration</h3>
                 <p>Bridging software processing and physical action through sensor fusion and edge-compute architectures.</p>
             </div>
-            <div class="cap-min-item">
+            <div class="cap-panel" id="cap-panel-4">
                 <h3>Soft robotics prototyping</h3>
                 <p>Unconventional materials and articulated physical models, in search of new industrial actuation methods.</p>
             </div>
-            <div class="cap-min-item">
+            <div class="cap-panel" id="cap-panel-5">
                 <h3>Custom hardware builds</h3>
                 <p>End-to-end realization of bespoke hardware, from localized networking infrastructure to portable robotic logic systems.</p>
             </div>
@@ -936,6 +1012,23 @@
         else nav.classList.remove('nav-scrolled');
     });
 
+    /* Interactive Capabilities Dots Logic */
+    const capDots = document.querySelectorAll('.cap-dot');
+    const capPanels = document.querySelectorAll('.cap-panel');
+
+    if(capDots.length > 0) {
+        capDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                capDots.forEach(d => d.classList.remove('active'));
+                capPanels.forEach(p => p.classList.remove('active'));
+                
+                dot.classList.add('active');
+                const index = dot.getAttribute('data-index');
+                document.getElementById(`cap-panel-${index}`).classList.add('active');
+            });
+        });
+    }
+
     const carouselImages = document.querySelectorAll('.carousel-img');
     const upBtn = document.querySelector('.carousel-up');
     const downBtn = document.querySelector('.carousel-down');
@@ -943,6 +1036,7 @@
     const totalImages = carouselImages.length;
 
     function updateCarousel() {
+        if(!carouselImages.length) return;
         carouselImages.forEach((img, index) => {
             img.className = 'carousel-img';
             if (index === currentImageIndex) {
