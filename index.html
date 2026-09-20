@@ -58,7 +58,7 @@
         .hero-left h1, 
         .journey-header h2, .journey-step h3, 
         .portfolio-header h2, .case-study h3, 
-        .capabilities-interactive h2, .cap-panel h3,
+        .capabilities-slider-section h2, .slider-info h3,
         .project-carousel-section h2,
         .cta-content h2,
         .about-text h2 {
@@ -191,7 +191,6 @@
             max-width: 15ch;
         }
 
-        /* SHINING TEXT EFFECT FOR DARK BACKGROUNDS */
         .hero-shine {
             background: linear-gradient(
                 120deg, 
@@ -346,9 +345,7 @@
         }
         .google-login-btn:hover { background: #ececec; }
 
-        /* =========================================================
-           JOURNEY
-           ========================================================= */
+        /* ============= THE JOURNEY ============= */
         .journey-section {
             padding: 130px 5vw;
             background: var(--paper-white);
@@ -373,7 +370,6 @@
         .journey-step { display: flex; flex-direction: column; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); }
         .step-number { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink); font-weight: 500; opacity: 0.7;}
         
-        /* SEQUENTIAL COLOR LOOP FOR JOURNEY HEADINGS */
         .journey-step h3 { 
             font-size: 22px; 
             line-height: 1.3; 
@@ -395,12 +391,17 @@
         .journey-step p { font-size: 14px; color: var(--grey); line-height: 1.65; }
 
         /* =========================================================
-           FEATURED ENGINEERING
+           FEATURED ENGINEERING (BOLD PLAIN SERIF, NO SHINE)
            ========================================================= */
         .portfolio { padding: 130px 5vw; max-width: var(--maxw); margin: 0 auto; background: var(--paper-white); }
 
         .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 56px; flex-wrap: wrap; }
-        .portfolio-header h2 { font-size: clamp(32px, 4.6vw, 50px); letter-spacing: -0.01em; font-weight: 600; }
+        .portfolio-header h2 { 
+            font-size: clamp(34px, 4.8vw, 54px); 
+            letter-spacing: -0.01em; 
+            font-weight: 700; 
+            color: var(--ink);
+        }
         .portfolio-header p { font-size: 15px; color: var(--grey); max-width: 36ch; }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-bottom: 44px; }
@@ -411,7 +412,7 @@
             aspect-ratio: 16/9;
             overflow: hidden;
             background: #111;
-            border-radius: var(--radius-md);
+            border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
             transform: translateZ(0); 
         }
@@ -428,94 +429,201 @@
         .case-study p { color: var(--grey); font-size: 14px; line-height: 1.65; max-width: 46ch; }
 
         /* =========================================================
-           INDUSTRIAL CAPABILITIES (MINIMALIST INTERACTIVE DOTS)
+           NEW: INDUSTRIAL CAPABILITIES SLIDER & STAGE CAROUSEL
            ========================================================= */
-        .capabilities-interactive {
-            padding: 110px 5vw;
-            background: var(--ink);
+        .capabilities-slider-section {
+            padding: 130px 5vw;
+            background: #0d0d0e;
             color: #fff;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cap-inter-container {
-            max-width: 800px;
+        .slider-wrapper {
+            max-width: var(--maxw);
             margin: 0 auto;
-        }
-
-        .capabilities-interactive h2 {
-            font-size: clamp(32px, 4.6vw, 50px);
-            letter-spacing: -0.01em;
-            font-weight: 600;
-            margin-bottom: 40px;
-        }
-
-        .cap-dots-nav {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 60px;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 50px;
         }
 
-        .cap-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.2);
+        /* Left Side: Vertical Stepper & Dynamic Info */
+        .slider-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 36px;
+        }
+
+        .slider-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 14px;
+            bottom: 14px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.12);
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
             border: none;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 2;
+            margin: 16px 0;
             padding: 0;
+            transition: transform 0.3s ease;
         }
 
-        .cap-dot:hover {
-            background: rgba(255,255,255,0.6);
+        .timeline-dot span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Active state expands into a premium pill shape */
-        .cap-dot.active {
+        .timeline-dot:hover span {
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.3);
+        }
+
+        .timeline-dot.active span {
+            width: 12px;
+            height: 12px;
             background: #fff;
-            width: 36px;
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
         }
 
-        .cap-content-display {
+        .slider-info-container {
+            flex: 1;
             position: relative;
-            min-height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            min-height: 280px;
         }
 
-        .cap-panel {
+        .slider-info {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(20px);
             pointer-events: none;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .cap-panel.active {
+        .slider-info.active {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
             position: relative;
         }
 
-        .cap-panel h3 {
-            font-size: 26px;
-            margin-bottom: 12px;
+        .slider-info h2 {
+            font-size: clamp(38px, 4.8vw, 62px);
+            line-height: 1.12;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
             color: #fff;
         }
 
-        .cap-panel p {
-            font-size: 15.5px;
-            color: var(--grey-on-dark);
-            line-height: 1.65;
-            max-width: 50ch;
-            margin: 0 auto;
+        .slider-info p {
+            font-size: 16px;
+            color: #a1a1a6;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 44ch;
+        }
+
+        .slider-btn {
+            display: inline-block;
+            background: #1c1c1e;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 28px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* Right Side: Horizontal Cards Carousel Stage */
+        .slider-right {
+            position: relative;
+            width: 100%;
+            overflow: visible;
+        }
+
+        .slider-cards-viewport {
+            width: 100%;
+            overflow: visible;
+        }
+
+        .slider-cards-track {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .slider-card {
+            flex: 0 0 340px;
+            height: 460px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #1c1c1e;
+            position: relative;
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            opacity: 0.4;
+            transform: scale(0.9);
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .slider-card.active {
+            opacity: 1;
+            transform: scale(1.03);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .slider-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(80%);
+            transition: filter 0.6s ease;
+        }
+
+        .slider-card.active img,
+        .slider-card:hover img {
+            filter: grayscale(0%);
         }
 
         /* =========================================================
@@ -529,7 +637,7 @@
 
         .carousel-img {
             position: absolute; width: 84%; max-width: 780px; aspect-ratio: 16/9; object-fit: cover;
-            border-radius: var(--radius-md); box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+            border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.55);
             transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1); opacity: 0; pointer-events: none;
             border: 1px solid rgba(255,255,255,0.06);
         }
@@ -549,28 +657,6 @@
         .carousel-down { position: absolute; bottom: -6px; }
 
         /* =========================================================
-           VALUE PROPS — marquee
-           ========================================================= */
-        .value-props-section {
-            background: var(--paper-white); color: var(--ink); border-bottom: 1px solid var(--line);
-            padding: 46px 0; overflow: hidden; white-space: nowrap;
-        }
-
-        .marquee-track { display: inline-flex; animation: marquee 42s linear infinite; }
-        .marquee-track span {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: clamp(14px, 1.6vw, 17px);
-            padding: 0 28px;
-            color: var(--grey);
-            border-right: 1px solid var(--line);
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* =========================================================
            CTA
            ========================================================= */
         .cta-section { padding: 130px 5vw; background: var(--paper-white); max-width: var(--maxw); margin: 0 auto; }
@@ -587,7 +673,7 @@
         .cta-primary-w:hover { background: var(--copper); border-color: var(--copper); color: var(--ink); }
 
         .cta-visual { width: 100%; display: flex; align-items: center; justify-content: center; margin: 10px; }
-        .cta-video { width: 100%; height: auto; border-radius: var(--radius-md); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .cta-video { width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); background: #fff; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .cta-visual:hover .cta-video { transform: scale(1.015); }
 
         /* =========================================================
@@ -639,7 +725,7 @@
            MOBILE
            ========================================================= */
         @media (max-width: 768px) {
-            h1, h2, h3, .portfolio h2, .capabilities-interactive h2, .journey-header h2, .cta-content h2, .project-carousel-section h2 {
+            h1, h2, h3, .portfolio h2, .capabilities-slider-section h2, .journey-header h2, .cta-content h2, .project-carousel-section h2 {
                 font-weight: 800 !important;
             }
 
@@ -648,7 +734,6 @@
             nav.nav-scrolled { width: 92%; top: 12px; padding: 0 8px 0 18px; border-radius: 40px; }
 
             .hero { grid-template-columns: 1fr; gap: 40px; padding: 36px 6vw 70px; }
-            
             .logo { height: 26px; }
 
             .hero-left h1 { font-size: 38px; margin-bottom: 18px; max-width: none; }
@@ -667,20 +752,38 @@
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
             .case-study h3 { font-size: 20px; margin-top: 8px;}
 
-            /* Adjusted Capabilities Interactive for Mobile */
-            .capabilities-interactive { padding: 80px 6vw; }
-            .capabilities-interactive h2 { font-size: 32px; margin-bottom: 30px; }
-            .cap-panel h3 { font-size: 24px; }
-            .cap-panel p { font-size: 15px; }
-            .cap-dots-nav { gap: 12px; margin-bottom: 40px; }
+            /* Capabilities Section on Mobile */
+            .capabilities-slider-section { padding: 76px 6vw; }
+            .slider-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .slider-left { flex-direction: column; gap: 20px; }
+            .slider-timeline {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+                padding: 0;
+            }
+            .timeline-line {
+                width: 80%;
+                height: 2px;
+                top: 50%;
+                left: 10%;
+                bottom: auto;
+            }
+            .timeline-dot {
+                margin: 0 10px;
+            }
+            .slider-info-container { min-height: 220px; text-align: center; }
+            .slider-info p { max-width: none; }
+            .slider-card {
+                flex: 0 0 280px;
+                height: 380px;
+            }
 
             .project-carousel-section { padding: 76px 6vw; }
             .project-carousel-section h2 { margin-bottom: 40px; }
             .carousel-container { height: 420px; }
             .carousel-img.prev { transform: translateY(-115px) scale(0.85) translateZ(-100px); }
             .carousel-img.next { transform: translateY(115px) scale(0.85) translateZ(-100px); }
-
-            .value-props-section { padding: 32px 0; }
 
             .cta-split { grid-template-columns: 1fr; gap: 36px; }
             .cta-content h2 { max-width: none; }
@@ -791,7 +894,7 @@
 
 <section class="portfolio" id="work">
     <div class="portfolio-header">
-        <h2 class="hero-shine">Featured engineering</h2>
+        <h2>Featured engineering</h2>
         <p>A selection of recent hardware, mechanical, and systems work.</p>
     </div>
 
@@ -832,46 +935,69 @@
     </div>
 </section>
 
-<!-- NEW: INTERACTIVE DOTS INDUSTRIAL CAPABILITIES -->
-<section class="capabilities-interactive">
-    <div class="cap-inter-container">
-        <h2>Industrial capabilities</h2>
-        
-        <!-- Interactive Dots -->
-        <div class="cap-dots-nav">
-            <button class="cap-dot active" data-index="0" aria-label="High-density PCB layout"></button>
-            <button class="cap-dot" data-index="1" aria-label="Parametric 3D CAD"></button>
-            <button class="cap-dot" data-index="2" aria-label="Intelligent firmware"></button>
-            <button class="cap-dot" data-index="3" aria-label="Physical AI integration"></button>
-            <button class="cap-dot" data-index="4" aria-label="Soft robotics prototyping"></button>
-            <button class="cap-dot" data-index="5" aria-label="Custom hardware builds"></button>
+<!-- INDUSTRIAL CAPABILITIES (STEPPER TIMELINE & CARD CAROUSEL) -->
+<section class="capabilities-slider-section" id="capabilities">
+    <div class="slider-wrapper">
+        <!-- Left Column: Stepper Track + Content -->
+        <div class="slider-left">
+            <div class="slider-timeline">
+                <div class="timeline-line"></div>
+                <button class="timeline-dot active" data-index="0" aria-label="Slide 1"><span></span></button>
+                <button class="timeline-dot" data-index="1" aria-label="Slide 2"><span></span></button>
+                <button class="timeline-dot" data-index="2" aria-label="Slide 3"><span></span></button>
+                <button class="timeline-dot" data-index="3" aria-label="Slide 4"><span></span></button>
+                <button class="timeline-dot" data-index="4" aria-label="Slide 5"><span></span></button>
+            </div>
+
+            <div class="slider-info-container">
+                <div class="slider-info active" data-index="0">
+                    <h2>High-density PCB layout</h2>
+                    <p>Advanced routing for up to 22-layer boards, prioritizing signal integrity and compact footprint integration.</p>
+                    <a href="mailto:hello@nvisco.com" class="slider-btn">Contact engineering</a>
+                </div>
+                <div class="slider-info" data-index="1">
+                    <h2>Parametric 3D CAD</h2>
+                    <p>Structural joint constraints, zero-clearance modeling, and non-linear load simulations for complex mechanical assemblies.</p>
+                    <a href="mailto:hello@nvisco.com" class="slider-btn">Contact engineering</a>
+                </div>
+                <div class="slider-info" data-index="2">
+                    <h2>Intelligent firmware</h2>
+                    <p>Centralized communication protocols, robust local logic mapping, and custom network routing algorithms.</p>
+                    <a href="mailto:hello@nvisco.com" class="slider-btn">Contact engineering</a>
+                </div>
+                <div class="slider-info" data-index="3">
+                    <h2>Precision robotics</h2>
+                    <p>Bridging software logic and physical actuation with real-time motion control and sensor fusion.</p>
+                    <a href="mailto:hello@nvisco.com" class="slider-btn">Contact engineering</a>
+                </div>
+                <div class="slider-info" data-index="4">
+                    <h2>Unified systems</h2>
+                    <p>Full-stack hardware engineering connecting custom circuits, mechanical enclosures, and cloud edge telemetry.</p>
+                    <a href="mailto:hello@nvisco.com" class="slider-btn">Contact engineering</a>
+                </div>
+            </div>
         </div>
 
-        <!-- Capability Content Panels -->
-        <div class="cap-content-display">
-            <div class="cap-panel active" id="cap-panel-0">
-                <h3>High-density PCB layout</h3>
-                <p>Advanced routing for up to 22-layer boards, prioritizing signal integrity and compact footprint integration.</p>
-            </div>
-            <div class="cap-panel" id="cap-panel-1">
-                <h3>Parametric 3D CAD</h3>
-                <p>Structural joint constraints, zero-clearance modeling, and non-linear load simulations for mechanical assemblies.</p>
-            </div>
-            <div class="cap-panel" id="cap-panel-2">
-                <h3>Intelligent firmware</h3>
-                <p>Centralized communication protocols, robust local logic mapping, and custom network routing algorithms.</p>
-            </div>
-            <div class="cap-panel" id="cap-panel-3">
-                <h3>Physical AI integration</h3>
-                <p>Bridging software processing and physical action through sensor fusion and edge-compute architectures.</p>
-            </div>
-            <div class="cap-panel" id="cap-panel-4">
-                <h3>Soft robotics prototyping</h3>
-                <p>Unconventional materials and articulated physical models, in search of new industrial actuation methods.</p>
-            </div>
-            <div class="cap-panel" id="cap-panel-5">
-                <h3>Custom hardware builds</h3>
-                <p>End-to-end realization of bespoke hardware, from localized networking infrastructure to portable robotic logic systems.</p>
+        <!-- Right Column: Horizontal Cards Stage -->
+        <div class="slider-right">
+            <div class="slider-cards-viewport">
+                <div class="slider-cards-track" id="sliderCardsTrack">
+                    <div class="slider-card active" data-index="0">
+                        <img src="watch-im.png" alt="High-density PCB layout">
+                    </div>
+                    <div class="slider-card" data-index="1">
+                        <img src="time-mat.png" alt="Parametric 3D CAD">
+                    </div>
+                    <div class="slider-card" data-index="2">
+                        <img src="tame.png" alt="Intelligent firmware">
+                    </div>
+                    <div class="slider-card" data-index="3">
+                        <img src="CAD_WELD.jpg" alt="Precision robotics">
+                    </div>
+                    <div class="slider-card" data-index="4">
+                        <img src="pcb.png" alt="Unified systems">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -919,31 +1045,6 @@
     </div>
 </section>
 
-<section class="value-props-section" id="valueProps">
-    <div class="marquee-track">
-        <span>Ending production delays with autonomous robotics</span>
-        <span>Solving complex high-density PCB routing</span>
-        <span>Turning manual inefficiency into relentless automation</span>
-        <span>Preventing costly mechanical clearance failures</span>
-        <span>Bridging theoretical logic with physical execution</span>
-        <span>Rescuing concepts from prototype purgatory</span>
-        <span>Turning raw sensor data into intelligent action</span>
-        <span>Accelerating the journey from blueprint to market</span>
-        <span>Bulletproofing industrial hardware architectures</span>
-        <span>Deploying edge AI into robust electromechanical systems</span>
-        <span>Ending production delays with autonomous robotics</span>
-        <span>Solving complex high-density PCB routing</span>
-        <span>Turning manual inefficiency into relentless automation</span>
-        <span>Preventing costly mechanical clearance failures</span>
-        <span>Bridging theoretical logic with physical execution</span>
-        <span>Rescuing concepts from prototype purgatory</span>
-        <span>Turning raw sensor data into intelligent action</span>
-        <span>Accelerating the journey from blueprint to market</span>
-        <span>Bulletproofing industrial hardware architectures</span>
-        <span>Deploying edge AI into robust electromechanical systems</span>
-    </div>
-</section>
-
 <section class="cta-section" id="cta">
     <div class="cta-split">
         <div class="cta-content">
@@ -954,7 +1055,7 @@
             </div>
         </div>
 
-        <div class="cta-visual frame">
+        <div class="cta-visual">
             <video src="cadd.mp4" autoplay loop muted playsinline class="cta-video"></video>
         </div>
     </div>
@@ -1012,23 +1113,48 @@
         else nav.classList.remove('nav-scrolled');
     });
 
-    /* Interactive Capabilities Dots Logic */
-    const capDots = document.querySelectorAll('.cap-dot');
-    const capPanels = document.querySelectorAll('.cap-panel');
+    /* Capabilities Stepper & Horizontal Card Carousel Logic */
+    const timelineDots = document.querySelectorAll('.timeline-dot');
+    const sliderInfos = document.querySelectorAll('.slider-info');
+    const sliderCards = document.querySelectorAll('.slider-card');
+    const sliderCardsTrack = document.getElementById('sliderCardsTrack');
+    let currentSlide = 0;
 
-    if(capDots.length > 0) {
-        capDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                capDots.forEach(d => d.classList.remove('active'));
-                capPanels.forEach(p => p.classList.remove('active'));
-                
-                dot.classList.add('active');
-                const index = dot.getAttribute('data-index');
-                document.getElementById(`cap-panel-${index}`).classList.add('active');
-            });
-        });
+    function goToSlide(index) {
+        currentSlide = index;
+
+        // Update Timeline Dots
+        timelineDots.forEach(d => d.classList.remove('active'));
+        if (timelineDots[index]) timelineDots[index].classList.add('active');
+
+        // Update Left Text
+        sliderInfos.forEach(info => info.classList.remove('active'));
+        if (sliderInfos[index]) sliderInfos[index].classList.add('active');
+
+        // Update Right Cards
+        sliderCards.forEach(card => card.classList.remove('active'));
+        if (sliderCards[index]) sliderCards[index].classList.add('active');
+
+        // Shift Track
+        const cardWidth = window.innerWidth <= 768 ? 280 + 20 : 340 + 28;
+        sliderCardsTrack.style.transform = `translateX(-${index * cardWidth}px)`;
     }
 
+    timelineDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const idx = parseInt(dot.getAttribute('data-index'));
+            goToSlide(idx);
+        });
+    });
+
+    sliderCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const idx = parseInt(card.getAttribute('data-index'));
+            goToSlide(idx);
+        });
+    });
+
+    /* Engineering Archive Carousel Logic */
     const carouselImages = document.querySelectorAll('.carousel-img');
     const upBtn = document.querySelector('.carousel-up');
     const downBtn = document.querySelector('.carousel-down');
@@ -1036,7 +1162,6 @@
     const totalImages = carouselImages.length;
 
     function updateCarousel() {
-        if(!carouselImages.length) return;
         carouselImages.forEach((img, index) => {
             img.className = 'carousel-img';
             if (index === currentImageIndex) {
