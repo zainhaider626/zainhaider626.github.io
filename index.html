@@ -450,10 +450,12 @@
             align-items: center;
         }
 
+        /* Left Side: Vertical Stepper & Dynamic Info */
         .slider-left {
             display: flex;
             align-items: flex-start;
             gap: 36px;
+            width: 100%;
         }
 
         .slider-timeline {
@@ -509,15 +511,17 @@
             box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
         }
 
-        /* Dynamic Grid Layout prevents text overlapping issues */
+        /* Bulletproof Grid for Stacking Text without Overflow */
         .slider-info-container {
             display: grid;
+            width: 100%;
             flex: 1;
             align-items: start;
         }
 
         .slider-info {
             grid-area: 1 / 1;
+            width: 100%;
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
@@ -570,6 +574,7 @@
             border-color: #fff;
         }
 
+        /* Right Side: Horizontal Cards Carousel Stage */
         .slider-right {
             position: relative;
             width: 100%;
@@ -600,7 +605,7 @@
             cursor: pointer;
             opacity: 0.4;
             transform: scale(0.9);
-            filter: blur(8px) grayscale(80%);
+            filter: blur(8px) grayscale(80%); /* Deep glassmorphism blur for inactive */
             transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -769,35 +774,69 @@
             .grid-2 { grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px; }
             .case-study h3 { font-size: 20px; margin-top: 8px;}
 
-            /* Perfect Mobile Miniaturization for Capabilities Slider */
-            .capabilities-slider-section { padding: 50px 6vw 70px; }
-            .capabilities-slider-section h2 { font-size: 32px; margin-bottom: 24px; text-align: center; }
-            .slider-wrapper { grid-template-columns: 1fr; gap: 24px; }
-            .slider-left { flex-direction: column; gap: 12px; }
+            /* Adjusted Capabilities Slider for Perfect Mobile Alignment */
+            .capabilities-slider-section { padding: 50px 0 70px; overflow: hidden; }
+            .slider-wrapper { grid-template-columns: 1fr; gap: 30px; padding: 0 6vw; }
+            
+            .slider-left { 
+                flex-direction: column; 
+                width: 100%; 
+                align-items: center; 
+                text-align: center; 
+                gap: 20px; 
+            }
             
             .slider-timeline {
                 flex-direction: row;
                 width: 100%;
+                max-width: 300px;
                 justify-content: center;
                 padding: 0;
             }
             .timeline-line {
-                width: 80%;
+                width: 100%;
                 height: 2px;
                 top: 50%;
-                left: 10%;
+                left: 0;
                 bottom: auto;
+                transform: translateY(-50%);
             }
-            .timeline-dot { margin: 0 8px; }
+            .timeline-dot { margin: 0 10px; }
             
-            .slider-info-container { text-align: center; }
-            .slider-info h2 { font-size: 26px; margin-bottom: 12px; }
-            .slider-info p { max-width: none; font-size: 14.5px; margin-bottom: 20px; }
+            .slider-info-container { 
+                width: 100%; 
+                min-height: 180px; 
+                display: grid; 
+                place-items: center; 
+            }
             
-            .slider-cards-track { justify-content: flex-start; gap: 16px; }
+            .slider-info { 
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+            }
+            
+            .slider-info h2 { font-size: 28px; margin-bottom: 12px; }
+            .slider-info p { max-width: 100%; font-size: 14.5px; margin-bottom: 20px; }
+            
+            /* Full-Bleed Mobile Carousel Container */
+            .slider-right { 
+                width: 100vw; 
+                margin-left: -6vw; 
+                position: relative; 
+                padding: 10px 0; 
+            }
+            .slider-cards-viewport { width: 100%; overflow: visible; }
+            
+            /* The padding-left calculation exactly centers a 220px card on the screen when index is 0 */
+            .slider-cards-track { 
+                padding-left: calc(50vw - 110px); 
+                gap: 16px; 
+            }
             .slider-card {
                 flex: 0 0 220px;
-                height: 260px;
+                height: 280px;
                 border-radius: 20px;
             }
 
@@ -1006,6 +1045,7 @@
         <div class="slider-right">
             <div class="slider-cards-viewport">
                 <div class="slider-cards-track" id="sliderCardsTrack">
+                    <!-- Your requested images mapped correctly -->
                     <div class="slider-card active" data-index="0">
                         <img src="pcb11.jpg" alt="High-density PCB layout">
                     </div>
@@ -1181,13 +1221,11 @@
         sliderCards.forEach(card => card.classList.remove('active'));
         if (sliderCards[index]) sliderCards[index].classList.add('active');
 
-        // Dynamic Javascript centering logic for mobile tracking
+        // Center card dynamically on mobile
         if (window.innerWidth <= 768) {
-            const cardW = 220; // Matches mobile CSS card width
-            const gap = 16;    // Matches mobile CSS gap
-            const containerW = sliderCardsTrack.parentElement.offsetWidth;
-            const offset = (index * (cardW + gap)) - ((containerW - cardW) / 2);
-            sliderCardsTrack.style.transform = `translateX(-${offset}px)`;
+            const cardW = 220; 
+            const gap = 16;    
+            sliderCardsTrack.style.transform = `translateX(-${index * (cardW + gap)}px)`;
         } else {
             const cardW = 340;
             const gap = 28;
