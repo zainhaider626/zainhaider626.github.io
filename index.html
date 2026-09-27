@@ -10,7 +10,6 @@
     <meta name="author" content="Zain Haider">
     <link rel="icon" href="favicon.png" sizes="192x192">
 
-
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
 <script>
@@ -21,8 +20,6 @@
   gtag('config', 'G-84SH875DCC');
 </script>
 
-    
-    
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -68,7 +65,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* GPU Hardware Acceleration for smooth scrolling */
         section {
             transform: translateZ(0);
             backface-visibility: hidden;
@@ -106,9 +102,7 @@
             }
         }
 
-        /* =========================================================
-           PRELOADER ANIMATION
-           ========================================================= */
+        /* PRELOADER ANIMATION */
         .site-preloader {
             position: fixed;
             top: 0;
@@ -149,9 +143,7 @@
             100% { opacity: 0; visibility: hidden; }
         }
 
-        /* =========================================================
-           NAVIGATION
-           ========================================================= */
+        /* NAVIGATION */
         .header-wrapper { background-color: var(--ink); transform: translateZ(0); }
 
         nav {
@@ -226,17 +218,14 @@
             color: #ffffff; 
         }
 
-        /* =========================================================
-           HERO
-           ========================================================= */
+        /* HERO */
         .hero {
-            padding: 72px 5vw 110px;
-            max-width: var(--maxw);
+            padding: 100px 5vw 120px;
+            max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 0.82fr;
-            gap: 64px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             background: var(--ink);
             color: #fff;
             animation: heroIn 0.9s cubic-bezier(0.25, 1, 0.5, 1) 1.8s both;
@@ -247,13 +236,15 @@
             to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
 
+        .hero-left { width: 100%; }
+
         .hero-left h1 {
-            font-size: clamp(40px, 5.6vw, 72px);
-            line-height: 1.08;
+            font-size: clamp(40px, 6vw, 84px);
+            line-height: 1.05;
             letter-spacing: -0.02em;
             font-weight: 600;
-            margin-bottom: 24px;
-            max-width: 15ch;
+            margin-bottom: 28px;
+            max-width: 22ch;
             transform: translateZ(0);
         }
 
@@ -277,11 +268,11 @@
         }
 
         .hero-description {
-            font-size: 17px;
+            font-size: 18px;
             color: #b3b3b1;
             line-height: 1.65;
-            margin-bottom: 44px;
-            max-width: 46ch;
+            margin-bottom: 50px;
+            max-width: 60ch;
             font-weight: 400;
         }
 
@@ -314,109 +305,7 @@
             90%, 100% { filter: grayscale(100%) brightness(200%) opacity(0.45); }
         }
 
-        /* live chat panel */
-        .chat-container {
-            width: 100%;
-            height: 470px;
-            border: 1px solid var(--ink-border);
-            background: var(--ink-raised);
-            display: flex;
-            flex-direction: column;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            transform: translateZ(0);
-        }
-
-        .chat-header {
-            padding: 15px 18px;
-            border-bottom: 1px solid var(--ink-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #f2f2f0;
-        }
-
-        .chat-header h3 { font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; font-family: 'Space Grotesk', sans-serif;}
-
-        .live-indicator { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--grey-on-dark); }
-        .live-dot { width: 7px; height: 7px; background: #4caf6a; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-
-        @keyframes pulse {
-            0% { transform: scale(0.9) translateZ(0); opacity: 0.7; }
-            50% { transform: scale(1.15) translateZ(0); opacity: 1; }
-            100% { transform: scale(0.9) translateZ(0); opacity: 0.7; }
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 18px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: 13px;
-            background: var(--ink);
-            scroll-behavior: smooth;
-        }
-
-        .message {
-            background: var(--ink-raised);
-            color: #e8e8e6;
-            padding: 10px 12px;
-            border-left: 2px solid var(--ink-border);
-            max-width: 92%;
-            align-self: flex-start;
-            animation: messageFadeIn 0.25s ease forwards;
-            will-change: opacity, transform;
-        }
-        @keyframes messageFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-        .message.nvisco { border-left: 2px solid var(--copper); align-self: flex-end; }
-
-        .message-user {
-            font-family: 'IBM Plex Mono', monospace;
-            font-weight: 500;
-            font-size: 10.5px;
-            margin-bottom: 4px;
-            opacity: 0.6;
-            letter-spacing: 0.02em;
-        }
-
-        .chat-input-area { padding: 14px; border-top: 1px solid var(--ink-border); display: flex; flex-direction: column; gap: 8px; }
-        .chat-send-row { display: none; gap: 8px; }
-
-        .chat-send-row input {
-            flex: 1;
-            padding: 10px 12px;
-            border: 1px solid var(--ink-border);
-            background: var(--ink);
-            color: #fff;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            outline: none;
-            font-family: inherit;
-            transition: border-color 0.25s ease;
-        }
-        .chat-send-row input:focus { border-color: var(--copper); }
-        .chat-send-row input::placeholder { color: #77776f; }
-
-        .chat-btn-submit {
-            background: #fff; color: var(--ink); border: none; border-radius: var(--radius-sm);
-            padding: 0 16px; font-size: 12px; font-weight: 500; cursor: pointer; transition: background 0.25s ease;
-        }
-        .chat-btn-submit:hover { background: var(--copper); color: var(--ink); }
-
-        .google-login-btn {
-            background: #fff; border: 1px solid #fff; color: var(--ink); border-radius: var(--radius-sm);
-            padding: 10px; font-size: 13px; font-weight: 500; cursor: pointer; width: 100%;
-            display: flex; justify-content: center; align-items: center; gap: 10px; transition: background 0.25s ease;
-            transform: translateZ(0);
-        }
-        .google-login-btn:hover { background: #ececec; }
-
-        /* =========================================================
-           JOURNEY
-           ========================================================= */
+        /* JOURNEY */
         .journey-section {
             padding: 130px 5vw;
             background: var(--paper-white);
@@ -461,9 +350,7 @@
 
         .journey-step p { font-size: 14px; color: var(--grey); line-height: 1.65; }
 
-        /* =========================================================
-           FEATURED ENGINEERING
-           ========================================================= */
+        /* FEATURED ENGINEERING */
         .portfolio { padding: 130px 5vw; max-width: var(--maxw); margin: 0 auto; background: var(--paper-white); }
 
         .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 56px; flex-wrap: wrap; }
@@ -502,9 +389,7 @@
         .case-study h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
         .case-study p { color: var(--grey); font-size: 14px; line-height: 1.65; max-width: 46ch; }
 
-        /* =========================================================
-           INDUSTRIAL CAPABILITIES SLIDER & STAGE CAROUSEL
-           ========================================================= */
+        /* INDUSTRIAL CAPABILITIES SLIDER & STAGE CAROUSEL */
         .capabilities-slider-section {
             padding: 130px 5vw;
             background: #0d0d0e;
@@ -704,9 +589,7 @@
             display: block;
         }
 
-        /* =========================================================
-           WHITE SEPARATOR BAND
-           ========================================================= */
+        /* WHITE SEPARATOR BAND */
         .section-divider {
             width: 100%;
             height: 80px;
@@ -714,9 +597,7 @@
             transform: translateZ(0);
         }
 
-        /* =========================================================
-           HORIZONTAL 3D INWARD CURVE ARCHIVE
-           ========================================================= */
+        /* HORIZONTAL 3D INWARD CURVE ARCHIVE */
         .project-carousel-section { 
             padding: 120px 5vw 160px; 
             background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.15) 0%, var(--ink) 70%);
@@ -898,9 +779,7 @@
             margin: 0 auto;
         }
 
-        /* =========================================================
-           CTA
-           ========================================================= */
+        /* CTA */
         .cta-section { padding: 130px 5vw; background: var(--paper-white); max-width: var(--maxw); margin: 0 auto; border-top: 1px solid var(--line); transform: translateZ(0); }
         .cta-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 
@@ -930,9 +809,7 @@
         }
         .cta-visual:hover .cta-video { transform: scale(1.015) translateZ(0); }
 
-        /* =========================================================
-           FOOTER
-           ========================================================= */
+        /* FOOTER */
         footer { padding: 60px 5vw 50px; border-top: 1px solid var(--line); background: var(--paper-white); max-width: var(--maxw); margin: 0 auto; width: 100%; transform: translateZ(0); }
         .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 50px; }
 
@@ -943,9 +820,7 @@
 
         .footer-bottom { padding-top: 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--grey-soft); flex-wrap: wrap; gap: 10px; }
 
-        /* =========================================================
-           ABOUT MODAL
-           ========================================================= */
+        /* ABOUT MODAL */
         .about-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(10, 10, 11, 0.78); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
@@ -977,9 +852,7 @@
         .linkedin-icon:hover { fill: #0a66c2; transform: translateY(-2px); }
         .github-icon:hover { fill: #ffffff; transform: translateY(-2px); }
 
-        /* =========================================================
-           MOBILE
-           ========================================================= */
+        /* MOBILE */
         @media (max-width: 768px) {
             h1, h2, h3, .portfolio h2, .capabilities-slider-section h2, .journey-header h2, .cta-content h2, .project-carousel-section h2, .archive-detail-item h4 {
                 font-weight: 800 !important;
@@ -989,7 +862,7 @@
             .nav-right { gap: 14px; }
             nav.nav-scrolled { width: 92%; top: 12px; padding: 0 8px 0 18px; border-radius: 40px; }
 
-            .hero { grid-template-columns: 1fr; gap: 40px; padding: 36px 6vw 70px; }
+            .hero { padding: 80px 6vw 70px; }
             .logo { height: 26px; }
 
             .hero-left h1 { font-size: 38px; margin-bottom: 18px; max-width: none; }
@@ -1098,32 +971,6 @@
                 <img src="https://cdn.simpleicons.org/siemens" alt="Siemens / PLCSIM" title="Siemens PLCSIM" class="siemens-logo" loading="lazy" decoding="async">
                 <img src="https://cdn.simpleicons.org/opencv" alt="OpenCV" title="OpenCV" loading="lazy" decoding="async">
                 <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" title="NVIDIA Jetson / Edge AI" loading="lazy" decoding="async">
-            </div>
-        </div>
-
-        <div class="chat-container">
-            <div class="chat-header">
-                <h3 class="mono">Nvisco community feed</h3>
-                <div class="live-indicator"><span class="live-dot"></span> Live</div>
-            </div>
-
-            <div class="chat-messages" id="chatMessages"></div>
-
-            <div class="chat-input-area">
-                <button id="googleLoginBtn" class="google-login-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    Sign in to chat
-                </button>
-
-                <div id="userInfo" style="display: none; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span id="welcomeText" class="mono" style="font-size: 11px; color: var(--grey-on-dark);"></span>
-                    <button id="logoutBtn" style="background: none; border: none; text-decoration: underline; cursor: pointer; font-size: 11px; color: #888;">Sign out</button>
-                </div>
-
-                <div class="chat-send-row" id="chatSendRow">
-                    <input type="text" id="chatInput" placeholder="Ask a question..." />
-                    <button class="chat-btn-submit" id="sendChatBtn">Send</button>
-                </div>
             </div>
         </div>
     </section>
@@ -1282,7 +1129,6 @@
         </button>
 
         <div class="carousel-3d-track" id="carousel3DTrack">
-            <!-- New Requested Images (po13.png replaced cad12.png) -->
             <img src="po13.png" class="carousel-3d-item" loading="lazy" decoding="async">
             <img src="po2.webp" class="carousel-3d-item" loading="lazy" decoding="async">
             <img src="po8.png" class="carousel-3d-item" loading="lazy" decoding="async">
@@ -1485,109 +1331,24 @@
     closeAboutBtn.addEventListener('click', () => aboutOverlay.classList.remove('active'));
     aboutOverlay.addEventListener('click', (e) => { if (e.target === aboutOverlay) aboutOverlay.classList.remove('active'); });
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBr01w5Lb55inQ6W3gDm6_mShefkcNSD48",
-      authDomain: "nvisco-web.firebaseapp.com",
-      projectId: "nvisco-web",
-      storageBucket: "nvisco-web.firebasestorage.app",
-      messagingSenderId: "678478670979",
-      appId: "1:678478670979:web:b527cc7733991c44f7bfb6",
-      measurementId: "G-9PSZL74924"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-    const messagesCol = collection(db, "chat_messages");
-
-    setPersistence(auth, browserLocalPersistence).catch((error) => console.error(error));
-
-    const chatInput = document.getElementById('chatInput');
-    const sendChatBtn = document.getElementById('sendChatBtn');
-    const chatMessages = document.getElementById('chatMessages');
-    const googleLoginBtn = document.getElementById('googleLoginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const userInfo = document.getElementById('userInfo');
-    const welcomeText = document.getElementById('welcomeText');
-    const chatSendRow = document.getElementById('chatSendRow');
-
-    let currentUser = null;
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            currentUser = user;
-            googleLoginBtn.style.display = 'none';
-            userInfo.style.display = 'flex';
-            chatSendRow.style.display = 'flex';
-            welcomeText.innerText = `Posting as ${user.displayName}`;
-        } else {
-            currentUser = null;
-            googleLoginBtn.style.display = 'flex';
-            userInfo.style.display = 'none';
-            chatSendRow.style.display = 'none';
-        }
-    });
-
-    googleLoginBtn.addEventListener('click', () => {
-        signInWithPopup(auth, provider).catch((error) => console.error(error));
-    });
-
-    logoutBtn.addEventListener('click', () => {
-        signOut(auth).catch((error) => console.error(error));
-    });
-
-    const q = query(messagesCol, orderBy("timestamp", "asc"));
-
-    onSnapshot(q, (snapshot) => {
-        chatMessages.innerHTML = `<div class="message nvisco"><div class="message-user">Nvisco Engineering</div>Welcome to the live feed! Sign in below to claim your free hardware design guidance, or drop your project questions here.</div>`;
-
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            const msgDiv = document.createElement('div');
-            if (data.username && data.username.toLowerCase().includes('nvisco')) {
-                msgDiv.className = 'message nvisco';
-            } else {
-                msgDiv.className = 'message';
-            }
-            msgDiv.innerHTML = `<div class="message-user">${escapeHtml(data.username)}</div>${escapeHtml(data.text)}`;
-            chatMessages.appendChild(msgDiv);
-        });
-
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    });
-
-    async function postMessage() {
-        if (!currentUser) return;
-        const text = chatInput.value.trim();
-        const username = currentUser.displayName || 'Visitor';
-
-        if (text !== '') {
-            chatInput.value = '';
-            try {
-                await addDoc(messagesCol, {
-                    username: username,
-                    text: text,
-                    uid: currentUser.uid,
-                    timestamp: serverTimestamp()
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    }
-
-    function escapeHtml(str) {
-        if (!str) return "";
-        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
-    if (sendChatBtn) sendChatBtn.addEventListener('click', postMessage);
-    if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') postMessage(); });
 </script>
+
+<!-- PASTE YOUR TAWK.TO SCRIPT HERE -->
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6ab8e031b1e7fb344377ce02/1k3h2ngok';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
 </body>
 </html>
