@@ -1,328 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NVISCO — Premium Hardware Engineering</title>
-    <meta name="description" content="Nvisco specializes in Intelligent Systems, 22-layer PCB design, custom CAD, and embedded firmware. From concept to market launch.">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-84SH875DCC');
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVISCO — Hardware Design to Product</title>
+<link rel="canonical" href="https://nvisco.com/">
+<meta name="description" content="Nvisco specializes in intelligent systems and robotics, PCB design up to 22 layers, custom mechanical CAD assemblies, and embedded firmware.">
+<meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
+<meta name="author" content="Zain Haider">
+<meta name="theme-color" content="#050505">
+<meta property="og:type" content="website"><meta property="og:title" content="NVISCO — Hardware Design to Product"><meta property="og:description" content="PCB design up to 22 layers, parametric CAD and embedded firmware, from idea to launch."><meta property="og:image" content="https://nvisco.com/pcb.png">
+<link rel="icon" href="favicon.png" sizes="192x192">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-84SH875DCC');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Nvisco","url":"https://nvisco.com/","logo":"https://nvisco.com/nvisco-logo.png"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--alt:#121212;--ink:#ffffff;--mute:#888888;--line:#222222;--w:1200px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.015em;line-height:1.12}
+a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 32px}
+section{padding:120px 0}
+.alt{background:var(--alt)}
+.head{margin-bottom:56px;max-width:560px}
+.head h2{font-size:clamp(32px,4vw,46px);margin-bottom:14px}
+.head p{color:var(--mute);font-size:17px}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;font-size:14.5px;font-weight:600;background:var(--ink);color:var(--bg);border:1px solid var(--ink);transition:background .2s,color .2s,transform .2s;cursor:pointer}
+.btn:hover{background:#d4d4d4;color:var(--bg);transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--mute)}.btn.line:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700&display=swap" rel="stylesheet">
+/* Pulse Animation for CTA */
+@keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); } 70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+.pulse { animation: pulse-glow 3s infinite; }
 
-    <style>
-        :root {
-            --ink: #050505;
-            --ink-raised: #121212;
-            --ink-border: #222222;
-            --text-main: #f5f5f5;
-            --text-muted: #888888;
-            --accent: #ffffff;
-            --radius: 8px;
-            --maxw: 1200px;
-        }
+/* nav */
+.bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:60}.bar i{display:block;height:100%;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
+nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+nav.s{border-color:var(--line)}
+.nav-in{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:700;letter-spacing:2.5px;display:block;font-family:'Space Grotesk',sans-serif}
+.links{display:flex;align-items:center;gap:34px;font-size:14.5px}
+.links a:not(.btn),.dd>button{background:none;border:0;color:var(--mute);transition:color .2s}
+.links a:not(.btn):hover,.dd>button:hover{color:var(--ink)}
+.links .btn{padding:10px 20px;font-size:14px}
+.dd{position:relative}
+.dd-menu{position:absolute;right:-20px;top:38px;min-width:230px;background:var(--alt);border:1px solid var(--line);border-radius:14px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.dd.open .dd-menu{display:block}
+.dd-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;color:var(--mute);font-size:14.5px}
+.dd-menu button:hover{background:var(--bg);color:var(--ink)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13.5px;color:var(--ink)}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; background: var(--ink); }
+/* hero */
+.hero{padding:88px 0 0}
+.hero h1{font-size:clamp(42px,6.4vw,84px);max-width:15ch;margin-bottom:26px}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;flex-wrap:wrap}
+.hero p{font-size:18px;color:var(--mute);max-width:44ch}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap}
+.live-stats{display:inline-flex;align-items:center;gap:10px;background:var(--alt);padding:8px 16px;border-radius:50px;font-size:13px;border:1px solid var(--line);margin-top:24px;color:var(--mute)}
+.live-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.stage{margin-top:72px;padding:0 5vw}
+.stage-in{max-width:1400px;margin:0 auto;aspect-ratio:21/9;overflow:hidden;background:#111;--p:0;transform:scale(calc(.9 + .1*var(--p)));border-radius:calc(28px*(1 - var(--p)) + 4px);will-change:transform}
+.stage-in img{width:100%;height:100%;object-fit:cover;opacity:0.85}
 
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--ink);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+/* start */
+.start-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pick{display:flex;flex-direction:column;background:var(--alt);border:1px solid var(--line);border-radius:18px;padding:32px 28px;text-align:left;transition:border-color .2s,transform .2s}
+.pick:hover{border-color:var(--mute);transform:translateY(-3px);background:var(--bg)}
+.pick h3{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin-bottom:10px}
+.pick p{color:var(--mute);font-size:14.5px;flex:1;margin-bottom:26px}
+.pick span{font-size:13.5px;font-weight:500;color:var(--ink)}
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
-        .mono { font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em; }
-        a { color: inherit; text-decoration: none; cursor: pointer; }
+/* process */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:32px}
+.step{border-top:2px solid var(--line);padding-top:22px;transition:border-color .3s}
+.step:hover{border-color:var(--ink)}
+.step b{display:block;font-family:'Playfair Display',serif;font-size:28px;font-weight:500;margin-bottom:26px;color:var(--ink)}
+.step h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:10px}
+.step p{font-size:14.5px;color:var(--mute);margin-bottom:18px}
+.step small{display:block;font-size:13px;padding-top:14px;border-top:1px solid var(--line);color:#555}
 
-        /* NAVIGATION */
-        nav {
-            position: sticky; top: 0; z-index: 100;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5vw; background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--ink-border);
-        }
-        .logo { font-size: 22px; font-weight: 700; letter-spacing: 2px; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-item { font-size: 13px; color: var(--text-muted); transition: color 0.3s; }
-        .nav-item:hover { color: var(--accent); }
-        
-        .cta-btn {
-            font-size: 13px; font-weight: 600; padding: 10px 20px;
-            background: var(--accent); color: var(--ink);
-            border-radius: var(--radius); transition: all 0.3s;
-            animation: pulse-glow 3s infinite;
-        }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.15); }
+/* work */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px 40px}
+.m{aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:var(--alt);margin-bottom:20px;border:1px solid var(--line)}
+.m img,.m video{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);transition:filter 0.3s}
+.case:hover .m img, .case:hover .m video{filter:brightness(1)}
+.case h3{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:600;margin-bottom:6px}
+.case p{color:var(--mute);font-size:15px;max-width:46ch}
 
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-        }
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.contact h2{font-size:clamp(34px,4.4vw,52px);margin-bottom:16px}
+.contact .lead{color:var(--mute);font-size:17px;margin-bottom:32px;max-width:40ch}
+.form{display:grid;gap:12px;max-width:480px}
+.form input,.form select,.form textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:inherit;font-size:15px;color:var(--ink)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:var(--mute)}
+.form textarea{min-height:120px;resize:vertical}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form small{color:var(--mute);font-size:13px}
+.contact video{width:100%;border-radius:22px;border:1px solid var(--line)}
 
-        /* HERO SECTION */
-        .hero { padding: 100px 5vw; max-width: var(--maxw); margin: 0 auto; text-align: center; }
-        .authority-badge {
-            display: inline-block; padding: 8px 16px; border: 1px solid var(--ink-border);
-            border-radius: 50px; font-size: 12px; color: var(--text-muted); margin-bottom: 30px;
-        }
-        .hero h1 { font-size: clamp(40px, 6vw, 72px); line-height: 1.1; margin-bottom: 24px; }
-        .hero p { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
+/* footer */
+footer{background:#020202;color:var(--ink);padding:88px 0 32px;border-top:1px solid var(--line)}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
+.f-brand .logo{font-size:20px;margin-bottom:16px}
+.f-brand p{color:var(--mute);font-size:14.5px;max-width:32ch}
+.f-col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:18px;color:var(--ink)}
+.f-col a,.f-col button{display:block;background:none;border:0;padding:0;text-align:left;font-size:14.5px;color:var(--mute);line-height:2.1;transition:color .2s}
+.f-col a:hover,.f-col button:hover{color:var(--ink)}
+.f-bar{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--mute)}
+.f-bar div{display:flex;gap:24px;flex-wrap:wrap}.f-bar button{background:none;border:0;font-size:13px;color:var(--mute)}.f-bar button:hover{color:var(--ink)}
 
-        .live-stats {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: var(--ink-raised); padding: 10px 20px; border-radius: 50px;
-            font-size: 12px; border: 1px solid var(--ink-border);
-        }
-        .live-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+/* modals */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.ov.on{display:flex}
+.box{background:var(--bg);border:1px solid var(--line);border-radius:20px;width:100%;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.close{position:absolute;top:14px;right:20px;background:none;border:0;font-size:28px;color:var(--mute);z-index:2}
+.pol{max-width:840px;max-height:84vh;display:grid;grid-template-columns:210px 1fr;overflow:hidden}
+.pol-nav{background:var(--alt);padding:24px 12px;overflow-y:auto;border-right:1px solid var(--line)}
+.pol-nav button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;font-size:14.5px;color:var(--mute)}
+.pol-nav button.on,.pol-nav button:hover{background:var(--bg);color:var(--ink)}
+.pol-body{padding:40px;overflow-y:auto}
+.pol-body h2{font-size:28px;margin-bottom:6px}.pol-body small{display:block;color:var(--mute);margin-bottom:22px}
+.pol-body p{color:#d4d4d4;font-size:15px;margin-bottom:14px}
+.about{max-width:640px;padding:44px;display:flex;gap:36px;align-items:center}
+.about img{width:170px;height:170px;border-radius:16px;object-fit:cover;flex-shrink:0}
+.about h2{font-size:28px;margin-bottom:12px}.about p{color:var(--mute);margin-bottom:18px;font-size:15px}
+.about .soc{display:flex;gap:20px;font-size:14.5px}.about .soc a:hover{color:var(--ink);text-decoration:underline}
 
-        /* THE PROCESS SECTION */
-        .process-section { padding: 100px 5vw; background: var(--ink-raised); border-top: 1px solid var(--ink-border); }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 42px; margin-bottom: 15px; }
-        .section-header p { color: var(--text-muted); }
-
-        .process-flow {
-            display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 0 auto;
-        }
-        .process-step {
-            display: flex; align-items: center; gap: 30px; background: var(--ink);
-            padding: 30px; border: 1px solid var(--ink-border); border-radius: var(--radius);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .process-step:hover { transform: translateX(10px); border-color: #444; }
-        .step-num { font-size: 40px; font-weight: 700; color: #333; font-family: 'Playfair Display', serif; }
-        .step-content h3 { font-size: 22px; margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif;}
-        .step-content p { color: var(--text-muted); font-size: 14px; }
-
-        /* CAPABILITIES GRID */
-        .grid-section { padding: 100px 5vw; max-width: var(--maxw); margin: 0 auto; }
-        .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .cap-card {
-            background: var(--ink-raised); border: 1px solid var(--ink-border);
-            padding: 40px 30px; border-radius: var(--radius);
-        }
-        .cap-card h3 { font-size: 24px; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;}
-        .cap-card p { color: var(--text-muted); font-size: 14px; }
-
-        /* FOOTER */
-        footer {
-            padding: 80px 5vw 40px; border-top: 1px solid var(--ink-border);
-            background: #020202; text-align: center;
-        }
-        .footer-links { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-muted); font-size: 13px; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--accent); }
-        .footer-copy { color: #444; font-size: 12px; }
-
-        /* MODALS */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 1000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden; transition: all 0.3s;
-        }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content {
-            background: var(--ink-raised); width: 90%; max-width: 700px;
-            max-height: 80vh; overflow-y: auto; padding: 40px;
-            border: 1px solid var(--ink-border); border-radius: var(--radius);
-            position: relative;
-        }
-        .close-modal {
-            position: absolute; top: 20px; right: 20px;
-            background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;
-        }
-        .modal-content h2 { margin-bottom: 20px; }
-        .modal-content h3 { margin: 20px 0 10px; font-size: 18px; font-family: 'Space Grotesk', sans-serif; }
-        .modal-content p { color: var(--text-muted); font-size: 14px; margin-bottom: 15px; }
-
-        @media (max-width: 768px) {
-            .nav-links .nav-item { display: none; } 
-            .process-step { flex-direction: column; text-align: center; gap: 15px; }
-            .process-step:hover { transform: translateY(-5px); }
-            .hero h1 { font-size: 36px; }
-        }
-    </style>
+@media(max-width:960px){
+section{padding:80px 0}.wrap{padding:0 22px}
+.start-grid{grid-template-columns:1fr 1fr}
+.steps{grid-template-columns:1fr;gap:0}.step{display:grid;grid-template-columns:52px 1fr;column-gap:8px;padding:26px 0 28px}
+.step b{grid-row:1/4;margin:0;font-size:24px}.step small{margin-top:0}
+.work-grid{grid-template-columns:1fr;gap:44px}
+.contact-grid{grid-template-columns:1fr;gap:48px}
+.f-grid{grid-template-columns:1fr 1fr;gap:40px}.f-brand{grid-column:1/-1}
+.burger{display:block}
+.links{position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none}
+.links.open{display:flex}
+.links a:not(.btn),.dd>button{padding:14px 0;width:100%;text-align:left;border-bottom:1px solid var(--line)}
+.links .btn{margin-top:16px;text-align:center}
+.dd-menu{position:static;box-shadow:none;border:0;padding:0 0 0 12px;background:transparent}
+.hero{padding-top:52px}.hero-row{gap:28px}.stage{margin-top:48px;padding:0 16px}.stage-in{aspect-ratio:4/3}
+.pol{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+.pol-nav{display:flex;overflow-x:auto;padding:12px 44px 12px 12px;border-right:0;border-bottom:1px solid var(--line)}.pol-nav button{white-space:nowrap;width:auto}
+.pol-body{padding:26px 22px 32px}
+.about{flex-direction:column;text-align:center;padding:36px 22px}.about .soc{justify-content:center}
+}
+@media(max-width:560px){.start-grid{grid-template-columns:1fr}.form .two{grid-template-columns:1fr}.hero .acts .btn{flex:1;text-align:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.stage-in{transform:none}}
+</style>
 </head>
 <body>
+<div class="bar"><i id="bar"></i></div>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">NVISCO</div>
-        <div class="nav-links">
-            <a onclick="openModal('policies')" class="nav-item">Policies & Terms</a>
-            <a onclick="openModal('team')" class="nav-item">Our Firm</a>
-            <a href="mailto:nvisco.pak@gmail.com" class="cta-btn">Free Consultation</a>
-        </div>
-    </nav>
+<nav id="nav">
+<div class="wrap nav-in">
+<a href="#" class="logo">NVISCO</a>
+<button class="burger" id="burger" aria-label="Menu" aria-expanded="false">Menu</button>
+<div class="links" id="links">
+<a href="#start">Services</a>
+<a href="#process">Process</a>
+<a href="#work">Work</a>
+<a href="#" id="aboutBtn">Our Firm</a>
+<div class="dd" id="dd"><button id="ddBtn" aria-haspopup="true">Policies</button><div class="dd-menu" id="ddMenu"></div></div>
+<a href="#contact" class="btn pulse">Free consultation</a>
+</div>
+</div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="authority-badge mono">Years of Engineering Excellence • Enterprise Grade</div>
-        <h1>Hardware architected<br>for scale.</h1>
-        <p>We transform visionary concepts into production-ready reality. Uncompromising 22-layer PCB design, parametric CAD, and intelligent firmware.</p>
-        
-        <div class="live-stats">
-            <span class="live-dot"></span>
-            <strong><span id="visitorCount">14</span></strong> founders currently reviewing our systems
-        </div>
-    </section>
-
-    <!-- THE PROCESS -->
-    <section class="process-section">
-        <div class="section-header">
-            <h2>The Nvisco Framework</h2>
-            <p class="mono">From raw idea to market-ready architecture.</p>
-        </div>
-
-        <div class="process-flow">
-            <div class="process-step">
-                <div class="step-num">01</div>
-                <div class="step-content">
-                    <h3>Your Custom Concept</h3>
-                    <p>We begin with a deep-dive consultation to map your processing requirements, environmental constraints, and ultimate market goals.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">02</div>
-                <div class="step-content">
-                    <h3>High-Density PCB Design</h3>
-                    <p>Our core strength. We architect up to 22-layer boards with strict impedance control, signal integrity, and minimal EMI footprints tailored for Edge AI and Robotics.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">03</div>
-                <div class="step-content">
-                    <h3>Parametric 3D CAD</h3>
-                    <p>Concurrent mechanical engineering ensures the enclosure fits perfectly. Zero-clearance modeling and thermal load management using Fusion 360.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">04</div>
-                <div class="step-content">
-                    <h3>Intelligent Firmware</h3>
-                    <p>We bridge the physical hardware with robust C/C++ embedded logic, configuring MCUs (STM32, ARM) and system-on-modules (NVIDIA Jetson) for flawless execution.</p>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">05</div>
-                <div class="step-content">
-                    <h3>Scale & Market Launch</h3>
-                    <p>Delivery of fully validated Gerber files, Bill of Materials (BOM), and STEP files, ensuring a seamless handover to your manufacturing partners.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CORE CAPABILITIES -->
-    <section class="grid-section">
-        <div class="section-header">
-            <h2>Engineering Capabilities</h2>
-        </div>
-        <div class="cap-grid">
-            <div class="cap-card">
-                <h3>Electromechanical Integration</h3>
-                <p>Designing circuits and physical casings simultaneously to guarantee zero interference and perfect factory assembly.</p>
-            </div>
-            <div class="cap-card">
-                <h3>Robotics & Automation</h3>
-                <p>Advanced sensor fusion, motor control architectures, and real-time edge processing for industrial machinery.</p>
-            </div>
-            <div class="cap-card">
-                <h3>Design for Manufacturing (DFM)</h3>
-                <p>Every trace routed and component selected is optimized for global supply chains and cost-effective mass production.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ENTERPRISE FOOTER -->
-    <footer>
-        <div class="logo">NVISCO</div>
-        <div class="footer-links mono">
-            <a onclick="openModal('policies')">Privacy Policy</a>
-            <a onclick="openModal('policies')">Terms of Service</a>
-            <a onclick="openModal('policies')">Mutual NDA</a>
-            <a href="mailto:nvisco.pak@gmail.com">Contact Firm</a>
-        </div>
-        <div class="footer-copy">
-            &copy; 2026 Nvisco Engineering. Multidisciplinary Hardware & Systems Firm.<br>
-            Mandi Bahauddin, Punjab, PK | nvisco.pak@gmail.com | nvisco.com
-        </div>
-    </footer>
-
-    <!-- MODAL POPUPS -->
-    <div class="modal-overlay" id="globalModal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <div id="modalBody"></div>
-        </div>
+<header class="hero">
+<div class="wrap">
+<h1>Precision hardware, engineered without compromise.</h1>
+<div class="hero-row">
+<div>
+    <p>From first idea to market launch. PCB design up to 22 layers, mechanical CAD and embedded firmware, handled by one team with years of engineering excellence.</p>
+    <div class="acts"><a href="#contact" class="btn pulse">Free consultation</a><a href="#process" class="btn line">How we work</a></div>
+    <div class="live-stats">
+        <span class="live-dot"></span>
+        <strong><span id="visitorCount" style="color:var(--ink)">14</span></strong> founders currently reviewing our systems
     </div>
+</div>
+</div>
+</div>
+<div class="stage"><div class="stage-in" id="stage"><img src="pcb.png" alt="High-density PCB design" width="1600" height="686" decoding="async" fetchpriority="high"></div></div>
+</header>
 
-    <!-- TAWK.TO PROFESSIONAL CHAT WIDGET SCRIPT -->
-    <!-- Place your Tawk.to script here to replace the slow Firebase chat -->
+<section id="start">
+<div class="wrap">
+<div class="head"><h2>Where would you like to start?</h2><p>Choose what you need. We will take it from there.</p></div>
+<div class="start-grid">
+<button class="pick" data-stage="Full product, idea to launch"><h3>I have an idea</h3><p>Take a concept through PCB, enclosure and firmware to a launch-ready product.</p><span>Start a project</span></button>
+<button class="pick" data-stage="PCB design"><h3>PCB design</h3><p>High-density layouts up to 22 layers, built for signal integrity and low EMI.</p><span>Discuss your board</span></button>
+<button class="pick" data-stage="CAD and enclosure"><h3>CAD and enclosure</h3><p>Parametric 3D models for your product and its enclosure, checked for fit and heat.</p><span>Discuss your design</span></button>
+<button class="pick" data-stage="Firmware"><h3>Firmware</h3><p>Embedded code and control logic written for your exact hardware.</p><span>Discuss your code</span></button>
+</div>
+</div>
+</section>
 
-    <script>
-        // LIVE VISITOR SIMULATOR
-        function updateVisitorCount() {
-            let currentCount = parseInt(localStorage.getItem('nvisco_visitors')) || 12;
-            const change = Math.floor(Math.random() * 3) - 1; 
-            currentCount = Math.max(8, Math.min(35, currentCount + change));
-            localStorage.setItem('nvisco_visitors', currentCount);
-            document.getElementById('visitorCount').innerText = currentCount;
-        }
-        setInterval(updateVisitorCount, 8000);
-        updateVisitorCount();
+<section class="alt" id="process">
+<div class="wrap">
+<div class="head"><h2>The Nvisco Framework</h2><p>From raw custom idea to a market-ready architecture.</p></div>
+<div class="steps">
+<div class="step"><b>1</b><h3>Your Custom Idea</h3><p>A deep consultation defining your exact processing needs and physical constraints.</p><small>System Blueprinting</small></div>
+<div class="step"><b>2</b><h3>High-density PCB</h3><p>Custom schematics and rigid layouts optimizing EMI and signal integrity.</p><small>Gerbers and BOM delivery</small></div>
+<div class="step"><b>3</b><h3>Parametric 3D CAD</h3><p>Zero-clearance electromechanical integration and thermal management modeling.</p><small>Enclosure STEP files</small></div>
+<div class="step"><b>4</b><h3>Intelligent Firmware</h3><p>Robust embedded C/C++ logic configuring MCUs for real-time edge processing.</p><small>Source code delivery</small></div>
+<div class="step"><b>5</b><h3>Scale & Launch</h3><p>Validated files completely prepared for immediate handoff to your manufacturer.</p><small>Ready to manufacture</small></div>
+</div>
+</div>
+</section>
 
-        // MODAL LOGIC
-        const modal = document.getElementById('globalModal');
-        const modalBody = document.getElementById('modalBody');
+<section id="work">
+<div class="wrap">
+<div class="head"><h2>Selected work</h2><p>Recent hardware, mechanical and systems projects.</p></div>
+<div class="work-grid">
+<div class="case"><div class="m"><img src="pcb11.jpg" alt="High-density PCB" loading="lazy" decoding="async"></div><h3>High-density PCB design</h3><p>Routing up to 22 layers for industrial applications.</p></div>
+<div class="case"><div class="m"><video src="159021-818026286.mp4" autoplay loop muted playsinline preload="none" poster="pcb.png"></video></div><h3>Industry machinery</h3><p>Automated systems built for continuous precision.</p></div>
+<div class="case"><div class="m"><img src="CAD_WELD.jpg" alt="Robot welding CAD" loading="lazy" decoding="async"></div><h3>Advanced CAD design</h3><p>Robotic welding assemblies in parametric 3D CAD.</p></div>
+<div class="case"><div class="m"><img src="system.gif" alt="System blueprinting" loading="lazy" decoding="async"></div><h3>System blueprinting</h3><p>Layout schematics that map geometry before prototyping.</p></div>
+</div>
+</div>
+</section>
 
-        const content = {
-            policies: `
-                <h2>Corporate Policies & Legal</h2>
-                <h3>Privacy Policy</h3>
-                <p>Nvisco strictly protects the confidentiality of our clients. Any data, blueprints, or communications shared via nvisco.com or our direct channels are encrypted and never sold to third parties. We utilize analytics solely for internal performance monitoring.</p>
-                <h3>Terms of Service</h3>
-                <p>By engaging Nvisco for hardware engineering services, clients agree to our standard Service Agreement milestones. All intellectual property (IP) remains with Nvisco until final project invoices are cleared in full via standard Escrow processes.</p>
-                <h3>Mutual Non-Disclosure Agreement (NDA)</h3>
-                <p>We operate under strict Mutual NDAs before discussing proprietary concepts. This protects your product idea from market leak, and protects our proprietary engineering routing techniques from being duplicated.</p>
-            `,
-            team: `
-                <h2>The Nvisco Firm</h2>
-                <p>Founded by Zain Haider, bringing years of rigorous hardware engineering and systems architecture experience to the table.</p>
-                <p>We are a multidisciplinary team trusted by founders to execute True Electromechanical Integration. From dense 22-layer PCB architectures to heavy industrial robotics, we do not outsource your success.</p>
-                <br><br>
-                <a href="mailto:nvisco.pak@gmail.com" class="cta-btn" style="display:inline-block;">Email the Founder</a>
-            `
-        };
+<section class="alt contact" id="contact">
+<div class="wrap contact-grid">
+<div>
+<h2>Tell us what you want to build</h2>
+<p class="lead">Free consultation. We can sign a Mutual NDA before you share anything.</p>
+<form class="form" id="inq">
+<div class="two"><input name="n" placeholder="Your name" required aria-label="Your name"><input name="e" type="email" placeholder="Email" required aria-label="Email"></div>
+<select name="s" id="stageSel" aria-label="What do you need"><option>Full product, idea to launch</option><option>PCB design</option><option>CAD and enclosure</option><option>Firmware</option></select>
+<textarea name="m" placeholder="Describe your idea" required aria-label="Your idea"></textarea>
+<button class="btn pulse" type="submit">Request free consultation</button>
+<small>This opens your email app with the details filled in.</small>
+</form>
+</div>
+<video src="cadd.mp4" autoplay loop muted playsinline preload="none"></video>
+</div>
+</section>
 
-        function openModal(type) {
-            modalBody.innerHTML = content[type];
-            modal.classList.add('active');
-        }
+<footer>
+<div class="wrap">
+<div class="f-grid">
+<div class="f-col f-brand"><div class="logo" style="margin-bottom:12px">NVISCO</div><p>Intelligent systems, robotics and hardware design, from first idea to market launch.</p></div>
+<div class="f-col"><h4>Company</h4><a href="#process">Process</a><a href="#work">Work</a><button data-about>About the founder</button></div>
+<div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
+<div class="f-col"><h4>Office</h4><a style="pointer-events:none">Mandi Bahauddin<br>Punjab, Pakistan</a></div>
+</div>
+<div class="f-bar"><span>&copy; <span id="yr">2026</span> Nvisco. All rights reserved.</span><div id="fPol"></div></div>
+</div>
+</footer>
 
-        function closeModal() {
-            modal.classList.remove('active');
-        }
+<div class="ov" id="polOv"><div class="box pol"><button class="close" data-close aria-label="Close">&times;</button><div class="pol-nav" id="polNav"></div><div class="pol-body" id="polBody"></div></div></div>
+<div class="ov" id="aboutOv"><div class="box about"><button class="close" data-close aria-label="Close">&times;</button><img src="unnamed.jpg" alt="Zain Haider" loading="lazy" decoding="async"><div><h2>I'm Zain Haider</h2><p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products with years of engineering experience.</p><div class="soc"><a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div></div></div></div>
 
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) closeModal();
-        });
-    </script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);$('#yr').textContent=new Date().getFullYear();
+
+/* Live Visitor Script */
+function updateVisitorCount() {
+    let c = parseInt(localStorage.getItem('nv_vc')) || 12;
+    c = Math.max(8, Math.min(35, c + Math.floor(Math.random()*3)-1));
+    localStorage.setItem('nv_vc', c);
+    const vc = document.getElementById('visitorCount');
+    if(vc) vc.textContent = c;
+}
+setInterval(updateVisitorCount, 8000);
+updateVisitorCount();
+
+/* Policies */
+const P={
+"Privacy Policy":"We strictly protect the confidentiality of our clients. We collect only what you send us to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.",
+"Terms of Service":"By engaging Nvisco for hardware engineering services, clients agree to our standard Service Agreement milestones. Timelines depend on timely client feedback. All intellectual property remains with Nvisco until final project invoices are cleared in full.",
+"Mutual NDA":"We operate under strict Mutual NDAs before discussing proprietary concepts. Project files, schematics and business details are kept confidential. This protects your product idea from market leak, and protects our proprietary engineering routing techniques.",
+"Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.",
+"Payment & Refund":"Projects are billed by milestone as agreed in the proposal via standard Escrow processes or direct agreements. Delivered work is non-refundable. The first consultation is free.",
+"Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.",
+"Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product."
+};
+const names=Object.keys(P);
+function openPol(n){
+ $('#polNav').innerHTML=names.map(k=>`<button class="${k===n?'on':''}" data-p="${k}">${k}</button>`).join('');
+ $('#polBody').innerHTML=`<h2>${n}</h2><small>Last updated ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</small><p>${P[n]}</p><p>Questions? Email nvisco.pak@gmail.com.</p>`;
+ $('#polOv').classList.add('on');$('#polBody').scrollTop=0;
+}
+$('#ddMenu').innerHTML=names.map(k=>`<button data-p="${k}">${k}</button>`).join('');
+$('#fPol').innerHTML=names.slice(0,4).map(k=>`<button data-p="${k}">${k}</button>`).join('');
+const links=$('#links'),burger=$('#burger');
+function menu(o){links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)}
+burger.onclick=()=>menu(!links.classList.contains('open'));
+document.addEventListener('click',e=>{
+ const p=e.target.closest('[data-p]');
+ if(p){openPol(p.dataset.p);$('#dd').classList.remove('open');menu(false);return}
+ if(e.target.closest('#ddBtn')){$('#dd').classList.toggle('open');return}
+ if(!e.target.closest('#dd'))$('#dd').classList.remove('open');
+ if(e.target.closest('#aboutBtn,[data-about]')){e.preventDefault();$('#aboutOv').classList.add('on');menu(false)}  if(e.target.closest('[data-close]')\vert{}\vert{}e.target.classList.contains('ov'))$$('.ov').forEach(o=>o.classList.remove('on'));
+ if(e.target.closest('#links a[href^="#"]:not(#aboutBtn)'))menu(false);
+ const pk=e.target.closest('.pick');
+ if(pk){$('#stageSel').value=pk.dataset.stage;$('#contact').scrollIntoView({behavior:'smooth'})} }); document.addEventListener('keydown',e=>{if(e.key==='Escape')$$('.ov').forEach(o=>o.classList.remove('on'))});
+/* scroll: progress line, nav border, hero image expands */
+const stage=$('#stage'),bar=$('#bar'),nav=$('#nav');
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let tick=false;
+function onScroll(){
+ const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+ bar.style.transform=`scaleX(${h>0?y/h:0})`;
+ nav.classList.toggle('s',y>10);
+ if(!still)stage.style.setProperty('--p',Math.min(1,Math.max(0,y/(innerHeight*.55))).toFixed(3));
+ tick=false;
+}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+onScroll();
+/* form -> email */
+$('#inq').addEventListener('submit',e=>{
+ e.preventDefault();const f=e.target;
+ const body=`Name: ${f.n.value}\nEmail: ${f.e.value}\nNeed: ${f.s.value}\n\n${f.m.value}`;
+ location.href='mailto:nvisco.pak@gmail.com?subject='+encodeURIComponent('Consultation request from '+f.n.value)+'&body='+encodeURIComponent(body);
+});
+</script>
 </body>
 </html>
