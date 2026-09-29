@@ -109,7 +109,7 @@
         .step-content h3 { font-size: 22px; margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif;}
         .step-content p { color: var(--text-muted); font-size: 14px; }
 
-        /* CAPABILITIES GRID (Replaces heavy slider) */
+        /* CAPABILITIES GRID */
         .grid-section { padding: 100px 5vw; max-width: var(--maxw); margin: 0 auto; }
         .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .cap-card {
@@ -152,7 +152,7 @@
         .modal-content p { color: var(--text-muted); font-size: 14px; margin-bottom: 15px; }
 
         @media (max-width: 768px) {
-            .nav-links .nav-item { display: none; } /* Hide text links on mobile, keep CTA */
+            .nav-links .nav-item { display: none; } 
             .process-step { flex-direction: column; text-align: center; gap: 15px; }
             .process-step:hover { transform: translateY(-5px); }
             .hero h1 { font-size: 36px; }
@@ -173,7 +173,7 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="authority-badge mono">15+ Years Engineering Excellence • Enterprise Grade</div>
+        <div class="authority-badge mono">Years of Engineering Excellence • Enterprise Grade</div>
         <h1>Hardware architected<br>for scale.</h1>
         <p>We transform visionary concepts into production-ready reality. Uncompromising 22-layer PCB design, parametric CAD, and intelligent firmware.</p>
         
@@ -183,7 +183,7 @@
         </div>
     </section>
 
-    <!-- THE PROCESS (Replaces heavy carousel) -->
+    <!-- THE PROCESS -->
     <section class="process-section">
         <div class="section-header">
             <h2>The Nvisco Framework</h2>
@@ -229,7 +229,7 @@
         </div>
     </section>
 
-    <!-- CORE CAPABILITIES (Fast Grid) -->
+    <!-- CORE CAPABILITIES -->
     <section class="grid-section">
         <div class="section-header">
             <h2>Engineering Capabilities</h2>
@@ -277,10 +277,9 @@
     <!-- Place your Tawk.to script here to replace the slow Firebase chat -->
 
     <script>
-        // LIVE VISITOR SIMULATOR (Fast, lightweight, professional)
+        // LIVE VISITOR SIMULATOR
         function updateVisitorCount() {
             let currentCount = parseInt(localStorage.getItem('nvisco_visitors')) || 12;
-            // Randomly fluctuate the number slightly to look like live traffic
             const change = Math.floor(Math.random() * 3) - 1; 
             currentCount = Math.max(8, Math.min(35, currentCount + change));
             localStorage.setItem('nvisco_visitors', currentCount);
@@ -289,7 +288,7 @@
         setInterval(updateVisitorCount, 8000);
         updateVisitorCount();
 
-        // MODAL LOGIC (Fast, single-page app feel)
+        // MODAL LOGIC
         const modal = document.getElementById('globalModal');
         const modalBody = document.getElementById('modalBody');
 
@@ -305,7 +304,7 @@
             `,
             team: `
                 <h2>The Nvisco Firm</h2>
-                <p>Founded by Zain Haider, bringing over 15 years of rigorous hardware engineering and systems architecture experience to the table.</p>
+                <p>Founded by Zain Haider, bringing years of rigorous hardware engineering and systems architecture experience to the table.</p>
                 <p>We are a multidisciplinary team trusted by founders to execute True Electromechanical Integration. From dense 22-layer PCB architectures to heavy industrial robotics, we do not outsource your success.</p>
                 <br><br>
                 <a href="mailto:nvisco.pak@gmail.com" class="cta-btn" style="display:inline-block;">Email the Founder</a>
