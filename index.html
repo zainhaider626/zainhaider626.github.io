@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bpy:12px;--bpx:24px;--bfs:14px;--ink:#0a0a0b;--mute:#66666b;--line:#dcdcd8;--w:1200px;--gut:max(28px,calc((100vw - var(--w))/2))}
+:root{--bpy:10px;--bpx:20px;--bfs:13.5px;--ink:#0a0a0b;--mute:#66666b;--line:#dcdcd8;--w:1200px;--gut:max(28px,calc((100vw - var(--w))/2))}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Space Grotesk',sans-serif;background:#f2f2ef;color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -29,7 +29,7 @@ h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.0
 a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 28px}
-section{padding:130px 0}
+section{padding:120px 0}
 .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:12px;z-index:200}.skip:focus{left:8px}
 
 /* Advanced Buttons */
@@ -39,7 +39,7 @@ section{padding:130px 0}
 .bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:70}.bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
 
 /* Pulse Animation */
-@keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(10,10,11,0.15); } 70% { box-shadow: 0 0 0 12px rgba(10,10,11,0); } 100% { box-shadow: 0 0 0 0 rgba(10,10,11,0); } }
+@keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(10,10,11,0.15); } 70% { box-shadow: 0 0 0 10px rgba(10,10,11,0); } 100% { box-shadow: 0 0 0 0 rgba(10,10,11,0); } }
 .pulse { animation: pulse-glow 2.5s infinite; }
 
 /* nav */
@@ -47,24 +47,24 @@ nav{position:sticky;top:0;z-index:60;background:rgba(242,242,239,.82);backdrop-f
 nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .nav-in{height:72px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:2.5px;color:var(--ink);text-transform:uppercase;display:block;}
-.links{display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:500;}
+.links{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:500;}
 .links a:not(.btn),.dd>button{position:relative;background:none;border:0;color:var(--mute);transition:color .2s;padding:4px 0}
 .links a:not(.btn)::after,.dd>button::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.25,1,.5,1)}
 .links a:not(.btn):hover,.dd>button:hover{color:var(--ink)}
 .links a:not(.btn):hover::after,.dd>button:hover::after{transform:scaleX(1)}
-.links .btn{padding:10px 20px;font-size:13.5px}
+.links .btn{padding:10px 20px;font-size:13px}
 .dd{position:relative}
-.dd-menu{position:absolute;right:-20px;top:40px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.dd-menu{position:absolute;right:-20px;top:40px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.08)}
 .dd.open .dd-menu{display:block}
-.dd-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:10px;color:var(--mute);font-size:14.5px;font-weight:500;}
+.dd-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;color:var(--mute);font-size:14px;font-weight:500;}
 .dd-menu button:hover{background:#f2f2ef;color:var(--ink)}
-.burger{display:none;background:none;border:1px solid #bdbdb8;border-radius:999px;padding:8px 16px;font-size:13.5px}
+.burger{display:none;background:none;border:1px solid #bdbdb8;border-radius:999px;padding:8px 16px;font-size:13px}
 
 /* hero */
 .hero{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);display:flex;align-items:flex-end;padding:96px 0 80px}
 .hero h1{font-size:clamp(46px,8.4vw,124px);max-width:11ch;margin-bottom:40px;animation:rise 1s cubic-bezier(.25,1,.5,1) both}
 .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;animation:rise 1s cubic-bezier(.25,1,.5,1) .2s both}
-.hero p{font-size:18px;color:var(--mute);max-width:44ch;margin-bottom:28px;}
+.hero p{font-size:17.5px;color:var(--mute);max-width:44ch;margin-bottom:28px;}
 .hero p b{color:var(--ink);font-weight:600}
 .acts{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
 
@@ -89,7 +89,7 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 
 .d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.25,1,.5,1);padding-left:32px;}
 .st-item.on .d{grid-template-rows:1fr}
-.d p{overflow:hidden;color:var(--mute);font-size:15.5px;max-width:36ch}
+.d p{overflow:hidden;color:var(--mute);font-size:15px;max-width:36ch}
 .st-item.on .d p{padding-top:8px}
 
 .frame{position:relative;aspect-ratio:4/3;max-height:74vh;width:100%;border-radius:24px;overflow:hidden;background:#101012;box-shadow:0 30px 70px rgba(0,0,0,.12)}
@@ -104,20 +104,18 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .mob-img { display: none; }
 .ticks{display:none}
 
-/* Modern Grid Work Section - Made more compact */
+/* Compact, Dense Modern Grid Work Section */
 .work{padding:100px 0;border-top:1px solid var(--line)}
 .work-top{margin-bottom:40px}
 .work-top h2{font-size:clamp(24px,3vw,36px)}
-.work-grid-modern { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; } /* Changed to 3 columns to make it smaller/more manageable */
+.work-grid-modern { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; } /* 4 columns for a smaller, highly professional look */
 .w-card { display: flex; flex-direction: column; }
-.w-card.wide { grid-column: 1 / -1; }
-.w-card .m { border-radius: 16px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-.w-card.wide .m { aspect-ratio: 21/9; }
+.w-card .m { border-radius: 12px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
 .w-card img, .w-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,1,0.5,1); }
 .w-card:hover img, .w-card:hover video { transform: scale(1.04); }
-.w-card .cap { padding-top: 16px; }
-.w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 6px; }
-.w-card .cap p { color: var(--mute); font-size: 14px; max-width: 44ch; }
+.w-card .cap { padding-top: 12px; }
+.w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15.5px; margin-bottom: 4px; }
+.w-card .cap p { color: var(--mute); font-size: 13px; max-width: 44ch; line-height: 1.5; }
 
 /* cta */
 .cta{background:#050505;color:#fff;padding:120px 0}
@@ -127,21 +125,21 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .cta h2{font-size:clamp(36px,4.6vw,64px);margin-bottom:14px}
 .cta .lead{color:#a2a2a7;font-size:18px;max-width:36ch}
 .form{grid-area:form;display:grid;gap:14px;align-self:start}
-.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid #303034;border-radius:16px;padding:16px 18px;font:inherit;font-size:15px;color:#fff;transition:border-color .3s;}
+.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid #303034;border-radius:12px;padding:14px 18px;font:inherit;font-size:14.5px;color:#fff;transition:border-color .3s;}
 .form select option{color:#000}
 .form input::placeholder,.form textarea::placeholder{color:#85858a}
 .form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:#fff}
 .form textarea{min-height:110px;resize:vertical}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form .btn{background:#fff;color:#000;border-color:#fff;font-size:15px;padding:16px 24px;border-radius:16px;}.form .btn:hover{background:transparent;color:#fff}
+.form .btn{background:#fff;color:#000;border-color:#fff;font-size:14.5px;padding:14px 24px;border-radius:12px;}.form .btn:hover{background:transparent;color:#fff}
 .form small{color:#85858a;font-size:13px}
 
 /* footer */
 footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0 32px}
 .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
-.f-brand p{color:#85858a;font-size:14.5px;max-width:32ch}
+.f-brand p{color:#85858a;font-size:14px;max-width:32ch}
 .f-col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:18px}
-.f-col a,.f-col button{display:block;background:none;border:0;padding:0;text-align:left;font-size:14.5px;color:#85858a;line-height:2.1;transition:color .2s}
+.f-col a,.f-col button{display:block;background:none;border:0;padding:0;text-align:left;font-size:14px;color:#85858a;line-height:2.1;transition:color .2s}
 .f-col a:hover,.f-col button:hover{color:#fff}
 .f-bar{border-top:1px solid #1c1c1f;padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#66666b}
 .f-bar div{display:flex;gap:24px;flex-wrap:wrap}.f-bar button{background:none;border:0;font-size:13px;color:#66666b}.f-bar button:hover{color:#fff}
@@ -153,32 +151,32 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .close{position:absolute;top:14px;right:20px;background:none;border:0;font-size:28px;color:var(--mute);z-index:2;transition:color .2s;}.close:hover{color:var(--ink)}
 .pol{max-width:840px;max-height:84vh;display:grid;grid-template-columns:210px 1fr;overflow:hidden}
 .pol-nav{background:#f2f2ef;padding:24px 12px;overflow-y:auto;border-right:1px solid var(--line)}
-.pol-nav button{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 14px;border-radius:12px;font-size:14.5px;font-weight:500;color:var(--mute);transition:all .2s;}
+.pol-nav button{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 14px;border-radius:12px;font-size:14px;font-weight:500;color:var(--mute);transition:all .2s;}
 .pol-nav button.on,.pol-nav button:hover{background:#fff;color:var(--ink)}
 .pol-body{padding:40px;overflow-y:auto}
 .pol-body h2{font-size:28px;margin-bottom:6px}.pol-body small{display:block;color:var(--mute);margin-bottom:22px}
-.pol-body p{color:#3f3f44;font-size:15px;margin-bottom:14px}
+.pol-body p{color:#3f3f44;font-size:14.5px;margin-bottom:14px}
 .about{max-width:640px;padding:44px;display:flex;gap:36px;align-items:center}
 .about img{width:170px;height:170px;border-radius:24px;object-fit:cover;flex-shrink:0}
 .about h2{font-size:28px;margin-bottom:12px}.about p{color:var(--mute);margin-bottom:18px;font-size:15px}
-.about .soc{display:flex;gap:20px;font-size:14.5px}.about .soc a:hover{text-decoration:underline}
+.about .soc{display:flex;gap:20px;font-size:14px}.about .soc a:hover{text-decoration:underline}
 
 @media(max-width:960px){
-section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
+section{padding:80px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .burger{display:block}
 .links{position:absolute;top:72px;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05);}
 .links.open{display:flex}
-.links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:16px;}
+.links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:15px;}
 .links a:not(.btn)::after,.dd>button::after{display:none}
-.links .btn{margin-top:20px;text-align:center;padding:14px;font-size:15px;}
+.links .btn{margin-top:20px;text-align:center;padding:14px;font-size:14.5px;}
 .dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
 .hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.acts .btn{flex:1;text-align:center}
 
 /* Mobile Accordion Logic */
-.story { height: auto !important; padding: 80px 0; }
+.story { height: auto !important; padding: 60px 0; }
 .pin { position: static !important; height: auto !important; display: block; }
 .st-grid { display: flex; flex-direction: column; gap: 32px; }
-.st-grid h2 { display: block; font-size: 36px; margin-bottom: 8px; }
+.st-grid h2 { display: block; font-size: 32px; margin-bottom: 8px; }
 .frame { display: none !important; } /* Hide sticky desktop frame */
 .ticks { display: none !important; }
 #items { display: flex; flex-direction: column; gap: 16px; }
@@ -196,12 +194,11 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .st-item.on .toggle-pin { transform: rotate(135deg); }
 
 .mob-img { display: none; width: 100%; border-radius: 16px; margin-top: 24px; aspect-ratio: 4/3; object-fit: cover; background: #111; }
-.st-item.on .mob-img { display: flex; } /* Flex applied to show idea-box correctly */
+.st-item.on .mob-img { display: flex; } 
 .st-item.on video.mob-img { display: block; }
 
 .work{padding:60px 0}
-.work-grid-modern { grid-template-columns: 1fr; gap: 32px; } /* Stack on mobile */
-.w-card.wide .m { aspect-ratio: 4/3; } /* Normalize aspect ratio on mobile */
+.work-grid-modern { grid-template-columns: repeat(2, 1fr); gap: 24px; } /* Tablet 2 columns */
 
 .cta{padding:80px 0}.cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:40px}
 .f-grid{grid-template-columns:1fr 1fr;gap:40px}.f-brand{grid-column:1/-1}
@@ -210,7 +207,10 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .pol-body{padding:26px 22px 32px}
 .about{flex-direction:column;text-align:center;padding:36px 22px}.about .soc{justify-content:center}
 }
-@media(max-width:560px){.form .two{grid-template-columns:1fr}}
+@media(max-width:560px){
+.form .two{grid-template-columns:1fr}
+.work-grid-modern { grid-template-columns: 1fr; gap: 32px; } /* Mobile 1 column */
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -347,7 +347,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div></div>
 </section>
 
-<!-- Modern Grid replacing laggy carousel - More compact layout -->
+<!-- Modern 4-Column Dense Grid -->
 <section class="work" id="work">
 <div class="wrap">
 <div class="work-top">
@@ -366,13 +366,58 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
         <div class="m"><img src="po8.png" alt="Edge AI Hardware" loading="lazy" decoding="async"></div>
         <div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
     </article>
+    <!-- Explicitly requested pcb.png replacement -->
     <article class="w-card">
-        <div class="m"><img src="po22.png" alt="Complex Layer Routing" loading="lazy" decoding="async"></div>
+        <div class="m"><img src="pcb.png" alt="Complex Layer Routing" loading="lazy" decoding="async"></div>
         <div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
     </article>
-    <article class="w-card wide">
+    <article class="w-card">
         <div class="m"><video src="159021-818026286.mp4" autoplay muted loop playsinline aria-label="Industrial machinery in operation"></video></div>
-        <div class="cap"><h3>Industry machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
+        <div class="cap"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="cad12.png" alt="Mechanical Enclosures" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po11.jpeg" alt="Embedded Architecture" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Embedded Architecture</h3><p>Multi-board systems designed for smart and autonomous devices.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po14.jpg" alt="IoT Connectivity" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po16.webp" alt="Edge Computing Nodes" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Edge Computing Nodes</h3><p>High-speed processing units engineered for localized AI analytics.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po17.png" alt="Automated Test Fixtures" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Automated Test Fixtures</h3><p>Reliable validation hardware custom-built for mass production lines.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po21.png" alt="Thermal Management" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Thermal Management</h3><p>Advanced heat dissipation designs for high-power electronic boards.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po5.webp" alt="Robotics Control" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Robotics Control</h3><p>Precision actuation and feedback loop circuitry for complex joints.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po3.png" alt="Compact Wearable Tech" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Compact Wearable Tech</h3><p>Miniaturized multi-layer rigid-flex designs for consumer wearables.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po6.webp" alt="Power Electronics" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Power Electronics</h3><p>High-voltage switching and regulation modules for industrial grids.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po7.webp" alt="Sensor Fusion" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Sensor Fusion</h3><p>Integrating multiple environmental and spatial sensors seamlessly.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po9.webp" alt="Rapid Prototyping" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Rapid Prototyping</h3><p>Quick-turn validation boards engineered for rapid proof-of-concept.</p></div>
     </article>
 </div>
 </div>
@@ -381,8 +426,8 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <section class="cta" id="contact">
 <div class="wrap cta-grid">
 <div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
-<!-- Video moved here, replacing the image -->
-<video data-src="iphone.mp4" poster="pcb.png" muted autoplay loop playsinline preload="none" aria-label="Nvisco hardware showcase"></video>
+<!-- Video moved here, replacing the static image. Removed 'poster' attribute so it doesn't show the red PCB -->
+<video src="iphone.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
 <form class="form" id="inq">
 <div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
 <select name="s" aria-label="What do you need"><option>Full product, idea to launch</option><option>Electronic design</option><option>Mechanical design</option><option>Firmware</option></select>
@@ -488,15 +533,6 @@ function onScroll(){
 }
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
 addEventListener('resize',onScroll);onScroll();
-
-/* load and play videos only while visible */
-if('IntersectionObserver' in window){
- const vo=new IntersectionObserver(en=>en.forEach(x=>{
-  const v=x.target;
-  if(x.isIntersecting){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause();
- }),{rootMargin:'200px'});
- $$('video[data-src]').forEach(v=>vo.observe(v));
-}
 
 /* form -> email */
 $('#inq').addEventListener('submit',e=>{
