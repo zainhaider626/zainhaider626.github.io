@@ -8,7 +8,7 @@
 <meta name="description" content="Nvisco is an engineering partner for intelligent systems and robotics: PCB design up to 22 layers, parametric CAD, embedded firmware, from idea to product-ready.">
 <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
 <meta name="author" content="Zain Haider">
-<meta name="theme-color" content="#0a0a0b">
+<meta name="theme-color" content="#f2f2ef">
 <meta property="og:type" content="website"><meta property="og:title" content="NVISCO — Your Excellence Partner"><meta property="og:description" content="PCB, CAD and firmware from idea to product-ready."><meta property="og:image" content="https://nvisco.com/pcb.png">
 <link rel="icon" href="favicon.png" sizes="192x192">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
@@ -74,6 +74,56 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .tech-logos img:nth-child(even) { animation-delay: 2.5s; }
 @keyframes colorPulse { 0%, 20% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } 50%, 70% { filter: grayscale(0%) opacity(1); transform: scale(1.05); } 100% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } }
 @keyframes rise{from{opacity:0;transform:translateY(26px)}}
+
+/* Scroll Banner (NVISCO Premium Text Banner) */
+.premium-text-banner {
+    background: radial-gradient(circle at center, #1a1a1c 0%, #050505 60%);
+    width: 100%;
+    padding: 160px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0; /* Handled by JS */
+    will-change: opacity;
+}
+.banner-micro {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+.banner-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    background: linear-gradient(180deg, #ffffff 0%, #a0a0a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 30px rgba(255, 255, 255, 0.15);
+    margin-bottom: 16px;
+    line-height: 1;
+}
+.banner-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: #a0a0a5;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+}
+.banner-footer {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: #555;
+    text-transform: uppercase;
+}
 
 /* story (Desktop) */
 .story{position:relative;height:calc(100vh + 5*60vh);padding:0;border-top:1px solid var(--line)}
@@ -193,6 +243,8 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
 .hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.acts .btn{flex:1;text-align:center}
 
+.premium-text-banner { padding: 100px 20px; }
+
 /* Mobile Accordion Logic */
 .story { height: auto !important; padding: 60px 0; }
 .pin { position: static !important; height: auto !important; display: block; }
@@ -286,6 +338,14 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div>
 </div>
 </header>
+
+<!-- Smooth Scrolling Premium Banner -->
+<div class="premium-text-banner" id="scrollBanner">
+    <div class="banner-micro">Your Vision. Our Engineering.</div>
+    <div class="banner-title">NVISCO</div>
+    <div class="banner-sub">Excellence Partner</div>
+    <div class="banner-footer">Hardware / Robotics / Automation</div>
+</div>
 
 <section class="story" id="story" aria-label="From idea to product-ready">
 <div class="pin"><div class="wrap st-grid">
@@ -421,7 +481,6 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <section class="cta" id="contact">
 <div class="wrap cta-grid">
 <div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
-<!-- Video hardcoded to play instantly -->
 <video src="cadd.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
 <form class="form" id="inq">
 <div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
@@ -463,7 +522,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div>
 
 <script>
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),scrollBanner=$('#scrollBanner');
 $('#yr').textContent=new Date().getFullYear();  /* Policies */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
 function openPol(n){
  $('#polNav').innerHTML=names.map((k, i)=>{
@@ -551,6 +610,19 @@ function onScroll(){
     const r=story.getBoundingClientRect(),span=r.height-innerHeight;
     if(r.top<=0&&span>0)setStage(Math.min(5,Math.max(0,Math.floor(-r.top/span*6))));else if(r.top>0)setStage(0);
  }
+
+ // Scroll Banner Fade Math
+ if(scrollBanner) {
+    const rect = scrollBanner.getBoundingClientRect();
+    const wh = window.innerHeight;
+    const center = rect.top + rect.height / 2;
+    const dist = Math.abs(wh / 2 - center);
+    const fadeThreshold = wh / 1.2;
+    let op = 1 - (dist / fadeThreshold);
+    op = Math.max(0, Math.min(1, op * 2)); 
+    scrollBanner.style.opacity = op.toFixed(2);
+ }
+
  tick=false;
 }
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
