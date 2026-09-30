@@ -18,65 +18,72 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{/* button size: adjusted to be smaller and simpler */--bpy:10px;--bpx:20px;--bfs:13.5px;--ink:#0a0a0b;--mute:#66666b;--line:#dcdcd8;--w:1200px;--gut:max(28px,calc((100vw - var(--w))/2))}
+:root{--bpy:12px;--bpx:24px;--bfs:14px;--ink:#0a0a0b;--mute:#66666b;--line:#dcdcd8;--w:1200px;--gut:max(28px,calc((100vw - var(--w))/2))}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Space Grotesk',sans-serif;background:#f2f2ef;color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-/* soft white light that drifts down the page */
+
+/* soft white light background effect */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(75vmax 55vmax at 78% var(--sy,8%),#fff 0%,rgba(255,255,255,0) 62%)}
 h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.015em;line-height:1.1}
 a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 28px}
 section{padding:130px 0}
-.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:8px;z-index:200}.skip:focus{left:8px}
-.btn{display:inline-block;padding:var(--bpy) var(--bpx);border-radius:999px;font-size:var(--bfs);font-weight:500;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:background .25s,color .25s,border-color .25s,transform .25s;cursor:pointer}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:12px;z-index:200}.skip:focus{left:8px}
+
+/* Advanced Buttons */
+.btn{display:inline-block;padding:var(--bpy) var(--bpx);border-radius:999px;font-size:var(--bfs);font-weight:600;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:all .3s cubic-bezier(.25,1,.5,1);cursor:pointer}
 .btn:hover{background:transparent;color:var(--ink);transform:translateY(-2px)}
-.btn.line{background:transparent;color:var(--ink);border-color:#bdbdb8}.btn.line:hover{border-color:var(--ink)}
+.btn.line{background:transparent;color:var(--ink);border-color:#bdbdb8}.btn.line:hover{border-color:var(--ink);transform:translateY(-2px)}
 .bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:70}.bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
 
-/* Pulse & Live Stats */
-@keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(10,10,11,0.15); } 70% { box-shadow: 0 0 0 10px rgba(10,10,11,0); } 100% { box-shadow: 0 0 0 0 rgba(10,10,11,0); } }
+/* Pulse Animation */
+@keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(10,10,11,0.15); } 70% { box-shadow: 0 0 0 12px rgba(10,10,11,0); } 100% { box-shadow: 0 0 0 0 rgba(10,10,11,0); } }
 .pulse { animation: pulse-glow 2.5s infinite; }
-.live-stats { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 50px; font-size: 13px; border: 1px solid var(--line); margin-top: 24px; color: var(--mute); }
-.live-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 1.5s infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
 /* nav */
-nav{position:sticky;top:0;z-index:60;background:rgba(242,242,239,.82);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:transform .4s cubic-bezier(.25,1,.5,1),border-color .3s}
+nav{position:sticky;top:0;z-index:60;background:rgba(242,242,239,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:transform .4s cubic-bezier(.25,1,.5,1),border-color .3s}
 nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .nav-in{height:72px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:2.5px;color:var(--ink);text-transform:uppercase;display:block;}
-.links{display:flex;align-items:center;gap:34px;font-size:14.5px}
+.links{display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:500;}
 .links a:not(.btn),.dd>button{position:relative;background:none;border:0;color:var(--mute);transition:color .2s;padding:4px 0}
-.links a:not(.btn)::after,.dd>button::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.25,1,.5,1)}
+.links a:not(.btn)::after,.dd>button::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.25,1,.5,1)}
 .links a:not(.btn):hover,.dd>button:hover{color:var(--ink)}
 .links a:not(.btn):hover::after,.dd>button:hover::after{transform:scaleX(1)}
-.links .btn{padding:8px 16px;font-size:13px}
+.links .btn{padding:10px 20px;font-size:13.5px}
 .dd{position:relative}
-.dd-menu{position:absolute;right:-20px;top:40px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.dd-menu{position:absolute;right:-20px;top:40px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.08)}
 .dd.open .dd-menu{display:block}
-.dd-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;color:var(--mute);font-size:14.5px}
+.dd-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:10px;color:var(--mute);font-size:14.5px;font-weight:500;}
 .dd-menu button:hover{background:#f2f2ef;color:var(--ink)}
 .burger{display:none;background:none;border:1px solid #bdbdb8;border-radius:999px;padding:8px 16px;font-size:13.5px}
 
 /* hero */
 .hero{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);display:flex;align-items:flex-end;padding:96px 0 80px}
-.hero h1{font-size:clamp(46px,8.4vw,124px);max-width:11ch;margin-bottom:44px;animation:rise 1s cubic-bezier(.25,1,.5,1) both}
+.hero h1{font-size:clamp(46px,8.4vw,124px);max-width:11ch;margin-bottom:40px;animation:rise 1s cubic-bezier(.25,1,.5,1) both}
 .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;animation:rise 1s cubic-bezier(.25,1,.5,1) .2s both}
-.hero p{font-size:18px;color:var(--mute);max-width:42ch}.hero p b{color:var(--ink);font-weight:500}
-.acts{display:flex;gap:12px;flex-wrap:wrap}
+.hero p{font-size:18px;color:var(--mute);max-width:44ch;margin-bottom:28px;}
+.hero p b{color:var(--ink);font-weight:600}
+.acts{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
+
+/* Tech Logos Loop */
+.tech-logos { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.tech-logos img { height: 26px; filter: grayscale(100%) opacity(0.4); animation: colorPulse 5s infinite alternate ease-in-out; }
+.tech-logos img:nth-child(even) { animation-delay: 2.5s; }
+@keyframes colorPulse { 0%, 20% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } 50%, 70% { filter: grayscale(0%) opacity(1); transform: scale(1.05); } 100% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } }
 @keyframes rise{from{opacity:0;transform:translateY(26px)}}
 
-/* story */
-.story{position:relative;height:calc(100vh + 5*60vh);height:calc(100svh + 5*60svh);padding:0;border-top:1px solid var(--line)}
-.pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center}
+/* story (Desktop) */
+.story{position:relative;height:calc(100vh + 5*60vh);padding:0;border-top:1px solid var(--line)}
+.pin{position:sticky;top:0;height:100vh;display:flex;align-items:center}
 .st-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;align-items:center;width:100%}
 .st-grid h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:34px;max-width:14ch}
 .st-item{display:flex;gap:18px;padding:16px 0;border-top:1px solid var(--line);color:#b0b0ab;transition:color .4s}
 .st-item.on{color:var(--ink)}
-.st-item>span{font-size:13px;padding-top:8px;min-width:22px}
-.st-item h3{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,28px)}
+.st-item>span{font-size:13px;font-family:'IBM Plex Mono', monospace;padding-top:8px;min-width:22px}
+.st-item h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.2vw,28px)}
 .d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.25,1,.5,1)}
 .st-item.on .d{grid-template-rows:1fr}
 .d p{overflow:hidden;color:var(--mute);font-size:15.5px;max-width:36ch}
@@ -84,44 +91,45 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .frame{position:relative;aspect-ratio:4/3;max-height:74vh;width:100%;border-radius:24px;overflow:hidden;background:#101012;box-shadow:0 30px 70px rgba(0,0,0,.12)}
 .frame > * {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .7s ease,transform 1.1s cubic-bezier(.25,1,.5,1)}
 .frame > *.on{opacity:1;transform:scale(1)}
+.mob-img { display: none; }
 .ticks{display:none}
 
-/* work carousel */
-.work{padding:84px 0 76px;border-top:1px solid var(--line)}
-.work-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
-.work-top h2{font-size:clamp(26px,3vw,36px)}
-.ctl{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--mute)}
-.ctl button{width:40px;height:40px;border-radius:50%;background:none;border:1px solid #bdbdb8;font-size:20px;transition:background .25s,color .25s,border-color .25s}
-.ctl button:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 var(--gut);scroll-padding:0 var(--gut);-webkit-overflow-scrolling:touch}
-.rail::-webkit-scrollbar{display:none}
-.slide{flex:0 0 min(80vw,400px);scroll-snap-align:start} /* Reduced slide size for a compact look */
-.m{aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#101012;box-shadow:0 10px 30px rgba(0,0,0,.05)}
-.m img,.m video{width:100%;height:100%;object-fit:cover}
-.cap{display:flex;justify-content:space-between;gap:32px;padding-top:16px;flex-wrap:wrap}
-.cap h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px}
-.cap p{color:var(--mute);font-size:14px;max-width:40ch}
+/* Modern Grid Work Section */
+.work{padding:120px 0;border-top:1px solid var(--line)}
+.work-top{margin-bottom:48px}
+.work-top h2{font-size:clamp(28px,3.5vw,42px)}
+.work-grid-modern { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 40px; }
+.w-card { display: flex; flex-direction: column; }
+.w-card.wide { grid-column: 1 / -1; }
+.w-card .m { border-radius: 24px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+.w-card.wide .m { aspect-ratio: 21/9; }
+.w-card img, .w-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,1,0.5,1); }
+.w-card:hover img, .w-card:hover video { transform: scale(1.04); }
+.w-card .cap { padding-top: 20px; }
+.w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 8px; }
+.w-card .cap p { color: var(--mute); font-size: 15px; max-width: 44ch; }
 
 /* cta */
-.cta{background:#050505;color:#fff;padding:110px 0}
-.cta video{grid-area:vid;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;background:#111}
+.cta{background:#050505;color:#fff;padding:120px 0}
+.cta video{grid-area:vid;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;background:#111;box-shadow:0 20px 50px rgba(0,0,0,0.4);}
 .copy{grid-area:copy}
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"copy vid" "form vid";gap:24px 64px;align-items:center}
-.cta h2{font-size:clamp(34px,4.6vw,60px);margin-bottom:14px}
+.cta h2{font-size:clamp(36px,4.6vw,64px);margin-bottom:14px}
 .cta .lead{color:#a2a2a7;font-size:18px;max-width:36ch}
-.form{grid-area:form;display:grid;gap:12px;align-self:start}
-.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid #303034;border-radius:12px;padding:14px 16px;font:inherit;font-size:15px;color:#fff}
+.form{grid-area:form;display:grid;gap:14px;align-self:start}
+.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid #303034;border-radius:16px;padding:16px 18px;font:inherit;font-size:15px;color:#fff;transition:border-color .3s;}
 .form select option{color:#000}
 .form input::placeholder,.form textarea::placeholder{color:#85858a}
 .form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:#fff}
-.form textarea{min-height:96px;resize:vertical}
-.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form .btn{background:#fff;color:#000;border-color:#fff}.form .btn:hover{background:transparent;color:#fff}
+.form textarea{min-height:110px;resize:vertical}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .btn{background:#fff;color:#000;border-color:#fff;font-size:15px;padding:16px 24px;border-radius:16px;}.form .btn:hover{background:transparent;color:#fff}
 .form small{color:#85858a;font-size:13px}
 
 /* footer */
 footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0 32px}
 .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
+.f-brand p{color:#85858a;font-size:14.5px;max-width:32ch}
 .f-col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:18px}
 .f-col a,.f-col button{display:block;background:none;border:0;padding:0;text-align:left;font-size:14.5px;color:#85858a;line-height:2.1;transition:color .2s}
 .f-col a:hover,.f-col button:hover{color:#fff}
@@ -129,49 +137,59 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .f-bar div{display:flex;gap:24px;flex-wrap:wrap}.f-bar button{background:none;border:0;font-size:13px;color:#66666b}.f-bar button:hover{color:#fff}
 
 /* modals */
-.ov{position:fixed;inset:0;background:rgba(10,10,11,.6);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.ov{position:fixed;inset:0;background:rgba(10,10,11,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
 .ov.on{display:flex}
 .box{background:#fff;border-radius:24px;width:100%;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25)}
-.close{position:absolute;top:14px;right:20px;background:none;border:0;font-size:28px;color:var(--mute);z-index:2}
+.close{position:absolute;top:14px;right:20px;background:none;border:0;font-size:28px;color:var(--mute);z-index:2;transition:color .2s;}.close:hover{color:var(--ink)}
 .pol{max-width:840px;max-height:84vh;display:grid;grid-template-columns:210px 1fr;overflow:hidden}
-.pol-nav{background:#f2f2ef;padding:24px 12px;overflow-y:auto}
-.pol-nav button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;font-size:14.5px;color:var(--mute)}
+.pol-nav{background:#f2f2ef;padding:24px 12px;overflow-y:auto;border-right:1px solid var(--line)}
+.pol-nav button{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 14px;border-radius:12px;font-size:14.5px;font-weight:500;color:var(--mute);transition:all .2s;}
 .pol-nav button.on,.pol-nav button:hover{background:#fff;color:var(--ink)}
 .pol-body{padding:40px;overflow-y:auto}
 .pol-body h2{font-size:28px;margin-bottom:6px}.pol-body small{display:block;color:var(--mute);margin-bottom:22px}
 .pol-body p{color:#3f3f44;font-size:15px;margin-bottom:14px}
 .about{max-width:640px;padding:44px;display:flex;gap:36px;align-items:center}
-.about img{width:170px;height:170px;border-radius:16px;object-fit:cover;flex-shrink:0}
+.about img{width:170px;height:170px;border-radius:24px;object-fit:cover;flex-shrink:0}
 .about h2{font-size:28px;margin-bottom:12px}.about p{color:var(--mute);margin-bottom:18px;font-size:15px}
 .about .soc{display:flex;gap:20px;font-size:14.5px}.about .soc a:hover{text-decoration:underline}
 
 @media(max-width:960px){
 section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .burger{display:block}
-.links{position:absolute;top:72px;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none}
+.links{position:absolute;top:72px;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05);}
 .links.open{display:flex}
-.links a:not(.btn),.dd>button{padding:14px 0;width:100%;text-align:left;border-bottom:1px solid var(--line)}
+.links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:16px;}
 .links a:not(.btn)::after,.dd>button::after{display:none}
-.links .btn{margin-top:16px;text-align:center}
-.dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 12px}
-.hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.hero .acts .btn{flex:1;text-align:center}
-.story{height:calc(100vh + 5*55vh);height:calc(100svh + 5*55svh)}
-.pin{align-items:flex-start;padding-top:18px}
-.st-grid{grid-template-columns:1fr;gap:22px}
-.st-grid h2{display:none}
-.frame{order:-1;aspect-ratio:16/11;max-height:40svh;border-radius:24px}
-.st-item{display:none;border-top:0;padding:0}.st-item.on{display:flex}
-.ticks{display:flex;gap:6px}.ticks i{flex:1;height:2px;background:var(--line);transition:background .4s}.ticks i.on{background:var(--ink)}
-.work{padding:56px 0}
-.ctl button{width:38px;height:38px}
-.cta{padding:72px 0}.cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:32px}
+.links .btn{margin-top:20px;text-align:center;padding:14px;font-size:15px;}
+.dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
+.hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.acts .btn{flex:1;text-align:center}
+
+/* Fixed Mobile Scroll for "Story/Process" */
+.story { height: auto !important; padding: 80px 0; }
+.pin { position: static !important; height: auto !important; display: block; }
+.st-grid { display: flex; flex-direction: column; gap: 32px; }
+.st-grid h2 { display: block; font-size: 36px; margin-bottom: 8px; }
+.frame { display: none !important; } /* Hide sticky desktop frame */
+.ticks { display: none !important; }
+#items { display: flex; flex-direction: column; gap: 24px; }
+.st-item { display: flex !important; flex-direction: column; border: 1px solid var(--line); border-radius: 24px; padding: 32px 24px; background: #fff; opacity: 1 !important; color: var(--ink); }
+.st-item .d { grid-template-rows: 1fr !important; }
+.st-item .d p { max-width: 100%; padding-top: 12px; color: var(--mute); }
+.st-item > span { font-size: 16px; font-weight: 600; padding: 0; margin-bottom: 12px; color: var(--mute); font-family: 'IBM Plex Mono', monospace;}
+.mob-img { display: block; width: 100%; border-radius: 16px; margin-top: 24px; aspect-ratio: 4/3; object-fit: cover; background: #111; }
+
+.work{padding:60px 0}
+.work-grid-modern { grid-template-columns: 1fr; gap: 40px; }
+.w-card.wide .m { aspect-ratio: 4/3; } /* Normalize aspect ratio on mobile */
+
+.cta{padding:80px 0}.cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:40px}
 .f-grid{grid-template-columns:1fr 1fr;gap:40px}.f-brand{grid-column:1/-1}
 .pol{grid-template-columns:1fr;grid-template-rows:auto 1fr}
-.pol-nav{display:flex;overflow-x:auto;padding:12px 44px 12px 12px}.pol-nav button{white-space:nowrap;width:auto}
+.pol-nav{display:flex;overflow-x:auto;padding:12px 24px;border-right:0;border-bottom:1px solid var(--line);}.pol-nav button{white-space:nowrap;width:auto;padding:10px 16px;}
 .pol-body{padding:26px 22px 32px}
 .about{flex-direction:column;text-align:center;padding:36px 22px}.about .soc{justify-content:center}
 }
-@media(max-width:560px){.form .two{grid-template-columns:1fr}.ctl .cnt{display:none}}
+@media(max-width:560px){.form .two{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -200,13 +218,20 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <div class="hero-row">
 <div>
     <p><b>Nvisco, your excellence partner.</b> One team takes your idea to a product-ready design.</p>
-    <div class="acts" style="margin-top:20px;">
+    <div class="acts">
         <a href="#contact" class="btn pulse">Free consultation</a>
         <a href="#story" class="btn line">See the process</a>
     </div>
-    <div class="live-stats">
-        <span class="live-dot"></span>
-        <strong><span id="visitorCount" style="color:var(--ink)">14</span></strong> founders currently reviewing our systems
+    
+    <!-- Seamless Animated Tech Logos Loop -->
+    <div class="tech-logos">
+        <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/python" alt="Python" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/ros" alt="ROS" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/siemens" alt="Siemens" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" loading="lazy" decoding="async">
     </div>
 </div>
 </div>
@@ -218,12 +243,12 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <div>
 <h2>From idea to product-ready</h2>
 <div id="items">
-<div class="st-item on"><span>01</span><div><h3>Idea</h3><div class="d"><p>A free consultation turns your concept into a clear scope.</p></div></div></div>
-<div class="st-item"><span>02</span><div><h3>Electronic design</h3><div class="d"><p>Schematics and high-density PCB layout up to 22 layers.</p></div></div></div>
-<div class="st-item"><span>03</span><div><h3>Mechanical design</h3><div class="d"><p>Parametric CAD for your product and its enclosure.</p></div></div></div>
-<div class="st-item"><span>04</span><div><h3>Firmware</h3><div class="d"><p>Embedded code written for your exact hardware.</p></div></div></div>
-<div class="st-item"><span>05</span><div><h3>Engineering</h3><div class="d"><p>Integration, testing and validation on real hardware.</p></div></div></div>
-<div class="st-item"><span>06</span><div><h3>Product ready</h3><div class="d"><p>Validated files, handed over to scale and launch.</p></div></div></div>
+<div class="st-item on"><span>01</span><div><h3>Idea</h3><div class="d"><p>A free consultation turns your concept into a clear scope.</p></div><img class="mob-img" src="system.gif" alt="Idea Stage" loading="lazy" decoding="async"></div></div>
+<div class="st-item"><span>02</span><div><h3>Electronic design</h3><div class="d"><p>Schematics and high-density PCB layout up to 22 layers.</p></div><img class="mob-img" src="pcb11.jpg" alt="Electronic Design" loading="lazy" decoding="async"></div></div>
+<div class="st-item"><span>03</span><div><h3>Mechanical design</h3><div class="d"><p>Parametric CAD for your product and its enclosure.</p></div><img class="mob-img" src="cad11.png" alt="Mechanical Design" loading="lazy" decoding="async"></div></div>
+<div class="st-item"><span>04</span><div><h3>Firmware</h3><div class="d"><p>Embedded code written for your exact hardware.</p></div><img class="mob-img" src="firm11.jpg" alt="Firmware" loading="lazy" decoding="async"></div></div>
+<div class="st-item"><span>05</span><div><h3>Engineering</h3><div class="d"><p>Integration, testing and validation on real hardware.</p></div><img class="mob-img" src="CAD_WELD.jpg" alt="Engineering Testing" loading="lazy" decoding="async"></div></div>
+<div class="st-item"><span>06</span><div><h3>Product ready</h3><div class="d"><p>Validated files, handed over to scale and launch.</p></div><video class="mob-img" src="cadd.mp4" autoplay loop muted playsinline aria-label="Finished hardware" preload="none"></video></div></div>
 </div>
 <div class="ticks" id="ticks"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
 </div>
@@ -233,30 +258,47 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" loading="lazy" decoding="async">
 <img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" loading="lazy" decoding="async">
 <img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" loading="lazy" decoding="async">
-<!-- Video placed precisely in the 6th slot -->
 <video src="cadd.mp4" loop muted playsinline aria-label="Finished, product-ready hardware" width="1200" height="900" preload="none"></video>
 </div>
 </div></div>
 </section>
 
+<!-- Modern Grid replaces laggy carousel -->
 <section class="work" id="work">
-<div class="wrap work-top">
+<div class="wrap">
+<div class="work-top">
 <h2>Selected work</h2>
-<div class="ctl"><span class="cnt" id="cnt">1 / 5</span><button id="prev" aria-label="Previous project">&#8592;</button><button id="next" aria-label="Next project">&#8594;</button></div>
 </div>
-<div class="rail" id="rail" tabindex="0" aria-label="Project carousel">
-<article class="slide"><div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" width="1600" height="900" loading="lazy" decoding="async"></div><div class="cap"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div></article>
-<article class="slide"><div class="m"><img src="po2.webp" alt="Unified Systems" width="1600" height="900" loading="lazy" decoding="async"></div><div class="cap"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div></article>
-<article class="slide"><div class="m"><img src="po8.png" alt="Edge AI Hardware" width="1600" height="900" loading="lazy" decoding="async"></div><div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div></article>
-<article class="slide"><div class="m"><img src="po22.png" alt="Complex Layer Routing" width="1600" height="900" loading="lazy" decoding="async"></div><div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div></article>
-<article class="slide"><div class="m"><video data-src="159021-818026286.mp4" poster="pcb.png" muted loop playsinline preload="none" aria-label="Industrial machinery in operation"></video></div><div class="cap"><h3>Industry machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div></article>
+<div class="work-grid-modern">
+    <article class="w-card">
+        <div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po2.webp" alt="Unified Systems" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po8.png" alt="Edge AI Hardware" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po22.png" alt="Complex Layer Routing" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
+    </article>
+    <article class="w-card wide">
+        <div class="m"><video data-src="159021-818026286.mp4" poster="pcb.png" muted loop playsinline preload="none" aria-label="Industrial machinery in operation"></video></div>
+        <div class="cap"><h3>Industry machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
+    </article>
+</div>
 </div>
 </section>
 
 <section class="cta" id="contact">
 <div class="wrap cta-grid">
 <div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
-<video data-src="cadd.mp4" poster="pcb.png" muted loop playsinline preload="none" aria-label="Nvisco CAD design in motion"></video>
+<!-- Added iPhone Video specifically for CTA section -->
+<video data-src="iphone.mp4" poster="pcb.png" muted loop playsinline preload="none" aria-label="Nvisco hardware showcase"></video>
 <form class="form" id="inq">
 <div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
 <select name="s" aria-label="What do you need"><option>Full product, idea to launch</option><option>Electronic design</option><option>Mechanical design</option><option>Firmware</option></select>
@@ -285,7 +327,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-$('#yr').textContent=new Date().getFullYear();  /* Live Visitor Script */ function updateVisitorCount() {     let c = parseInt(localStorage.getItem('nv_vc')) \vert{}\vert{} 12;     c = Math.max(8, Math.min(35, c + Math.floor(Math.random()*3)-1));     localStorage.setItem('nv_vc', c);     const vc = document.getElementById('visitorCount');     if(vc) vc.textContent = c; } setInterval(updateVisitorCount, 8000); updateVisitorCount();  /* Policies: have a lawyer review before launch */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
+$('#yr').textContent=new Date().getFullYear();  /* Policies */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
 function openPol(n){
  $('#polNav').innerHTML=names.map(k=>`<button class="${k===n?'on':''}" data-p="${k}">${k}</button>`).join('');
  $('#polBody').innerHTML=`<h2>${n}</h2><small>Last updated ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</small><p>${P[n]}</p><p>Questions? Email nvisco.pak@gmail.com.</p>`;
@@ -307,7 +349,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOv();dd.classList.remove('open')}});
 
-/* story: scroll drives the active stage & handles video playback */
+/* story: scroll drives the active stage & handles video playback ONLY on desktop */
 const story=$('#story'),items=$$('.st-item'),imgs=$$('#frame > *'),ticks=$$('#ticks i');
 let cur=0;
 function setStage(i){
@@ -316,19 +358,13 @@ function setStage(i){
     [items,imgs,ticks].forEach(l=>l.forEach((x,k)=>{
         const isOn = (k === i);
         x.classList.toggle('on', isOn);
-        
-        // If the element is a video, trigger play/pause based on active state
         if (x.tagName === 'VIDEO') {
-            if (isOn) {
-                x.play().catch(()=>{});
-            } else {
-                x.pause();
-                x.currentTime = 0; // reset video to start when scrolling away
-            }
+            if (isOn) { x.play().catch(()=>{}); } 
+            else { x.pause(); x.currentTime = 0; }
         }
     }));
 }
-/* scroll: progress line, nav, light, story, cta parallax */
+
 const bar=$('#bar'),nav=$('#nav'),root=document.documentElement;
 let tick=false,lastY=0,lastSy=-1;
 function onScroll(){
@@ -337,21 +373,26 @@ function onScroll(){
  nav.classList.toggle('s',y>10);
  nav.classList.toggle('hide',y>320&&y>lastY&&!links.classList.contains('open'));lastY=y;
  const sy=Math.round((8+p*84)*2)/2;if(sy!==lastSy){root.style.setProperty('--sy',sy+'%');lastSy=sy}
- const r=story.getBoundingClientRect(),span=r.height-innerHeight;
- if(r.top<=0&&span>0)setStage(Math.min(5,Math.max(0,Math.floor(-r.top/span*6))));else if(r.top>0)setStage(0);
+ 
+ // Only run sticky scroll math if window is wide enough (desktop)
+ if(window.innerWidth > 960) {
+    const r=story.getBoundingClientRect(),span=r.height-innerHeight;
+    if(r.top<=0&&span>0)setStage(Math.min(5,Math.max(0,Math.floor(-r.top/span*6))));else if(r.top>0)setStage(0);
+ }
  tick=false;
 }
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
 addEventListener('resize',onScroll);onScroll();
 
-/* work carousel */
-const rail=$('#rail'),slides=[...rail.children],cnt=$('#cnt');
-const stepW=()=>slides[0].offsetWidth+20;
-$('#prev').onclick=()=>rail.scrollBy({left:-stepW(),behavior:'smooth'});
-$('#next').onclick=()=>rail.scrollBy({left:stepW(),behavior:'smooth'});
-rail.addEventListener('scroll',()=>{cnt.textContent=(Math.round(rail.scrollLeft/stepW())+1)+' / '+slides.length},{passive:true});
-rail.addEventListener('keydown',e=>{if(e.key==='ArrowRight')$('#next').click();if(e.key==='ArrowLeft')$('#prev').click()});  /* load and play videos only while visible */ if('IntersectionObserver' in window){  const vo=new IntersectionObserver(en=>en.forEach(x=>{   const v=x.target;   if(x.isIntersecting){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause();  }),{rootMargin:'200px'});  $$('video[data-src]').forEach(v=>vo.observe(v));
+/* load and play videos only while visible */
+if('IntersectionObserver' in window){
+ const vo=new IntersectionObserver(en=>en.forEach(x=>{
+  const v=x.target;
+  if(x.isIntersecting){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause();
+ }),{rootMargin:'200px'});
+ $$('video[data-src]').forEach(v=>vo.observe(v));
 }
+
 /* form -> email */
 $('#inq').addEventListener('submit',e=>{
  e.preventDefault();const f=e.target;
