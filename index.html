@@ -108,7 +108,7 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .work{padding:100px 0;border-top:1px solid var(--line)}
 .work-top{margin-bottom:40px}
 .work-top h2{font-size:clamp(24px,3vw,36px)}
-.work-grid-modern { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; } /* 4 columns for a smaller, highly professional look */
+.work-grid-modern { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; } /* Clean 4 column grid */
 .w-card { display: flex; flex-direction: column; }
 .w-card .m { border-radius: 12px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
 .w-card img, .w-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,1,0.5,1); }
@@ -162,7 +162,7 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .about .soc{display:flex;gap:20px;font-size:14px}.about .soc a:hover{text-decoration:underline}
 
 @media(max-width:960px){
-section{padding:80px 0}.wrap{padding:0 22px}:root{--gut:22px}
+section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .burger{display:block}
 .links{position:absolute;top:72px;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05);}
 .links.open{display:flex}
@@ -347,7 +347,7 @@ section{padding:80px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div></div>
 </section>
 
-<!-- Modern 4-Column Dense Grid -->
+<!-- Curated 8-Item Professional Grid -->
 <section class="work" id="work">
 <div class="wrap">
 <div class="work-top">
@@ -363,10 +363,9 @@ section{padding:80px 0}.wrap{padding:0 22px}:root{--gut:22px}
         <div class="cap"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div>
     </article>
     <article class="w-card">
-        <div class="m"><img src="po8.png" alt="Edge AI Hardware" loading="lazy" decoding="async"></div>
+        <div class="m"><img src="po8.png" alt="Edge AI Processing" loading="lazy" decoding="async"></div>
         <div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
     </article>
-    <!-- Explicitly requested pcb.png replacement -->
     <article class="w-card">
         <div class="m"><img src="pcb.png" alt="Complex Layer Routing" loading="lazy" decoding="async"></div>
         <div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
@@ -387,38 +386,6 @@ section{padding:80px 0}.wrap{padding:0 22px}:root{--gut:22px}
         <div class="m"><img src="po14.jpg" alt="IoT Connectivity" loading="lazy" decoding="async"></div>
         <div class="cap"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div>
     </article>
-    <article class="w-card">
-        <div class="m"><img src="po16.webp" alt="Edge Computing Nodes" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Edge Computing Nodes</h3><p>High-speed processing units engineered for localized AI analytics.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po17.png" alt="Automated Test Fixtures" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Automated Test Fixtures</h3><p>Reliable validation hardware custom-built for mass production lines.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po21.png" alt="Thermal Management" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Thermal Management</h3><p>Advanced heat dissipation designs for high-power electronic boards.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po5.webp" alt="Robotics Control" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Robotics Control</h3><p>Precision actuation and feedback loop circuitry for complex joints.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po3.png" alt="Compact Wearable Tech" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Compact Wearable Tech</h3><p>Miniaturized multi-layer rigid-flex designs for consumer wearables.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po6.webp" alt="Power Electronics" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Power Electronics</h3><p>High-voltage switching and regulation modules for industrial grids.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po7.webp" alt="Sensor Fusion" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Sensor Fusion</h3><p>Integrating multiple environmental and spatial sensors seamlessly.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po9.webp" alt="Rapid Prototyping" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Rapid Prototyping</h3><p>Quick-turn validation boards engineered for rapid proof-of-concept.</p></div>
-    </article>
 </div>
 </div>
 </section>
@@ -426,8 +393,8 @@ section{padding:80px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <section class="cta" id="contact">
 <div class="wrap cta-grid">
 <div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
-<!-- Video moved here, replacing the static image. Removed 'poster' attribute so it doesn't show the red PCB -->
-<video src="iphone.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
+<!-- Video moved here, hardcoded src so it plays instantly -->
+<video src="cadd.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
 <form class="form" id="inq">
 <div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
 <select name="s" aria-label="What do you need"><option>Full product, idea to launch</option><option>Electronic design</option><option>Mechanical design</option><option>Firmware</option></select>
