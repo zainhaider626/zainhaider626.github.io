@@ -8,7 +8,7 @@
 <meta name="description" content="Nvisco is an engineering partner for intelligent systems and robotics: PCB design up to 22 layers, parametric CAD, embedded firmware, from idea to product-ready.">
 <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
 <meta name="author" content="Zain Haider">
-<meta name="theme-color" content="#f2f2ef">
+<meta name="theme-color" content="#0a0a0b">
 <meta property="og:type" content="website"><meta property="og:title" content="NVISCO — Your Excellence Partner"><meta property="og:description" content="PCB, CAD and firmware from idea to product-ready."><meta property="og:image" content="https://nvisco.com/pcb.png">
 <link rel="icon" href="favicon.png" sizes="192x192">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
@@ -145,27 +145,38 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .f-bar div{display:flex;gap:24px;flex-wrap:wrap}.f-bar button{background:none;border:0;font-size:13px;color:#66666b}.f-bar button:hover{color:#fff}
 
 /* SHINING BLACK MODALS (Matches Service Agreement PDF) */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
 .ov.on{display:flex}
-.box{background:linear-gradient(145deg, #18181a, #050505); border:1px solid #2a2a2c; border-radius:24px; width:100%; position:relative; box-shadow:0 30px 80px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,0.05);}
-.close{position:absolute;top:14px;right:20px;background:none;border:0;font-size:28px;color:#888;z-index:2;transition:color .2s;}.close:hover{color:#fff}
-.pol{max-width:840px;max-height:84vh;display:grid;grid-template-columns:210px 1fr;overflow:hidden}
-.pol-nav{background:rgba(255,255,255,0.02);padding:24px 12px;overflow-y:auto;border-right:1px solid rgba(255,255,255,0.05)}
-.pol-nav button{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 14px;border-radius:12px;font-size:14px;font-weight:500;color:#888;transition:all .2s;}
-.pol-nav button.on,.pol-nav button:hover{background:rgba(255,255,255,0.08);color:#fff}
-.pol-body{padding:40px;overflow-y:auto}
-.pol-body h2{font-size:28px;margin-bottom:6px; color:#fff;}
-.pol-body small{display:block;color:#888;margin-bottom:22px}
-.pol-body p{color:#aaa;font-size:14.5px;margin-bottom:14px}
-.about{max-width:640px;padding:44px;display:flex;gap:36px;align-items:center}
-.about img{width:170px;height:170px;border-radius:24px;object-fit:cover;flex-shrink:0; border:1px solid #2a2a2c;}
-.about h2{font-size:28px;margin-bottom:12px; color:#fff;}
-.about p{color:#aaa;margin-bottom:18px;font-size:15px}
-.about .soc{display:flex;gap:20px;font-size:14px; color:#aaa;}
-.about .soc a{color:#888; transition:color .2s;}
-.about .soc a:hover{color:#fff; text-decoration:none;}
+.box{background:linear-gradient(160deg, #1e1e22 0%, #0a0a0b 100%); border:1px solid rgba(255,255,255,0.1); border-radius:24px; width:100%; position:relative; box-shadow:0 40px 100px rgba(0,0,0,0.9), inset 0 2px 4px rgba(255,255,255,0.05);}
+.close{position:absolute;top:20px;right:24px;background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:24px; color:#aaa; z-index:10; transition:all .2s;}
+.close:hover{color:#fff; background:rgba(255,255,255,0.1);}
 
-/* Scrollbar styling for shining black modals */
+/* Policy Modal Specifics */
+.pol{max-width:960px;max-height:85vh;display:grid;grid-template-columns:280px 1fr;overflow:hidden;}
+.pol-nav{background:rgba(0,0,0,0.4);padding:32px 16px;overflow-y:auto;border-right:1px solid rgba(255,255,255,0.05)}
+.pol-nav button{display:flex;align-items:center;width:100%;text-align:left;background:none;border:0;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:500;color:#777;transition:all .2s;}
+.pol-nav button.on,.pol-nav button:hover{background:rgba(255,255,255,0.05);color:#fff;}
+.pol-nav button .num {font-family:'IBM Plex Mono', monospace; font-size:12px; opacity:0.5; margin-right:12px;}
+.pol-nav button.on .num {opacity:1; color:#fff;}
+
+.pol-body{padding:48px 56px;overflow-y:auto; position:relative;}
+.pol-header{border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:24px; margin-bottom:32px;}
+.pol-header span.tag{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:2px; color:#888; text-transform:uppercase; display:block; margin-bottom:12px;}
+.pol-header h2{font-size:36px; margin-bottom:8px; color:#fff; font-family:'Playfair Display', serif;}
+.pol-header small{display:block;color:#666; font-size:13px;}
+.pol-content{color:#bbb;font-size:15px;line-height:1.8;}
+.pol-content strong{color:#fff; font-weight:600;}
+
+/* About Modal Specifics */
+.about{max-width:720px;padding:56px;display:flex;gap:48px;align-items:center}
+.about img{width:200px;height:200px;border-radius:24px;object-fit:cover;flex-shrink:0; border:1px solid rgba(255,255,255,0.1); box-shadow:0 20px 40px rgba(0,0,0,0.5);}
+.about-info h2{font-size:36px;margin-bottom:16px; color:#fff; font-family:'Playfair Display', serif;}
+.about-info p{color:#bbb;margin-bottom:24px;font-size:16px; line-height:1.7;}
+.about .soc{display:flex;gap:24px;font-size:15px; color:#aaa; font-family:'IBM Plex Mono', monospace;}
+.about .soc a{color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:2px; transition:border-color .2s;}
+.about .soc a:hover{border-color:#fff;}
+
+/* Custom Scrollbars for Shining Black Modals */
 .box ::-webkit-scrollbar { width: 8px; height: 8px; }
 .box ::-webkit-scrollbar-track { background: transparent; }
 .box ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
@@ -215,9 +226,14 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 
 /* Mobile Modal Adjustments */
 .pol{grid-template-columns:1fr;grid-template-rows:auto 1fr}
-.pol-nav{display:flex;overflow-x:auto;padding:12px 24px;border-right:0;border-bottom:1px solid rgba(255,255,255,0.05);}.pol-nav button{white-space:nowrap;width:auto;padding:10px 16px;}
-.pol-body{padding:26px 22px 32px}
-.about{flex-direction:column;text-align:center;padding:36px 22px}.about .soc{justify-content:center}
+.pol-nav{display:flex;overflow-x:auto;padding:16px 24px;border-right:0;border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(0,0,0,0.2);}
+.pol-nav button{white-space:nowrap;width:auto;padding:10px 16px;}
+.pol-body{padding:32px 24px}
+.pol-header h2{font-size:28px;}
+.about{flex-direction:column;text-align:center;padding:40px 24px; gap:32px;}
+.about img{width:160px; height:160px;}
+.about .soc{justify-content:center;}
+.close{top:12px; right:12px; width:36px; height:36px; font-size:20px;}
 }
 @media(max-width:560px){
 .form .two{grid-template-columns:1fr}
@@ -405,6 +421,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <section class="cta" id="contact">
 <div class="wrap cta-grid">
 <div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
+<!-- Video hardcoded to play instantly -->
 <video src="cadd.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
 <form class="form" id="inq">
 <div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
@@ -430,14 +447,41 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </footer>
 
 <div class="ov" id="polOv" role="dialog" aria-modal="true" aria-label="Policies"><div class="box pol"><button class="close" data-close aria-label="Close">&times;</button><div class="pol-nav" id="polNav"></div><div class="pol-body" id="polBody"></div></div></div>
-<div class="ov" id="aboutOv" role="dialog" aria-modal="true" aria-label="About"><div class="box about"><button class="close" data-close aria-label="Close">&times;</button><img src="unnamed.jpg" alt="Zain Haider" loading="lazy" decoding="async"><div><h2>I'm Zain Haider</h2><p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products.</p><div class="soc"><a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div></div></div></div>
+<div class="ov" id="aboutOv" role="dialog" aria-modal="true" aria-label="About">
+    <div class="box about">
+        <button class="close" data-close aria-label="Close">&times;</button>
+        <img src="unnamed.jpg" alt="Zain Haider" loading="lazy" decoding="async">
+        <div class="about-info">
+            <h2>I'm Zain Haider</h2>
+            <p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products.</p>
+            <div class="soc">
+                <a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 $('#yr').textContent=new Date().getFullYear();  /* Policies */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
 function openPol(n){
- $('#polNav').innerHTML=names.map(k=>`<button class="${k===n?'on':''}" data-p="${k}">${k}</button>`).join('');
- $('#polBody').innerHTML=`<h2>${n}</h2><small>Last updated ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</small><p>${P[n]}</p><p>Questions? Email nvisco.pak@gmail.com.</p>`;
+ $('#polNav').innerHTML=names.map((k, i)=>{
+    const num = String(i + 1).padStart(2, '0');
+    return `<button class="${k===n?'on':''}" data-p="${k}"><span class="num">${num}</span> ${k}</button>`;
+ }).join('');
+ 
+ $('#polBody').innerHTML=`
+    <div class="pol-header">
+        <span class="tag">Nvisco Terms of Engagement</span>
+        <h2>${n}</h2>
+        <small>Last updated ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</small>
+    </div>
+    <div class="pol-content">
+        <p>${P[n]}</p>
+        <p style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05);">For legal inquiries, contact <a href="mailto:nvisco.pak@gmail.com" style="color:#fff; text-decoration:underline;">nvisco.pak@gmail.com</a>.</p>
+    </div>
+ `;
  if(!$('#polOv').classList.contains('on'))openOv($('#polOv'));$('#polBody').scrollTop=0;
 }
 $('#ddMenu').innerHTML=names.map(k=>`<button data-p="${k}">${k}</button>`).join('');
