@@ -104,20 +104,20 @@ nav.s{border-color:var(--line)}nav.hide{transform:translateY(-100%)}
 .mob-img { display: none; }
 .ticks{display:none}
 
-/* Modern Grid Work Section */
-.work{padding:120px 0;border-top:1px solid var(--line)}
-.work-top{margin-bottom:48px}
-.work-top h2{font-size:clamp(28px,3.5vw,42px)}
-.work-grid-modern { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 40px; }
+/* Modern Grid Work Section - Made more compact */
+.work{padding:100px 0;border-top:1px solid var(--line)}
+.work-top{margin-bottom:40px}
+.work-top h2{font-size:clamp(24px,3vw,36px)}
+.work-grid-modern { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 24px; } /* Changed to 3 columns to make it smaller/more manageable */
 .w-card { display: flex; flex-direction: column; }
 .w-card.wide { grid-column: 1 / -1; }
-.w-card .m { border-radius: 24px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+.w-card .m { border-radius: 16px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
 .w-card.wide .m { aspect-ratio: 21/9; }
 .w-card img, .w-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,1,0.5,1); }
 .w-card:hover img, .w-card:hover video { transform: scale(1.04); }
-.w-card .cap { padding-top: 20px; }
-.w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; margin-bottom: 8px; }
-.w-card .cap p { color: var(--mute); font-size: 15px; max-width: 44ch; }
+.w-card .cap { padding-top: 16px; }
+.w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 6px; }
+.w-card .cap p { color: var(--mute); font-size: 14px; max-width: 44ch; }
 
 /* cta */
 .cta{background:#050505;color:#fff;padding:120px 0}
@@ -200,7 +200,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .st-item.on video.mob-img { display: block; }
 
 .work{padding:60px 0}
-.work-grid-modern { grid-template-columns: 1fr; gap: 40px; }
+.work-grid-modern { grid-template-columns: 1fr; gap: 32px; } /* Stack on mobile */
 .w-card.wide .m { aspect-ratio: 4/3; } /* Normalize aspect ratio on mobile */
 
 .cta{padding:80px 0}.cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:40px}
@@ -320,7 +320,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
     <img class="mob-img" src="CAD_WELD.jpg" alt="Engineering Testing" loading="lazy" decoding="async">
 </div>
 
-<!-- Step 6: Product Ready (Video) -->
+<!-- Step 6: Product Ready (Image: prod-ready.png) -->
 <div class="st-item" onclick="toggleMobStage(5)">
     <div class="st-header">
         <span>06</span>
@@ -328,7 +328,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
         <div class="toggle-pin"></div>
     </div>
     <div class="d"><p>Validated files, handed over to scale and launch.</p></div>
-    <video class="mob-img" src="cadd.mp4" loop muted playsinline aria-label="Finished hardware"></video>
+    <img class="mob-img" src="prod-ready.png" alt="Finished hardware" loading="lazy" decoding="async">
 </div>
 
 </div>
@@ -342,12 +342,12 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" loading="lazy" decoding="async">
 <img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" loading="lazy" decoding="async">
 <img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" loading="lazy" decoding="async">
-<video src="cadd.mp4" loop muted playsinline aria-label="Finished, product-ready hardware" width="1200" height="900" preload="none"></video>
+<img src="prod-ready.png" alt="Finished, product-ready hardware" width="1200" height="900" loading="lazy" decoding="async">
 </div>
 </div></div>
 </section>
 
-<!-- Modern Grid replacing laggy carousel -->
+<!-- Modern Grid replacing laggy carousel - More compact layout -->
 <section class="work" id="work">
 <div class="wrap">
 <div class="work-top">
@@ -381,8 +381,8 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <section class="cta" id="contact">
 <div class="wrap cta-grid">
 <div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
-<!-- Updated to iPhone Video on Autoplay -->
-<video src="iphone.mp4" autoplay muted loop playsinline aria-label="Nvisco hardware showcase"></video>
+<!-- Video moved here, replacing the image -->
+<video data-src="iphone.mp4" poster="pcb.png" muted autoplay loop playsinline preload="none" aria-label="Nvisco hardware showcase"></video>
 <form class="form" id="inq">
 <div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
 <select name="s" aria-label="What do you need"><option>Full product, idea to launch</option><option>Electronic design</option><option>Mechanical design</option><option>Firmware</option></select>
@@ -433,7 +433,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOv();dd.classList.remove('open')}});
 
-/* story: scroll & click drives the active stage & handles video playback */
+/* story: scroll & click drives the active stage & handles video playback ONLY on desktop */
 const story=$('#story'),items=$$('.st-item'),imgs=$$('#frame > *'),ticks=$$('#ticks i');
 let cur=0;
 function setStage(i){
@@ -449,7 +449,7 @@ function setStage(i){
     }));
 }
 
-/* Mobile Toggle Click Logic */
+/* Mobile Toggle Click Logic for Accordion */
 function toggleMobStage(index) {
     if(window.innerWidth > 960) return; // Only allow click on mobile
     const item = items[index];
@@ -488,6 +488,15 @@ function onScroll(){
 }
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
 addEventListener('resize',onScroll);onScroll();
+
+/* load and play videos only while visible */
+if('IntersectionObserver' in window){
+ const vo=new IntersectionObserver(en=>en.forEach(x=>{
+  const v=x.target;
+  if(x.isIntersecting){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause();
+ }),{rootMargin:'200px'});
+ $$('video[data-src]').forEach(v=>vo.observe(v));
+}
 
 /* form -> email */
 $('#inq').addEventListener('submit',e=>{
