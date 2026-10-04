@@ -8,7 +8,7 @@
 <meta name="description" content="Nvisco is an engineering partner for intelligent systems and robotics: PCB design up to 22 layers, parametric CAD, embedded firmware, from idea to product-ready.">
 <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
 <meta name="author" content="Zain Haider">
-<meta name="theme-color" content="#0a0a0b">
+<meta name="theme-color" content="#f2f2ef">
 <meta property="og:type" content="website"><meta property="og:title" content="NVISCO — Your Excellence Partner"><meta property="og:description" content="PCB, CAD and firmware from idea to product-ready."><meta property="og:image" content="https://nvisco.com/pcb.png">
 <link rel="icon" href="favicon.png" sizes="192x192">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
@@ -44,24 +44,33 @@ section{padding:120px 0}
 
 /* nav - Floating Thin Rounded on Scroll */
 .nav-wrapper { position: sticky; top: 0; z-index: 60; width: 100%; transition: all 0.4s cubic-bezier(.25,1,.5,1); padding: 0; background: rgba(242,242,239,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; }
-.nav-wrapper.s { padding: 12px 28px; background: rgba(10,10,11,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); width: 90%; max-width: 1050px; margin: 12px auto 0 auto; border-radius: 999px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-.nav-wrapper.s .logo { color: #fff; }
+.nav-in { height: 72px; display: flex; align-items: center; justify-content: space-between; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
+
+/* Smart Logo Image Switching */
+.logo { display: block; transition: transform 0.3s; }
+.logo img { display: block; }
+.logo-main { height: 26px; width: auto; }
+.logo-scrolled { height: 24px; width: auto; display: none; }
+
+/* Scrolled Nav overrides - Ultra Thin & Smart */
+.nav-wrapper.s { padding: 6px 24px; background: rgba(10,10,11,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); width: 90%; max-width: 1050px; margin: 12px auto 0 auto; border-radius: 999px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.nav-wrapper.s .nav-in { height: 42px; } /* Thinner when scrolled */
+.nav-wrapper.s .logo-main { display: none; } /* Hide full logo */
+.nav-wrapper.s .logo-scrolled { display: block; } /* Show favicon */
 .nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { color: #aaa; }
 .nav-wrapper.s .links a:not(.btn):hover, .nav-wrapper.s .dd>button:hover { color: #fff; }
 .nav-wrapper.s .links a:not(.btn)::after, .nav-wrapper.s .dd>button::after { background: #fff; }
-.nav-wrapper.s .btn { background: #fff; color: #000; border-color: #fff; }
+.nav-wrapper.s .btn { background: #fff; color: #000; border-color: #fff; padding: 6px 16px; }
 .nav-wrapper.s .btn:hover { background: transparent; color: #fff; }
-.nav-wrapper.s .burger { border-color: rgba(255,255,255,0.2); color: #fff; }
+.nav-wrapper.s .burger { border-color: rgba(255,255,255,0.2); color: #fff; padding: 6px 14px;}
 
 nav.hide{transform:translateY(-150%)}
-.nav-in{height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:2.5px;color:var(--ink);text-transform:uppercase;display:block;transition:color 0.3s;}
 .links{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:500;}
 .links a:not(.btn),.dd>button{position:relative;background:none;border:0;color:var(--mute);transition:color .2s;padding:4px 0}
 .links a:not(.btn)::after,.dd>button::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.25,1,.5,1)}
 .links a:not(.btn):hover,.dd>button:hover{color:var(--ink)}
 .links a:not(.btn):hover::after,.dd>button:hover::after{transform:scaleX(1)}
-.links .btn{padding:8px 18px;font-size:13px}
+.links .btn{padding:10px 20px;font-size:13px}
 .dd{position:relative}
 .dd-menu{position:absolute;right:-20px;top:40px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.08)}
 .dd.open .dd-menu{display:block}
@@ -83,6 +92,56 @@ nav.hide{transform:translateY(-150%)}
 .tech-logos img:nth-child(even) { animation-delay: 2.5s; }
 @keyframes colorPulse { 0%, 20% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } 50%, 70% { filter: grayscale(0%) opacity(1); transform: scale(1.05); } 100% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } }
 @keyframes rise{from{opacity:0;transform:translateY(26px)}}
+
+/* Scroll Banner (NVISCO Premium Text Banner) */
+.premium-text-banner {
+    background: radial-gradient(circle at center, #1a1a1c 0%, #050505 60%);
+    width: 100%;
+    padding: 160px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    will-change: opacity;
+}
+.banner-micro {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+.banner-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    background: linear-gradient(180deg, #ffffff 0%, #a0a0a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 30px rgba(255, 255, 255, 0.15);
+    margin-bottom: 16px;
+    line-height: 1;
+}
+.banner-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: #a0a0a5;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+}
+.banner-footer {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: #555;
+    text-transform: uppercase;
+}
 
 /* story (Desktop) */
 .story{position:relative;height:calc(100vh + 5*60vh);padding:0;border-top:1px solid var(--line)}
@@ -127,8 +186,8 @@ nav.hide{transform:translateY(-150%)}
 .w-card .cap p { color: var(--mute); font-size: 13px; max-width: 44ch; line-height: 1.5; }
 
 /* cta - Wrapped in a rounded card container above footer */
-.cta-wrapper { max-width: var(--w); margin: 0 auto; padding: 0 28px 100px 28px; }
-.cta{background:#050505;color:#fff;padding:100px 60px; border-radius: 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.25); overflow: relative;}
+.cta-wrapper { max-width: var(--w); margin: 0 auto; padding: 40px 28px 100px 28px; }
+.cta{background:#050505;color:#fff;padding:80px 60px; border-radius: 40px; position: relative; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.25); border: 1px solid #1c1c1f;}
 .cta video{grid-area:vid;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;background:#111;box-shadow:0 20px 50px rgba(0,0,0,0.4);}
 .copy{grid-area:copy}
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"copy vid" "form vid";gap:24px 64px;align-items:center}
@@ -145,7 +204,7 @@ nav.hide{transform:translateY(-150%)}
 .form small{color:#85858a;font-size:13px}
 
 /* footer */
-footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0 32px}
+footer{background:#050505;color:#fff;padding:88px 0 32px}
 .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
 .f-brand p{color:#85858a;font-size:14px;max-width:32ch}
 .f-col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:18px}
@@ -195,14 +254,20 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 @media(max-width:960px){
 section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .burger{display:block}
-.nav-wrapper.s { width: 94%; padding: 10px 20px; }
-.links{position:absolute;top:72px;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05);}
+.nav-wrapper.s { width: 94%; padding: 8px 20px; }
+.nav-wrapper.s .nav-in { height: 40px; }
+.nav-wrapper.s .logo-scrolled { height: 20px; }
+.links{position:absolute;top:100%;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05); margin-top: 12px; border-radius: 12px;}
+.nav-wrapper.s .links { background: #111; border-color: rgba(255,255,255,0.1); margin-top: 16px;}
 .links.open{display:flex}
 .links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:15px;}
+.nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { border-bottom-color: rgba(255,255,255,0.1); }
 .links a:not(.btn)::after,.dd>button::after{display:none}
 .links .btn{margin-top:20px;text-align:center;padding:14px;font-size:14.5px;}
 .dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
 .hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.acts .btn{flex:1;text-align:center}
+
+.premium-text-banner { padding: 100px 20px; }
 
 /* Mobile Accordion Logic */
 .story { height: auto !important; padding: 60px 0; }
@@ -233,7 +298,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .work-grid-modern { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
 .cta-wrapper { padding: 0 16px 60px 16px; }
-.cta{padding:60px 24px; border-radius: 24px; }
+.cta{padding:48px 24px; border-radius: 24px; }
 .cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:32px}
 .f-grid{grid-template-columns:1fr 1fr;gap:40px}.f-brand{grid-column:1/-1}
 
@@ -261,7 +326,10 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 
 <div class="nav-wrapper" id="navWrapper">
 <nav class="wrap nav-in" style="max-width:100%; padding:0;">
-<a href="#" class="logo" aria-label="Nvisco home">NVISCO</a>
+<a href="#" class="logo" aria-label="Nvisco home">
+    <img src="nvisco-logo.png" alt="NVISCO" class="logo-main">
+    <img src="favicon.png" alt="NVISCO Icon" class="logo-scrolled">
+</a>
 <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">Menu</button>
 <div class="links" id="links">
 <a href="#story">Process</a>
@@ -299,6 +367,14 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div>
 </div>
 </header>
+
+<!-- Smooth Scrolling Premium Banner -->
+<div class="premium-text-banner" id="scrollBanner">
+    <div class="banner-micro">Your Vision. Our Engineering.</div>
+    <div class="banner-title">NVISCO</div>
+    <div class="banner-sub">Excellence Partner</div>
+    <div class="banner-footer">Hardware / Robotics / Automation</div>
+</div>
 
 <section class="story" id="story" aria-label="From idea to product-ready">
 <div class="pin"><div class="wrap st-grid">
@@ -429,7 +505,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
     </article>
 </div>
 </div>
-</main>
+</section>
 
 <!-- Rounded Card Container for CTA above footer -->
 <div class="cta-wrapper">
@@ -447,11 +523,15 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div>
 </section>
 </div>
+</main>
 
 <footer>
 <div class="wrap">
 <div class="f-grid">
-<div class="f-col f-brand"><div class="logo" style="margin-bottom:20px; color:#ffffff;">NVISCO</div><p>Your excellence partner. Intelligent systems, robotics and hardware design.</p></div>
+<div class="f-col f-brand">
+    <img src="nvisco-logo.png" alt="NVISCO" style="height:24px; filter:invert(1); transform:scale(2.2); transform-origin:left center; margin-bottom:22px; display:block;">
+    <p>Your excellence partner. Intelligent systems, robotics and hardware design.</p>
+</div>
 <div class="f-col"><h4>Company</h4><a href="#story">Process</a><a href="#work">Work</a><button data-about>About the founder</button></div>
 <div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
 <div class="f-col"><h4>Office</h4><a style="pointer-events:none">Mandi Bahauddin<br>Punjab, Pakistan</a></div>
@@ -477,7 +557,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 </div>
 
 <script>
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),scrollBanner=$('#scrollBanner');
 $('#yr').textContent=new Date().getFullYear();  /* Policies */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
 function openPol(n){
  $('#polNav').innerHTML=names.map((k, i)=>{
@@ -561,6 +641,19 @@ function onScroll(){
     const r=story.getBoundingClientRect(),span=r.height-innerHeight;
     if(r.top<=0&&span>0)setStage(Math.min(5,Math.max(0,Math.floor(-r.top/span*6))));else if(r.top>0)setStage(0);
  }
+
+ // Scroll Banner Fade Math
+ if(scrollBanner) {
+    const rect = scrollBanner.getBoundingClientRect();
+    const wh = window.innerHeight;
+    const center = rect.top + rect.height / 2;
+    const dist = Math.abs(wh / 2 - center);
+    const fadeThreshold = wh / 1.2;
+    let op = 1 - (dist / fadeThreshold);
+    op = Math.max(0, Math.min(1, op * 2)); 
+    scrollBanner.style.opacity = op.toFixed(2);
+ }
+
  tick=false;
 }
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
