@@ -46,17 +46,14 @@ section{padding:120px 0}
 .nav-wrapper { position: sticky; top: 0; z-index: 60; width: 100%; transition: all 0.4s cubic-bezier(.25,1,.5,1); padding: 0; background: rgba(242,242,239,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; }
 .nav-in { height: 72px; display: flex; align-items: center; justify-content: space-between; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
 
-/* Smart Logo Image Switching */
-.logo { display: block; transition: transform 0.3s; }
-.logo img { display: block; }
-.logo-main { height: 26px; width: auto; }
-.logo-scrolled { height: 24px; width: auto; display: none; }
+/* Smart Logo Image Switching & Scaling */
+.logo { display: block; }
+.logo img { display: block; height: 34px; width: auto; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
 
 /* Scrolled Nav overrides - Ultra Thin & Smart */
 .nav-wrapper.s { padding: 6px 24px; background: rgba(10,10,11,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); width: 90%; max-width: 1050px; margin: 12px auto 0 auto; border-radius: 999px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 .nav-wrapper.s .nav-in { height: 42px; } /* Thinner when scrolled */
-.nav-wrapper.s .logo-main { display: none; } /* Hide full logo */
-.nav-wrapper.s .logo-scrolled { display: block; } /* Show favicon */
+.nav-wrapper.s .logo img { height: 24px; } /* Shrinks smoothly when scrolled */
 .nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { color: #aaa; }
 .nav-wrapper.s .links a:not(.btn):hover, .nav-wrapper.s .dd>button:hover { color: #fff; }
 .nav-wrapper.s .links a:not(.btn)::after, .nav-wrapper.s .dd>button::after { background: #fff; }
@@ -95,9 +92,9 @@ nav.hide{transform:translateY(-150%)}
 
 /* Scroll Banner (NVISCO Premium Text Banner) */
 .premium-text-banner {
-    background: radial-gradient(ellipse at center, #1a1a1c 0%, #050505 70%); /* Ellipse shape makes the glow wider and thinner */
+    background: radial-gradient(ellipse at center, #1a1a1c 0%, #050505 70%); 
     width: 100%;
-    padding: 70px 20px; /* Reduced vertical padding drastically to make it a thin bar */
+    padding: 70px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,7 +112,7 @@ nav.hide{transform:translateY(-150%)}
     letter-spacing: 0.3em;
     color: #888;
     text-transform: uppercase;
-    margin-bottom: 20px; /* Reduced margin */
+    margin-bottom: 20px; 
 }
 .banner-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -128,7 +125,7 @@ nav.hide{transform:translateY(-150%)}
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: metallicShimmer 6s linear infinite;
-    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2)); /* Subtler animated shadow */
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.2)); 
     margin-bottom: 12px;
     line-height: 1;
 }
@@ -141,7 +138,7 @@ nav.hide{transform:translateY(-150%)}
     letter-spacing: 0.4em;
     color: #a0a0a5;
     text-transform: uppercase;
-    margin-bottom: 30px; /* Significantly reduced from 80px */
+    margin-bottom: 30px; 
 }
 .banner-footer {
     font-family: 'Space Grotesk', sans-serif;
@@ -264,7 +261,11 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 .burger{display:block}
 .nav-wrapper.s { width: 94%; padding: 8px 20px; }
 .nav-wrapper.s .nav-in { height: 40px; }
-.nav-wrapper.s .logo-scrolled { height: 20px; }
+
+/* Mobile Logo Sizing adjustments */
+.logo img { height: 30px; }
+.nav-wrapper.s .logo img { height: 20px; }
+
 .links{position:absolute;top:100%;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05); margin-top: 12px; border-radius: 12px;}
 .nav-wrapper.s .links { background: #111; border-color: rgba(255,255,255,0.1); margin-top: 16px;}
 .links.open{display:flex}
@@ -335,8 +336,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <div class="nav-wrapper" id="navWrapper">
 <nav class="wrap nav-in" style="max-width:100%; padding:0;">
 <a href="#" class="logo" aria-label="Nvisco home">
-    <img src="nvisco-logo.png" alt="NVISCO" class="logo-main">
-    <img src="favicon.png" alt="NVISCO Icon" class="logo-scrolled">
+    <img src="favicon.png" alt="NVISCO Icon">
 </a>
 <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">Menu</button>
 <div class="links" id="links">
