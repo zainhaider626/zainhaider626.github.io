@@ -92,12 +92,11 @@ nav.hide{transform:translateY(-150%)}
 
 /* ULTRA-THIN Scroll Banner with Dynamic Shine Animation */
 .premium-text-banner {
-    /* Sweeping light animation across the dark background */
     background: linear-gradient(110deg, #050505 10%, #111114 40%, #2a2a30 50%, #111114 60%, #050505 90%);
     background-size: 300% 100%;
     animation: bgLightSweep 4s ease-in-out infinite alternate;
     width: 100%;
-    padding: 32px 20px; /* Extremely thin */
+    padding: 32px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,19 +119,18 @@ nav.hide{transform:translateY(-150%)}
     letter-spacing: 0.35em;
     color: #888;
     text-transform: uppercase;
-    margin-bottom: 12px; /* Tighter spacing */
+    margin-bottom: 12px; 
 }
 .banner-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(40px, 7vw, 96px);
     font-weight: 700;
     letter-spacing: 0.1em;
-    /* Faster Metallic Shimmer */
     background: linear-gradient(110deg, #555 0%, #fff 25%, #fff 50%, #555 75%, #fff 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: metallicShimmer 2.5s linear infinite; /* Doubled the speed */
+    animation: metallicShimmer 2.5s linear infinite; 
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.15)); 
     margin-bottom: 6px;
     line-height: 1;
@@ -146,7 +144,7 @@ nav.hide{transform:translateY(-150%)}
     letter-spacing: 0.4em;
     color: #999;
     text-transform: uppercase;
-    margin-bottom: 16px; /* Tighter spacing */
+    margin-bottom: 16px; 
 }
 .banner-footer {
     font-family: 'Space Grotesk', sans-serif;
@@ -157,7 +155,6 @@ nav.hide{transform:translateY(-150%)}
 }
 
 /* FAST-SCROLL story (Desktop) */
-/* Drastically reduced height so you don't get "stuck" scrolling */
 .story{position:relative;height:calc(100vh + 5*35vh);padding:0;border-top:1px solid var(--line)}
 .pin{position:sticky;top:0;height:100vh;display:flex;align-items:center}
 .st-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;align-items:center;width:100%}
@@ -175,12 +172,11 @@ nav.hide{transform:translateY(-150%)}
 .st-item.on .d p{padding-top:8px}
 
 .frame{position:relative;aspect-ratio:4/3;max-height:74vh;width:100%;border-radius:24px;overflow:hidden;background:#101012;box-shadow:0 30px 70px rgba(0,0,0,.12)}
-/* Accelerated Image Transitions */
 .frame > * {
     position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
-    transform:scale(1.02); /* Reduced scale zoom so it feels faster */
-    transition:opacity .3s ease, transform .5s cubic-bezier(.25,1,.5,1); /* Much faster fade and zoom */
-    will-change: opacity, transform; /* Hardware acceleration for smoothness */
+    transform:scale(1.02); 
+    transition:opacity .3s ease, transform .5s cubic-bezier(.25,1,.5,1); 
+    will-change: opacity, transform; 
 }
 .frame > *.on{opacity:1;transform:scale(1)}
 
@@ -405,7 +401,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
 <h2>From idea to product-ready</h2>
 <div id="items">
 
-<!-- Step 1: Idea -->
+<!-- Step 1: Idea (Contains the new Idea Box) -->
 <div class="st-item on" onclick="toggleMobStage(0)">
     <div class="st-header">
         <span>01</span>
@@ -460,7 +456,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
     <img class="mob-img" src="CAD_WELD.jpg" alt="Engineering Testing" loading="lazy" decoding="async">
 </div>
 
-<!-- Step 6: Product Ready -->
+<!-- Step 6: Product Ready (Image: po9.webp) -->
 <div class="st-item" onclick="toggleMobStage(5)">
     <div class="st-header">
         <span>06</span>
@@ -556,7 +552,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
     <p>Your excellence partner. Intelligent systems, robotics and hardware design.</p>
 </div>
 <div class="f-col"><h4>Company</h4><a href="#story">Process</a><a href="#work">Work</a><button data-about>About the founder</button></div>
-<div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
+<div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
 <div class="f-col"><h4>Office</h4><a style="pointer-events:none">Mandi Bahauddin<br>Punjab, Pakistan</a></div>
 </div>
 <div class="f-bar"><span>&copy; <span id="yr">2026</span> Nvisco. All rights reserved.</span><div id="fPol"></div></div>
@@ -572,7 +568,7 @@ section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
             <h2>I'm Zain Haider</h2>
             <p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products.</p>
             <div class="soc">
-                <a href="https://www.linkedin.com/in/zain-haider" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a>
             </div>
         </div>
