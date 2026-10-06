@@ -1,693 +1,961 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NVISCO — Your Excellence Partner in Hardware Engineering</title>
 <link rel="canonical" href="https://nvisco.com/">
 <meta name="description" content="Nvisco is an engineering partner for intelligent systems and robotics: PCB design up to 22 layers, parametric CAD, embedded firmware, from idea to product-ready.">
 <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
 <meta name="author" content="Zain Haider">
-<meta name="theme-color" content="#f2f2ef">
+<meta name="theme-color" content="#f2f2f3">
+<meta name="color-scheme" content="light">
 <meta property="og:type" content="website"><meta property="og:title" content="NVISCO — Your Excellence Partner"><meta property="og:description" content="PCB, CAD and firmware from idea to product-ready."><meta property="og:image" content="https://nvisco.com/pcb.png">
 <link rel="icon" href="favicon.png" sizes="192x192">
+<script>document.documentElement.className='js'</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-84SH875DCC');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Nvisco","slogan":"Your Excellence Partner","url":"https://nvisco.com/","logo":"https://nvisco.com/nvisco-logo.png","email":"nvisco.pak@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Mandi Bahauddin","addressRegion":"Punjab","addressCountry":"PK"}}</script>
+
+<!-- Fonts: connect early, load the stylesheet without blocking first paint -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.simpleicons.org">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"></noscript>
+
 <style>
-:root{--bpy:10px;--bpx:20px;--bfs:13.5px;--ink:#0a0a0b;--mute:#66666b;--line:#dcdcd8;--w:1200px;--gut:max(28px,calc((100vw - var(--w))/2))}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{font-family:'Space Grotesk',sans-serif;background:#f2f2ef;color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root{
+  --ink:#0b0b0c;--ink-2:#2b2b2f;--mute:#66666c;--paper:#f2f2f3;
+  --line:rgba(11,11,12,.10);--line-2:rgba(11,11,12,.16);--grid:rgba(11,11,12,.05);
+  --w:1200px;--pad:clamp(20px,4vw,32px);--sec:clamp(72px,9vw,120px);
+  --r-xl:32px;--r-lg:26px;--r-md:18px;--ease:cubic-bezier(.22,1,.36,1);
+  --sans:'Space Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  color-scheme:light
+}
 
-/* soft white light background effect */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(75vmax 55vmax at 78% var(--sy,8%),#fff 0%,rgba(255,255,255,0) 62%)}
-h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.015em;line-height:1.1}
-a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
+/* ============================================================
+   Base
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px;scrollbar-gutter:stable;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.lock{overflow:hidden}
+body{font:400 16px/1.6 var(--sans);color:var(--ink);background:var(--paper);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased}
+/* one static soft light behind everything: gives the glass something to refract */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60vmax 42vmax at 88% -4%,rgba(255,255,255,.95),rgba(255,255,255,0) 65%),radial-gradient(52vmax 40vmax at -6% 100%,rgba(11,11,12,.05),rgba(11,11,12,0) 65%)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+img,video,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;-webkit-tap-highlight-color:transparent}
+address{font-style:normal}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.wrap{max-width:var(--w);margin:0 auto;padding:0 28px}
-section{padding:120px 0}
-.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:12px;z-index:200}.skip:focus{left:8px}
+.skip{position:absolute;left:-999px;top:8px;z-index:200;padding:10px 16px;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.skip:focus{left:12px}
+.wrap{width:100%;max-width:var(--w);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:var(--sec)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head h2{font-size:clamp(30px,4vw,52px)}
 
-/* Advanced Buttons */
-.btn{display:inline-block;padding:var(--bpy) var(--bpx);border-radius:999px;font-size:var(--bfs);font-weight:600;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:all .3s cubic-bezier(.25,1,.5,1);cursor:pointer}
-.btn:hover{background:transparent;color:var(--ink);transform:translateY(-2px)}
-.btn.line{background:transparent;color:var(--ink);border-color:#bdbdb8}.btn.line:hover{border-color:var(--ink);transform:translateY(-2px)}
-.bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:70}.bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
+/* scroll progress */
+.bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;pointer-events:none}
+.bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
+#sentinel{position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none}
 
-/* Pulse Animation */
-@keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(10,10,11,0.15); } 70% { box-shadow: 0 0 0 10px rgba(10,10,11,0); } 100% { box-shadow: 0 0 0 0 rgba(10,10,11,0); } }
-.pulse { animation: pulse-glow 2.5s infinite; }
+/* ============================================================
+   Glass + buttons
+   ============================================================ */
+.glass{background:rgba(255,255,255,.58);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 24px 48px -24px rgba(11,11,12,.22)}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.glass,.nav-glass{background:rgba(255,255,255,.93)}}
 
-/* nav - Floating Thin Rounded on Scroll */
-.nav-wrapper { position: sticky; top: 0; z-index: 60; width: 100%; transition: all 0.4s cubic-bezier(.25,1,.5,1); padding: 0; background: rgba(242,242,239,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; }
-.nav-in { height: 72px; display: flex; align-items: center; justify-content: space-between; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 24px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:#fff;font:600 14px/1 var(--sans);white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s,transform .2s}
+@media (hover:hover){.btn:hover{background:transparent;color:var(--ink);transform:translateY(-1px)}}
+.btn--ghost{background:rgba(255,255,255,.55);color:var(--ink);border-color:var(--line-2);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media (hover:hover){.btn--ghost:hover{background:#fff;border-color:var(--ink)}}
+.btn--sm{min-height:36px;padding:0 18px;font-size:13px}
 
-/* Smart Logo Image Switching & Scaling */
-.logo { display: block; }
-.logo img { display: block; height: 34px; width: auto; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
+.ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:background-color .2s,border-color .2s,opacity .2s}
+.ic svg{width:18px;height:18px}
+.ic--glass{background:rgba(255,255,255,.6);border:1px solid var(--line-2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+@media (hover:hover){.ic--glass:hover{background:#fff;border-color:var(--ink)}}
+.ic[aria-disabled="true"]{opacity:.35;pointer-events:none}
 
-/* Scrolled Nav overrides - Ultra Thin & Smart */
-.nav-wrapper.s { padding: 6px 24px; background: rgba(10,10,11,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); width: 90%; max-width: 1050px; margin: 12px auto 0 auto; border-radius: 999px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-.nav-wrapper.s .nav-in { height: 42px; }
-.nav-wrapper.s .logo img { height: 24px; }
-.nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { color: #aaa; }
-.nav-wrapper.s .links a:not(.btn):hover, .nav-wrapper.s .dd>button:hover { color: #fff; }
-.nav-wrapper.s .links a:not(.btn)::after, .nav-wrapper.s .dd>button::after { background: #fff; }
-.nav-wrapper.s .btn { background: #fff; color: #000; border-color: #fff; padding: 6px 16px; }
-.nav-wrapper.s .btn:hover { background: transparent; color: #fff; }
-.nav-wrapper.s .burger { border-color: rgba(255,255,255,0.2); color: #fff; padding: 6px 14px;}
-
-nav.hide{transform:translateY(-150%)}
-.links{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:500;}
-.links a:not(.btn),.dd>button{position:relative;background:none;border:0;color:var(--mute);transition:color .2s;padding:4px 0}
-.links a:not(.btn)::after,.dd>button::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.25,1,.5,1)}
-.links a:not(.btn):hover,.dd>button:hover{color:var(--ink)}
-.links a:not(.btn):hover::after,.dd>button:hover::after{transform:scaleX(1)}
-.links .btn{padding:10px 20px;font-size:13px}
+/* ============================================================
+   Navigation: Ultra-slim, glossy floating pill
+   ============================================================ */
+.nav{position:fixed;inset:max(12px,env(safe-area-inset-top)) 0 auto 0;z-index:60;padding-inline:var(--pad);pointer-events:none}
+.nav-pill{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:max-content;height:48px;margin-inline:auto;padding:0 6px 0 16px;border-radius:999px;pointer-events:auto;transition:height .3s var(--ease), max-width .3s var(--ease)}
+.nav-glass{position:absolute;inset:0;border-radius:inherit;background:rgba(255,255,255,.45);-webkit-backdrop-filter:blur(24px) saturate(200%);backdrop-filter:blur(24px) saturate(200%);border:1px solid rgba(255,255,255,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 10px 30px -10px rgba(11,11,12,.15);transition:background-color .3s,box-shadow .3s, border-color .3s;pointer-events:none}
+.nav.is-scrolled .nav-pill{height:42px;}
+.nav.is-scrolled .nav-glass{background:rgba(255,255,255,.85);border-color:rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 12px 30px -10px rgba(11,11,12,.25)}
+.brand{position:relative;display:flex;align-items:center;gap:10px;font:700 15px/1 var(--sans);letter-spacing:.22em;color:var(--ink)}
+.brand img{width:22px;height:22px;border-radius:6px;object-fit:contain;transition:transform .3s var(--ease)}
+.nav.is-scrolled .brand img{transform:scale(0.9)}
+.links{position:relative;display:flex;align-items:center;gap:2px}
+.nav-link{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;font:500 13.5px/1 var(--sans);color:var(--ink-2);transition:background-color .2s,color .2s}
+@media (hover:hover){.nav-link:hover{background:rgba(11,11,12,.06);color:var(--ink)}}
+.links .btn{margin-left:8px}
+.caret{width:14px;height:14px;margin-left:4px;transition:transform .2s}
 .dd{position:relative}
-.dd-menu{position:absolute;right:-20px;top:40px;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.dd.open .caret{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:calc(100% + 14px);right:0;min-width:240px;padding:8px;border-radius:20px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:0 24px 50px -16px rgba(11,11,12,.3);display:none}
 .dd.open .dd-menu{display:block}
-.dd-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;color:var(--mute);font-size:14px;font-weight:500;}
-.dd-menu button:hover{background:#f2f2ef;color:var(--ink)}
-.burger{display:none;background:none;border:1px solid #bdbdb8;border-radius:999px;padding:8px 16px;font-size:13px}
+.dd-menu button{display:block;width:100%;padding:11px 14px;border-radius:12px;text-align:left;font:500 14px/1.2 var(--sans);color:var(--ink-2)}
+@media (hover:hover){.dd-menu button:hover{background:rgba(11,11,12,.06);color:var(--ink)}}
+.burger{position:relative;display:none;align-items:center;min-height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.55);font:500 13px/1 var(--sans)}
 
-/* hero */
-.hero{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);display:flex;align-items:flex-end;padding:96px 0 80px}
-.hero h1{font-size:clamp(46px,8.4vw,124px);max-width:11ch;margin-bottom:40px;animation:rise 1s cubic-bezier(.25,1,.5,1) both}
-.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;animation:rise 1s cubic-bezier(.25,1,.5,1) .2s both}
-.hero p{font-size:17.5px;color:var(--mute);max-width:44ch;margin-bottom:28px;}
-.hero p b{color:var(--ink);font-weight:600}
-.acts{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative;display:flex;flex-direction:column;min-height:100vh;min-height:100svh;padding-top:calc(72px + clamp(32px,5vw,56px))}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/64px 64px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/64px 64px;-webkit-mask-image:radial-gradient(80% 75% at 68% 30%,#000 20%,transparent 78%);mask-image:radial-gradient(80% 75% at 68% 30%,#000 20%,transparent 78%)}
+.hero-main{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,4vw,44px);padding-block:clamp(8px,2vw,24px) clamp(28px,4vw,44px)}
+.hero h1{font-size:clamp(40px,6.3vw,84px);line-height:1.02;letter-spacing:-.03em}
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(28px,5vw,72px);align-items:end}
+.lede{max-width:44ch;margin-bottom:28px;font-size:clamp(16px,1.4vw,19px);color:var(--mute)}
+.lede b{font-weight:600;color:var(--ink)}
+.acts{display:flex;flex-wrap:wrap;gap:12px}
 
-/* Tech Logos Loop */
-.tech-logos { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
-.tech-logos img { height: 26px; filter: grayscale(100%) opacity(0.4); animation: colorPulse 5s infinite alternate ease-in-out; }
-.tech-logos img:nth-child(even) { animation-delay: 2.5s; }
-@keyframes colorPulse { 0%, 20% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } 50%, 70% { filter: grayscale(0%) opacity(1); transform: scale(1.05); } 100% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } }
-@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+.panel{padding:8px;border-radius:var(--r-lg)}
+.panel-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 14px 10px;font:600 15px/1.2 var(--sans)}
+.panel-t span{font-weight:400;font-size:13px;color:var(--mute)}
+.p-row{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:center;padding:12px 14px;border-radius:18px;transition:background-color .2s}
+@media (hover:hover){.p-row:hover{background:rgba(255,255,255,.72)}}
+.p-ico{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.75);border:1px solid var(--line)}
+.p-ico svg{width:20px;height:20px}
+.p-row b{display:block;font:600 16px/1.3 var(--sans)}
+.p-row small{display:block;font-size:13.5px;line-height:1.45;color:var(--mute)}
 
-/* ULTRA-THIN Scroll Banner with Dynamic Shine Animation */
-.premium-text-banner {
-    background: linear-gradient(110deg, #050505 10%, #111114 40%, #2a2a30 50%, #111114 60%, #050505 90%);
-    background-size: 300% 100%;
-    animation: bgLightSweep 4s ease-in-out infinite alternate;
-    width: 100%;
-    padding: 32px 20px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    will-change: opacity, transform, background-position;
-    border-top: 1px solid rgba(255,255,255,0.04);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    transform-origin: center center;
-    overflow: hidden;
+/* tools strip */
+.tools{padding-bottom:clamp(40px,6vw,72px)}
+.tools-in{display:flex;align-items:center;gap:20px;padding:10px 14px 10px 24px;border-radius:999px}
+.tools-in>span{flex:none;font:500 13px/1 var(--sans);color:var(--mute)}
+.marquee{flex:1;min-width:0;overflow:hidden}
+.marquee.is-live{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.marquee-track{display:flex}
+.set{display:flex;flex-wrap:wrap;align-items:center;gap:10px 30px;padding-right:30px}
+.is-live .marquee-track{width:max-content;animation:marquee 40s linear infinite;will-change:transform}
+.is-live .set{flex-wrap:nowrap}
+.marquee.is-off .marquee-track,.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{to{transform:translate3d(-50%,0,0)}}
+.chip{display:inline-flex;align-items:center;gap:10px;font:500 14px/1 var(--sans);color:var(--ink-2);white-space:nowrap}
+.chip img{width:22px;height:22px;filter:grayscale(1) contrast(1.1) opacity(.75)}
+
+/* ============================================================
+   Brand band
+   ============================================================ */
+.band{position:relative;overflow:hidden;border-radius:var(--r-xl);padding:clamp(40px,6vw,76px) 24px;text-align:center;color:#fff;background:radial-gradient(70% 130% at 50% 0%,#222226 0%,#0b0b0c 62%,#050506 100%);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 40px 80px -36px rgba(11,11,12,.5)}
+.band::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px) 0 0/48px 48px;-webkit-mask-image:radial-gradient(70% 100% at 50% 45%,#000,transparent);mask-image:radial-gradient(70% 100% at 50% 45%,#000,transparent)}
+.band p{position:relative}
+.band-micro{margin-bottom:18px;font:500 11px/1.4 var(--sans);letter-spacing:.34em;padding-left:.34em;text-transform:uppercase;color:#9a9aa0}
+.band-title{font:700 clamp(44px,9.5vw,116px)/1 var(--sans);letter-spacing:.12em;padding-left:.12em;background:linear-gradient(180deg,#fff 25%,#8d8d93 130%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.band-sub{margin-top:16px;font:500 13px/1.4 var(--sans);letter-spacing:.4em;padding-left:.4em;text-transform:uppercase;color:#b0b0b6}
+.band-foot{margin-top:22px;font:500 11px/1.4 var(--sans);letter-spacing:.26em;padding-left:.26em;text-transform:uppercase;color:#85858b}
+
+/* ============================================================
+   Process
+   ============================================================ */
+.process{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
+.steps{display:flex;flex-direction:column}
+.step{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);align-items:start;width:100%;padding:20px 0;text-align:left;border-top:1px solid var(--line);color:#9b9ba0;transition:color .25s}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step.on{color:var(--ink)}
+@media (hover:hover){.step:hover{color:var(--ink)}}
+.num{padding-top:5px;font:500 13px/1.9 var(--sans);font-variant-numeric:tabular-nums}
+.step strong{display:block;font:600 clamp(20px,2.1vw,26px)/1.25 var(--sans);letter-spacing:-.01em}
+.body{display:block}
+.d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.step.on .d,html.no-js .d{grid-template-rows:1fr}
+.di{display:block;overflow:hidden;min-height:0}
+.dt{display:block;padding-top:8px;max-width:40ch;font-size:15px;line-height:1.55;color:var(--mute)}
+.prog{position:absolute;left:0;right:0;top:-1px;height:2px;overflow:hidden;pointer-events:none}
+.prog::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left}
+.step.on .prog::after{transform:scaleX(1);opacity:.18}
+.is-playing .step.on .prog::after{opacity:1;animation:progfill 6s linear forwards}
+.is-playing.is-hover .step.on .prog::after{animation-play-state:paused}
+@keyframes progfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.stage{position:relative;aspect-ratio:4/3;border-radius:var(--r-xl);overflow:hidden;background:#0d0d0f;box-shadow:0 40px 80px -32px rgba(11,11,12,.38),0 0 0 1px rgba(11,11,12,.08);touch-action:pan-y;isolation:isolate}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s linear .4s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .4s ease,visibility 0s}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide.idea{display:grid;place-items:center;padding:clamp(24px,5vw,56px);text-align:center;background:radial-gradient(80% 80% at 50% 0%,#28282d 0%,#111113 60%,#0a0a0b 100%)}
+.slide.idea::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/44px 44px;-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent)}
+.slide.idea p{position:relative;max-width:18ch;margin-inline:auto;font:500 clamp(24px,3.2vw,44px)/1.3 var(--serif);color:#fff}
+.cursor{display:inline-block;width:3px;height:.95em;margin-left:6px;vertical-align:-.12em;background:#fff}
+.slide.on .cursor{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.stage-ui{position:absolute;inset:auto 14px 14px 14px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none}
+.pill{display:inline-flex;align-items:center;gap:2px;padding:4px;border-radius:999px;color:#fff;background:rgba(12,12,14,.42);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);pointer-events:auto}
+.pill--count{height:44px;padding:0 16px;font:500 13px/1 var(--sans);letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.pill .ic{width:36px;height:36px}
+@media (hover:hover){.pill .ic:hover{background:rgba(255,255,255,.18)}}
+.pill :focus-visible{outline-color:#fff;outline-offset:-2px}
+#pPlay .i-play{display:none}
+#pPlay.is-off .i-play{display:block}
+#pPlay.is-off .i-pause{display:none}
+
+/* ============================================================
+   IPC Standards Grid
+   ============================================================ */
+.ipc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(16px,3vw,28px);margin-top:clamp(20px,4vw,32px)}
+.ipc-card{background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 18px 40px -22px rgba(11,11,12,.12);border-radius:24px;padding:clamp(24px,4vw,36px)}
+.ipc-card h3{font:600 clamp(18px,2vw,22px)/1.25 var(--sans);color:var(--ink);margin-bottom:12px;letter-spacing:-0.02em}
+.ipc-card > p{font-size:14.5px;color:var(--mute);line-height:1.55;margin-bottom:28px}
+.ipc-list{display:flex;flex-direction:column;gap:22px}
+.ipc-item strong{display:block;font:600 15px/1.35 var(--sans);color:var(--ink);margin-bottom:6px}
+.ipc-item p{font-size:14px;color:var(--mute);line-height:1.55}
+
+/* ============================================================
+   Work: full-bleed scroll-snap carousel
+   ============================================================ */
+.work{border-top:1px solid var(--line)}
+.car{--edge:max(var(--pad),calc((100vw - var(--w)) / 2 + var(--pad)));container-type:inline-size}
+@supports (width:1cqw){.car{--edge:max(var(--pad),calc((100cqw - var(--w)) / 2 + var(--pad)))}}
+.car-nav{display:flex;gap:10px}
+.track{display:flex;gap:clamp(14px,2vw,22px);padding:6px var(--edge) 24px;scroll-padding-inline:var(--edge);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}
+.track::-webkit-scrollbar{display:none}
+.track:focus-visible{outline-offset:-6px}
+.track.is-drag{scroll-snap-type:none;cursor:grabbing;user-select:none;-webkit-user-select:none}
+.w-card{flex:0 0 clamp(264px,29vw,372px);display:flex;flex-direction:column;padding:10px;border-radius:24px;scroll-snap-align:start;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 18px 40px -22px rgba(11,11,12,.28)}
+.w-card .m{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#101012}
+.w-card img,.w-card video{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.w-card .cap{padding:16px 8px 8px}
+.w-card h3{font:600 17px/1.3 var(--sans);letter-spacing:-.01em}
+.w-card p{margin-top:6px;font-size:14px;line-height:1.5;color:var(--mute)}
+.car-foot{padding-top:6px}
+.prog2{width:min(360px,60%);height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.prog2 i{display:block;width:30%;height:100%;border-radius:3px;background:var(--ink);will-change:transform}
+
+/* ============================================================
+   Contact (dark glass card)
+   ============================================================ */
+.cta-wrap{padding-bottom:var(--sec)}
+.cta{position:relative;overflow:hidden;isolation:isolate;border-radius:var(--r-xl);padding:clamp(32px,6vw,72px);color:#fff;background:radial-gradient(70% 90% at 100% 0%,rgba(255,255,255,.10),transparent 60%),radial-gradient(60% 80% at 0% 100%,rgba(255,255,255,.05),transparent 60%),#060607;border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 50px 100px -40px rgba(11,11,12,.55)}
+.cta-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"copy vid" "form vid";gap:28px clamp(32px,5vw,72px);align-items:center}
+.cta-copy{grid-area:copy}
+.cta h2{margin-bottom:14px;font-size:clamp(34px,4.4vw,60px)}
+.lead{max-width:38ch;font-size:clamp(16px,1.5vw,18px);color:#a9a9af}
+.cta-vid{grid-area:vid;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-lg);background:#111;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.form{grid-area:form;display:grid;gap:12px;align-self:start;color-scheme:dark}
+.form input,.form select,.form textarea{width:100%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:15px;color:#fff;transition:border-color .2s,background-color .2s}
+.form ::placeholder{color:#8b8b91}
+.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.09)}
+.form input:-webkit-autofill{-webkit-text-fill-color:#fff;caret-color:#fff;box-shadow:0 0 0 1000px #17171a inset}
+.form textarea{min-height:120px;resize:vertical}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form .btn{background:#fff;color:#000;border-color:#fff;min-height:50px;border-radius:14px}
+@media (hover:hover){.form .btn:hover{background:transparent;color:#fff}}
+.form small{font-size:13px;color:#8b8b91}
+.cta :focus-visible,footer :focus-visible{outline-color:#fff}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer{padding:clamp(56px,8vw,88px) 0 28px;background:#050505;border-top:1px solid #1c1c1f;color:#fff}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(32px,5vw,56px);margin-bottom:clamp(40px,6vw,72px)}
+.f-logo{width:auto;height:24px;margin:14px 0 30px;transform:scale(2.2);transform-origin:left center;filter:invert(1)}
+.f-brand p{max-width:32ch;font-size:14px;color:#8b8b91}
+.f-col h4{margin-bottom:18px;font:600 14px/1 var(--sans)}
+.f-col a,.f-col button,.f-col address{display:block;padding:0;text-align:left;font-size:14px;line-height:2.1;color:#8b8b91;transition:color .2s}
+@media (hover:hover){.f-col a:hover,.f-col button:hover,.f-bar button:hover{color:#fff}}
+.f-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid #1c1c1f;font-size:13px;color:#8b8b91}
+.f-bar div{display:flex;flex-wrap:wrap;gap:8px 24px}
+.f-bar button{font-size:13px;color:#8b8b91;transition:color .2s}
+
+/* ============================================================
+   Dialogs (native <dialog>: focus trap + Esc handled by browser)
+   ============================================================ */
+dialog{margin:auto;padding:0;border:0;background:transparent;color:#fff;max-width:none;max-height:none;overflow:visible}
+dialog::backdrop{background:rgba(4,4,5,.75);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+dialog[open]{animation:dlg .22s var(--ease)}
+dialog[open]::backdrop{animation:fade .22s ease}
+@keyframes dlg{from{opacity:0;transform:translateY(12px) scale(.985)}}
+@keyframes fade{from{opacity:0}}
+dialog :focus-visible{outline-color:#fff}
+.box{position:relative;border-radius:26px;background:linear-gradient(160deg,rgba(26,26,30,.92),rgba(10,10,11,.98));-webkit-backdrop-filter:blur(32px) saturate(140%);backdrop-filter:blur(32px) saturate(140%);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 50px 120px -20px rgba(0,0,0,.95)}
+.close{position:absolute;top:16px;right:16px;z-index:2;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font-size:22px;line-height:1;color:#b5b5ba;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:background-color .2s,color .2s}
+@media (hover:hover){.close:hover{color:#fff;background:rgba(255,255,255,.14)}}
+
+.pol{display:grid;grid-template-columns:280px minmax(0,1fr);width:min(1080px,calc(100vw - 32px));max-height:min(85vh,760px);overflow:hidden}
+.pol-nav{padding:28px 14px;overflow-y:auto;background:rgba(0,0,0,.45);border-right:1px solid rgba(255,255,255,.06)}
+.pol-nav button{display:flex;align-items:center;width:100%;padding:13px 14px;border-radius:12px;text-align:left;font:500 14.5px/1.3 var(--sans);color:#85858b;transition:background-color .2s,color .2s}
+.pol-nav button.on{background:rgba(255,255,255,.08);color:#fff}
+@media (hover:hover){.pol-nav button:hover{background:rgba(255,255,255,.06);color:#fff}}
+.pol-nav .n{margin-right:12px;font-size:12px;opacity:.55;font-variant-numeric:tabular-nums}
+.pol-body{padding:clamp(32px,6vw,64px) clamp(24px,5vw,72px);overflow-y:auto}
+.pol-hd{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1)}
+.pol-hd h2{margin-bottom:8px;font-size:clamp(32px,4vw,44px);color:#fff}
+.pol-hd small{font-size:13px;color:#85858b;text-transform:uppercase;letter-spacing:0.05em}
+
+/* Beautiful PDF-Style Agreement Layout */
+.agr-doc{color:#c0c0c5;font-family:var(--sans)}
+.agr-sectitle{font-family:var(--serif);font-size:20px;color:#fff;text-transform:uppercase;letter-spacing:0.1em;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px;margin:40px 0 28px}
+.agr-row{display:grid;grid-template-columns:40px 1fr;gap:20px;margin-bottom:28px}
+.agr-num{font-family:var(--sans);font-size:16px;font-weight:600;color:#85858b;border-bottom:2px solid #85858b;display:inline-block;padding-bottom:4px;align-self:start}
+.agr-text h4{font-size:16px;font-weight:600;color:#fff;margin-bottom:8px}
+.agr-text p{font-size:15px;line-height:1.65;color:#a9a9af}
+.agr-sign{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:32px;border-top:1px solid rgba(255,255,255,.1);padding-top:32px}
+.agr-sign-box p{font-size:12px;color:#85858b;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.agr-sign-box h5{font-size:20px;color:#fff;font-family:var(--serif)}
+.agr-sign-box span{display:block;font-size:13px;color:#666;margin-top:6px}
+
+.about{display:flex;align-items:center;gap:clamp(24px,4vw,48px);width:min(720px,calc(100vw - 32px));padding:clamp(28px,5vw,56px)}
+.about img{flex:none;width:200px;height:200px;border-radius:24px;object-fit:cover;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.about h2{margin-bottom:14px;font-size:clamp(28px,3.4vw,36px);color:#fff}
+.about p{margin-bottom:22px;font-size:16px;line-height:1.7;color:#c0c0c5}
+.soc{display:flex;gap:22px;font:500 14px/1 var(--sans)}
+.soc a{padding-bottom:3px;border-bottom:1px solid rgba(255,255,255,.25);color:#fff;transition:border-color .2s}
+@media (hover:hover){.soc a:hover{border-color:#fff}}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:960px){
+  .burger{display:inline-flex}
+  .nav-pill{max-width:100%}
+  .links{position:absolute;top:calc(100% + 10px);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:2px;padding:10px;border-radius:24px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,.9);box-shadow:0 30px 60px -20px rgba(11,11,12,.35)}
+  .links.open{display:flex}
+  .nav-link{width:100%;padding:15px 16px;border-radius:14px;font-size:15px}
+  .links .btn{margin:8px 0 0;min-height:50px}
+  .dd-menu{position:static;min-width:0;padding:0 0 0 12px;border:0;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+  .hero-row{grid-template-columns:1fr}
+  .acts .btn{flex:1}
+
+  .process{grid-template-columns:1fr;gap:28px}
+  .stage{order:-1}
+  .step{padding:16px 0}
+
+  .cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form"}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .f-brand{grid-column:1/-1}
+
+  .pol{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .pol-nav{display:flex;gap:4px;padding:16px 56px 12px 16px;border-right:0;border-bottom:1px solid rgba(255,255,255,.07);overflow-x:auto;overflow-y:hidden}
+  .pol-nav button{width:auto;white-space:nowrap;padding:10px 14px}
+  .pol-body{padding:32px 24px}
+  .agr-row{grid-template-columns:1fr;gap:6px}
+  .agr-num{margin-bottom:8px}
+  .agr-sign{grid-template-columns:1fr}
+  .about{flex-direction:column;text-align:center}
+  .about img{width:160px;height:160px}
+  .soc{justify-content:center}
 }
-@keyframes bgLightSweep {
-    0% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@media (max-width:560px){
+  .w-card{flex-basis:78vw}
+  .tools-in{flex-direction:column;align-items:stretch;gap:12px;padding:16px;border-radius:24px}
+  .form .two{grid-template-columns:1fr}
+  .pill--count{padding:0 12px}
+  .stage-ui{inset:auto 10px 10px 10px}
 }
-.banner-micro {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    color: #888;
-    text-transform: uppercase;
-    margin-bottom: 12px; 
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
 }
-.banner-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(40px, 7vw, 96px);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    background: linear-gradient(110deg, #555 0%, #fff 25%, #fff 50%, #555 75%, #fff 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: metallicShimmer 2.5s linear infinite; 
-    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.15)); 
-    margin-bottom: 6px;
-    line-height: 1;
-}
-@keyframes metallicShimmer {
-    to { background-position: -200% center; }
-}
-.banner-sub {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.4em;
-    color: #999;
-    text-transform: uppercase;
-    margin-bottom: 16px; 
-}
-.banner-footer {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: #444;
-    text-transform: uppercase;
-}
-
-/* FAST-SCROLL story (Desktop) */
-.story{position:relative;height:calc(100vh + 5*35vh);padding:0;border-top:1px solid var(--line)}
-.pin{position:sticky;top:0;height:100vh;display:flex;align-items:center}
-.st-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;align-items:center;width:100%}
-.st-grid h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:34px;max-width:14ch}
-.st-item{display:flex;flex-direction:column;padding:20px 0;border-top:1px solid var(--line);color:#b0b0ab;transition:color .3s;cursor:default;}
-.st-item.on{color:var(--ink)}
-.st-header{display:flex;align-items:center;}
-.st-header span{font-size:14px;font-family:'IBM Plex Mono', monospace;font-weight:500;min-width:32px;margin-top:2px;}
-.st-header h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,2.2vw,28px);flex:1;}
-.toggle-pin{display:none;}
-
-.d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.25,1,.5,1);padding-left:32px;}
-.st-item.on .d{grid-template-rows:1fr}
-.d p{overflow:hidden;color:var(--mute);font-size:15px;max-width:36ch}
-.st-item.on .d p{padding-top:8px}
-
-.frame{position:relative;aspect-ratio:4/3;max-height:74vh;width:100%;border-radius:24px;overflow:hidden;background:#101012;box-shadow:0 30px 70px rgba(0,0,0,.12)}
-.frame > * {
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
-    transform:scale(1.02); 
-    transition:opacity .3s ease, transform .5s cubic-bezier(.25,1,.5,1); 
-    will-change: opacity, transform; 
-}
-.frame > *.on{opacity:1;transform:scale(1)}
-
-/* Idea Box Styling */
-.idea-box { background: #111; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; border: 2px dashed #333; border-radius: 24px; }
-.idea-box h3 { font-size: clamp(24px, 3vw, 42px); color: #fff; font-family: 'Playfair Display', serif; font-style: italic; line-height: 1.4; font-weight: 500; }
-.blink-cursor { display: inline-block; width: 3px; height: 1em; background: #fff; vertical-align: text-bottom; margin-left: 6px; animation: blink 1s step-end infinite; }
-
-.mob-img { display: none; }
-.ticks{display:none}
-
-/* Compact, Dense Modern Grid Work Section */
-.work{padding:100px 0;border-top:1px solid var(--line)}
-.work-top{margin-bottom:40px}
-.work-top h2{font-size:clamp(24px,3vw,36px)}
-.work-grid-modern { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; }
-.w-card { display: flex; flex-direction: column; }
-.w-card .m { border-radius: 12px; overflow: hidden; background: #101012; aspect-ratio: 4/3; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.w-card img, .w-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25,1,0.5,1); }
-.w-card:hover img, .w-card:hover video { transform: scale(1.03); }
-.w-card .cap { padding-top: 12px; }
-.w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15.5px; margin-bottom: 4px; }
-.w-card .cap p { color: var(--mute); font-size: 13px; max-width: 44ch; line-height: 1.5; }
-
-/* cta - Wrapped in a rounded card container above footer */
-.cta-wrapper { max-width: var(--w); margin: 0 auto; padding: 0 28px 100px 28px; }
-.cta{background:#050505;color:#fff;padding:100px 60px; border-radius: 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.25); overflow: relative;}
-.cta video{grid-area:vid;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;background:#111;box-shadow:0 20px 50px rgba(0,0,0,0.4);}
-.copy{grid-area:copy}
-.cta-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"copy vid" "form vid";gap:24px 64px;align-items:center}
-.cta h2{font-size:clamp(36px,4.6vw,64px);margin-bottom:14px}
-.cta .lead{color:#a2a2a7;font-size:18px;max-width:36ch}
-.form{grid-area:form;display:grid;gap:14px;align-self:start}
-.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid #303034;border-radius:12px;padding:14px 18px;font:inherit;font-size:14.5px;color:#fff;transition:border-color .3s;}
-.form select option{color:#000}
-.form input::placeholder,.form textarea::placeholder{color:#85858a}
-.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:#fff}
-.form textarea{min-height:110px;resize:vertical}
-.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form .btn{background:#fff;color:#000;border-color:#fff;font-size:14.5px;padding:14px 24px;border-radius:12px;}.form .btn:hover{background:transparent;color:#fff}
-.form small{color:#85858a;font-size:13px}
-
-/* footer */
-footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0 32px}
-.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
-.f-brand p{color:#85858a;font-size:14px;max-width:32ch}
-.f-col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:18px}
-.f-col a,.f-col button{display:block;background:none;border:0;padding:0;text-align:left;font-size:14px;color:#85858a;line-height:2.1;transition:color .2s}
-.f-col a:hover,.f-col button:hover{color:#fff}
-.f-bar{border-top:1px solid #1c1c1f;padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#66666b}
-.f-bar div{display:flex;gap:24px;flex-wrap:wrap}.f-bar button{background:none;border:0;font-size:13px;color:#66666b}.f-bar button:hover{color:#fff}
-
-/* SHINING BLACK MODALS */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
-.ov.on{display:flex}
-.box{background:linear-gradient(160deg, #1e1e22 0%, #0a0a0b 100%); border:1px solid rgba(255,255,255,0.1); border-radius:24px; width:100%; position:relative; box-shadow:0 40px 100px rgba(0,0,0,.9), inset 0 2px 4px rgba(255,255,255,0.05);}
-.close{position:absolute;top:20px;right:24px;background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:24px; color:#aaa; z-index:10; transition:all .2s;}
-.close:hover{color:#fff; background:rgba(255,255,255,0.1);}
-
-/* Policy Modal Specifics */
-.pol{max-width:960px;max-height:85vh;display:grid;grid-template-columns:280px 1fr;overflow:hidden;}
-.pol-nav{background:rgba(0,0,0,0.4);padding:32px 16px;overflow-y:auto;border-right:1px solid rgba(255,255,255,0.05)}
-.pol-nav button{display:flex;align-items:center;width:100%;text-align:left;background:none;border:0;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:500;color:#777;transition:all .2s;}
-.pol-nav button.on,.pol-nav button:hover{background:rgba(255,255,255,0.05);color:#fff;}
-.pol-nav button .num {font-family:'IBM Plex Mono', monospace; font-size:12px; opacity:0.5; margin-right:12px;}
-.pol-nav button.on .num {opacity:1; color:#fff;}
-
-.pol-body{padding:48px 56px;overflow-y:auto; position:relative;}
-.pol-header{border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:24px; margin-bottom:32px;}
-.pol-header span.tag{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:2px; color:#888; text-transform:uppercase; display:block; margin-bottom:12px;}
-.pol-header h2{font-size:36px; margin-bottom:8px; color:#fff; font-family:'Playfair Display', serif;}
-.pol-header small{display:block;color:#666; font-size:13px;}
-.pol-content{color:#bbb;font-size:15px;line-height:1.8;}
-.pol-content strong{color:#fff; font-weight:600;}
-
-/* About Modal Specifics */
-.about{max-width:720px;padding:56px;display:flex;gap:48px;align-items:center}
-.about img{width:200px;height:200px;border-radius:24px;object-fit:cover;flex-shrink:0; border:1px solid rgba(255,255,255,0.1); box-shadow:0 20px 40px rgba(0,0,0,0.5);}
-.about-info h2{font-size:36px;margin-bottom:16px; color:#fff; font-family:'Playfair Display', serif;}
-.about-info p{color:#bbb;margin-bottom:24px;font-size:16px; line-height:1.7;}
-.about .soc{display:flex;gap:24px;font-size:15px; color:#aaa; font-family:'IBM Plex Mono', monospace;}
-.about .soc a{color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:2px; transition:border-color .2s;}
-.about .soc a:hover{border-color:#fff;}
-
-/* Custom Scrollbars */
-.box ::-webkit-scrollbar { width: 8px; height: 8px; }
-.box ::-webkit-scrollbar-track { background: transparent; }
-.box ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-.box ::-webkit-scrollbar-thumb:hover { background: #555; }
-
-@media(max-width:960px){
-section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
-.burger{display:block}
-.nav-wrapper.s { width: 94%; padding: 8px 20px; }
-.nav-wrapper.s .nav-in { height: 40px; }
-
-/* Mobile Logo Sizing adjustments */
-.logo img { height: 30px; }
-.nav-wrapper.s .logo img { height: 20px; }
-
-.links{position:absolute;top:100%;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05); margin-top: 12px; border-radius: 12px;}
-.nav-wrapper.s .links { background: #111; border-color: rgba(255,255,255,0.1); margin-top: 16px;}
-.links.open{display:flex}
-.links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:15px;}
-.nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { border-bottom-color: rgba(255,255,255,0.1); }
-.links a:not(.btn)::after,.dd>button::after{display:none}
-.links .btn{margin-top:20px;text-align:center;padding:14px;font-size:14.5px;}
-.dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
-.hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.acts .btn{flex:1;text-align:center}
-
-.premium-text-banner { padding: 24px 20px; } /* Ultra-thin on mobile too */
-
-/* Mobile Accordion Logic */
-.story { height: auto !important; padding: 60px 0; }
-.pin { position: static !important; height: auto !important; display: block; }
-.st-grid { display: flex; flex-direction: column; gap: 32px; }
-.st-grid h2 { display: block; font-size: 32px; margin-bottom: 8px; }
-.frame { display: none !important; }
-.ticks { display: none !important; }
-#items { display: flex; flex-direction: column; gap: 16px; }
-.st-item { display: flex !important; flex-direction: column; border: 1px solid var(--line); border-radius: 20px; padding: 24px; background: #fff; opacity: 1 !important; color: var(--ink); cursor: pointer; transition: border-color .3s; }
-.st-item:hover { border-color: var(--ink); }
-.st-header { cursor: pointer; }
-.st-item .d { padding-left: 0; }
-.st-item .d p { max-width: 100%; padding-top: 12px; color: var(--mute); }
-
-/* Rotating Pin */
-.toggle-pin { display: block; width: 24px; height: 24px; position: relative; transition: transform 0.5s cubic-bezier(.25,1,.5,1); }
-.toggle-pin::before, .toggle-pin::after { content: ''; position: absolute; background: var(--ink); top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 2px; }
-.toggle-pin::before { width: 14px; height: 2px; }
-.toggle-pin::after { width: 2px; height: 14px; }
-.st-item.on .toggle-pin { transform: rotate(135deg); }
-
-.mob-img { display: none; width: 100%; border-radius: 16px; margin-top: 24px; aspect-ratio: 4/3; object-fit: cover; background: #111; }
-.st-item.on .mob-img { display: flex; } 
-.st-item.on video.mob-img { display: block; }
-
-.work{padding:60px 0}
-.work-grid-modern { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-
-.cta-wrapper { padding: 0 16px 60px 16px; }
-.cta{padding:48px 24px; border-radius: 24px; }
-.cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:32px}
-.f-grid{grid-template-columns:1fr 1fr;gap:40px}.f-brand{grid-column:1/-1}
-
-/* Mobile Modal Adjustments */
-.pol{grid-template-columns:1fr;grid-template-rows:auto 1fr}
-.pol-nav{display:flex;overflow-x:auto;padding:16px 24px;border-right:0;border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(0,0,0,0.2);}
-.pol-nav button{white-space:nowrap;width:auto;padding:10px 16px;}
-.pol-body{padding:32px 24px}
-.pol-header h2{font-size:28px;}
-.about{flex-direction:column;text-align:center;padding:40px 24px; gap:32px;}
-.about img{width:160px; height:160px;}
-.about .soc{justify-content:center;}
-.close{top:12px; right:12px; width:36px; height:36px; font-size:20px;}
-}
-@media(max-width:560px){
-.form .two{grid-template-columns:1fr}
-.work-grid-modern { grid-template-columns: 1fr; gap: 32px; }
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<a href="#story" class="skip">Skip to content</a>
-<div class="bar"><i id="bar"></i></div>
+<a href="#main" class="skip">Skip to content</a>
+<div class="bar" aria-hidden="true"><i id="bar"></i></div>
+<div id="sentinel" aria-hidden="true"></div>
 
-<div class="nav-wrapper" id="navWrapper">
-<nav class="wrap nav-in" style="max-width:100%; padding:0;">
-<a href="#" class="logo" aria-label="Nvisco home">
-    <img src="favicon.png" alt="NVISCO Icon">
-</a>
-<button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">Menu</button>
-<div class="links" id="links">
-<a href="#story">Process</a>
-<a href="#work">Work</a>
-<a href="#" id="aboutBtn">About</a>
-<div class="dd" id="dd"><button id="ddBtn" aria-haspopup="true" aria-expanded="false">Policies</button><div class="dd-menu" id="ddMenu"></div></div>
-<a href="#contact" class="btn pulse">Free consultation</a>
-</div>
-</nav>
-</div>
-
-<main>
-<header class="hero">
-<div class="wrap">
-<h1>Precision hardware, engineered without compromise.</h1>
-<div class="hero-row">
-<div>
-    <p><b>Nvisco, your excellence partner.</b> One team takes your idea to a product-ready design.</p>
-    <div class="acts">
-        <a href="#contact" class="btn pulse">Free consultation</a>
-        <a href="#story" class="btn line">See the process</a>
-    </div>
-    
-    <!-- Seamless Animated Tech Logos Loop -->
-    <div class="tech-logos">
-        <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" loading="lazy" decoding="async">
-        <img src="https://cdn.simpleicons.org/python" alt="Python" loading="lazy" decoding="async">
-        <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" loading="lazy" decoding="async">
-        <img src="https://cdn.simpleicons.org/ros" alt="ROS" loading="lazy" decoding="async">
-        <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" loading="lazy" decoding="async">
-        <img src="https://cdn.simpleicons.org/siemens" alt="Siemens" loading="lazy" decoding="async">
-        <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" loading="lazy" decoding="async">
-    </div>
-</div>
-</div>
-</div>
+<!-- Ultra-slim, glossy floating transparent navigation -->
+<header class="nav" id="nav">
+  <div class="nav-pill">
+    <span class="nav-glass" aria-hidden="true"></span>
+    <a href="#top" class="brand" aria-label="Nvisco home"><img src="favicon.png" alt="" width="32" height="32"><span>NVISCO</span></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+    <nav class="links" id="links" aria-label="Primary">
+      <a class="nav-link" href="#story">Process</a>
+      <a class="nav-link" href="#standards">Standards</a>
+      <a class="nav-link" href="#work">Work</a>
+      <button class="nav-link" type="button" id="aboutBtn" aria-haspopup="dialog">About</button>
+      <div class="dd" id="dd">
+        <button class="nav-link" type="button" id="ddBtn" aria-haspopup="true" aria-expanded="false" aria-controls="ddMenu">Policies<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu" id="ddMenu"></div>
+      </div>
+      <a class="btn btn--sm" href="#contact">Free consultation</a>
+    </nav>
+  </div>
 </header>
 
-<!-- Smooth Scrolling Premium Banner with Faster Metallic Animation -->
-<div class="premium-text-banner" id="scrollBanner">
-    <div class="banner-micro">Your Vision. Our Engineering.</div>
-    <div class="banner-title">NVISCO</div>
-    <div class="banner-sub">Excellence Partner</div>
-    <div class="banner-footer">Hardware / Robotics / Automation</div>
-</div>
+<main id="main">
 
-<section class="story" id="story" aria-label="From idea to product-ready">
-<div class="pin"><div class="wrap st-grid">
-<div>
-<h2>From idea to product-ready</h2>
-<div id="items">
-
-<!-- Step 1: Idea (Contains the new Idea Box) -->
-<div class="st-item on" onclick="toggleMobStage(0)">
-    <div class="st-header">
-        <span>01</span>
-        <h3>Idea</h3>
-        <div class="toggle-pin"></div>
+<!-- ================= Hero ================= -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="wrap hero-main">
+    <h1 id="hero-h">Precision hardware, engineered without compromise.</h1>
+    <div class="hero-row">
+      <div>
+        <p class="lede"><b>Nvisco, your excellence partner.</b> One team takes your idea to a product-ready design.</p>
+        <div class="acts">
+          <a href="#contact" class="btn">Free consultation</a>
+          <a href="#story" class="btn btn--ghost">See the process</a>
+        </div>
+      </div>
+      <aside class="panel glass" aria-label="What we deliver">
+        <p class="panel-t">What we deliver <span>NDA on request</span></p>
+        <a class="p-row" href="#story" data-step="1">
+          <span class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9.5 3v4M14.5 3v4M9.5 17v4M14.5 17v4M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"/></svg></span>
+          <span><b>Electronic design</b><small>Schematics and high-density PCB layout up to 22 layers.</small></span>
+        </a>
+        <a class="p-row" href="#story" data-step="2">
+          <span class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span>
+          <span><b>Mechanical design</b><small>Parametric CAD for your product and its enclosure.</small></span>
+        </a>
+        <a class="p-row" href="#story" data-step="3">
+          <span class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
+          <span><b>Firmware</b><small>Embedded code written for your exact hardware.</small></span>
+        </a>
+        <a class="p-row" href="#story" data-step="4">
+          <span class="p-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg></span>
+          <span><b>Engineering</b><small>Integration, testing and validation on real hardware.</small></span>
+        </a>
+      </aside>
     </div>
-    <div class="d"><p>A free consultation turns your concept into a clear scope.</p></div>
-    <div class="mob-img idea-box"><h3>"I have an idea, and I want you to build..."<span class="blink-cursor"></span></h3></div>
-</div>
+  </div>
 
-<!-- Step 2: PCB -->
-<div class="st-item" onclick="toggleMobStage(1)">
-    <div class="st-header">
-        <span>02</span>
-        <h3>Electronic design</h3>
-        <div class="toggle-pin"></div>
+  <div class="wrap tools">
+    <div class="tools-in glass">
+      <span>Tools and platforms</span>
+      <div class="marquee" id="marquee">
+        <div class="marquee-track">
+          <ul class="set">
+            <li class="chip"><img src="https://cdn.simpleicons.org/kicad" alt="" width="22" height="22" decoding="async">KiCad</li>
+            <li class="chip"><img src="https://cdn.simpleicons.org/python" alt="" width="22" height="22" decoding="async">Python</li>
+            <li class="chip"><img src="https://cdn.simpleicons.org/arduino" alt="" width="22" height="22" decoding="async">Arduino</li>
+            <li class="chip"><img src="https://cdn.simpleicons.org/ros" alt="" width="22" height="22" decoding="async">ROS</li>
+            <li class="chip"><img src="https://cdn.simpleicons.org/raspberrypi" alt="" width="22" height="22" decoding="async">Raspberry Pi</li>
+            <li class="chip"><img src="https://cdn.simpleicons.org/siemens" alt="" width="22" height="22" decoding="async">Siemens</li>
+            <li class="chip"><img src="https://cdn.simpleicons.org/nvidia" alt="" width="22" height="22" decoding="async">NVIDIA</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="d"><p>Schematics and high-density PCB layout up to 22 layers.</p></div>
-    <img class="mob-img" src="pcb11.jpg" alt="Electronic Design" loading="lazy" decoding="async">
-</div>
-
-<!-- Step 3: CAD -->
-<div class="st-item" onclick="toggleMobStage(2)">
-    <div class="st-header">
-        <span>03</span>
-        <h3>Mechanical design</h3>
-        <div class="toggle-pin"></div>
-    </div>
-    <div class="d"><p>Parametric CAD for your product and its enclosure.</p></div>
-    <img class="mob-img" src="cad11.png" alt="Mechanical Design" loading="lazy" decoding="async">
-</div>
-
-<!-- Step 4: Firmware -->
-<div class="st-item" onclick="toggleMobStage(3)">
-    <div class="st-header">
-        <span>04</span>
-        <h3>Firmware</h3>
-        <div class="toggle-pin"></div>
-    </div>
-    <div class="d"><p>Embedded code written for your exact hardware.</p></div>
-    <img class="mob-img" src="firm11.jpg" alt="Firmware" loading="lazy" decoding="async">
-</div>
-
-<!-- Step 5: Engineering -->
-<div class="st-item" onclick="toggleMobStage(4)">
-    <div class="st-header">
-        <span>05</span>
-        <h3>Engineering</h3>
-        <div class="toggle-pin"></div>
-    </div>
-    <div class="d"><p>Integration, testing and validation on real hardware.</p></div>
-    <img class="mob-img" src="CAD_WELD.jpg" alt="Engineering Testing" loading="lazy" decoding="async">
-</div>
-
-<!-- Step 6: Product Ready (Image: po9.webp) -->
-<div class="st-item" onclick="toggleMobStage(5)">
-    <div class="st-header">
-        <span>06</span>
-        <h3>Product ready</h3>
-        <div class="toggle-pin"></div>
-    </div>
-    <div class="d"><p>Validated files, handed over to scale and launch.</p></div>
-    <img class="mob-img" src="po9.webp" alt="Finished hardware" loading="lazy" decoding="async">
-</div>
-
-</div>
-<div class="ticks" id="ticks"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
-</div>
-
-<!-- Desktop Sticky Frame -->
-<div class="frame" id="frame">
-<div class="idea-box on"><h3>"I have an idea, and I want you to build..."<span class="blink-cursor"></span></h3></div>
-<img src="pcb11.jpg" alt="High-density PCB layout" width="1200" height="900" loading="lazy" decoding="async">
-<img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" loading="lazy" decoding="async">
-<img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" loading="lazy" decoding="async">
-<img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" loading="lazy" decoding="async">
-<img src="po9.webp" alt="Finished, product-ready hardware" width="1200" height="900" loading="lazy" decoding="async">
-</div>
-</div></div>
+  </div>
 </section>
 
-<!-- Modern 4-Column Dense Grid -->
-<section class="work" id="work">
+<!-- ================= Brand band ================= -->
 <div class="wrap">
-<div class="work-top">
-<h2>Selected work</h2>
+  <div class="band">
+    <p class="band-micro">Your Vision. Our Engineering.</p>
+    <p class="band-title">NVISCO</p>
+    <p class="band-sub">Excellence Partner</p>
+    <p class="band-foot">Hardware / Robotics / Automation</p>
+  </div>
 </div>
-<div class="work-grid-modern">
-    <article class="w-card">
-        <div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po2.webp" alt="Unified Systems" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po8.png" alt="Edge AI Processing" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="pcb.png" alt="Complex Layer Routing" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><video src="159021-818026286.mp4" autoplay muted loop playsinline aria-label="Industrial machinery in operation"></video></div>
-        <div class="cap"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="cad12.png" alt="Mechanical Enclosures" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div>
-    </article>
-    <article class="w-card">
-        <div class="m"><img src="po14.jpg" alt="IoT Connectivity" loading="lazy" decoding="async"></div>
-        <div class="cap"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div>
-    </article>
-</div>
-</div>
+
+<!-- ================= Process ================= -->
+<section class="sec" id="story" aria-labelledby="story-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="story-h">From idea to product-ready</h2></div>
+
+    <div class="process" id="process" aria-roledescription="carousel" aria-label="From idea to product-ready">
+      <div class="steps">
+        <button class="step on" type="button" aria-current="step"><i class="prog" aria-hidden="true"></i><span class="num">01</span><span class="body"><strong>Idea</strong><span class="d"><span class="di"><span class="dt">A free consultation turns your concept into a clear scope.</span></span></span></span></button>
+        <button class="step" type="button"><i class="prog" aria-hidden="true"></i><span class="num">02</span><span class="body"><strong>Electronic design</strong><span class="d"><span class="di"><span class="dt">Schematics and high-density PCB layout up to 22 layers.</span></span></span></span></button>
+        <button class="step" type="button"><i class="prog" aria-hidden="true"></i><span class="num">03</span><span class="body"><strong>Mechanical design</strong><span class="d"><span class="di"><span class="dt">Parametric CAD for your product and its enclosure.</span></span></span></span></button>
+        <button class="step" type="button"><i class="prog" aria-hidden="true"></i><span class="num">04</span><span class="body"><strong>Firmware</strong><span class="d"><span class="di"><span class="dt">Embedded code written for your exact hardware.</span></span></span></span></button>
+        <button class="step" type="button"><i class="prog" aria-hidden="true"></i><span class="num">05</span><span class="body"><strong>Engineering</strong><span class="d"><span class="di"><span class="dt">Integration, testing and validation on real hardware.</span></span></span></span></button>
+        <button class="step" type="button"><i class="prog" aria-hidden="true"></i><span class="num">06</span><span class="body"><strong>Product ready</strong><span class="d"><span class="di"><span class="dt">Validated files, handed over to scale and launch.</span></span></span></span></button>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="slides" id="slides" aria-live="polite">
+          <figure class="slide idea on" role="group" aria-roledescription="slide" aria-label="1 of 6">
+            <blockquote><p>&ldquo;I have an idea, and I want you to build&hellip;&rdquo;<span class="cursor" aria-hidden="true"></span></p></blockquote>
+          </figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true"><img src="pcb11.jpg" alt="High-density PCB layout" width="1200" height="900" loading="lazy" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true"><img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" loading="lazy" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true"><img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" loading="lazy" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true"><img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" loading="lazy" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true"><img src="po9.webp" alt="Finished, product-ready hardware" width="1200" height="900" loading="lazy" decoding="async"></figure>
+        </div>
+        <div class="stage-ui">
+          <div class="pill pill--count" aria-hidden="true"><span id="pCur">01</span>&nbsp;/&nbsp;06</div>
+          <div class="pill">
+            <button class="ic" id="pPlay" type="button" aria-label="Pause autoplay">
+              <svg class="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </button>
+            <button class="ic" id="pPrev" type="button" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="ic" id="pNext" type="button" aria-label="Next step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Rounded Card Container for CTA above footer -->
-<div class="cta-wrapper">
-<section class="cta" id="contact">
-<div class="wrap cta-grid" style="max-width:100%; padding:0;">
-<div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
-<video src="cadd.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
-<form class="form" id="inq">
-<div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
-<select name="s" aria-label="What do you need"><option>Full product, idea to launch</option><option>Electronic design</option><option>Mechanical design</option><option>Firmware</option></select>
-<textarea name="m" placeholder="Describe your idea" required aria-label="Your idea"></textarea>
-<button class="btn pulse" type="submit">Request free consultation</button>
-<small>This opens your email app with the details filled in.</small>
-</form>
-</div>
+<!-- ================= IPC Engineering Standards ================= -->
+<section class="sec" id="standards" aria-labelledby="std-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="std-h">Compliance & DFM Standards</h2>
+    </div>
+    <div class="ipc-grid">
+      <!-- HDI -->
+      <div class="ipc-card">
+        <h3>1. Advanced Architecture & HDI</h3>
+        <p>These standards prove you can handle complex, tightly packed modern electronics without signal or mechanical failures.</p>
+        <div class="ipc-list">
+          <div class="ipc-item">
+            <strong>IPC-2226: High-Density Interconnect (HDI) Design Standard</strong>
+            <p>Applied to all complex, space-constrained architectures. This standard governs our use of microvias, blind and buried vias, via-in-pad technology, and fine-pitch BGA routing to achieve up to 22-layer, high-density structures reliably.</p>
+          </div>
+          <div class="ipc-item">
+            <strong>IPC-2221B & IPC-2222A: Generic & Rigid Printed Board Design</strong>
+            <p>The foundational baseline for all Nvisco engineering. We strictly follow these rules for layer stackup material selection, conductor spacing, high-voltage clearance/creepage parameters, and structural integrity.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Power & Thermal -->
+      <div class="ipc-card">
+        <h3>2. Power, Thermal & Component</h3>
+        <p>These standards prove you design boards that won't overheat, burn out, or fail during the automated assembly process.</p>
+        <div class="ipc-list">
+          <div class="ipc-item">
+            <strong>IPC-2152: Current-Carrying Capacity</strong>
+            <p>Critical for our robotics, motor control, and power systems. We calculate exact trace widths, copper weights, and thermal dissipation paths according to this standard to ensure heavy power lines operate safely without thermal throttling.</p>
+          </div>
+          <div class="ipc-item">
+            <strong>IPC-7351C: Surface Mount Design</strong>
+            <p>The ultimate Design for Manufacturing (DFM) baseline. We engineer every custom component footprint to exact IPC density levels to ensure zero tombstoning, perfect solder fillets, and flawless automated assembly at the factory.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Compliance & Data -->
+      <div class="ipc-card">
+        <h3>3. Manufacturing Compliance</h3>
+        <p>These standards prove you prepare files that factories can actually build without errors or endless revisions.</p>
+        <div class="ipc-list">
+          <div class="ipc-item">
+            <strong>IPC Class 2 & 3 Compliance (IPC-A-600/610)</strong>
+            <p>Every layout is mathematically engineered to pass strict manufacturing and assembly inspections. From annular ring sizing to drill tolerances, we design to meet Class 2 and "Mission Critical" Class 3 acceptance criteria.</p>
+          </div>
+          <div class="ipc-item">
+            <strong>IPC-2581: Intelligent Data Transfer</strong>
+            <p>We go beyond outdated, error-prone Gerber files. We utilize the modern IPC-2581 open data format to seamlessly and securely transfer precise layer stackups, intelligent drill data, and BOMs to enterprise fabrication houses with zero ambiguity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ================= Work ================= -->
+<section class="sec work" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="work-h">Selected work</h2>
+      <div class="car-nav">
+        <button class="ic ic--glass" id="wPrev" type="button" aria-label="Previous projects" aria-controls="wTrack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="ic ic--glass" id="wNext" type="button" aria-label="Next projects" aria-controls="wTrack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="car" aria-roledescription="carousel" aria-label="Selected work">
+    <div class="track" id="wTrack" tabindex="0" aria-label="Projects. Use the arrow keys or swipe to browse.">
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="1 of 8">
+        <div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="2 of 8">
+        <div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="3 of 8">
+        <div class="m"><img src="po2.webp" alt="Unified Systems" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="4 of 8">
+        <div class="m"><img src="po8.png" alt="Edge AI Processing" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="5 of 8">
+        <div class="m"><img src="pcb.png" alt="Complex Layer Routing" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="6 of 8">
+        <div class="m"><video src="159021-818026286.mp4" muted loop playsinline preload="metadata" data-autoplay disablepictureinpicture aria-label="Industrial machinery in operation"></video></div>
+        <div class="cap"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="7 of 8">
+        <div class="m"><img src="cad12.png" alt="Mechanical Enclosures" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div>
+      </article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="8 of 8">
+        <div class="m"><img src="po14.jpg" alt="IoT Connectivity" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div>
+        <div class="cap"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div>
+      </article>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="car-foot"><div class="prog2" aria-hidden="true"><i id="wThumb"></i></div></div>
+  </div>
+</section>
+
+<!-- ================= Contact ================= -->
+<div class="wrap cta-wrap">
+  <section class="cta" id="contact" aria-labelledby="cta-h">
+    <div class="cta-grid">
+      <div class="cta-copy">
+        <h2 id="cta-h">Let's build what's next.</h2>
+        <p class="lead">Free consultation. We can sign an NDA before you share anything.</p>
+      </div>
+      <video class="cta-vid" src="cadd.mp4" muted loop playsinline preload="none" data-autoplay disablepictureinpicture aria-label="Nvisco hardware showcase"></video>
+      <form class="form" id="inq">
+        <div class="two">
+          <input name="name" placeholder="Your name" required aria-label="Your name" autocomplete="name">
+          <input name="email" type="email" placeholder="Email" required aria-label="Email" autocomplete="email">
+        </div>
+        <select name="need" aria-label="What do you need">
+          <option>Full product, idea to launch</option>
+          <option>Electronic design</option>
+          <option>Mechanical design</option>
+          <option>Firmware</option>
+        </select>
+        <textarea name="message" placeholder="Describe your idea" required aria-label="Your idea"></textarea>
+        <button class="btn" type="submit">Request free consultation</button>
+        <small>This opens your email app with the details filled in.</small>
+      </form>
+    </div>
+  </section>
 </div>
+
 </main>
 
 <footer>
-<div class="wrap">
-<div class="f-grid">
-<div class="f-col f-brand">
-    <img src="nvisco-logo.png" alt="NVISCO" style="height:24px; filter:invert(1); transform:scale(2.2); transform-origin:left center; margin-bottom:22px; display:block;">
-    <p>Your excellence partner. Intelligent systems, robotics and hardware design.</p>
-</div>
-<div class="f-col"><h4>Company</h4><a href="#story">Process</a><a href="#work">Work</a><button data-about>About the founder</button></div>
-<div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
-<div class="f-col"><h4>Office</h4><a style="pointer-events:none">Mandi Bahauddin<br>Punjab, Pakistan</a></div>
-</div>
-<div class="f-bar"><span>&copy; <span id="yr">2026</span> Nvisco. All rights reserved.</span><div id="fPol"></div></div>
-</div>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-col f-brand">
+        <img class="f-logo" src="nvisco-logo.png" alt="NVISCO">
+        <p>Your excellence partner. Intelligent systems, robotics and hardware design.</p>
+      </div>
+      <div class="f-col"><h4>Company</h4><a href="#story">Process</a><a href="#standards">Standards</a><a href="#work">Work</a><button type="button" data-about>About the founder</button></div>
+      <div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
+      <div class="f-col"><h4>Office</h4><address>Mandi Bahauddin<br>Punjab, Pakistan</address></div>
+    </div>
+    <div class="f-bar"><span>&copy; <span id="yr">2026</span> Nvisco. All rights reserved.</span><div id="fPol"></div></div>
+  </div>
 </footer>
 
-<div class="ov" id="polOv" role="dialog" aria-modal="true" aria-label="Policies"><div class="box pol"><button class="close" data-close aria-label="Close">&times;</button><div class="pol-nav" id="polNav"></div><div class="pol-body" id="polBody"></div></div></div>
-<div class="ov" id="aboutOv" role="dialog" aria-modal="true" aria-label="About">
-    <div class="box about">
-        <button class="close" data-close aria-label="Close">&times;</button>
-        <img src="unnamed.jpg" alt="Zain Haider" loading="lazy" decoding="async">
-        <div class="about-info">
-            <h2>I'm Zain Haider</h2>
-            <p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products.</p>
-            <div class="soc">
-                <a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a>
-            </div>
-        </div>
+<dialog id="polDlg" aria-labelledby="polTitle">
+  <div class="box pol">
+    <button class="close" type="button" data-close aria-label="Close">&times;</button>
+    <div class="pol-nav" id="polNav"></div>
+    <div class="pol-body" id="polBody"></div>
+  </div>
+</dialog>
+
+<dialog id="aboutDlg" aria-labelledby="aboutTitle">
+  <div class="box about">
+    <button class="close" type="button" data-close aria-label="Close">&times;</button>
+    <img src="unnamed.jpg" alt="Zain Haider" width="200" height="200" loading="lazy" decoding="async">
+    <div>
+      <h2 id="aboutTitle">I'm Zain Haider</h2>
+      <p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products.</p>
+      <div class="soc">
+        <a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-</div>
+  </div>
+</dialog>
 
 <script>
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),scrollBanner=$('#scrollBanner');
-$('#yr').textContent=new Date().getFullYear();  /* Policies */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
+(()=>{
+'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const root=document.documentElement;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const conn=navigator.connection||{};
+const lite=!!conn.saveData||/(^|-)2g$/.test(conn.effectiveType||'');   /* data saver / very slow link */
+const smooth=reduce?'auto':'smooth';
+const pad=n=>String(n).padStart(2,'0');
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const hasIO='IntersectionObserver' in window;
+/* run cb whenever `el` enters / leaves the viewport (optionally with a margin) */
+const watch=(el,cb,opt)=>{if(!hasIO||!el)return null;const o=new IntersectionObserver(cb,opt);o.observe(el);return o};
+/* lazy images are flipped to eager shortly before their section scrolls in, so nothing pops in late */
+const warm=(el,sel)=>{
+  if(lite)return;
+  const imgs=$$(sel,el);
+  const o=watch(el,es=>{if(es.some(e=>e.isIntersecting)){imgs.forEach(i=>{i.loading='eager'});o.disconnect()}},{rootMargin:'1200px 0px'});
+};
+
+$('#yr').textContent=new Date().getFullYear();
+
+/* ---------- Navigation ---------- */
+const nav=$('#nav'),links=$('#links'),burger=$('#burger'),dd=$('#dd'),ddBtn=$('#ddBtn');
+watch($('#sentinel'),([e])=>nav.classList.toggle('is-scrolled',!e.isIntersecting));
+const setMenu=o=>{links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.textContent=o?'Close':'Menu'};
+const setDD=o=>{dd.classList.toggle('open',o);ddBtn.setAttribute('aria-expanded',o)};
+burger.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){setDD(false);setMenu(false)}});
+
+/* ---------- Scroll progress (the only scroll listener on the page) ---------- */
+const bar=$('#bar');let raf=0;
+const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const h=root.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'})};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ---------- Policies Rendered in PDF Agreement Style ---------- */
+const P={
+"Terms of Engagement": {
+  intro: "By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project.",
+  sections: [
+    { type: "title", text: "Payment Schedule" },
+    { num: "01", title: "Deposit", text: "50% of the total fee, paid before work begins. Work starts once the deposit is received." },
+    { num: "02", title: "Draft Review", text: "When the work is done, a draft is sent to the client to review and approve." },
+    { num: "03", title: "Final Payment", text: "Remaining 50%, paid after the draft is approved. The final files are then sent." },
+    { type: "title", text: "Terms" },
+    { num: "01", title: "Scope", text: "Schematic updates, AC/DC isolation layout designed for UL/CE compliance, and final manufacturing files for US, EU and Australian plug versions." },
+    { num: "02", title: "Fee & Deposit", text: "Payments are made via formal invoicing or platform escrow as agreed. Work starts upon deposit." },
+    { num: "03", title: "Delivery Time", text: "The project timeline is counted from the day the deposit is received and work begins." },
+    { num: "04", title: "Draft & Approval", text: "When the work is done, the provider sends a draft to the client for review. The client confirms approval in writing." },
+    { num: "05", title: "Final Payment & Files", text: "After the draft is approved, the client pays the remaining balance. Final source files are released immediately after." },
+    { num: "06", title: "Project Details", text: "The client shares all files, requirements and queries before work starts. Minor changes after completion have large impacts on the design." },
+    { num: "07", title: "Communication", text: "All communication is kept in written chat/email so every technical decision is clear and recorded." }
+  ],
+  sign: true
+},
+"Non-Disclosure (NDA)": {
+  intro: "On request we sign a mutual NDA before you share proprietary ideas.",
+  sections: [
+    { num: "01", title: "Confidentiality", text: "Project files, schematics and business details are kept completely confidential." },
+    { num: "02", title: "Usage", text: "Information is used strictly for your project execution and never shared publicly without written consent." }
+  ]
+},
+"Intellectual Property": {
+  intro: "Clear boundaries regarding ownership of deliverables.",
+  sections: [
+    { num: "01", title: "Client Ownership", text: "You own the final deliverables entirely once full payment is complete." },
+    { num: "02", title: "Pre-existing Tools", text: "Nvisco retains ownership of its pre-existing internal tools, scripts, and generic design methods, licensing them to you implicitly for use in your product." }
+  ]
+},
+"Payment & Refund": {
+  intro: "Structured financial agreements for B2B engineering services.",
+  sections: [
+    { num: "01", title: "Milestones", text: "Projects are billed by milestone as explicitly agreed in the proposal." },
+    { num: "02", title: "Refunds", text: "Delivered engineering work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded." }
+  ]
+},
+"Privacy Policy": {
+  intro: "Data collection and usage policies.",
+  sections: [
+    { num: "01", title: "Data Collection", text: "We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services." },
+    { num: "02", title: "No Data Sale", text: "We do not sell your data. We use standard analytics for anonymous traffic statistics." }
+  ]
+},
+"Disclaimer": {
+  intro: "Limitations of liability.",
+  sections: [
+    { num: "01", title: "Engineering Services", text: "Designs are provided strictly as engineering services. Clients are responsible for formal compliance testing and certification (CE, FCC, UL, etc.) of their final manufactured product." }
+  ]
+}
+};
+
+const names=Object.keys(P);
+const btnList=(list)=>list.map(k=>`<button type="button" data-p="${esc(k)}">${esc(k)}</button>`).join('');
+$('#ddMenu').innerHTML=btnList(names);
+$('#fPol').innerHTML=btnList(names.slice(0,4));
+
+const polDlg=$('#polDlg'),aboutDlg=$('#aboutDlg'),polNav=$('#polNav'),polBody=$('#polBody'); const updated=new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'}); const openDlg=d=>{d.showModal();root.classList.add('lock')};  $$('dialog').forEach(d=>{
+  d.addEventListener('close',()=>{if(!$('dialog[open]'))root.classList.remove('lock')});
+  d.addEventListener('click',e=>{if(e.target===d)d.close()});   /* click on the backdrop */
+});
+
 function openPol(n){
- $('#polNav').innerHTML=names.map((k, i)=>{
-    const num = String(i + 1).padStart(2, '0');
-    return `<button class="${k===n?'on':''}" data-p="${k}"><span class="num">${num}</span> ${k}</button>`;
- }).join('');
- 
- $('#polBody').innerHTML=`
-    <div class="pol-header">
-        <span class="tag">Nvisco Terms of Engagement</span>
-        <h2>${n}</h2>
-        <small>Last updated ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</small>
-    </div>
-    <div class="pol-content">
-        <p>${P[n]}</p>
-        <p style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05);">For legal inquiries, contact <a href="mailto:nvisco.pak@gmail.com" style="color:#fff; text-decoration:underline;">nvisco.pak@gmail.com</a>.</p>
-    </div>
- `;
- if(!$('#polOv').classList.contains('on'))openOv($('#polOv'));$('#polBody').scrollTop=0;
-}
-$('#ddMenu').innerHTML=names.map(k=>`<button data-p="${k}">${k}</button>`).join('');
-$('#fPol').innerHTML=names.slice(0,4).map(k=>`<button data-p="${k}">${k}</button>`).join('');
-const links=$('#links'),burger=$('#burger'),dd=$('#dd');
-function menu(o){links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)}
-burger.onclick=()=>menu(!links.classList.contains('open'));
-document.addEventListener('click',e=>{
- const p=e.target.closest('[data-p]');
- if(p){dd.classList.remove('open');menu(false);openPol(p.dataset.p);return}
- if(e.target.closest('#ddBtn')){const o=dd.classList.toggle('open');$('#ddBtn').setAttribute('aria-expanded',o);return}
- if(!e.target.closest('#dd'))dd.classList.remove('open');
- if(e.target.closest('#aboutBtn,[data-about]')){e.preventDefault();menu(false);openOv($('#aboutOv'))}
- if(e.target.closest('[data-close]')||e.target.classList.contains('ov'))closeOv();
- if(e.target.closest('#links a[href^="#"]:not(#aboutBtn)'))menu(false);
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOv();dd.classList.remove('open')}});
+  const data = P[n];
+  polNav.innerHTML=names.map((k,i)=>`<button type="button" class="${k===n?'on':''}" data-p="${esc(k)}"${k===n?' aria-current="true"':''}><span class="n">${pad(i+1)}</span>${esc(k)}</button>`).join('');
+  
+  let html = `<div class="pol-hd"><h2 id="polTitle">${esc(n)}</h2><small>Last updated ${updated}</small></div>`;
+  html += `<div class="agr-doc"><p style="margin-bottom:24px; font-size:16px;">${esc(data.intro)}</p>`;
+  
+  data.sections.forEach(sec => {
+      if(sec.type === "title") {
+          html += `<h3 class="agr-sectitle">${esc(sec.text)}</h3>`;
+      } else {
+          html += `
+          <div class="agr-row">
+            <div class="agr-num">${esc(sec.num)}</div>
+            <div class="agr-text">
+                <h4>${esc(sec.title)}</h4>
+                <p>${esc(sec.text)}</p>
+            </div>
+          </div>`;
+      }
+  });
 
-/* story: scroll & click drives the active stage & handles video playback ONLY on desktop */
-const story=$('#story'),items=$$('.st-item'),imgs=$$('#frame > *'),ticks=$$('#ticks i');
-let cur=0;
-function setStage(i){
-    if(i===cur) return;
-    cur=i;
-    [items,imgs,ticks].forEach(l=>l.forEach((x,k)=>{
-        const isOn = (k === i);
-        x.classList.toggle('on', isOn);
-        if (x.tagName === 'VIDEO') {
-            if (isOn) { x.play().catch(()=>{}); } 
-            else { x.pause(); x.currentTime = 0; }
-        }
-    }));
+  if(data.sign) {
+      html += `
+      <div class="agr-sign">
+          <div class="agr-sign-box">
+              <p>Service Provider</p>
+              <h5>Zain Haider</h5>
+              <span>Nvisco Engineering</span>
+          </div>
+          <div class="agr-sign-box">
+              <p>Agreed By</p>
+              <h5>Client / Representative</h5>
+              <span>Authorized Signature</span>
+          </div>
+      </div>`;
+  }
+  
+  html += `</div>`;
+  polBody.innerHTML = html;
+  
+  if(!polDlg.open)openDlg(polDlg);
+  polBody.scrollTop=0;
 }
 
-/* Mobile Toggle Click Logic for Accordion */
-function toggleMobStage(index) {
-    if(window.innerWidth > 960) return;
-    const item = items[index];
-    const isOn = item.classList.contains('on');
-    
-    items.forEach((i, k) => {
-        i.classList.remove('on');
-        const v = i.querySelector('video.mob-img');
-        if(v) { v.pause(); v.currentTime = 0; }
-    });
-    
-    if(!isOn) {
-        item.classList.add('on');
-        const v = item.querySelector('video.mob-img');
-        if(v) v.play().catch(()=>{});
-    }
+/* the founder photo is only fetched when someone shows interest in opening About */
+const aboutImg=$('img',aboutDlg);
+$$('#aboutBtn,[data-about]').forEach(b=>['pointerenter','focus','touchstart'].forEach(ev=>b.addEventListener(ev,()=>{aboutImg.loading='eager'},{once:true,passive:true})));  document.addEventListener('click',e=>{   const t=e.target;   const pol=t.closest('[data-p]');   if(pol){setDD(false);setMenu(false);openPol(pol.dataset.p);return}   if(t.closest('#ddBtn')){setDD(!dd.classList.contains('open'));return}   if(!t.closest('#dd'))setDD(false);   if(t.closest('#aboutBtn,[data-about]')){setMenu(false);openDlg(aboutDlg);return}   const x=t.closest('[data-close]');   if(x){x.closest('dialog').close();return}   if(!t.closest('#links,#burger')\vert{}\vert{}t.closest('#links a[href^="#"]'))setMenu(false); });  /* ---------- Videos: load when near, play only while visible ---------- */ const vids=$$
+('video[data-autoplay]');
+const canPlay=!reduce&&!lite;
+if(canPlay&&hasIO){
+  const seen=new Set();
+  const sync=v=>{if(seen.has(v)&&!document.hidden)v.play().catch(()=>{});else v.pause()};
+  const play=new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?seen.add(e.target):seen.delete(e.target);sync(e.target)}),{threshold:.4});
+  const near=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(e.target.preload==='none')e.target.preload='metadata';near.unobserve(e.target)}}),{rootMargin:'600px 0px'});
+  vids.forEach(v=>{play.observe(v);near.observe(v)});
+  document.addEventListener('visibilitychange',()=>vids.forEach(sync));
+}else{
+  /* reduced motion / data saver: show the first frame with native controls instead of autoplaying */
+  vids.forEach(v=>{v.controls=true;if(!lite)v.preload='metadata'});
 }
 
-const bar=$('#bar'),navW=$('#navWrapper'),root=document.documentElement;
-let tick=false,lastY=0;
-function onScroll(){
- const y=scrollY,h=root.scrollHeight-innerHeight,p=h>0?y/h:0;
- bar.style.transform=`scaleX(${p})`;
- navW.classList.toggle('s',y>40);
- navW.classList.toggle('hide',y>320&&y>lastY&&!links.classList.contains('open'));lastY=y;
- 
- if(window.innerWidth > 960) {
-    /* Adjusted scroll math for the faster, reduced-height sticky section */
-    const r=story.getBoundingClientRect(),span=r.height-innerHeight;
-    if(r.top<=0&&span>0)setStage(Math.min(5,Math.max(0,Math.floor(-r.top/span*6))));else if(r.top>0)setStage(0);
- }
+/* ---------- Tools marquee ---------- */
+(()=>{
+  const mq=$('#marquee');if(!mq||reduce)return;
+  const track=$('.marquee-track',mq),set=$('.set',track),copy=set.cloneNode(true);
+  copy.setAttribute('aria-hidden','true');
+  track.appendChild(copy);
+  mq.classList.add('is-live');
+  watch(mq,([e])=>mq.classList.toggle('is-off',!e.isIntersecting));
+})();
 
- // Scroll Banner Fade Math - Subtle Scaling Animation
- if(scrollBanner) {
-    const rect = scrollBanner.getBoundingClientRect();
-    const wh = window.innerHeight;
-    const center = rect.top + rect.height / 2;
-    const dist = Math.abs(wh / 2 - center);
-    const fadeThreshold = wh / 1.2;
-    let op = 1 - (dist / fadeThreshold);
-    op = Math.max(0, Math.min(1, op * 2)); 
-    scrollBanner.style.opacity = op.toFixed(2);
-    
-    let scale = 0.95 + (op * 0.05);
-    scrollBanner.style.transform = `scale(${scale.toFixed(3)})`;
- }
+/* ---------- Process carousel (stepper + stage) ---------- */
+const process=(()=>{
+  const el=$('#process');if(!el)return null;
+  const steps=$$('.step',el),slides=$$('.slide',el),n=steps.length;
+  const live=$('#slides'),cur=$('#pCur'),play=$('#pPlay');
+  let i=0,off=reduce,seen=false;
+  const sync=()=>{
+    const on=seen&&!off&&!document.hidden;
+    el.classList.toggle('is-playing',on);
+    live.setAttribute('aria-live',on?'off':'polite');
+  };
+  const go=k=>{
+    i=(k+n)%n;
+    steps.forEach((s,j)=>{const a=j===i;s.classList.toggle('on',a);a?s.setAttribute('aria-current','step'):s.removeAttribute('aria-current')});
+    slides.forEach((s,j)=>{const a=j===i;s.classList.toggle('on',a);s.setAttribute('aria-hidden',a?'false':'true')});
+    cur.textContent=pad(i+1);
+  };
+  steps.forEach((s,j)=>s.addEventListener('click',()=>go(j)));
+  $('#pPrev').addEventListener('click',()=>go(i-1));
+  $('#pNext').addEventListener('click',()=>go(i+1));
 
- tick=false;
-}
-addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
-addEventListener('resize',onScroll);onScroll();
+  /* autoplay: the CSS progress line is the timer; when it finishes, move on */
+  el.addEventListener('animationend',e=>{if(e.animationName==='progfill'&&el.classList.contains('is-playing'))go(i+1)});
+  if(reduce){play.hidden=true}
+  else play.addEventListener('click',()=>{
+    off=!off;play.classList.toggle('is-off',off);
+    play.setAttribute('aria-label',off?'Start autoplay':'Pause autoplay');
+    sync();
+  });
+  watch(el,([e])=>{seen=e.isIntersecting;sync()},{threshold:.35});
+  document.addEventListener('visibilitychange',sync);
 
-/* form -> email */
+  /* pause while the pointer is over it or a keyboard user is inside it */
+  const hold=v=>el.classList.toggle('is-hover',v);
+  el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hold(true)});
+  el.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hold(false)});
+  el.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible'))hold(true)});
+  el.addEventListener('focusout',e=>{if(!el.contains(e.relatedTarget))hold(false)});
+
+  /* keyboard: arrows / Home / End on the step list */
+  el.addEventListener('keydown',e=>{
+    if(!e.target.closest('.steps'))return;
+    const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];
+    let to=null;
+    if(d)to=i+d;else if(e.key==='Home')to=0;else if(e.key==='End')to=n-1;
+    if(to===null)return;
+    e.preventDefault();go(to);steps[i].focus();
+  });
+
+  /* swipe / drag on the stage */
+  const stage=$('#stage');let sx=0,sy=0,down=false;   stage.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;down=true;sx=e.clientX;sy=e.clientY});   stage.addEventListener('pointerup',e=>{     if(!down)return;down=false;     const dx=e.clientX-sx,dy=e.clientY-sy;     if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.4)go(i+(dx<0?1:-1));   });   stage.addEventListener('pointercancel',()=>{down=false});    warm(el,'.slide img');   return {go}; })(); /* hero list → open the matching step */ $$('[data-step]').forEach(a=>a.addEventListener('click',()=>process&&process.go(+a.dataset.step)));
+
+/* ---------- Work carousel ---------- */
+(()=>{
+  const track=$('#wTrack');if(!track)return;
+  const prev=$('#wPrev'),next=$('#wNext'),thumb=$('#wThumb'),cards=$$('.w-card',track);
+  const stepW=()=>(parseFloat(getComputedStyle(track).columnGap)||0)+cards[0].getBoundingClientRect().width;
+  const maxL=()=>Math.max(0,track.scrollWidth-track.clientWidth);
+  const idx=()=>Math.round(track.scrollLeft/stepW());
+  const to=k=>track.scrollTo({left:Math.max(0,Math.min(k*stepW(),maxL())),behavior:smooth});
+  let raf=0;
+  const paint=()=>{
+    raf=0;
+    const m=maxL(),l=track.scrollLeft,r=Math.min(1,track.clientWidth/track.scrollWidth);
+    thumb.style.width=(r*100)+'%';
+    thumb.style.transform='translateX('+(m>0?(l/m)*(1/r-1)*100:0)+'%)';
+    prev.setAttribute('aria-disabled',l<=2);
+    next.setAttribute('aria-disabled',l>=m-2);
+  };
+  const queue=()=>{if(!raf)raf=requestAnimationFrame(paint)};
+  prev.addEventListener('click',()=>to(idx()-1));
+  next.addEventListener('click',()=>to(idx()+1));
+  track.addEventListener('scroll',queue,{passive:true});
+  addEventListener('resize',queue);
+  track.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){e.preventDefault();to(idx()+1)}
+    else if(e.key==='ArrowLeft'){e.preventDefault();to(idx()-1)}
+  });
+
+  /* mouse drag (touch and trackpads already scroll natively with snapping) */
+  let drag=null;
+  track.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===0)drag={x:e.clientX,l:track.scrollLeft,moved:false}});
+  addEventListener('pointermove',e=>{
+    if(!drag)return;
+    const dx=e.clientX-drag.x;
+    if(!drag.moved&&Math.abs(dx)>4){drag.moved=true;track.classList.add('is-drag')}
+    if(drag.moved)track.scrollLeft=drag.l-dx;
+  });
+  const end=()=>{
+    if(!drag)return;
+    const moved=drag.moved;drag=null;
+    track.classList.remove('is-drag');
+    if(moved)to(idx());
+  };
+  addEventListener('pointerup',end);
+  addEventListener('pointercancel',end);
+
+  paint();
+  warm($('.car'),'.w-card img');
+})();
+
+/* ---------- Contact form → email ---------- */
 $('#inq').addEventListener('submit',e=>{
- e.preventDefault();const f=e.target;
- const body=`Name: ${f.n.value}\nEmail: ${f.e.value}\nNeed: ${f.s.value}\n\n${f.m.value}`;
- location.href='mailto:nvisco.pak@gmail.com?subject='+encodeURIComponent('Consultation request from '+f.n.value)+'&body='+encodeURIComponent(body);
+  e.preventDefault();
+  const d=new FormData(e.target);
+  const body=`Name: ${d.get('name')}\nEmail: ${d.get('email')}\nNeed: ${d.get('need')}\n\n${d.get('message')}`;
+  location.href='mailto:nvisco.pak@gmail.com?subject='+encodeURIComponent('Consultation request from '+d.get('name'))+'&body='+encodeURIComponent(body);
 });
+})();
 </script>
 </body>
 </html>
