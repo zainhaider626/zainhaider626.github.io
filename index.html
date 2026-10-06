@@ -9,10 +9,7 @@
 <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
 <meta name="author" content="Zain Haider">
 <meta name="theme-color" content="#f2f2ef">
-<meta property="og:type" content="website">
-<meta property="og:title" content="NVISCO — Your Excellence Partner">
-<meta property="og:description" content="PCB, CAD and firmware from idea to product-ready.">
-<meta property="og:image" content="https://nvisco.com/pcb.png">
+<meta property="og:type" content="website"><meta property="og:title" content="NVISCO — Your Excellence Partner"><meta property="og:description" content="PCB, CAD and firmware from idea to product-ready."><meta property="og:image" content="https://nvisco.com/pcb.png">
 <link rel="icon" href="favicon.png" sizes="192x192">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-84SH875DCC');</script>
@@ -26,6 +23,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Space Grotesk',sans-serif;background:#f2f2ef;color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
+/* soft white light background effect */
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(75vmax 55vmax at 78% var(--sy,8%),#fff 0%,rgba(255,255,255,0) 62%)}
 h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.015em;line-height:1.1}
 a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}button{font:inherit;color:inherit;cursor:pointer}
@@ -34,20 +32,25 @@ a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}butt
 section{padding:120px 0}
 .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:12px;z-index:200}.skip:focus{left:8px}
 
+/* Advanced Buttons */
 .btn{display:inline-block;padding:var(--bpy) var(--bpx);border-radius:999px;font-size:var(--bfs);font-weight:600;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:all .3s cubic-bezier(.25,1,.5,1);cursor:pointer}
 .btn:hover{background:transparent;color:var(--ink);transform:translateY(-2px)}
 .btn.line{background:transparent;color:var(--ink);border-color:#bdbdb8}.btn.line:hover{border-color:var(--ink);transform:translateY(-2px)}
 .bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:70}.bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left}
 
+/* Pulse Animation */
 @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(10,10,11,0.15); } 70% { box-shadow: 0 0 0 10px rgba(10,10,11,0); } 100% { box-shadow: 0 0 0 0 rgba(10,10,11,0); } }
 .pulse { animation: pulse-glow 2.5s infinite; }
 
+/* nav - Floating Thin Rounded on Scroll */
 .nav-wrapper { position: sticky; top: 0; z-index: 60; width: 100%; transition: all 0.4s cubic-bezier(.25,1,.5,1); padding: 0; background: rgba(242,242,239,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; }
 .nav-in { height: 72px; display: flex; align-items: center; justify-content: space-between; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
 
-.logo { display: block; font-family:'Playfair Display',serif; font-size: 24px; font-weight: 600; }
+/* Smart Logo Image Switching & Scaling */
+.logo { display: block; }
 .logo img { display: block; height: 34px; width: auto; transition: height 0.4s cubic-bezier(.25,1,.5,1); }
 
+/* Scrolled Nav overrides - Ultra Thin & Smart */
 .nav-wrapper.s { padding: 6px 24px; background: rgba(10,10,11,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); width: 90%; max-width: 1050px; margin: 12px auto 0 auto; border-radius: 999px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 .nav-wrapper.s .nav-in { height: 42px; }
 .nav-wrapper.s .logo img { height: 24px; }
@@ -72,6 +75,7 @@ nav.hide{transform:translateY(-150%)}
 .dd-menu button:hover{background:#f2f2ef;color:var(--ink)}
 .burger{display:none;background:none;border:1px solid #bdbdb8;border-radius:999px;padding:8px 16px;font-size:13px}
 
+/* hero */
 .hero{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);display:flex;align-items:flex-end;padding:96px 0 80px}
 .hero h1{font-size:clamp(46px,8.4vw,124px);max-width:11ch;margin-bottom:40px;animation:rise 1s cubic-bezier(.25,1,.5,1) both}
 .hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;animation:rise 1s cubic-bezier(.25,1,.5,1) .2s both}
@@ -79,12 +83,14 @@ nav.hide{transform:translateY(-150%)}
 .hero p b{color:var(--ink);font-weight:600}
 .acts{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
 
+/* Tech Logos Loop */
 .tech-logos { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
 .tech-logos img { height: 26px; filter: grayscale(100%) opacity(0.4); animation: colorPulse 5s infinite alternate ease-in-out; }
 .tech-logos img:nth-child(even) { animation-delay: 2.5s; }
 @keyframes colorPulse { 0%, 20% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } 50%, 70% { filter: grayscale(0%) opacity(1); transform: scale(1.05); } 100% { filter: grayscale(100%) opacity(0.4); transform: scale(1); } }
 @keyframes rise{from{opacity:0;transform:translateY(26px)}}
 
+/* ULTRA-THIN Scroll Banner with Dynamic Shine Animation */
 .premium-text-banner {
     background: linear-gradient(110deg, #050505 10%, #111114 40%, #2a2a30 50%, #111114 60%, #050505 90%);
     background-size: 300% 100%;
@@ -96,11 +102,25 @@ nav.hide{transform:translateY(-150%)}
     align-items: center;
     justify-content: center;
     text-align: center;
+    opacity: 0;
+    will-change: opacity, transform, background-position;
     border-top: 1px solid rgba(255,255,255,0.04);
     border-bottom: 1px solid rgba(255,255,255,0.04);
+    transform-origin: center center;
+    overflow: hidden;
 }
-@keyframes bgLightSweep { 0% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-.banner-micro { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.35em; color: #888; text-transform: uppercase; margin-bottom: 12px; }
+@keyframes bgLightSweep {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.banner-micro {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 12px; 
+}
 .banner-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(40px, 7vw, 96px);
@@ -115,10 +135,26 @@ nav.hide{transform:translateY(-150%)}
     margin-bottom: 6px;
     line-height: 1;
 }
-@keyframes metallicShimmer { to { background-position: -200% center; } }
-.banner-sub { font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: 0.4em; color: #999; text-transform: uppercase; margin-bottom: 16px; }
-.banner-footer { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.25em; color: #444; text-transform: uppercase; }
+@keyframes metallicShimmer {
+    to { background-position: -200% center; }
+}
+.banner-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 16px; 
+}
+.banner-footer {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #444;
+    text-transform: uppercase;
+}
 
+/* FAST-SCROLL story (Desktop) */
 .story{position:relative;height:calc(100vh + 5*35vh);padding:0;border-top:1px solid var(--line)}
 .pin{position:sticky;top:0;height:100vh;display:flex;align-items:center}
 .st-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;align-items:center;width:100%}
@@ -140,17 +176,19 @@ nav.hide{transform:translateY(-150%)}
     position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
     transform:scale(1.02); 
     transition:opacity .3s ease, transform .5s cubic-bezier(.25,1,.5,1); 
+    will-change: opacity, transform; 
 }
 .frame > *.on{opacity:1;transform:scale(1)}
 
+/* Idea Box Styling */
 .idea-box { background: #111; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px; border: 2px dashed #333; border-radius: 24px; }
 .idea-box h3 { font-size: clamp(24px, 3vw, 42px); color: #fff; font-family: 'Playfair Display', serif; font-style: italic; line-height: 1.4; font-weight: 500; }
 .blink-cursor { display: inline-block; width: 3px; height: 1em; background: #fff; vertical-align: text-bottom; margin-left: 6px; animation: blink 1s step-end infinite; }
-@keyframes blink { 50% { opacity: 0; } }
 
 .mob-img { display: none; }
 .ticks{display:none}
 
+/* Compact, Dense Modern Grid Work Section */
 .work{padding:100px 0;border-top:1px solid var(--line)}
 .work-top{margin-bottom:40px}
 .work-top h2{font-size:clamp(24px,3vw,36px)}
@@ -163,8 +201,9 @@ nav.hide{transform:translateY(-150%)}
 .w-card .cap h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15.5px; margin-bottom: 4px; }
 .w-card .cap p { color: var(--mute); font-size: 13px; max-width: 44ch; line-height: 1.5; }
 
+/* cta - Wrapped in a rounded card container above footer */
 .cta-wrapper { max-width: var(--w); margin: 0 auto; padding: 0 28px 100px 28px; }
-.cta{background:#050505;color:#fff;padding:100px 60px; border-radius: 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.25); position: relative;}
+.cta{background:#050505;color:#fff;padding:100px 60px; border-radius: 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.25); overflow: relative;}
 .cta video{grid-area:vid;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;background:#111;box-shadow:0 20px 50px rgba(0,0,0,0.4);}
 .copy{grid-area:copy}
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"copy vid" "form vid";gap:24px 64px;align-items:center}
@@ -177,10 +216,10 @@ nav.hide{transform:translateY(-150%)}
 .form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:#fff}
 .form textarea{min-height:110px;resize:vertical}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form .btn{background:#fff;color:#000;border-color:#fff;font-size:14.5px;padding:14px 24px;border-radius:12px;}
-.form .btn:hover{background:transparent;color:#fff}
+.form .btn{background:#fff;color:#000;border-color:#fff;font-size:14.5px;padding:14px 24px;border-radius:12px;}.form .btn:hover{background:transparent;color:#fff}
 .form small{color:#85858a;font-size:13px}
 
+/* footer */
 footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0 32px}
 .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
 .f-brand p{color:#85858a;font-size:14px;max-width:32ch}
@@ -190,12 +229,14 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .f-bar{border-top:1px solid #1c1c1f;padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#66666b}
 .f-bar div{display:flex;gap:24px;flex-wrap:wrap}.f-bar button{background:none;border:0;font-size:13px;color:#66666b}.f-bar button:hover{color:#fff}
 
+/* SHINING BLACK MODALS */
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
 .ov.on{display:flex}
 .box{background:linear-gradient(160deg, #1e1e22 0%, #0a0a0b 100%); border:1px solid rgba(255,255,255,0.1); border-radius:24px; width:100%; position:relative; box-shadow:0 40px 100px rgba(0,0,0,.9), inset 0 2px 4px rgba(255,255,255,0.05);}
 .close{position:absolute;top:20px;right:24px;background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:24px; color:#aaa; z-index:10; transition:all .2s;}
 .close:hover{color:#fff; background:rgba(255,255,255,0.1);}
 
+/* Policy Modal Specifics */
 .pol{max-width:960px;max-height:85vh;display:grid;grid-template-columns:280px 1fr;overflow:hidden;}
 .pol-nav{background:rgba(0,0,0,0.4);padding:32px 16px;overflow-y:auto;border-right:1px solid rgba(255,255,255,0.05)}
 .pol-nav button{display:flex;align-items:center;width:100%;text-align:left;background:none;border:0;padding:14px 16px;border-radius:12px;font-size:14.5px;font-weight:500;color:#777;transition:all .2s;}
@@ -211,6 +252,7 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .pol-content{color:#bbb;font-size:15px;line-height:1.8;}
 .pol-content strong{color:#fff; font-weight:600;}
 
+/* About Modal Specifics */
 .about{max-width:720px;padding:56px;display:flex;gap:48px;align-items:center}
 .about img{width:200px;height:200px;border-radius:24px;object-fit:cover;flex-shrink:0; border:1px solid rgba(255,255,255,0.1); box-shadow:0 20px 40px rgba(0,0,0,0.5);}
 .about-info h2{font-size:36px;margin-bottom:16px; color:#fff; font-family:'Playfair Display', serif;}
@@ -219,269 +261,433 @@ footer{background:#050505;color:#fff;border-top:1px solid #1c1c1f;padding:88px 0
 .about .soc a{color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:2px; transition:border-color .2s;}
 .about .soc a:hover{border-color:#fff;}
 
+/* Custom Scrollbars */
 .box ::-webkit-scrollbar { width: 8px; height: 8px; }
 .box ::-webkit-scrollbar-track { background: transparent; }
 .box ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 .box ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-/* COMPLETED MEDIA QUERY FOR MOBILE */
 @media(max-width:960px){
-    section{padding:84px 0}
-    .wrap{padding:0 22px}
-    :root{--gut:22px}
-    .burger{display:block}
-    .nav-wrapper.s { width: 94%; padding: 8px 20px; }
-    .nav-wrapper.s .nav-in { height: 40px; }
-    
-    .logo img { height: 30px; }
-    .nav-wrapper.s .logo img { height: 20px; }
-    
-    .links{position:absolute;top:100%;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05); margin-top: 12px; border-radius: 12px;}
-    .nav-wrapper.s .links { background: #111; border-color: rgba(255,255,255,0.1); margin-top: 16px;}
-    .links.open{display:flex}
-    .links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:15px;}
-    .nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { border-bottom-color: rgba(255,255,255,0.1); }
-    .links a:not(.btn)::after,.dd>button::after{display:none}
-    .links .btn{margin-top:20px;text-align:center;padding:14px;font-size:14.5px;}
-    .dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
-    .hero{padding:56px 0 56px}
-    .hero h1{margin-bottom:30px}
-    .hero-row{gap:28px}
-    .acts .btn{flex:1;text-align:center}
-    
-    .premium-text-banner { padding: 24px 20px; }
-    
-    .story { height: auto !important; padding: 60px 0; }
-    .pin { position: static !important; height: auto !important; display: block; }
-    .st-grid { display: flex; flex-direction: column; gap: 32px; }
-    .st-grid h2 { display: block; font-size: 32px; }
-    
-    /* Hide desktop frame, show mobile layouts */
-    .frame { display: none; }
-    .mob-img { display: block; width: 100%; height: auto; border-radius: 12px; margin-top: 16px; }
-    
-    .work-grid-modern { grid-template-columns: 1fr 1fr; }
-    
-    .cta-grid { grid-template-columns: 1fr; grid-template-areas: "copy" "vid" "form"; gap: 32px; }
-    .cta { padding: 60px 30px; border-radius: 24px; }
-    .form .two { grid-template-columns: 1fr; }
-    
-    .f-grid { grid-template-columns: 1fr; gap: 36px; }
-    .about { flex-direction: column; text-align: center; padding: 32px; }
-}
+section{padding:84px 0}.wrap{padding:0 22px}:root{--gut:22px}
+.burger{display:block}
+.nav-wrapper.s { width: 94%; padding: 8px 20px; }
+.nav-wrapper.s .nav-in { height: 40px; }
 
-@media(max-width:600px) {
-    .work-grid-modern { grid-template-columns: 1fr; }
+/* Mobile Logo Sizing adjustments */
+.logo img { height: 30px; }
+.nav-wrapper.s .logo img { height: 20px; }
+
+.links{position:absolute;top:100%;left:0;right:0;background:#f2f2ef;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 22px 22px;display:none;box-shadow:0 10px 20px rgba(0,0,0,0.05); margin-top: 12px; border-radius: 12px;}
+.nav-wrapper.s .links { background: #111; border-color: rgba(255,255,255,0.1); margin-top: 16px;}
+.links.open{display:flex}
+.links a:not(.btn),.dd>button{padding:16px 0;width:100%;text-align:left;border-bottom:1px solid var(--line);font-size:15px;}
+.nav-wrapper.s .links a:not(.btn), .nav-wrapper.s .dd>button { border-bottom-color: rgba(255,255,255,0.1); }
+.links a:not(.btn)::after,.dd>button::after{display:none}
+.links .btn{margin-top:20px;text-align:center;padding:14px;font-size:14.5px;}
+.dd-menu{position:static;box-shadow:none;border:0;background:none;padding:0 0 0 16px}
+.hero{padding:56px 0 56px}.hero h1{margin-bottom:30px}.hero-row{gap:28px}.acts .btn{flex:1;text-align:center}
+
+.premium-text-banner { padding: 24px 20px; } /* Ultra-thin on mobile too */
+
+/* Mobile Accordion Logic */
+.story { height: auto !important; padding: 60px 0; }
+.pin { position: static !important; height: auto !important; display: block; }
+.st-grid { display: flex; flex-direction: column; gap: 32px; }
+.st-grid h2 { display: block; font-size: 32px; margin-bottom: 8px; }
+.frame { display: none !important; }
+.ticks { display: none !important; }
+#items { display: flex; flex-direction: column; gap: 16px; }
+.st-item { display: flex !important; flex-direction: column; border: 1px solid var(--line); border-radius: 20px; padding: 24px; background: #fff; opacity: 1 !important; color: var(--ink); cursor: pointer; transition: border-color .3s; }
+.st-item:hover { border-color: var(--ink); }
+.st-header { cursor: pointer; }
+.st-item .d { padding-left: 0; }
+.st-item .d p { max-width: 100%; padding-top: 12px; color: var(--mute); }
+
+/* Rotating Pin */
+.toggle-pin { display: block; width: 24px; height: 24px; position: relative; transition: transform 0.5s cubic-bezier(.25,1,.5,1); }
+.toggle-pin::before, .toggle-pin::after { content: ''; position: absolute; background: var(--ink); top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 2px; }
+.toggle-pin::before { width: 14px; height: 2px; }
+.toggle-pin::after { width: 2px; height: 14px; }
+.st-item.on .toggle-pin { transform: rotate(135deg); }
+
+.mob-img { display: none; width: 100%; border-radius: 16px; margin-top: 24px; aspect-ratio: 4/3; object-fit: cover; background: #111; }
+.st-item.on .mob-img { display: flex; } 
+.st-item.on video.mob-img { display: block; }
+
+.work{padding:60px 0}
+.work-grid-modern { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+.cta-wrapper { padding: 0 16px 60px 16px; }
+.cta{padding:48px 24px; border-radius: 24px; }
+.cta-grid{grid-template-columns:1fr;grid-template-areas:"copy" "vid" "form";gap:32px}
+.f-grid{grid-template-columns:1fr 1fr;gap:40px}.f-brand{grid-column:1/-1}
+
+/* Mobile Modal Adjustments */
+.pol{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+.pol-nav{display:flex;overflow-x:auto;padding:16px 24px;border-right:0;border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(0,0,0,0.2);}
+.pol-nav button{white-space:nowrap;width:auto;padding:10px 16px;}
+.pol-body{padding:32px 24px}
+.pol-header h2{font-size:28px;}
+.about{flex-direction:column;text-align:center;padding:40px 24px; gap:32px;}
+.about img{width:160px; height:160px;}
+.about .soc{justify-content:center;}
+.close{top:12px; right:12px; width:36px; height:36px; font-size:20px;}
 }
+@media(max-width:560px){
+.form .two{grid-template-columns:1fr}
+.work-grid-modern { grid-template-columns: 1fr; gap: 32px; }
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+<a href="#story" class="skip">Skip to content</a>
+<div class="bar"><i id="bar"></i></div>
 
-    <!-- NAVIGATION -->
-    <div class="nav-wrapper" id="nav">
-        <nav class="nav-in wrap">
-            <a href="#" class="logo">NVISCO</a>
-            <div class="links" id="links">
-                <a href="#services">Services</a>
-                <a href="#work">Work</a>
-                <button class="burger" onclick="document.getElementById('links').classList.toggle('open')">Menu</button>
-            </div>
-            <a href="#contact" class="btn">Get in touch</a>
-        </nav>
+<div class="nav-wrapper" id="navWrapper">
+<nav class="wrap nav-in" style="max-width:100%; padding:0;">
+<a href="#" class="logo" aria-label="Nvisco home">
+    <img src="favicon.png" alt="NVISCO Icon">
+</a>
+<button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="links">Menu</button>
+<div class="links" id="links">
+<a href="#story">Process</a>
+<a href="#work">Work</a>
+<a href="#" id="aboutBtn">About</a>
+<div class="dd" id="dd"><button id="ddBtn" aria-haspopup="true" aria-expanded="false">Policies</button><div class="dd-menu" id="ddMenu"></div></div>
+<a href="#contact" class="btn pulse">Free consultation</a>
+</div>
+</nav>
+</div>
+
+<main>
+<header class="hero">
+<div class="wrap">
+<h1>Precision hardware, engineered without compromise.</h1>
+<div class="hero-row">
+<div>
+    <p><b>Nvisco, your excellence partner.</b> One team takes your idea to a product-ready design.</p>
+    <div class="acts">
+        <a href="#contact" class="btn pulse">Free consultation</a>
+        <a href="#story" class="btn line">See the process</a>
     </div>
-
-    <!-- HERO SECTION -->
-    <header class="hero wrap">
-        <div>
-            <h1>Hardware,<br>Perfected.</h1>
-            <div class="hero-row">
-                <p>Nvisco is your engineering partner for intelligent systems. <b>PCB design, parametric CAD, and embedded firmware</b> from idea to product-ready.</p>
-                <div class="acts">
-                    <a href="#contact" class="btn pulse">Start a Project</a>
-                    <a href="#work" class="btn line">View Portfolio</a>
-                </div>
-            </div>
-            <div class="tech-logos">
-                <!-- Add actual src to tech logos later if needed -->
-                <span style="font-family: 'IBM Plex Mono', monospace; color: var(--mute); font-size: 12px;">POWERED BY CORTEX-M, FUSION 360 & ALTIUM</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- PREMIUM BANNER -->
-    <div class="premium-text-banner">
-        <div class="banner-micro">Precision Engineering</div>
-        <div class="banner-title">INTELLIGENT SYSTEMS</div>
-        <div class="banner-sub">Robotics • IoT • Automation</div>
+    
+    <!-- Seamless Animated Tech Logos Loop -->
+    <div class="tech-logos">
+        <img src="https://cdn.simpleicons.org/kicad" alt="KiCad" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/python" alt="Python" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/arduino" alt="Arduino" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/ros" alt="ROS" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/siemens" alt="Siemens" loading="lazy" decoding="async">
+        <img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" loading="lazy" decoding="async">
     </div>
+</div>
+</div>
+</div>
+</header>
 
-    <!-- STORY / CAPABILITIES -->
-    <section class="story wrap" id="services">
-        <div class="pin">
-            <div class="st-grid">
-                <div>
-                    <h2>Our Core Capabilities</h2>
-                    
-                    <div class="st-item on">
-                        <div class="st-header">
-                            <span>01</span>
-                            <h3>PCB Design</h3>
-                        </div>
-                        <div class="d"><p>High-speed, multi-layer rigid and flex PCB routing (up to 22 layers), impedance control, and DFM optimization for mass manufacturing.</p></div>
-                    </div>
+<!-- Smooth Scrolling Premium Banner with Faster Metallic Animation -->
+<div class="premium-text-banner" id="scrollBanner">
+    <div class="banner-micro">Your Vision. Our Engineering.</div>
+    <div class="banner-title">NVISCO</div>
+    <div class="banner-sub">Excellence Partner</div>
+    <div class="banner-footer">Hardware / Robotics / Automation</div>
+</div>
 
-                    <div class="st-item">
-                        <div class="st-header">
-                            <span>02</span>
-                            <h3>Embedded Firmware</h3>
-                        </div>
-                        <div class="d"><p>Bare-metal and RTOS firmware for ARM Cortex-M microcontrollers. Reliable, power-efficient code for robotics and IoT devices.</p></div>
-                    </div>
+<section class="story" id="story" aria-label="From idea to product-ready">
+<div class="pin"><div class="wrap st-grid">
+<div>
+<h2>From idea to product-ready</h2>
+<div id="items">
 
-                    <div class="st-item">
-                        <div class="st-header">
-                            <span>03</span>
-                            <h3>Parametric CAD</h3>
-                        </div>
-                        <div class="d"><p>Enclosures, mechanical linkages, and thermal management designed for 3D printing, CNC machining, and injection molding.</p></div>
-                    </div>
-                </div>
+<!-- Step 1: Idea (Contains the new Idea Box) -->
+<div class="st-item on" onclick="toggleMobStage(0)">
+    <div class="st-header">
+        <span>01</span>
+        <h3>Idea</h3>
+        <div class="toggle-pin"></div>
+    </div>
+    <div class="d"><p>A free consultation turns your concept into a clear scope.</p></div>
+    <div class="mob-img idea-box"><h3>"I have an idea, and I want you to build..."<span class="blink-cursor"></span></h3></div>
+</div>
 
-                <!-- Desktop Visual Frame -->
-                <div class="frame">
-                    <div class="idea-box on">
-                        <h3>Design.<br>Iterate.<br>Build.<span class="blink-cursor"></span></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Step 2: PCB -->
+<div class="st-item" onclick="toggleMobStage(1)">
+    <div class="st-header">
+        <span>02</span>
+        <h3>Electronic design</h3>
+        <div class="toggle-pin"></div>
+    </div>
+    <div class="d"><p>Schematics and high-density PCB layout up to 22 layers.</p></div>
+    <img class="mob-img" src="pcb11.jpg" alt="Electronic Design" loading="lazy" decoding="async">
+</div>
 
-    <!-- WORK / PORTFOLIO -->
-    <section class="work wrap" id="work">
-        <div class="work-top">
-            <h2>Recent Hardware</h2>
-        </div>
-        <div class="work-grid-modern">
-            <div class="w-card">
-                <div class="m"><div style="background:#222;width:100%;height:100%;"></div></div>
-                <div class="cap">
-                    <h3>IoT Gateway PCB</h3>
-                    <p>8-layer impedance controlled board with cellular and Wi-Fi.</p>
-                </div>
-            </div>
-            <div class="w-card">
-                <div class="m"><div style="background:#222;width:100%;height:100%;"></div></div>
-                <div class="cap">
-                    <h3>Robotic Actuator</h3>
-                    <p>Custom BLDC motor controller and machined aluminum housing.</p>
-                </div>
-            </div>
-            <div class="w-card">
-                <div class="m"><div style="background:#222;width:100%;height:100%;"></div></div>
-                <div class="cap">
-                    <h3>Wearable Tracker</h3>
-                    <p>Ultra-low power flex-rigid PCB design with BLE 5.0.</p>
-                </div>
-            </div>
-            <div class="w-card">
-                <div class="m"><div style="background:#222;width:100%;height:100%;"></div></div>
-                <div class="cap">
-                    <h3>Industrial Sensor Node</h3>
-                    <p>IP67 parametric enclosure and ruggedized sensing unit.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Step 3: CAD -->
+<div class="st-item" onclick="toggleMobStage(2)">
+    <div class="st-header">
+        <span>03</span>
+        <h3>Mechanical design</h3>
+        <div class="toggle-pin"></div>
+    </div>
+    <div class="d"><p>Parametric CAD for your product and its enclosure.</p></div>
+    <img class="mob-img" src="cad11.png" alt="Mechanical Design" loading="lazy" decoding="async">
+</div>
 
-    <!-- CTA / CONTACT FORM -->
-    <div class="cta-wrapper" id="contact">
-        <div class="cta">
-            <div class="cta-grid">
-                <div class="copy">
-                    <h2>Let's Build It.</h2>
-                    <p class="lead">From initial schematic to finalized enclosure, we bring hardware ideas to reality.</p>
-                </div>
-                
-                <!-- THE CORRECTED MAILTO FORM -->
-                <!-- The action attribute opens the default mail client securely formatted to nvisco.pak@gmail.com -->
-                <form class="form" action="mailto:nvisco.pak@gmail.com" method="POST" enctype="text/plain">
-                    <div class="two">
-                        <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="text" name="Company" placeholder="Company (Optional)">
-                    </div>
-                    <select name="Service">
-                        <option value="" disabled selected>What do you need?</option>
-                        <option value="PCB Design">PCB Design</option>
-                        <option value="Firmware">Embedded Firmware</option>
-                        <option value="Mechanical CAD">Mechanical CAD</option>
-                        <option value="Full System">Full System Design</option>
-                    </select>
-                    <textarea name="Project Details" placeholder="Tell us about your project requirements..." required></textarea>
-                    
-                    <button type="submit" class="btn">Send via Email Client</button>
-                    <small>Message goes directly to <b>nvisco.pak@gmail.com</b></small>
-                </form>
+<!-- Step 4: Firmware -->
+<div class="st-item" onclick="toggleMobStage(3)">
+    <div class="st-header">
+        <span>04</span>
+        <h3>Firmware</h3>
+        <div class="toggle-pin"></div>
+    </div>
+    <div class="d"><p>Embedded code written for your exact hardware.</p></div>
+    <img class="mob-img" src="firm11.jpg" alt="Firmware" loading="lazy" decoding="async">
+</div>
+
+<!-- Step 5: Engineering -->
+<div class="st-item" onclick="toggleMobStage(4)">
+    <div class="st-header">
+        <span>05</span>
+        <h3>Engineering</h3>
+        <div class="toggle-pin"></div>
+    </div>
+    <div class="d"><p>Integration, testing and validation on real hardware.</p></div>
+    <img class="mob-img" src="CAD_WELD.jpg" alt="Engineering Testing" loading="lazy" decoding="async">
+</div>
+
+<!-- Step 6: Product Ready (Image: po9.webp) -->
+<div class="st-item" onclick="toggleMobStage(5)">
+    <div class="st-header">
+        <span>06</span>
+        <h3>Product ready</h3>
+        <div class="toggle-pin"></div>
+    </div>
+    <div class="d"><p>Validated files, handed over to scale and launch.</p></div>
+    <img class="mob-img" src="po9.webp" alt="Finished hardware" loading="lazy" decoding="async">
+</div>
+
+</div>
+<div class="ticks" id="ticks"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<!-- Desktop Sticky Frame -->
+<div class="frame" id="frame">
+<div class="idea-box on"><h3>"I have an idea, and I want you to build..."<span class="blink-cursor"></span></h3></div>
+<img src="pcb11.jpg" alt="High-density PCB layout" width="1200" height="900" loading="lazy" decoding="async">
+<img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" loading="lazy" decoding="async">
+<img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" loading="lazy" decoding="async">
+<img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" loading="lazy" decoding="async">
+<img src="po9.webp" alt="Finished, product-ready hardware" width="1200" height="900" loading="lazy" decoding="async">
+</div>
+</div></div>
+</section>
+
+<!-- Modern 4-Column Dense Grid -->
+<section class="work" id="work">
+<div class="wrap">
+<div class="work-top">
+<h2>Selected work</h2>
+</div>
+<div class="work-grid-modern">
+    <article class="w-card">
+        <div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po2.webp" alt="Unified Systems" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po8.png" alt="Edge AI Processing" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="pcb.png" alt="Complex Layer Routing" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><video src="159021-818026286.mp4" autoplay muted loop playsinline aria-label="Industrial machinery in operation"></video></div>
+        <div class="cap"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="cad12.png" alt="Mechanical Enclosures" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div>
+    </article>
+    <article class="w-card">
+        <div class="m"><img src="po14.jpg" alt="IoT Connectivity" loading="lazy" decoding="async"></div>
+        <div class="cap"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div>
+    </article>
+</div>
+</div>
+</section>
+
+<!-- Rounded Card Container for CTA above footer -->
+<div class="cta-wrapper">
+<section class="cta" id="contact">
+<div class="wrap cta-grid" style="max-width:100%; padding:0;">
+<div class="copy"><h2>Let's build what's next.</h2><p class="lead">Free consultation. We can sign an NDA before you share anything.</p></div>
+<video src="cadd.mp4" muted autoplay loop playsinline aria-label="Nvisco hardware showcase"></video>
+<form class="form" id="inq">
+<div class="two"><input name="n" placeholder="Your name" required aria-label="Your name" autocomplete="name"><input name="e" type="email" placeholder="Email" required aria-label="Email" autocomplete="email"></div>
+<select name="s" aria-label="What do you need"><option>Full product, idea to launch</option><option>Electronic design</option><option>Mechanical design</option><option>Firmware</option></select>
+<textarea name="m" placeholder="Describe your idea" required aria-label="Your idea"></textarea>
+<button class="btn pulse" type="submit">Request free consultation</button>
+<small>This opens your email app with the details filled in.</small>
+</form>
+</div>
+</section>
+</div>
+</main>
+
+<footer>
+<div class="wrap">
+<div class="f-grid">
+<div class="f-col f-brand">
+    <img src="nvisco-logo.png" alt="NVISCO" style="height:24px; filter:invert(1); transform:scale(2.2); transform-origin:left center; margin-bottom:22px; display:block;">
+    <p>Your excellence partner. Intelligent systems, robotics and hardware design.</p>
+</div>
+<div class="f-col"><h4>Company</h4><a href="#story">Process</a><a href="#work">Work</a><button data-about>About the founder</button></div>
+<div class="f-col"><h4>Connect</h4><a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a><a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a></div>
+<div class="f-col"><h4>Office</h4><a style="pointer-events:none">Mandi Bahauddin<br>Punjab, Pakistan</a></div>
+</div>
+<div class="f-bar"><span>&copy; <span id="yr">2026</span> Nvisco. All rights reserved.</span><div id="fPol"></div></div>
+</div>
+</footer>
+
+<div class="ov" id="polOv" role="dialog" aria-modal="true" aria-label="Policies"><div class="box pol"><button class="close" data-close aria-label="Close">&times;</button><div class="pol-nav" id="polNav"></div><div class="pol-body" id="polBody"></div></div></div>
+<div class="ov" id="aboutOv" role="dialog" aria-modal="true" aria-label="About">
+    <div class="box about">
+        <button class="close" data-close aria-label="Close">&times;</button>
+        <img src="unnamed.jpg" alt="Zain Haider" loading="lazy" decoding="async">
+        <div class="about-info">
+            <h2>I'm Zain Haider</h2>
+            <p>I am a multidisciplinary innovator and systems architect, bridging the gap between visionary concepts and tangible, high-performance products.</p>
+            <div class="soc">
+                <a href="https://www.linkedin.com/in/zain-haider-26a133314" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/zainhaider626" target="_blank" rel="noopener">GitHub</a>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="wrap">
-            <div class="f-grid">
-                <div class="f-brand">
-                    <h3 style="font-size:24px; margin-bottom:16px;">NVISCO</h3>
-                    <p>Your Excellence Partner in Hardware Engineering. Based in Pakistan, designing for the world.</p>
-                </div>
-                
-                <div class="f-col">
-                    <h4>Contact Us</h4>
-                    <!-- DIRECT MAILTO LINK ADDED HERE -->
-                    <a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a>
-                    <p style="color:#85858a; font-size:14px; margin-top:8px;">Punjab, Pakistan</p>
-                </div>
-                
-                <div class="f-col">
-                    <h4>Services</h4>
-                    <a href="#services">PCB Layout</a>
-                    <a href="#services">Firmware Development</a>
-                    <a href="#services">Parametric CAD</a>
-                </div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s),scrollBanner=$('#scrollBanner');
+$('#yr').textContent=new Date().getFullYear();  /* Policies */ const P={ "Privacy Policy":"We collect only what you send us, such as your name, email and project details, to reply to enquiries and deliver services. We do not sell your data. We use Google Analytics for anonymous traffic statistics. To access or delete your data, email nvisco.pak@gmail.com.", "Terms of Service":"By engaging Nvisco you agree to the scope, milestones and fees in the written proposal for your project. Timelines depend on timely client feedback. Services are engineering design; manufacturing results depend on the fabricators and components you choose.", "Non-Disclosure (NDA)":"On request we sign a mutual NDA before you share proprietary ideas. Project files, schematics and business details are kept confidential and used only for your project, including after it ends.", "Intellectual Property":"You own the final deliverables once payment is complete. Nvisco keeps ownership of its pre-existing tools and methods and licenses them to you for use in your product. We do not show your work publicly without written consent.", "Payment & Refund":"Projects are billed by milestone as agreed in the proposal. Delivered work is non-refundable. If we cannot deliver an agreed milestone, its unused portion is refunded. The first consultation is free.", "Cookie Policy":"This site uses cookies only for analytics and basic function. You can block or delete them in your browser settings; the site works normally without them.", "Disclaimer":"Information on this site is general. Designs are provided as engineering services, and clients are responsible for compliance testing and certification (such as CE, FCC or safety approvals) of their final product." }; const names=Object.keys(P); let lastFocus; function openOv(el){lastFocus=document.activeElement;el.classList.add('on');(el.querySelector('.close')).focus()} function closeOv(){$$('.ov.on').forEach(o=>o.classList.remove('on'));lastFocus&&lastFocus.focus()}
+function openPol(n){
+ $('#polNav').innerHTML=names.map((k, i)=>{
+    const num = String(i + 1).padStart(2, '0');
+    return `<button class="${k===n?'on':''}" data-p="${k}"><span class="num">${num}</span> ${k}</button>`;
+ }).join('');
+ 
+ $('#polBody').innerHTML=`
+    <div class="pol-header">
+        <span class="tag">Nvisco Terms of Engagement</span>
+        <h2>${n}</h2>
+        <small>Last updated ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</small>
+    </div>
+    <div class="pol-content">
+        <p>${P[n]}</p>
+        <p style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05);">For legal inquiries, contact <a href="mailto:nvisco.pak@gmail.com" style="color:#fff; text-decoration:underline;">nvisco.pak@gmail.com</a>.</p>
+    </div>
+ `;
+ if(!$('#polOv').classList.contains('on'))openOv($('#polOv'));$('#polBody').scrollTop=0;
+}
+$('#ddMenu').innerHTML=names.map(k=>`<button data-p="${k}">${k}</button>`).join('');
+$('#fPol').innerHTML=names.slice(0,4).map(k=>`<button data-p="${k}">${k}</button>`).join('');
+const links=$('#links'),burger=$('#burger'),dd=$('#dd');
+function menu(o){links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)}
+burger.onclick=()=>menu(!links.classList.contains('open'));
+document.addEventListener('click',e=>{
+ const p=e.target.closest('[data-p]');
+ if(p){dd.classList.remove('open');menu(false);openPol(p.dataset.p);return}
+ if(e.target.closest('#ddBtn')){const o=dd.classList.toggle('open');$('#ddBtn').setAttribute('aria-expanded',o);return}
+ if(!e.target.closest('#dd'))dd.classList.remove('open');
+ if(e.target.closest('#aboutBtn,[data-about]')){e.preventDefault();menu(false);openOv($('#aboutOv'))}
+ if(e.target.closest('[data-close]')||e.target.classList.contains('ov'))closeOv();
+ if(e.target.closest('#links a[href^="#"]:not(#aboutBtn)'))menu(false);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOv();dd.classList.remove('open')}});
 
-                <div class="f-col">
-                    <h4>Social</h4>
-                    <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">GitHub</a>
-                </div>
-            </div>
-            
-            <div class="f-bar">
-                <p>&copy; 2024 Nvisco. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+/* story: scroll & click drives the active stage & handles video playback ONLY on desktop */
+const story=$('#story'),items=$$('.st-item'),imgs=$$('#frame > *'),ticks=$$('#ticks i');
+let cur=0;
+function setStage(i){
+    if(i===cur) return;
+    cur=i;
+    [items,imgs,ticks].forEach(l=>l.forEach((x,k)=>{
+        const isOn = (k === i);
+        x.classList.toggle('on', isOn);
+        if (x.tagName === 'VIDEO') {
+            if (isOn) { x.play().catch(()=>{}); } 
+            else { x.pause(); x.currentTime = 0; }
+        }
+    }));
+}
 
-    <!-- SCRIPTS -->
-    <script>
-        // Shrink nav on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('s');
-            } else {
-                nav.classList.remove('s');
-            }
-        });
+/* Mobile Toggle Click Logic for Accordion */
+function toggleMobStage(index) {
+    if(window.innerWidth > 960) return;
+    const item = items[index];
+    const isOn = item.classList.contains('on');
+    
+    items.forEach((i, k) => {
+        i.classList.remove('on');
+        const v = i.querySelector('video.mob-img');
+        if(v) { v.pause(); v.currentTime = 0; }
+    });
+    
+    if(!isOn) {
+        item.classList.add('on');
+        const v = item.querySelector('video.mob-img');
+        if(v) v.play().catch(()=>{});
+    }
+}
 
-        // Simple accordion logic for services
-        const items = document.querySelectorAll('.st-item');
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                items.forEach(i => i.classList.remove('on'));
-                item.classList.add('on');
-            });
-        });
-    </script>
+const bar=$('#bar'),navW=$('#navWrapper'),root=document.documentElement;
+let tick=false,lastY=0;
+function onScroll(){
+ const y=scrollY,h=root.scrollHeight-innerHeight,p=h>0?y/h:0;
+ bar.style.transform=`scaleX(${p})`;
+ navW.classList.toggle('s',y>40);
+ navW.classList.toggle('hide',y>320&&y>lastY&&!links.classList.contains('open'));lastY=y;
+ 
+ if(window.innerWidth > 960) {
+    /* Adjusted scroll math for the faster, reduced-height sticky section */
+    const r=story.getBoundingClientRect(),span=r.height-innerHeight;
+    if(r.top<=0&&span>0)setStage(Math.min(5,Math.max(0,Math.floor(-r.top/span*6))));else if(r.top>0)setStage(0);
+ }
+
+ // Scroll Banner Fade Math - Subtle Scaling Animation
+ if(scrollBanner) {
+    const rect = scrollBanner.getBoundingClientRect();
+    const wh = window.innerHeight;
+    const center = rect.top + rect.height / 2;
+    const dist = Math.abs(wh / 2 - center);
+    const fadeThreshold = wh / 1.2;
+    let op = 1 - (dist / fadeThreshold);
+    op = Math.max(0, Math.min(1, op * 2)); 
+    scrollBanner.style.opacity = op.toFixed(2);
+    
+    let scale = 0.95 + (op * 0.05);
+    scrollBanner.style.transform = `scale(${scale.toFixed(3)})`;
+ }
+
+ tick=false;
+}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+addEventListener('resize',onScroll);onScroll();
+
+/* form -> email */
+$('#inq').addEventListener('submit',e=>{
+ e.preventDefault();const f=e.target;
+ const body=`Name: ${f.n.value}\nEmail: ${f.e.value}\nNeed: ${f.s.value}\n\n${f.m.value}`;
+ location.href='mailto:nvisco.pak@gmail.com?subject='+encodeURIComponent('Consultation request from '+f.n.value)+'&body='+encodeURIComponent(body);
+});
+</script>
 </body>
 </html>
