@@ -19,13 +19,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.simpleicons.org">
 
-<!-- Preload critical poster images for zero delay -->
+<!-- Preload critical poster images for zero visual delay -->
 <link rel="preload" as="image" href="pcb_board.gif">
 <link rel="preload" as="image" href="cad11.png">
-
-<!-- Preload videos -->
-<link rel="preload" as="video" href="pcb_board.mp4" type="video/mp4">
-<link rel="preload" as="video" href="cadd.mp4" type="video/mp4">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap">
 <style>
@@ -116,7 +112,7 @@ ul,ol{list-style:none}
 .set{display:flex;flex-wrap:wrap;align-items:center;gap:12px 44px;padding-right:44px}
 .is-live .marquee-track{width:max-content;animation:marquee 30s linear infinite;will-change:transform}
 .is-live .set{flex-wrap:nowrap}
-.marquee:hover .marquee-track{animation-play-state:paused}
+/* Animation play state is NO LONGER paused on hover to ensure smooth continuous running */
 @keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 .logo{display:grid;place-items:center;height:44px}
 
@@ -329,6 +325,20 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
   .card{flex-direction:column;text-align:center}
   .card img{width:150px;height:150px}
   .soc{justify-content:center}
+  
+  /* Make Engineering Standards 'merged' like a single block on mobile */
+  .std-list {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    gap: 0;
+  }
+  .std-item {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .std-item:last-child { border-bottom: none; }
 }
 @media (max-width:640px){
   .hero{padding-top:calc(var(--nav-h) + 12px + 28px)}
@@ -407,9 +417,6 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
       <div class="marquee-track">
         <ul class="set">
           <li class="logo"><img src="https://cdn.simpleicons.org/kicad" alt="KiCad"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium Designer"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/autodesk" alt="Autodesk"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/solidworks" alt="SolidWorks"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/python" alt="Python"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/cplusplus" alt="C++"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/c" alt="C"></li>
@@ -422,6 +429,7 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
           <li class="logo"><img src="https://cdn.simpleicons.org/docker" alt="Docker"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/linux" alt="Linux"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/siemens" alt="Siemens"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/git" alt="Git"></li>
         </ul>
       </div>
     </div>
@@ -810,6 +818,15 @@ function goStd(id){
   setTimeout(()=>$('summary',el).focus({preventScroll:true}),reduce?0:450);
 }
 
+/* Logic for Mobile Engineering Standards Exclusive Accordion */
+$$('.std-item').forEach(det => {   det.addEventListener('toggle', () => {     if (det.open && window.innerWidth <= 960) {       $$
+('.std-item').forEach(other => {
+        if (other !== det) other.open = false;
+      });
+    }
+  });
+});
+
 /* ---------- Navigation ---------- */
 const nav=$('#nav'),links=$('#links'),burger=$('#burger');  let nraf=0;  const navState=()=>{nraf=0;nav.classList.toggle('is-scrolled',scrollY>24)};  addEventListener('scroll',()=>{if(!nraf)nraf=requestAnimationFrame(navState)},{passive:true});navState();  const setMenu=o=>{links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.textContent=o?'Close':'Menu'};  const closeDD=except=>$$('.dd.open').forEach(d=>{if(d!==except){d.classList.remove('open');$('.dd-btn',d).setAttribute('aria-expanded','false')}});
 burger.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
@@ -838,7 +855,7 @@ document.addEventListener('click',e=>{
   const el=$('#process');if(!el)return;
   const steps=$$('.step',el),slides=$$('.slide',el),n=steps.length;
   const cur=$('#pCur'),play=$('#pPlay');
-  let i=0,off=reduce,seen=false,hover=false,timer=0;
+  let i=0,off=reduce,seen=false,timer=0;
   const go=k=>{
     i=(k+n)%n;
     steps.forEach((s,j)=>{const a=j===i;s.classList.toggle('on',a);a?s.setAttribute('aria-current','step'):s.removeAttribute('aria-current')});
@@ -848,7 +865,7 @@ document.addEventListener('click',e=>{
   };
   function restart(){
     clearTimeout(timer);
-    if(off||!seen||hover||document.hidden)return;
+    if(off||!seen||document.hidden)return;
     timer=setTimeout(()=>go(i+1),5500);
   }
   steps.forEach((s,j)=>s.addEventListener('click',()=>go(j)));
@@ -858,8 +875,6 @@ document.addEventListener('click',e=>{
   else play.addEventListener('click',()=>{off=!off;play.classList.toggle('is-off',off);play.setAttribute('aria-label',off?'Start autoplay':'Pause autoplay');restart()});
   if(window.IntersectionObserver){new IntersectionObserver(([e])=>{seen=e.isIntersecting;restart()},{threshold:.35}).observe(el)}else{seen=true}
   document.addEventListener('visibilitychange',restart);
-  el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;restart()}});
-  el.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hover=false;restart()}});
   el.addEventListener('keydown',e=>{
     if(!e.target.closest('.steps'))return;
     const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];
