@@ -70,8 +70,8 @@ ul,ol{list-style:none}
 /* Navigation */
 .nav{position:fixed;inset:max(12px,env(safe-area-inset-top)) 0 auto 0;z-index:60;padding-inline:var(--pad);pointer-events:none}
 .nav-pill{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--w);height:var(--nav-h);margin-inline:auto;padding:0 10px 0 14px;border-radius:999px;pointer-events:auto}
-.nav-glass{position:absolute;inset:0;border-radius:inherit;background:rgba(18,22,28,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 34px -16px rgba(0,0,0,.6);transition:background-color .25s;pointer-events:none}
-.nav.is-scrolled .nav-glass{background:rgba(13,17,21,.92)}
+.nav-glass{position:absolute;inset:0;border-radius:inherit;background:rgba(18,22,28,.94);-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 34px -16px rgba(0,0,0,.6);transition:background-color .25s;pointer-events:none}
+.nav.is-scrolled .nav-glass{background:rgba(13,17,21,.98)}
 .brand{position:relative;display:flex;align-items:center;gap:10px;color:#fff;font:700 15px/1 var(--sans);letter-spacing:.22em}
 .brand .logo-mark{width:34px;height:34px;flex:none;object-fit:contain}
 .links{position:relative;display:flex;align-items:center;gap:2px}
@@ -99,20 +99,19 @@ ul,ol{list-style:none}
 .lede b{font-weight:600;color:#fff}
 .acts{display:flex;flex-wrap:wrap;gap:12px}
 .hero :focus-visible{outline-color:#fff}
-.hero-media{position:relative;width:100%;aspect-ratio:4/3;background:var(--dark)}
+.hero-media{position:relative;width:100%;aspect-ratio:4/3;background:var(--dark);contain:layout paint;}
 .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;background:var(--dark);-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 78%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 50%,#000 78%,transparent 100%);pointer-events:none}
 
 /* Tools strip */
-.tools{padding-top:clamp(28px,4vw,44px)}
+.tools{padding-top:clamp(28px,4vw,44px); content-visibility:auto; contain-intrinsic-size:1px 120px;}
 .tools-in{display:flex;align-items:center;gap:22px;padding:12px 16px 12px 26px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -26px rgba(11,11,12,.25)}
 .tools-in>span{flex:none;font:500 13px/1 var(--sans);color:var(--mute)}
 .marquee{flex:1;min-width:0;overflow:hidden}
 .marquee.is-live{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.marquee-track{display:flex}
+.marquee-track{display:flex; will-change:transform; contain:layout paint;}
 .set{display:flex;flex-wrap:wrap;align-items:center;gap:12px 44px;padding-right:44px}
-.is-live .marquee-track{width:max-content;animation:marquee 30s linear infinite;will-change:transform}
+.is-live .marquee-track{width:max-content;animation:marquee 30s linear infinite}
 .is-live .set{flex-wrap:nowrap}
-/* Animation play state is NO LONGER paused on hover to ensure smooth continuous running */
 @keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 .logo{display:grid;place-items:center;height:44px}
 
@@ -140,11 +139,12 @@ ul,ol{list-style:none}
 .step.on .d{grid-template-rows:1fr}
 .di{display:block;overflow:hidden;min-height:0}
 .dt{display:block;padding-top:8px;max-width:40ch;font-size:15px;line-height:1.55;color:var(--mute)}
-.stage{position:relative;aspect-ratio:4/3;border-radius:var(--r-xl);overflow:hidden;background:#0d0d0f;box-shadow:0 36px 70px -34px rgba(11,11,12,.4);touch-action:pan-y;isolation:isolate}
+.stage{position:relative;aspect-ratio:4/3;border-radius:var(--r-xl);overflow:hidden;background:#0d0d0f;box-shadow:0 18px 42px -28px rgba(11,11,12,.32);touch-action:pan-y;isolation:isolate; contain:layout paint;}
 .slides{position:absolute;inset:0}
-.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s}
-.slide.on{opacity:1;visibility:visible;transition:opacity .35s ease,visibility 0s}
-.slide img{width:100%;height:100%;object-fit:cover}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s; contain:layout paint;}
+.slide:not(.on) { pointer-events:none; }
+.slide.on{opacity:1;visibility:visible;transition:opacity .35s ease,visibility 0s; will-change:opacity;}
+.slide img{width:100%;height:100%;object-fit:cover; content-visibility:auto;}
 .slide.idea{display:grid;place-items:center;padding:clamp(24px,5vw,56px);text-align:center;background:radial-gradient(80% 80% at 50% 0%,#232930 0%,#12161b 60%,#0d1115 100%)}
 .slide.idea p{position:relative;max-width:18ch;margin-inline:auto;font:500 clamp(24px,3.2vw,44px)/1.3 var(--serif);color:#fff}
 .cursor{display:inline-block;width:3px;height:.95em;margin-left:6px;vertical-align:-.12em;background:#fff}
@@ -161,7 +161,7 @@ ul,ol{list-style:none}
 #pPlay.is-off .i-pause{display:none}
 
 /* Work */
-.work{border-top:1px solid var(--line)}
+.work{border-top:1px solid var(--line); content-visibility:auto; contain-intrinsic-size:1px 700px;}
 .car{--edge:max(var(--pad),calc((100vw - var(--w)) / 2 + var(--pad)));container-type:inline-size}
 @supports (width:1cqw){.car{--edge:max(var(--pad),calc((100cqw - var(--w)) / 2 + var(--pad)))}}
 .car-nav{display:flex;gap:10px}
@@ -170,14 +170,14 @@ ul,ol{list-style:none}
 .track:focus-visible{outline-offset:-6px}
 .track.is-drag{scroll-snap-type:none;cursor:grabbing;user-select:none;-webkit-user-select:none}
 .w-card{flex:0 0 clamp(264px,29vw,372px);display:flex;flex-direction:column;padding:10px;border-radius:24px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);box-shadow:0 16px 36px -24px rgba(11,11,12,.3)}
-.w-card .m{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#101012}
+.w-card .m{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#101012; contain:layout paint;}
 .w-card img,.w-card video{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
 .w-card .cap2{padding:16px 8px 8px}
 .w-card h3{font:600 17px/1.3 var(--sans);letter-spacing:-.01em}
 .w-card p{margin-top:6px;font-size:14px;line-height:1.5;color:var(--mute)}
 
 /* Standards */
-.std{border-top:1px solid var(--line)}
+.std{border-top:1px solid var(--line); content-visibility:auto; contain-intrinsic-size:1px 700px;}
 .std-group{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(20px,5vw,72px);padding-block:clamp(28px,4vw,48px);border-top:1px solid var(--line)}
 .std-group:first-of-type{border-top:0;padding-top:0}
 .std-intro h3{font-size:clamp(22px,2.4vw,30px);line-height:1.2}
@@ -199,13 +199,13 @@ ul,ol{list-style:none}
 .std-note{max-width:78ch;margin-top:12px;font-size:13.5px;line-height:1.65;color:var(--mute)}
 
 /* Contact */
-.cta-wrap{padding-bottom:var(--sec)}
-.cta{position:relative;overflow:hidden;border-radius:var(--r-xl);padding:clamp(28px,6vw,68px);color:#fff;background:var(--dark);border:1px solid rgba(255,255,255,.08);box-shadow:0 44px 90px -40px rgba(11,11,12,.55)}
+.cta-wrap{padding-bottom:var(--sec); content-visibility:auto; contain-intrinsic-size:1px 700px;}
+.cta{position:relative;overflow:hidden;border-radius:var(--r-xl);padding:clamp(28px,6vw,68px);color:#fff;background:var(--dark);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 55px -34px rgba(11,11,12,.42)}
 .cta-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"copy vid" "form vid";gap:28px clamp(28px,5vw,64px);align-items:center}
 .cta-copy{grid-area:copy}
 .cta h2{margin-bottom:14px;font-size:clamp(32px,4.2vw,56px)}
 .lead{max-width:38ch;font-size:clamp(16px,1.5vw,18px);color:#a3a9b3}
-.cta-media{grid-area:vid;position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r-lg);background:#080a0d;border:1px solid rgba(255,255,255,.1)}
+.cta-media{grid-area:vid;position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r-lg);background:#080a0d;border:1px solid rgba(255,255,255,.1); contain:layout paint;}
 .cta-media video,.cta-media img{width:100%;height:100%;object-fit:cover;pointer-events:none}
 .form{grid-area:form;display:grid;gap:12px;align-self:start;color-scheme:dark}
 .form input,.form select,.form textarea{width:100%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:16px;color:#fff;transition:border-color .2s,background-color .2s}
@@ -221,7 +221,7 @@ ul,ol{list-style:none}
 .cta :focus-visible,footer :focus-visible{outline-color:#fff}
 
 /* Footer */
-footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px solid #1c1f23;color:#fff}
+footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px solid #1c1f23;color:#fff; content-visibility:auto; contain-intrinsic-size:1px 700px;}
 .f-grid{display:grid;grid-template-columns:1.15fr .8fr 1fr 1.5fr;gap:clamp(28px,4vw,52px);margin-bottom:clamp(36px,5vw,64px)}
 .f-brand-top{display:flex;align-items:center;gap:12px;margin-bottom:18px;font:700 20px/1 var(--sans);letter-spacing:.24em}
 .f-brand-top .logo-mark{width:40px;height:40px;object-fit:contain}
@@ -356,7 +356,13 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
   .term{grid-template-columns:44px minmax(0,1fr)}
 }
 @media (max-width:400px){.f-grid{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.is-live .marquee-track{animation:none}.cursor{animation:none!important}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .is-live .marquee-track{animation:none}
+  .cursor{animation:none!important}
+  .is-live .logo img {animation:none !important; filter:none !important;}
+}
+
 </style>
 </head>
 <body>
@@ -404,7 +410,7 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
     </div>
     <div class="hero-media">
       <!-- Let native HTML5 handle autoplay seamlessly without JS overhead -->
-      <video id="heroVid" src="pcb_board.mp4" poster="pcb_board.gif" autoplay muted loop playsinline webkit-playsinline aria-label="Exploded view of a PCB assembly"></video>
+      <video id="heroVid" src="pcb_board.mp4" poster="pcb_board.gif" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Exploded view of a PCB assembly"></video>
     </div>
   </div>
 </section>
@@ -561,7 +567,7 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
       </div>
       <div class="cta-media">
         <!-- Native HTML5 handles this perfectly without showing false errors on mobile -->
-        <video id="ctaVid" src="cadd.mp4" poster="cad11.png" autoplay muted loop playsinline webkit-playsinline aria-label="Nvisco hardware showcase"></video>
+        <video id="ctaVid" src="cadd.mp4" poster="cad11.png" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Nvisco hardware showcase"></video>
       </div>
       <form class="form" id="inq">
         <div class="two">
