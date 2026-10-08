@@ -119,16 +119,23 @@ ul,ol{list-style:none}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 .logo{display:grid;place-items:center;height:44px}
-
-/* Synchronized Fast Tools Color Animation */
+/* Tools Color Animation */
 @keyframes colorPulse {
-  0%, 100% { filter: grayscale(1) brightness(0.15); } /* Very dark/black */
-  50% { filter: grayscale(0) brightness(1); } /* Full original color */
+  0%, 100% { filter: grayscale(1) opacity(0.5); }
+  50% { filter: grayscale(0) opacity(1); }
 }
 .is-live .logo img {
   width:34px; height:34px;
-  animation: colorPulse 3s ease-in-out infinite; /* All logos pulse at the exact same time, twice as fast */
+  animation: colorPulse 6s ease-in-out infinite;
 }
+/* Stagger the animation so they pulse at different times */
+.is-live .set .logo:nth-child(1) img { animation-delay: 0s; }
+.is-live .set .logo:nth-child(2) img { animation-delay: 1s; }
+.is-live .set .logo:nth-child(3) img { animation-delay: 2s; }
+.is-live .set .logo:nth-child(4) img { animation-delay: 3s; }
+.is-live .set .logo:nth-child(5) img { animation-delay: 4s; }
+.is-live .set .logo:nth-child(6) img { animation-delay: 5s; }
+.is-live .set .logo:nth-child(7) img { animation-delay: 6s; }
 
 /* Process */
 .process{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
@@ -407,21 +414,12 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
       <div class="marquee-track">
         <ul class="set">
           <li class="logo"><img src="https://cdn.simpleicons.org/kicad" alt="KiCad"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/altiumdesigner" alt="Altium Designer"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/autodesk" alt="Autodesk"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/solidworks" alt="SolidWorks"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/python" alt="Python"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/cplusplus" alt="C++"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/c" alt="C"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/arduino" alt="Arduino"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/espressif" alt="Espressif"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/stmicroelectronics" alt="STMicroelectronics"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/ros" alt="ROS"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/docker" alt="Docker"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/linux" alt="Linux"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi"></li>
           <li class="logo"><img src="https://cdn.simpleicons.org/siemens" alt="Siemens"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA"></li>
         </ul>
       </div>
     </div>
@@ -601,7 +599,7 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
     </div>
     <div class="f-bar">
       <span>&copy; <span id="yr">2026</span> Nvisco. All rights reserved.</span>
-      <p>IPC standards are published by IPC (Global Electronics Association). Nvisco designs to their published requirements and is not certified or endorsement by IPC.</p>
+      <p>IPC standards are published by IPC (Global Electronics Association). Nvisco designs to their published requirements and is not certified or endorsed by IPC.</p>
     </div>
   </div>
 </footer>
@@ -662,7 +660,7 @@ process:{g:'Process',nav:'How we work',tag:'Working process',title:'How we work'
  ['Testing in online simulators','Before drawing the real schematic, we test the risky parts of the idea in online simulators: power stages, filters, signal levels and timing. This finds mistakes while they are still cheap to fix.'],
  ['Schematic design in KiCad','We draw the circuit in KiCad. A small board can fit on one sheet. A large system is split into hierarchical sheets, from 1 up to 50 or more, so every block (power, processor, memory, communication, connectors) stays clean and easy to review. Every part gets a value, a footprint and a clear name.'],
  ['Settings checked before layout','Before any routing, we set the rules first: layer stack-up, board size, trace widths and spacing, via sizes, clearances for high voltage, impedance targets and the limits of the factory that will build the board. Getting these right first prevents expensive redesigns.'],
- ['PCB layout and routing','We place the parts for signal quality, heat and assembly, then route the board. We use the right via type for job and follow design-for-manufacturing (DFM) rules so the factory can build it without questions. On fast buses we do length matching and tuning so signals arrive together, and we keep return paths short and clean.'],
+ ['PCB layout and routing','We place the parts for signal quality, heat and assembly, then route the board. We use the right via type for each job and follow design-for-manufacturing (DFM) rules so the factory can build it without questions. On fast buses we do length matching and tuning so signals arrive together, and we keep return paths short and clean.'],
  ['Double-checking everything','We run the electrical and design rule checks, then review by hand: part orientation, pin 1, polarity, power and ground paths, clearances, footprints against datasheets and the 3D fit. Every detail is checked twice before anything is released.'],
  ['Documentation','You receive complete documentation, not only files: the full procedure we followed, hazards to check (such as high voltage, heat and static), the settings used, and component details with their voltages and properties. Anyone can pick the design up later and understand it.'],
  ['Enclosure design in Fusion 360','When the board is complete, we design its enclosure in Fusion 360 with strict care for dimensions, tolerances and rules: connector openings, mounting points, ventilation and assembly order.'],
@@ -856,7 +854,7 @@ document.addEventListener('click',e=>{
   $('#pNext').addEventListener('click',()=>go(i+1));
   if(reduce)play.hidden=true;
   else play.addEventListener('click',()=>{off=!off;play.classList.toggle('is-off',off);play.setAttribute('aria-label',off?'Start autoplay':'Pause autoplay');restart()});
-  if(window.IntersectionObserver){new IntersectionObserver(([e])=>{seen=e.isIntersecting;restart()},{threshold:.35}).observe(el)}else{seen=true}
+  if(IntersectionObserver){new IntersectionObserver(([e])=>{seen=e.isIntersecting;restart()},{threshold:.35}).observe(el)}else{seen=true}
   document.addEventListener('visibilitychange',restart);
   el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;restart()}});
   el.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hover=false;restart()}});
