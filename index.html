@@ -8,8 +8,8 @@
 <meta name="description" content="Nvisco is an engineering partner for intelligent systems and robotics: PCB design up to 22 layers, parametric CAD, embedded firmware, from idea to product-ready.">
 <meta name="keywords" content="Hardware design, PCB layout, robotics, firmware development, Fusion 360, embedded systems, Pakistan, nvisco">
 <meta name="author" content="Zain Haider">
-<meta name="theme-color" content="#050505">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#050506">
+<meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
 <meta property="og:title" content="NVISCO — Your Excellence Partner">
 <meta property="og:description" content="PCB, CAD and firmware from idea to product-ready.">
@@ -24,52 +24,53 @@
 
 <style>
 /* ============================================================
-   Tokens & Base
+   Tokens & Base (Hybrid Light/Dark Theme)
    ============================================================ */
-:root{
-  --ink:#0b0b0c; --mute:#888890; --paper:#050505;
-  --w:1200px; --pad:clamp(20px, 4vw, 32px); --sec:clamp(60px, 8vw, 120px);
-  --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
-  --serif:'Playfair Display',Georgia,serif;
-  --mono:'IBM Plex Mono', monospace;
+:root {
+  --ink: #0b0b0c; --ink-2: #2b2b2f; --mute: #66666c; --paper: #f2f2f3;
+  --line: rgba(11,11,12,.10); --w: 1200px; --pad: clamp(20px, 4vw, 32px); --sec: clamp(70px, 8vw, 120px);
+  --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --mono: 'IBM Plex Mono', monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:100px;scrollbar-gutter:stable;}
-body{font:400 16px/1.6 var(--sans);color:#fff;background:var(--paper);overflow-x:hidden;}
-body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(60vmax 42vmax at 88% -4%,rgba(20,20,30,.8),rgba(0,0,0,0) 65%),radial-gradient(52vmax 40vmax at -6% 100%,rgba(10,10,20,.6),rgba(0,0,0,0) 65%)}
+body{font:400 16px/1.6 var(--sans);color:var(--ink);background:var(--paper);overflow-x:hidden;}
 h1,h2,h3,h4,h5{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
 a{color:inherit;text-decoration:none}
 img,video,svg{display:block;max-width:100%}
 button,input,select,textarea{font:inherit;color:inherit;background:none;border:0;outline:none}
 button{cursor:pointer;}
 ul,ol{list-style:none}
-:focus-visible{outline:2px solid #fff;outline-offset:3px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .wrap{width:100%;max-width:var(--w);margin-inline:auto;padding-inline:var(--pad)}
 .sec{padding-block:var(--sec)}
-.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(28px,4vw,48px)}
-.sec-head h2{font-size:clamp(30px,4vw,52px)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(30px,4vw,50px)}
+.sec-head h2{font-size:clamp(32px,4vw,52px)}
 .sec-sub{max-width:56ch;margin-top:14px;font-size:clamp(15px,1.3vw,17px);color:var(--mute)}
 
 /* Scroll progress */
 .bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;pointer-events:none}
-.bar i{display:block;height:100%;background:linear-gradient(90deg, #00ffff, #ff00ff);transform:scaleX(0);transform-origin:left;box-shadow:0 0 10px rgba(0,255,255,0.5);}
+.bar i{display:block;height:100%;background:linear-gradient(90deg, #000, #555);transform:scaleX(0);transform-origin:left;}
 #sentinel{position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;border:1px solid #fff;background:#fff;color:#000;font:600 15px/1 var(--sans);white-space:nowrap;transition:all .3s ease;}
-.btn:hover{background:transparent;color:#fff;transform:translateY(-2px);box-shadow:0 10px 20px rgba(255,255,255,0.15)}
-.btn--dim{background:rgba(255,255,255,.05);color:#fff;border-color:rgba(255,255,255,.2);backdrop-filter:blur(10px)}
-.btn--dim:hover{background:rgba(255,255,255,.15);color:#fff;border-color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:#fff;font:600 14px/1 var(--sans);white-space:nowrap;transition:all .3s ease;}
+.btn:hover{background:transparent;color:var(--ink);transform:translateY(-2px);}
+.btn--light{background:#fff;color:#0b0b0c;border-color:#fff;}
+.btn--light:hover{background:transparent;color:#fff;}
+.btn--ghost{background:rgba(255,255,255,.05);color:#fff;border-color:rgba(255,255,255,.2);backdrop-filter:blur(10px)}
+.btn--ghost:hover{background:#fff;border-color:#fff;color:#000;}
 
 /* ============================================================
-   Navigation: Ultra-slim Glossy Pill
+   Navigation: Ultra-slim Dark Pill
    ============================================================ */
 .nav{position:fixed;inset:16px 0 auto 0;z-index:1000;padding-inline:var(--pad);pointer-events:none}
 .nav-pill{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:max-content;height:52px;margin-inline:auto;padding:0 8px 0 20px;border-radius:999px;pointer-events:auto;transition:all .3s cubic-bezier(.22,1,.36,1)}
-.nav-glass{position:absolute;inset:0;border-radius:inherit;background:rgba(10,10,12,.5);backdrop-filter:blur(24px) saturate(200%);border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 30px rgba(0,0,0,.5);transition:all .3s;pointer-events:none}
-.nav.is-scrolled .nav-pill{height:42px; background:rgba(5,5,7,.9); border:1px solid rgba(255,255,255,.25);}
-.nav.is-scrolled .nav-glass{box-shadow:0 10px 25px -10px rgba(0,0,0,.3); border-color:transparent; background:transparent;}
-.brand{position:relative;display:flex;align-items:center;gap:10px;color:#fff;font:700 16px/1 var(--sans);letter-spacing:.2em}
+.nav-glass{position:absolute;inset:0;border-radius:inherit;background:rgba(20,20,22,.9);backdrop-filter:blur(24px) saturate(200%);border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 30px rgba(0,0,0,.3);transition:all .3s;pointer-events:none}
+.nav.is-scrolled .nav-pill{height:42px;}
+.nav.is-scrolled .nav-glass{background:rgba(10,10,12,.95);box-shadow:0 10px 25px -10px rgba(0,0,0,.4);}
+.brand{position:relative;display:flex;align-items:center;gap:10px;color:#fff;font:700 15px/1 var(--sans);letter-spacing:.2em}
 .brand img{width:26px;height:26px;border-radius:6px;object-fit:contain;transition:transform .3s; filter:invert(1)}
 .nav.is-scrolled .brand img{transform:scale(0.85)}
 .links{position:relative;display:flex;align-items:center;gap:4px}
@@ -87,9 +88,9 @@ ul,ol{list-style:none}
 .burger{display:none;align-items:center;min-height:38px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font:500 13px/1 var(--sans);position:relative;z-index:2; transition:all 0.2s;}
 
 /* ============================================================
-   Hero & Interactive Matrix & Isometric Board
+   Hero & Interactive Matrix & Isometric Board (Dark Mode)
    ============================================================ */
-.hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:#050506;padding:180px 0 clamp(40px,6vw,80px);}
+.hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:#050506;padding:180px 0 clamp(40px,6vw,80px); border-radius: 0 0 40px 40px;}
 .hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;}
 .hero-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/64px 64px,linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/64px 64px;mask-image:radial-gradient(80% 75% at 70% 40%,#000 10%,transparent 75%)}
 
@@ -101,45 +102,12 @@ ul,ol{list-style:none}
 }
 
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center; position:relative; z-index:2;}
-.hero h1{font-size:clamp(40px, 6vw, 84px);line-height:1.05;letter-spacing:-.03em;color:#fff; background:linear-gradient(180deg,#fff 30%,#888 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.hero h1{font-size:clamp(40px, 5.5vw, 76px);line-height:1.05;letter-spacing:-.03em;color:#fff;}
 .lede{max-width:44ch;margin:24px 0 32px;font-size:clamp(16px,1.5vw,20px);color:#aaa}
 .lede b{font-weight:600;color:#fff}
 .acts{display:flex;flex-wrap:wrap;gap:16px; margin-bottom:48px;}
 
-/* Hover Matrix */
-.hero-interactive { display: grid; gap: 14px; width: 100%; border-radius: 24px;}
-.hi-item {
-   position: relative; background: #0a0a0c; border: 1px solid rgba(255,255,255,0.08);
-   border-radius: 16px; padding: 22px 26px; overflow: hidden; cursor: crosshair;
-   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.hi-item::before {
-   content: ""; position: absolute; inset: 0; 
-   background: radial-gradient(circle at 0% 50%, rgba(255,255,255,0.08), transparent 60%); 
-   opacity: 0.3; transition: opacity 0.4s; pointer-events: none;
-}
-.hi-item:hover { 
-   border-color: rgba(255,255,255,0.4); 
-   transform: translateX(12px) scale(1.02); 
-   box-shadow: -15px 15px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(255,255,255,0.05); 
-   z-index: 10;
-}
-.hi-item:hover::before { opacity: 1; }
-.hi-glow {
-   position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-   transform: skewX(-20deg); transition: 0s; pointer-events: none;
-}
-.hi-item:hover .hi-glow { left: 200%; transition: left 0.6s ease-in-out; }
-.hi-content { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 6px; }
-.hi-num { font-family: var(--serif); font-size: 14px; color: #555; letter-spacing: 0.1em; transition: color 0.3s; }
-.hi-item:hover .hi-num { color: #fff; }
-.hi-content h4 { font-family: var(--sans); font-size: 20px; font-weight: 600; color: #aaa; transition: color 0.3s; }
-.hi-item:hover h4 { color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.3); }
-.hi-content p { font-size: 15px; color: #666; transition: color 0.3s; line-height:1.4;}
-.hi-item:hover p { color: #ccc; }
-
-/* Isometric Motherboard */
+/* Isometric Motherboard (Pure CSS) */
 .iso-wrapper { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin: 0 auto; perspective: 1400px; display: flex; align-items: center; justify-content: center; }
 .iso-board { position: relative; width: 340px; height: 420px; transform-style: preserve-3d; transform: rotateX(55deg) rotateZ(-40deg); animation: boardFloat 10s ease-in-out infinite alternate; }
 @keyframes boardFloat {
@@ -161,44 +129,44 @@ ul,ol{list-style:none}
 }
 
 /* ============================================================
-   Tools strip (RGB Fast Pulsing Logos)
+   Tools strip (Light Background + RGB Fast Pulsing Logos)
    ============================================================ */
 .tools{padding-top:clamp(40px,6vw,60px); position:relative; z-index:2;}
-.tools-in{display:flex;align-items:center;gap:24px;padding:16px 20px 16px 30px;border-radius:999px;background:rgba(20,20,25,.5);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.tools-in{display:flex;align-items:center;gap:24px;padding:16px 20px 16px 30px;border-radius:999px;background:#fff;border:1px solid #ddd;box-shadow:0 15px 30px rgba(0,0,0,.05)}
 .tools-in>span{flex:none;font:500 14px/1 var(--sans);color:var(--mute)}
 .marquee{flex:1;min-width:0;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
 .marquee-track{display:flex;width:max-content;animation:marquee 20s linear infinite;}
 .set{display:flex;flex-wrap:nowrap;align-items:center;gap:60px;padding-right:60px;}
 @keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 .chip img {
-   width: 50px; height: 50px;
+   width: 48px; height: 48px; filter: grayscale(100%); opacity: 0.6;
    animation: rgbPulse 1.2s linear infinite alternate; 
 }
 @keyframes rgbPulse {
-  0%   { filter: drop-shadow(0 0 10px rgba(0,255,255,0.7)); }
-  50%  { filter: drop-shadow(0 0 15px rgba(255,0,255,0.8)); }
-  100% { filter: drop-shadow(0 0 10px rgba(255,255,0,0.7)); }
+  0%   { filter: grayscale(0%) hue-rotate(0deg) saturate(2) brightness(1); }
+  50%  { filter: grayscale(0%) hue-rotate(180deg) saturate(3) brightness(1.2); }
+  100% { filter: grayscale(0%) hue-rotate(360deg) saturate(2) brightness(1); }
 }
 
 /* ============================================================
-   Process Carousel
+   Process Carousel (Light Theme)
    ============================================================ */
-.process{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px);align-items:center}
+.process{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px);align-items:center; margin-top:20px;}
 .steps{display:flex;flex-direction:column}
-.step{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);align-items:start;padding:24px 0;text-align:left;border-top:1px solid rgba(255,255,255,0.1);color:#777;transition:color .3s;}
-.step:last-child{border-bottom:1px solid rgba(255,255,255,0.1)}
-.step.on{color:#fff}
+.step{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);align-items:start;padding:24px 0;text-align:left;border-top:1px solid var(--line);color:#9b9ba0;transition:color .3s;}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step.on{color:var(--ink)}
 .num{padding-top:5px;font:500 14px/1 var(--sans);}
 .step strong{display:block;font:600 clamp(20px, 2.2vw, 26px)/1.2 var(--sans);}
 .d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
 .step.on .d{grid-template-rows:1fr}
 .di{overflow:hidden;}
-.dt{display:block;padding-top:10px;max-width:40ch;font-size:15.5px;color:#aaa; line-height:1.6;}
+.dt{display:block;padding-top:10px;max-width:40ch;font-size:15.5px;color:var(--mute); line-height:1.6;}
 .prog{position:absolute;left:0;right:0;top:-1px;height:2px;}
-.prog::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
-.step.on .prog::after{transform:scaleX(1);opacity:.4; transition:transform 6s linear;}
+.prog::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left}
+.step.on .prog::after{transform:scaleX(1);opacity:.2; transition:transform 6s linear;}
 
-.stage{position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#0d0d0f;box-shadow:0 30px 80px -20px rgba(0,0,0,.8); border:1px solid rgba(255,255,255,0.08)}
+.stage{position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#0d0d0f;box-shadow:0 30px 60px -20px rgba(0,0,0,.2); border:1px solid rgba(0,0,0,0.05)}
 .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:scale(1.05);transition:all .5s cubic-bezier(0.25, 1, 0.5, 1);}
 .slide.on{opacity:1;visibility:visible;transform:scale(1)}
 .slide img, .slide video{width:100%;height:100%;object-fit:cover}
@@ -208,44 +176,59 @@ ul,ol{list-style:none}
 @keyframes blink{50%{opacity:0}}
 
 /* ============================================================
-   IPC Standards Grid
+   IPC Standards Accordion Grid (Light Theme)
    ============================================================ */
-.ipc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:32px}
-.ipc-card{background:rgba(20,20,25,.4);border:1px solid rgba(255,255,255,.08);box-shadow:0 15px 40px rgba(0,0,0,.4);border-radius:24px;padding:36px; transition:border-color 0.3s;}
-.ipc-card:hover{border-color:rgba(255,255,255,0.2);}
-.ipc-card h3{font:600 22px/1.2 var(--sans);color:#fff;margin-bottom:14px;}
-.ipc-card > p{font-size:15px;color:#aaa;margin-bottom:28px}
-.ipc-list{display:flex;flex-direction:column;gap:20px}
-.ipc-item strong{display:block;font:600 16px/1.3 var(--sans);color:#fff;margin-bottom:6px}
-.ipc-item p{font-size:14.5px;color:#888;line-height:1.6}
+.std{border-top:1px solid var(--line)}
+.std-group{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(20px,5vw,72px);padding-block:clamp(28px,4vw,48px);border-top:1px solid var(--line)}
+.std-group:first-of-type{border-top:0;padding-top:0}
+.std-intro h3{font-size:clamp(22px,2.4vw,30px);line-height:1.2}
+.std-intro p{max-width:38ch;margin-top:12px;font-size:15px;color:var(--mute)}
+.std-list{display:flex;flex-direction:column;gap:10px;min-width:0}
+.std-item{border-radius:20px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px -15px rgba(0,0,0,.08);transition:all 0.3s ease;}
+.std-item:hover{border-color:rgba(0,0,0,.15); box-shadow:0 15px 35px -15px rgba(0,0,0,.12);}
+.std-item summary{display:grid;grid-template-columns:30px minmax(0,1fr) auto 20px;gap:4px 14px;align-items:center;min-height:68px;padding:16px 20px;cursor:pointer;list-style:none}
+.std-item summary::-webkit-details-marker{display:none}
+.std-item .n2{font:500 13px/1 var(--mono);color:#9b9ba0;}
+.sm{display:block;min-width:0}
+.code{display:block;font:600 17px/1.25 var(--sans);color:var(--ink); letter-spacing:-.01em;}
+.ttl{display:block;margin-top:4px;font-size:14px;line-height:1.4;color:var(--mute)}
+.ed{padding:6px 12px;border-radius:999px;background:rgba(11,11,12,.05);font:500 12px/1 var(--sans);color:var(--ink-2);white-space:nowrap}
+.chev{width:18px;height:18px;color:var(--mute);transition:transform .25s}
+.std-item[open] .chev{transform:rotate(180deg)}
+.std-body{padding:0 20px 24px 64px;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.std-body p+p{margin-top:10px}
+.std-body b{font-weight:600;color:var(--ink)}
 
 /* ============================================================
-   Work Carousel
+   Work Carousel (Light Theme)
    ============================================================ */
-.work{border-top:1px solid rgba(255,255,255,0.1)}
+.work{border-top:1px solid var(--line)}
+.car{--edge:max(var(--pad),calc((100vw - var(--w)) / 2 + var(--pad)));container-type:inline-size}
 .car-nav{display:flex;gap:12px}
-.track{display:flex;gap:24px;padding:10px max(20px,calc((100vw - 1200px)/2 + 20px)) 40px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.car-nav .ic {background:#fff; border:1px solid #ddd; color:#000;}
+.car-nav .ic:hover {background:#f9f9f9; border-color:#000;}
+.track{display:flex;gap:24px;padding:10px var(--edge) 40px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
 .track::-webkit-scrollbar{display:none}
-.w-card{flex:0 0 clamp(280px, 30vw, 380px);display:flex;flex-direction:column;padding:12px;border-radius:24px;scroll-snap-align:start;background:rgba(25,25,30,.5);border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 40px rgba(0,0,0,.5); transition:transform 0.3s ease;}
-.w-card:hover{transform:translateY(-5px);}
+.w-card{flex:0 0 clamp(280px, 30vw, 380px);display:flex;flex-direction:column;padding:12px;border-radius:24px;scroll-snap-align:start;background:#fff;border:1px solid #eaeaea;box-shadow:0 15px 30px -15px rgba(0,0,0,.1); transition:transform 0.3s ease;}
+.w-card:hover{transform:translateY(-5px); box-shadow:0 20px 40px -15px rgba(0,0,0,.15);}
 .w-card .m{aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#000}
 .w-card img,.w-card video{width:100%;height:100%;object-fit:cover; transition:transform 0.5s ease;}
 .w-card:hover .m img, .w-card:hover .m video{transform:scale(1.05);}
 .w-card .cap2{padding:20px 10px 10px}
-.w-card h3{font:600 18px/1.3 var(--sans);color:#fff;}
-.w-card p{font-size:14.5px;color:#888;margin-top:8px; line-height:1.5;}
+.w-card h3{font:600 18px/1.3 var(--sans);color:var(--ink);}
+.w-card p{font-size:14.5px;color:var(--mute);margin-top:8px; line-height:1.5;}
 
 /* ============================================================
-   Contact & Glowing Motherboard CTA
+   Contact & Glowing Motherboard CTA (Dark Card)
    ============================================================ */
 .cta-wrap{padding-bottom:120px}
-.cta{position:relative;border-radius:36px;padding:clamp(40px, 6vw, 80px);color:#fff;background:radial-gradient(circle at 100% 0%,#15151c,#050505);box-shadow:0 50px 100px -20px rgba(0,0,0,.9);border:1px solid rgba(255,255,255,.08);}
+.cta{position:relative;border-radius:36px;padding:clamp(40px, 6vw, 80px);color:#fff;background:#0a0a0c;box-shadow:0 40px 80px -20px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.05);}
 .cta-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px, 6vw, 80px);align-items:center}
 .cta-copy{grid-area:copy}
 .cta h2{font-size:clamp(40px, 5vw, 56px);margin-bottom:16px}
 .lead{font-size:clamp(16px, 1.5vw, 19px);color:#aaa;max-width:40ch;}
 
-.cta-vid{grid-area:vid;width:100%;aspect-ratio:4/3;border-radius:24px;background:#030304;border:1px solid rgba(255,255,255,.05);box-shadow:0 30px 80px rgba(0,0,0,.9), inset 0 0 60px rgba(0,0,0,1);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.cta-vid{grid-area:vid;width:100%;aspect-ratio:4/3;border-radius:24px;background:#030304;border:1px solid rgba(255,255,255,.05);box-shadow:0 30px 80px rgba(0,0,0,.8), inset 0 0 60px rgba(0,0,0,1);display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .cta-vid svg{width:100%;height:100%;object-fit:cover;}
 .data-stream { stroke-dasharray: 500; stroke-dashoffset: 500; animation: dash 3s ease-in-out infinite; }
 .ds-1 { animation-delay: 0.1s; } .ds-2 { animation-delay: 0.9s; } .ds-3 { animation-delay: 1.8s; } .ds-4 { animation-delay: 0.5s; }
@@ -261,16 +244,19 @@ ul,ol{list-style:none}
 .form small{font-size:13.5px;color:#666}
 
 /* ============================================================
-   Footer
+   Footer (Dark)
    ============================================================ */
-footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #151515}
+footer{padding:80px 0 40px;background:#050505;color:#fff;border-top:1px solid #151515}
 .f-grid{display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1fr;gap:50px;margin-bottom:80px}
 .f-logo{height:26px;margin-bottom:28px;transform:scale(2.2);transform-origin:left center;filter:invert(1)}
 .f-brand p{max-width:32ch;font-size:14.5px;color:#888; line-height:1.6;}
 .f-links{margin-top:24px}
 .f-col h4{font-size:16px;margin-bottom:20px;color:#fff}
-.f-col a,.f-col button,.f-col p{display:block;padding:0;text-align:left;font-size:14.5px;line-height:2.2;color:#888;transition:color .2s;}
+.f-col a,.f-col button,.f-col p{display:block;padding:0;text-align:left;font-size:14.5px;line-height:2.2;color:#888;transition:color .2s; margin-bottom:4px;}
+.f-col .n{display:inline-block;min-width:24px;font-size:12px;color:#555;font-family:var(--mono)}
 .f-col a:hover,.f-col button:hover{color:#fff}
+.f-std{column-count: 2; column-gap: 20px;}
+.f-std button{break-inside: avoid;}
 .f-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 24px;padding-top:30px;border-top:1px solid #151515;font-size:13.5px;color:#666; line-height:1.6;}
 
 /* ============================================================
@@ -358,9 +344,12 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
 
   .hero-grid{grid-template-columns:1fr; row-gap:50px;}
   .hero-interactive{padding:0;}
+  
+  .std-group{grid-template-columns:1fr;}
   .process{grid-template-columns:1fr; gap:40px;}
   .stage{order:-1}
   .step{padding:20px 0}
+  
   .cta-grid{grid-template-columns:1fr;}
   .f-grid{grid-template-columns:1fr 1fr; gap:50px;}
   .f-brand{grid-column:1/-1}
@@ -368,7 +357,7 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
   /* Modals on Mobile */
   .modal-overlay { padding: 10px; }
   .modal-content { max-height: 95vh; border-radius: 20px; }
-  .modal-close { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 22px; background: rgba(0,0,0,0.5);} /* High contrast close btn */
+  .modal-close { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 22px; background: rgba(0,0,0,0.5);} 
   
   .pol-layout { grid-template-columns:1fr; grid-template-rows:auto 1fr; }
   .pol-nav { display:flex; overflow-x:auto; padding:16px; border-right:none; border-bottom:1px solid rgba(255,255,255,.1); }
@@ -397,6 +386,10 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
      100% { transform: scale(0.65) rotateX(62deg) rotateZ(-45deg) translateY(-20px); }
   }
   .tools-in{flex-direction:column; align-items:stretch; gap:16px; padding:24px; border-radius:24px;}
+  .std-item summary{grid-template-columns:26px minmax(0,1fr) 20px;padding:14px 16px}
+  .std-item .ed{grid-column:2;grid-row:2;justify-self:start;margin-top:8px}
+  .std-item .chev{grid-column:3;grid-row:1}
+  .std-body{padding:0 16px 20px}
   .form .two{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr;}
 }
@@ -405,6 +398,7 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
   .iso-board{animation:none!important; transform: scale(0.8) rotateX(55deg) rotateZ(-40deg) !important;}
   .iso-layer{animation:none!important; transform:translateZ(var(--z-offset)) !important;}
+  .marquee-track{animation:none!important;}
 }
 </style>
 </head>
@@ -425,17 +419,23 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
     <button class="burger" id="burger" type="button" aria-expanded="false">Menu</button>
     <nav class="links" id="links">
       <a class="nav-link" href="#story">Process</a>
+      <a class="nav-link" href="#work">Work</a>
       <div class="dd" id="stdDd">
         <button class="nav-link dd-btn" type="button">Standards<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dd-menu">
-           <a href="#standards">IPC-2226 (HDI)</a>
-           <a href="#standards">IPC-2221B (Rigid)</a>
-           <a href="#standards">IPC-2152 (Thermal)</a>
-           <a href="#standards">IPC-7351C (SMD)</a>
-           <a href="#standards">IPC-A-600 / 610</a>
+           <a href="#std-2220">IPC-2220 series</a>
+           <a href="#std-2221">IPC-2221C</a>
+           <a href="#std-2222">IPC-2222B</a>
+           <a href="#std-2226">IPC-2226A</a>
+           <a href="#std-2141">IPC-2141A</a>
+           <a href="#std-2152">IPC-2152</a>
+           <a href="#std-7351">IPC-7351B</a>
+           <a href="#std-6012">IPC-6012F</a>
+           <a href="#std-a600">IPC-A-600M</a>
+           <a href="#std-a610">IPC-A-610J</a>
+           <a href="#std-2581">IPC-2581C</a>
         </div>
       </div>
-      <a class="nav-link" href="#work">Work</a>
       <button class="nav-link" type="button" data-modal="aboutOv">About</button>
       <div class="dd" id="ddPol">
         <button class="nav-link dd-btn" type="button">Policies<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -528,7 +528,7 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
 <!-- ================= Process Carousel ================= -->
 <section class="sec" id="story">
   <div class="wrap">
-    <div class="sec-head"><h2>From idea to product-ready</h2></div>
+    <div class="sec-head"><h2 id="story-h">From idea to product-ready</h2></div>
 
     <div class="process" id="process">
       <div class="steps">
@@ -559,8 +559,8 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <h2>Engineering standards</h2>
-        <p class="sec-sub">The IPC standards our designs follow, from board architecture to the files a factory builds from.</p>
+        <h2 id="std-h">Engineering standards</h2>
+        <p class="sec-sub">The IPC standards our designs follow, from board architecture to the files a factory builds from. Open any standard to see what it covers, its current edition and how we use it.</p>
       </div>
     </div>
 
@@ -570,37 +570,32 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
         <p>These standards govern complex, tightly packed electronics, so signals and structures stay reliable.</p>
       </div>
       <div class="std-list">
-        <details class="std-item">
-          <summary><span class="n2">01</span><span class="sm"><b class="code">IPC-2226</b><span class="ttl">High-Density Interconnect (HDI) Design</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <details class="std-item" id="std-2220">
+          <summary><span class="n2">01</span><span class="sm"><b class="code">IPC-2220 series</b><span class="ttl">The printed board design family</span></span><span class="ed">Design series</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="std-body">
-            <p>Applied to all complex, space-constrained architectures. This standard governs our use of microvias, blind and buried vias, via-in-pad technology, and fine-pitch BGA routing to achieve up to 22-layer, high-density structures reliably.</p>
+            <p>The IPC-2220 series is the design backbone for printed boards. IPC-2221 sets the generic rules for every board, and sectional standards such as IPC-2222 (rigid boards) and IPC-2226 (HDI boards) add the rules for a specific technology. They are used together: the generic standard first, then the sectional standard that matches the board.</p>
+            <p><b>How we use it.</b> Every Nvisco layout starts from this series. We choose the sectional standard that matches your board before the first trace is drawn.</p>
           </div>
         </details>
-        <details class="std-item">
-          <summary><span class="n2">02</span><span class="sm"><b class="code">IPC-2221B & 2222A</b><span class="ttl">Generic & Rigid Printed Board Design</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <details class="std-item" id="std-2221">
+          <summary><span class="n2">02</span><span class="sm"><b class="code">IPC-2221C</b><span class="ttl">Generic standard on printed board design</span></span><span class="ed">Edition C · Dec 2023</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="std-body">
-            <p>The foundational baseline for all Nvisco engineering. We strictly follow these rules for layer stackup material selection, conductor spacing, high-voltage clearance/creepage parameters, and structural integrity.</p>
+            <p>The foundation document of the series. It covers material and copper foil selection, conductor spacing, hole and land sizes, electrical clearance (including creepage and dielectric withstanding voltage), impedance tolerances, press-fit pins and back-drilling. Revision C supersedes IPC-2221B.</p>
+            <p><b>How we use it.</b> It is our baseline for stack-up and material choice, conductor spacing and high-voltage clearance. For mains-connected products we also follow the end-product safety standard, because IPC-2221 is a board design standard, not a safety standard.</p>
           </div>
         </details>
-      </div>
-    </div>
-
-    <div class="std-group">
-      <div class="std-intro">
-        <h3>Power, Thermal & Component Engineering</h3>
-        <p>These standards prove you design boards that won't overheat, burn out, or fail during the automated assembly process.</p>
-      </div>
-      <div class="std-list">
-        <details class="std-item">
-          <summary><span class="n2">03</span><span class="sm"><b class="code">IPC-2152</b><span class="ttl">Current-Carrying Capacity</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <details class="std-item" id="std-2222">
+          <summary><span class="n2">03</span><span class="sm"><b class="code">IPC-2222B</b><span class="ttl">Sectional design standard for rigid organic printed boards</span></span><span class="ed">Edition B · 2020</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="std-body">
-            <p>Critical for our robotics, motor control, and power systems. We calculate exact trace widths, copper weights, and thermal dissipation paths according to this standard to ensure heavy power lines operate safely without thermal throttling.</p>
+            <p>Adds the rules that are specific to rigid boards built from organic materials such as FR-4: construction types, materials, mechanical and hole requirements, lands and circuit features. It builds on IPC-2221.</p>
+            <p><b>How we use it.</b> Applied to our rigid multilayer designs, from simple two-layer boards to dense multilayer stack-ups.</p>
           </div>
         </details>
-        <details class="std-item">
-          <summary><span class="n2">04</span><span class="sm"><b class="code">IPC-7351C</b><span class="ttl">Surface Mount Design and Land Pattern</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <details class="std-item" id="std-2226">
+          <summary><span class="n2">04</span><span class="sm"><b class="code">IPC-2226A</b><span class="ttl">Sectional design standard for HDI printed boards</span></span><span class="ed">Edition A · 2017</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="std-body">
-            <p>The ultimate Design for Manufacturing (DFM) baseline. We engineer every custom component footprint to exact IPC density levels to ensure zero tombstoning, perfect solder fillets, and flawless automated assembly at the factory.</p>
+            <p>Covers high-density interconnect boards: microvias, blind and buried vias, via-in-pad, fine-pitch BGA breakout and the build-ups that make them manufacturable. It is used together with IPC-2221.</p>
+            <p><b>How we use it.</b> Applied to complex, space-constrained designs, including our high-density layouts of up to 22 layers.</p>
           </div>
         </details>
       </div>
@@ -608,24 +603,72 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
 
     <div class="std-group">
       <div class="std-intro">
-        <h3>Manufacturing Compliance & Data Handover</h3>
-        <p>These standards make sure the files we hand over can be built by a factory without errors.</p>
+        <h3>Signal, power, thermal and components</h3>
+        <p>These standards keep boards from mistiming, overheating or failing during automated assembly.</p>
       </div>
       <div class="std-list">
-        <details class="std-item">
-          <summary><span class="n2">05</span><span class="sm"><b class="code">IPC-A-600 / 610</b><span class="ttl">Class 2 & 3 Compliance</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <details class="std-item" id="std-2141">
+          <summary><span class="n2">05</span><span class="sm"><b class="code">IPC-2141A</b><span class="ttl">Design guide for high-speed controlled-impedance boards</span></span><span class="ed">Edition A · 2004</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="std-body">
-            <p>Every layout is mathematically engineered to pass strict manufacturing and assembly inspections. From annular ring sizing to drill tolerances, we design to meet "Dedicated Service" (Class 2) and "High-Reliability/Mission Critical" (Class 3) acceptance criteria.</p>
+            <p>Guidance for controlling impedance and signal timing on fast signals: trace geometry, dielectric choice, and how the stack-up affects impedance.</p>
+            <p><b>How we use it.</b> We set impedance targets and the stack-up before routing, then do length matching and tuning on fast buses so signals arrive together.</p>
           </div>
         </details>
-        <details class="std-item">
-          <summary><span class="n2">06</span><span class="sm"><b class="code">IPC-2581</b><span class="ttl">Intelligent Manufacturing Data Transfer</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <details class="std-item" id="std-2152">
+          <summary><span class="n2">06</span><span class="sm"><b class="code">IPC-2152</b><span class="ttl">Current-carrying capacity in printed board design</span></span><span class="ed">Edition 2009</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="std-body">
-            <p>We go beyond outdated, error-prone Gerber files. We utilize the modern IPC-2581 open data format to seamlessly and securely transfer precise layer stackups, intelligent drill data, and BOMs to enterprise fabrication houses with zero ambiguity.</p>
+            <p>Based on measured data, it shows how much current a trace can carry for a given temperature rise, taking copper weight, trace width, planes and board thickness into account. It replaces the older charts that were part of IPC-2221.</p>
+            <p><b>How we use it.</b> We size power and motor traces, copper weights and thermal paths with it, so heavy power lines run safely without overheating.</p>
+          </div>
+        </details>
+        <details class="std-item" id="std-7351">
+          <summary><span class="n2">07</span><span class="sm"><b class="code">IPC-7351B</b><span class="ttl">Surface mount design and land pattern standard</span></span><span class="ed">Edition B · 2010</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="std-body">
+            <p>Defines how to design land patterns (footprints) for surface-mount parts, with a naming convention and three density levels: Level A (most), B (nominal) and C (least) land protrusion. IPC-7352 (2023) is the newer companion guideline for land pattern design.</p>
+            <p><b>How we use it.</b> Every custom footprint is built to the IPC density level that suits the product, for reliable solder fillets and clean automated assembly.</p>
           </div>
         </details>
       </div>
     </div>
+
+    <div class="std-group">
+      <div class="std-intro">
+        <h3>Manufacturing compliance and data handover</h3>
+        <p>These standards make sure the files we hand over can be built by a factory without errors or endless revisions.</p>
+      </div>
+      <div class="std-list">
+        <details class="std-item" id="std-6012">
+          <summary><span class="n2">08</span><span class="sm"><b class="code">IPC-6012F</b><span class="ttl">Qualification and performance of rigid printed boards</span></span><span class="ed">Edition F · Oct 2023</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="std-body">
+            <p>Defines what a finished rigid board must meet, in three classes: Class 1 general electronics, Class 2 dedicated-service electronics and Class 3 high-performance or harsh-environment electronics. It sets limits for plating, annular rings, hole quality and more.</p>
+            <p><b>How we use it.</b> We design annular rings, drill sizes and tolerances so your fabricator can meet Class 2 or Class 3, whichever your product needs.</p>
+          </div>
+        </details>
+        <details class="std-item" id="std-a600">
+          <summary><span class="n2">09</span><span class="sm"><b class="code">IPC-A-600M</b><span class="ttl">Acceptability of printed boards</span></span><span class="ed">Edition M · May 2025</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="std-body">
+            <p>The illustrated inspection guide for bare boards. It shows what is acceptable, and what is not, for each class, and is the visual companion to IPC-6012.</p>
+            <p><b>How we use it.</b> We design features so a bare board passes inspection at your chosen class, and we state that class in the fabrication notes.</p>
+          </div>
+        </details>
+        <details class="std-item" id="std-a610">
+          <summary><span class="n2">10</span><span class="sm"><b class="code">IPC-A-610J</b><span class="ttl">Acceptability of electronic assemblies</span></span><span class="ed">Edition J · 2024</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="std-body">
+            <p>The acceptance guide for assembled boards: solder joints, component placement, cleanliness and coating. It assumes the bare board already meets IPC-A-600.</p>
+            <p><b>How we use it.</b> We lay out and document assemblies, with correct footprints, polarity marks and test points, so acceptance at Class 2 or Class 3 is straightforward for the assembler.</p>
+          </div>
+        </details>
+        <details class="std-item" id="std-2581">
+          <summary><span class="n2">11</span><span class="sm"><b class="code">IPC-2581C</b><span class="ttl">Intelligent manufacturing data transfer</span></span><span class="ed">Edition C · Nov 2020</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="std-body">
+            <p>An open, single-file data format that carries the stack-up, drill data, netlist, bill of materials and fabrication notes together, replacing separate Gerber and drill files that have to be matched by hand.</p>
+            <p><b>How we use it.</b> We supply IPC-2581 where your fabricator accepts it, together with conventional manufacturing files, so nothing is ambiguous.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <p class="std-note">Standards are published by IPC (Global Electronics Association). We design to their published requirements; this is not an IPC certification or endorsement. Editions shown are the current ones listed by IPC and its distributors in October 2026, so please confirm the edition named in your project documents.</p>
   </div>
 </section>
 
@@ -635,8 +678,8 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
     <div class="sec-head">
       <h2>Selected work</h2>
       <div class="car-nav">
-        <button class="ic" id="wPrev" style="background:rgba(255,255,255,0.05)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="ic" id="wNext" style="background:rgba(255,255,255,0.05)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="ic" id="wPrev" style="background:#fff; border:1px solid #ddd; color:#000;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="ic" id="wNext" style="background:#fff; border:1px solid #ddd; color:#000;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
     </div>
   </div>
@@ -644,23 +687,23 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
   <div class="car">
     <div class="track" id="wTrack">
       <article class="w-card">
-        <div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture"></div>
+        <div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture" loading="lazy"></div>
         <div class="cap2"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div>
       </article>
       <article class="w-card">
-        <div class="m"><img src="po13.png" alt="High-Fidelity Prototyping"></div>
+        <div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" loading="lazy"></div>
         <div class="cap2"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div>
       </article>
       <article class="w-card">
-        <div class="m"><img src="po2.webp" alt="Unified Systems"></div>
+        <div class="m"><img src="po2.webp" alt="Unified Systems" loading="lazy"></div>
         <div class="cap2"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div>
       </article>
       <article class="w-card">
-        <div class="m"><img src="po8.png" alt="Edge AI Processing"></div>
+        <div class="m"><img src="po8.png" alt="Edge AI Processing" loading="lazy"></div>
         <div class="cap2"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div>
       </article>
       <article class="w-card">
-        <div class="m"><img src="pcb.png" alt="Complex Layer Routing"></div>
+        <div class="m"><img src="pcb.png" alt="Complex Layer Routing" loading="lazy"></div>
         <div class="cap2"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div>
       </article>
       <article class="w-card">
@@ -668,11 +711,11 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
         <div class="cap2"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div>
       </article>
       <article class="w-card">
-        <div class="m"><img src="cad12.png" alt="Mechanical Enclosures"></div>
+        <div class="m"><img src="cad12.png" alt="Mechanical Enclosures" loading="lazy"></div>
         <div class="cap2"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div>
       </article>
       <article class="w-card">
-        <div class="m"><img src="po14.jpg" alt="IoT Connectivity"></div>
+        <div class="m"><img src="po14.jpg" alt="IoT Connectivity" loading="lazy"></div>
         <div class="cap2"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div>
       </article>
     </div>
@@ -683,7 +726,7 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
   </div>
 </section>
 
-<!-- ================= Contact & Glowing Neural Core ================= -->
+<!-- ================= Contact & Glowing Neural Core CTA ================= -->
 <div class="wrap cta-wrap">
   <section class="cta" id="contact">
     <div class="cta-grid">
@@ -744,23 +787,21 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
       </div>
       <div class="f-col">
         <h4>Company</h4>
-        <a href="#story">Service Offerings</a>
-        <a href="#work">Selected Work</a>
-        <button type="button" data-modal="processModal">Process of Work</button>
+        <button type="button" data-modal="processModal">Process</button>
+        <a href="#work">Work</a>
+        <a href="#standards">Standards</a>
         <button type="button" data-modal="aboutOv">About the founder</button>
+        <a href="#contact">Contact</a>
       </div>
       <div class="f-col">
         <h4>For clients</h4>
         <div id="fDocs"></div>
       </div>
-      <div class="f-col">
-        <h4>Standards</h4>
-        <a href="#standards">IPC-2226 (HDI)</a>
-        <a href="#standards">IPC-2221B & 2222A</a>
-        <a href="#standards">IPC-2152 (Thermal)</a>
-        <a href="#standards">IPC-7351C (SMD)</a>
-        <a href="#standards">IPC-A-600 / 610</a>
-        <a href="#standards">IPC-2581 (Data)</a>
+      <div class="f-col f-std-col">
+        <h4>Engineering standards</h4>
+        <div class="f-std" id="fStd">
+           <!-- Populated via JS -->
+        </div>
       </div>
     </div>
     <div class="f-bar">
@@ -772,7 +813,7 @@ footer{padding:80px 0 40px;background:#030303;color:#fff;border-top:1px solid #1
 
 <!-- ================= Mobile Perfect Modals & Drawers ================= -->
 
-<!-- Policies Document Drawer -->
+<!-- Policies Document Drawer (PDF Styling) -->
 <div class="modal-overlay" id="polModal">
   <div class="modal-content">
     <button class="modal-close" data-close>&times;</button>
@@ -860,8 +901,7 @@ if(window.innerWidth > 960) {
 }
 
 /* ---------- Navigation & Scroll ---------- */
-const nav=$('#nav'),links=$('#links'),burger=$('#burger'),ddPol=$('#ddPol'),ddStd=$('#stdDd');
-
+const nav=$('#nav'),links=$('#links'),burger=$('#burger');
 const onScroll=()=>{
    const y = window.scrollY;
    nav.classList.toggle('is-scrolled', y > 40);
@@ -870,7 +910,7 @@ const onScroll=()=>{
 };
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-const setMenu=o=>{links.classList.toggle('open',o);burger.textContent=o?'Close':'Menu'};
+const setMenu=o=>{links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.textContent=o?'Close':'Menu'};
 burger.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
 
 /* ---------- Custom Bulletproof Modals ---------- */
@@ -885,7 +925,7 @@ function closeModals() {
    $$('.modal-overlay').forEach(m => m.classList.remove('is-open'));    document.body.style.overflow = ''; }  $$
 ('.modal-overlay').forEach(m => {
    m.addEventListener('click', e => {
-      if(e.target === m) closeModals(); // Click outside to close
+      if(e.target === m) closeModals(); 
    });
 });
 $$('[data-close]').forEach(btn => btn.addEventListener('click', closeModals));  $$
@@ -942,14 +982,24 @@ const P={
 }
 };
 
-const names=Object.keys(P);
-const btnList=(list)=>list.map(k=>`<button type="button" data-p="${k}">${k}</button>`).join('');
-$('#menuPol').innerHTML=btnList(names);
-$('#fDocs').innerHTML=btnList(names);
+const DOC_ORDER=['Service Agreement','Payment & Refund','Terms of Engagement','Non-Disclosure (NDA)','Intellectual Property'];
+const btnList=(list)=>list.map((k,i)=>`<button type="button" data-p="${k}"><span class="n">${pad(i+1)}</span>${k}</button>`).join('');
+$('#menuPol').innerHTML=btnList(DOC_ORDER);
+$('#fDocs').innerHTML=DOC_ORDER.map((k,i)=>`<button type="button" data-p="${k}"><span class="n">${pad(i+1)}</span>${k}</button>`).join('');
+
+const STD=[
+  {id:'2220', n:'01', code:'IPC-2220 series'}, {id:'2221', n:'02', code:'IPC-2221C'},
+  {id:'2222', n:'03', code:'IPC-2222B'}, {id:'2226', n:'04', code:'IPC-2226A'},
+  {id:'2141', n:'05', code:'IPC-2141A'}, {id:'2152', n:'06', code:'IPC-2152'},
+  {id:'7351', n:'07', code:'IPC-7351B'}, {id:'6012', n:'08', code:'IPC-6012F'},
+  {id:'a600', n:'09', code:'IPC-A-600M'}, {id:'a610', n:'10', code:'IPC-A-610J'},
+  {id:'2581', n:'11', code:'IPC-2581C'}
+];
+$('#fStd').innerHTML = STD.map(s=>`<button type="button" onclick="document.getElementById('std-${s.id}').scrollIntoView();document.getElementById('std-${s.id}').open=true;"><span class="n">${s.n}</span>${s.code}</button>`).join('');
 
 function renderPolicy(n){
-  const data = P[n];
-  $('#polNav').innerHTML=names.map((k,i)=>`<button type="button" class="${k===n?'on':''}" data-p="${k}"><span class="n">${pad(i+1)}</span>${k}</button>`).join('');
+  const data = P[n] || P["Terms of Engagement"]; // Fallback
+  $('#polNav').innerHTML=DOC_ORDER.map((k,i)=>`<button type="button" class="${k===n?'on':''}" data-p="${k}"><span class="n">${pad(i+1)}</span>${k}</button>`).join('');
   
   let html = `<div class="pdf-header">
                 <div>
@@ -961,7 +1011,7 @@ function renderPolicy(n){
               
   html += `<p style="margin-bottom:30px; font-size:16px; color:#bbb;">${data.intro}</p>`;
   
-  let isMain = n === "Terms of Engagement";
+  let isMain = n === "Terms of Engagement" || n === "Service Agreement";
   
   if (isMain) {
       html += `<div class="pdf-grid">`;
@@ -1008,17 +1058,31 @@ function renderPolicy(n){
   
   $('#polBody').innerHTML = html;
   openModal('polModal');
-  $('#polBody').scrollTop=0; }  document.addEventListener('click',e=>{   const t=e.target;   const pol=t.closest('[data-p]');   if(pol){      $$('.dd.open').forEach(d=>d.classList.remove('open'));
-     setMenu(false);
-     renderPolicy(pol.dataset.p);
+  $('#polBody').scrollTop=0;
+}
+
+document.addEventListener('click',e=>{
+  const t=e.target;
+  const pol=t.closest('[data-p]');
+  if(pol){
+     $$('.dd.open').forEach(d=>d.classList.remove('open'));      setMenu(false);      renderPolicy(pol.dataset.p);      return;   }   if(t.closest('.dd-btn')){      const parent = t.closest('.dd');      const isOpen = parent.classList.contains('open');      $$
+('.dd.open').forEach(d=>d.classList.remove('open'));
+     if(!isOpen) parent.classList.add('open');
      return;
   }
-  if(t.closest('.dd-btn')){
-     const parent = t.closest('.dd');
-     const isOpen = parent.classList.contains('open');
-     $$('.dd.open').forEach(d=>d.classList.remove('open'));      if(!isOpen) parent.classList.add('open');      return;   }   if(!t.closest('.dd')){ $$
-('.dd.open').forEach(d=>d.classList.remove('open')); }
-  if(!t.closest('#links,#burger')||t.closest('#links a[href^="#"]'))setMenu(false);
+  if(!t.closest('.dd')){ $$('.dd.open').forEach(d=>d.classList.remove('open')); }   if(t.closest('a[href^="#"]')) {       $$('.dd.open').forEach(d=>d.classList.remove('open'));
+      setMenu(false);
+  }
+});
+
+/* ---------- Accordion Handling ---------- */
+$$('details').forEach((targetDetail) => {   targetDetail.addEventListener("click", () => {     $$
+('details').forEach((detail) => {
+      if (detail !== targetDetail) {
+        detail.removeAttribute("open");
+      }
+    });
+  });
 });
 
 /* ---------- Process carousel ---------- */
@@ -1038,23 +1102,14 @@ function renderPolicy(n){
 /* ---------- Work carousel ---------- */
 (()=>{
   const track=$('#wTrack');if(!track)return;
-  const prev=$('#wPrev'),next=$('#wNext'),thumb=$('#wThumb'),cards=$$('.w-card',track);
-  const stepW=()=>(parseFloat(getComputedStyle(track).columnGap)||0)+cards[0].getBoundingClientRect().width;
-  const to=k=>track.scrollTo({left:Math.max(0,k*stepW()),behavior:'smooth'});
-  let idx=()=>Math.round(track.scrollLeft/stepW());
-  let raf=0;
-  const paint=()=>{
-    raf=0;
-    const m=Math.max(0,track.scrollWidth-track.clientWidth),l=track.scrollLeft,r=Math.min(1,track.clientWidth/track.scrollWidth);
-    thumb.style.width=(r*100)+'%';
-    thumb.style.transform='translateX('+(m>0?(l/m)*(1/r-1)*100:0)+'%)';
-  };
-  const queue=()=>{if(!raf)raf=requestAnimationFrame(paint)};
-  prev.addEventListener('click',()=>to(idx()-1));
-  next.addEventListener('click',()=>to(idx()+1));
-  track.addEventListener('scroll',queue,{passive:true});
-  paint();
-})();
+  const prev=$('#wPrev'),next=$('#wNext'),thumb=$('#wThumb'),cards=$$('.w-card',track);   if(cards.length === 0) return;   const stepW=()=>(parseFloat(getComputedStyle(track).columnGap)\vert{}\vert{}0)+cards[0].getBoundingClientRect().width;   const to=k=>track.scrollTo({left:Math.max(0,k*stepW()),behavior:'smooth'});   let idx=()=>Math.round(track.scrollLeft/stepW());   let raf=0;   const paint=()=>{     raf=0;     const m=Math.max(0,track.scrollWidth-track.clientWidth),l=track.scrollLeft,r=Math.min(1,track.clientWidth/track.scrollWidth);     thumb.style.width=(r*100)+'\%';     thumb.style.transform='translateX('+(m>0?(l/m)*(1/r-1)*100:0)+'\%)';   };   const queue=()=>{if(!raf)raf=requestAnimationFrame(paint)};   prev.addEventListener('click',()=>to(idx()-1));   next.addEventListener('click',()=>to(idx()+1));   track.addEventListener('scroll',queue,{passive:true});   paint(); })();  /* ---------- Video Fallback for Mobile Data Mode ---------- */ $$('video').forEach(v=>{
+   v.addEventListener('error', () => {
+      const img = document.createElement('img');
+      img.src = 'cad11.png';
+      img.className = v.className;
+      v.replaceWith(img);
+   });
+});
 
 /* ---------- Contact form → email ---------- */
 $('#inq').addEventListener('submit',e=>{
