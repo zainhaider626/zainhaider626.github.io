@@ -14,11 +14,12 @@
 <link rel="icon" href="favicon.png" sizes="192x192">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-84SH875DCC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-84SH875DCC');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Nvisco","slogan":"Your Excellence Partner","url":"https://nvisco.com/","logo":"https://nvisco.com/nvisco-logo.png","email":"nvisco.pak@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Mandi Bahauddin","addressRegion":"Punjab","addressCountry":"PK"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Nvisco","slogan":"Your Excellence Partner","url":"https://nvisco.com/","logo":"https://nvisco.com/favicon.png","email":"nvisco.pak@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Mandi Bahauddin","addressRegion":"Punjab","addressCountry":"PK"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.simpleicons.org">
 <link rel="preload" as="video" href="pcb_board.mp4" type="video/mp4">
+<link rel="preload" as="video" href="cadd.mp4" type="video/mp4">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap">
 <style>
 :root{
@@ -69,7 +70,7 @@ ul,ol{list-style:none}
 .nav-glass{position:absolute;inset:0;border-radius:inherit;background:rgba(18,22,28,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 34px -16px rgba(0,0,0,.6);transition:background-color .25s;pointer-events:none}
 .nav.is-scrolled .nav-glass{background:rgba(13,17,21,.92)}
 .brand{position:relative;display:flex;align-items:center;gap:10px;color:#fff;font:700 15px/1 var(--sans);letter-spacing:.22em}
-.brand .logo-mark{width:34px;height:34px;flex:none}
+.brand .logo-mark{width:34px;height:34px;flex:none;object-fit:contain}
 .links{position:relative;display:flex;align-items:center;gap:2px}
 .nav-link{position:relative;display:inline-flex;align-items:center;padding:11px 13px;border-radius:999px;font:500 14px/1 var(--sans);color:#cfd3d9;transition:background-color .2s,color .2s}
 @media (hover:hover){.nav-link:hover{background:rgba(255,255,255,.12);color:#fff}}
@@ -111,8 +112,23 @@ ul,ol{list-style:none}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 .logo{display:grid;place-items:center;height:44px}
-.logo img{width:34px;height:34px;filter:grayscale(1) opacity(.6);transition:filter .25s}
-@media (hover:hover){.logo img:hover{filter:none}}
+/* Tools Color Animation */
+@keyframes colorPulse {
+  0%, 100% { filter: grayscale(1) opacity(0.5); }
+  50% { filter: grayscale(0) opacity(1); }
+}
+.is-live .logo img {
+  width:34px; height:34px;
+  animation: colorPulse 6s ease-in-out infinite;
+}
+/* Stagger the animation so they pulse at different times */
+.is-live .set .logo:nth-child(1) img { animation-delay: 0s; }
+.is-live .set .logo:nth-child(2) img { animation-delay: 1s; }
+.is-live .set .logo:nth-child(3) img { animation-delay: 2s; }
+.is-live .set .logo:nth-child(4) img { animation-delay: 3s; }
+.is-live .set .logo:nth-child(5) img { animation-delay: 4s; }
+.is-live .set .logo:nth-child(6) img { animation-delay: 5s; }
+.is-live .set .logo:nth-child(7) img { animation-delay: 6s; }
 
 /* Process */
 .process{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
@@ -212,7 +228,7 @@ ul,ol{list-style:none}
 footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px solid #1c1f23;color:#fff}
 .f-grid{display:grid;grid-template-columns:1.15fr .8fr 1fr 1.5fr;gap:clamp(28px,4vw,52px);margin-bottom:clamp(36px,5vw,64px)}
 .f-brand-top{display:flex;align-items:center;gap:12px;margin-bottom:18px;font:700 20px/1 var(--sans);letter-spacing:.24em}
-.f-brand-top .logo-mark{width:40px;height:40px}
+.f-brand-top .logo-mark{width:40px;height:40px;object-fit:contain}
 .f-brand p{max-width:30ch;font-size:14px;color:#8b9099}
 .f-brand .f-links{margin-top:20px}
 .f-col h4{margin-bottom:14px;font:600 14px/1 var(--sans)}
@@ -335,13 +351,8 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
 </head>
 <body>
 
-<!-- Shared icons: logo mark always renders, no image file needed -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="logo" viewBox="0 0 40 40">
-      <rect width="40" height="40" rx="10" fill="#fff"/>
-      <path d="M11 29V11h3.4l11.2 13.2V11H29v18h-3.4L14.4 15.8V29z" fill="#0d1115"/>
-    </symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
@@ -350,7 +361,7 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
 <header class="nav" id="nav">
   <div class="nav-pill">
     <span class="nav-glass" aria-hidden="true"></span>
-    <a href="#top" class="brand" aria-label="Nvisco home"><svg class="logo-mark" aria-hidden="true"><use href="#logo"/></svg><span>NVISCO</span></a>
+    <a href="#top" class="brand" aria-label="Nvisco home"><img src="favicon.png" class="logo-mark" alt="Nvisco"><span>NVISCO</span></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="links">Menu</button>
     <nav class="links" id="links" aria-label="Primary">
       <a class="nav-link" href="#story">Process</a>
@@ -382,7 +393,8 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
       </div>
     </div>
     <div class="hero-media">
-      <video id="heroVid" src="pcb_board.mp4" data-fallback="pcb_board.gif" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Exploded view of a PCB assembly"></video>
+      <!-- Added poster attribute here for instant image load before the video -->
+      <video id="heroVid" src="pcb_board.mp4" poster="pcb_board.gif" data-fallback="pcb_board.gif" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Exploded view of a PCB assembly"></video>
     </div>
   </div>
 </section>
@@ -394,13 +406,13 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
     <div class="marquee" id="marquee">
       <div class="marquee-track">
         <ul class="set">
-          <li class="logo"><img src="https://cdn.simpleicons.org/kicad" alt="KiCad" width="34" height="34" decoding="async"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/python" alt="Python" width="34" height="34" decoding="async"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/arduino" alt="Arduino" width="34" height="34" decoding="async"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/ros" alt="ROS" width="34" height="34" decoding="async"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" width="34" height="34" decoding="async"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/siemens" alt="Siemens" width="34" height="34" decoding="async"></li>
-          <li class="logo"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" width="34" height="34" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/kicad" alt="KiCad" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/python" alt="Python" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/arduino" alt="Arduino" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/ros" alt="ROS" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/raspberrypi" alt="Raspberry Pi" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/siemens" alt="Siemens" decoding="async"></li>
+          <li class="logo"><img src="https://cdn.simpleicons.org/nvidia" alt="NVIDIA" decoding="async"></li>
         </ul>
       </div>
     </div>
@@ -423,11 +435,12 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
       <div class="stage" id="stage">
         <div class="slides" id="slides" aria-live="polite">
           <figure class="slide idea on" role="group" aria-roledescription="slide" aria-label="1 of 6"><blockquote><p>&ldquo;I have an idea, and I want you to build&hellip;&rdquo;<span class="cursor" aria-hidden="true"></span></p></blockquote></figure>
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true"><img src="pcb11.jpg" alt="High-density PCB layout" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true"><img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true"><img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true"><img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true"><img src="po9.webp" alt="Finished, product-ready hardware" width="1200" height="900" loading="lazy" decoding="async"></figure>
+          <!-- Removed loading="lazy" for eager loading on scroll -->
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true"><img src="pcb11.jpg" alt="High-density PCB layout" width="1200" height="900" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true"><img src="cad11.png" alt="Parametric 3D CAD model" width="1200" height="900" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true"><img src="firm11.jpg" alt="Embedded firmware" width="1200" height="900" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true"><img src="CAD_WELD.jpg" alt="Robotic welding cell engineering" width="1200" height="900" decoding="async"></figure>
+          <figure class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true"><img src="po9.webp" alt="Finished, product-ready hardware" width="1200" height="900" decoding="async"></figure>
         </div>
         <div class="stage-ui">
           <div class="pill pill--count" aria-hidden="true"><span id="pCur">01</span>&nbsp;/&nbsp;06</div>
@@ -458,14 +471,14 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
   </div>
   <div class="car" aria-roledescription="carousel" aria-label="Selected work">
     <div class="track" id="wTrack" tabindex="0" aria-label="Projects. Use the arrow keys or swipe to browse.">
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="1 of 8"><div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div></article>
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="2 of 8"><div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div></article>
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="3 of 8"><div class="m"><img src="po2.webp" alt="Unified Systems" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div></article>
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="4 of 8"><div class="m"><img src="po8.png" alt="Edge AI Processing" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div></article>
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="5 of 8"><div class="m"><img src="pcb.png" alt="Complex Layer Routing" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="1 of 8"><div class="m"><img src="CAD_WELD.jpg" alt="Advanced System Architecture" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="2 of 8"><div class="m"><img src="po13.png" alt="High-Fidelity Prototyping" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>High-Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="3 of 8"><div class="m"><img src="po2.webp" alt="Unified Systems" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="4 of 8"><div class="m"><img src="po8.png" alt="Edge AI Processing" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>Edge AI Processing</h3><p>Optimized architectures for high-speed computation.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="5 of 8"><div class="m"><img src="pcb.png" alt="Complex Layer Routing" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>Complex Layer Routing</h3><p>Advanced high-density PCB layouts engineered for maximum performance.</p></div></article>
       <article class="w-card" role="group" aria-roledescription="slide" aria-label="6 of 8"><div class="m"><video class="loopvid" src="159021-818026286.mp4" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture aria-label="Industrial machinery in operation"></video></div><div class="cap2"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div></article>
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="7 of 8"><div class="m"><img src="cad12.png" alt="Mechanical Enclosures" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div></article>
-      <article class="w-card" role="group" aria-roledescription="slide" aria-label="8 of 8"><div class="m"><img src="po14.jpg" alt="IoT Connectivity" width="800" height="600" loading="lazy" decoding="async" draggable="false"></div><div class="cap2"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="7 of 8"><div class="m"><img src="cad12.png" alt="Mechanical Enclosures" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div></article>
+      <article class="w-card" role="group" aria-roledescription="slide" aria-label="8 of 8"><div class="m"><img src="po14.jpg" alt="IoT Connectivity" width="800" height="600" decoding="async" draggable="false"></div><div class="cap2"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div></article>
     </div>
   </div>
 </section>
@@ -531,7 +544,8 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
         <p class="lead">Free consultation. We can sign an NDA before you share anything.</p>
       </div>
       <div class="cta-media">
-        <video id="ctaVid" src="cadd.mp4" data-fallback="cad11.png" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Nvisco hardware showcase"></video>
+        <!-- Added poster attribute here for instant image load before the video -->
+        <video id="ctaVid" src="cadd.mp4" poster="cad11.png" data-fallback="cad11.png" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Nvisco hardware showcase"></video>
       </div>
       <form class="form" id="inq">
         <div class="two">
@@ -557,7 +571,7 @@ footer{padding:clamp(56px,8vw,88px) 0 28px;background:#07090b;border-top:1px sol
   <div class="wrap">
     <div class="f-grid">
       <div class="f-col f-brand">
-        <div class="f-brand-top"><svg class="logo-mark" aria-hidden="true"><use href="#logo"/></svg><span>NVISCO</span></div>
+        <div class="f-brand-top"><img src="favicon.png" class="logo-mark" alt="Nvisco"><span>NVISCO</span></div>
         <p>Your excellence partner. Intelligent systems, robotics and hardware design.</p>
         <div class="f-links">
           <a href="mailto:nvisco.pak@gmail.com">nvisco.pak@gmail.com</a>
@@ -634,7 +648,7 @@ loopVids.forEach(v=>{
     v.replaceWith(img);
   },{once:true});
   v.addEventListener('canplay',()=>tryPlay(v),{once:true});
-  v.addEventListener('ended',()=>{v.currentTime=0;tryPlay(v)});
+  /* REMOVED the 'ended' event listener that caused a loop delay */
   v.addEventListener('pause',()=>{if(!document.hidden&&!v.ended)setTimeout(()=>tryPlay(v),150)});
   tryPlay(v);
 });
@@ -648,9 +662,6 @@ const kickAll=()=>{if(!document.hidden)loopVids.forEach(tryPlay)};
 document.addEventListener('visibilitychange',kickAll);
 addEventListener('pageshow',kickAll);
 ['touchstart','pointerdown','click','scroll'].forEach(ev=>addEventListener(ev,kickAll,{once:true,passive:true}));
-
-/* load every image right after first paint so nothing waits when you scroll */
-addEventListener('load',()=>$$('img[loading="lazy"]').forEach(i=>{i.loading='eager'}));
 
 /* ---------- Documents ---------- */
 const UPDATED='October 2026',MAIL='nvisco.pak@gmail.com';
@@ -790,12 +801,8 @@ const hideOv=()=>{
   root.classList.remove('lock');page.inert=false;openOv=null;
   if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
 };
-$$('.ov').forEach(o=>o.addEventListener('mousedown',e=>{if(e.target===o)hideOv()}));
-document.addEventListener('keydown',e=>{
-  if(!openOv)return;
-  if(e.key==='Escape'){hideOv();return}
-  if(e.key!=='Tab')return;
-  const f=$$('button,a[href],[tabindex]:not([tabindex="-1"])',openOv).filter(x=>x.offsetParent!==null);
+$$('.ov').forEach(o=>o.addEventListener('mousedown',e=>{if(e.target===o)hideOv()})); document.addEventListener('keydown',e=>{   if(!openOv)return;   if(e.key==='Escape'){hideOv();return}   if(e.key!=='Tab')return;   const f=$$
+('button,a[href],[tabindex]:not([tabindex="-1"])',openOv).filter(x=>x.offsetParent!==null);
   if(!f.length)return;
   const first=f[0],last=f[f.length-1];
   if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
@@ -809,12 +816,7 @@ function openDoc(id){
   pp.innerHTML=docHTML(DOCS[id]);pp.scrollTop=0;
   pp.setAttribute('aria-label',DOCS[id].title);
   if(openOv!==docOv)showOv(docOv);
-  const cur=$('[aria-current="true"]',dn);
-  if(cur&&dn.scrollWidth>dn.clientWidth)cur.scrollIntoView({inline:'center',block:'nearest'});
-}
-
-/* ---------- Menus built from page content ---------- */
-const STD=$$('.std-item').map(el=>({id:el.id.replace('std-',''),n:$('.n2',el).textContent,code:$('.code',el).textContent}));
+  const cur=$('[aria-current="true"]',dn);   if(cur&&dn.scrollWidth>dn.clientWidth)cur.scrollIntoView({inline:'center',block:'nearest'}); }  /* ---------- Menus built from page content ---------- */ const STD=$$('.std-item').map(el=>({id:el.id.replace('std-',''),n:$('.n2',el).textContent,code:$('.code',el).textContent}));
 const stdList=STD.map(s=>`<button type="button" data-std="${s.id}"><span class="n">${s.n}</span>${esc(s.code)}</button>`).join('');
 $('#menuStd').innerHTML=stdList;
 $('#fStd').innerHTML=stdList;
@@ -828,12 +830,7 @@ function goStd(id){
 }
 
 /* ---------- Navigation ---------- */
-const nav=$('#nav'),links=$('#links'),burger=$('#burger');
-let nraf=0;
-const navState=()=>{nraf=0;nav.classList.toggle('is-scrolled',scrollY>24)};
-addEventListener('scroll',()=>{if(!nraf)nraf=requestAnimationFrame(navState)},{passive:true});navState();
-const setMenu=o=>{links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.textContent=o?'Close':'Menu'};
-const closeDD=except=>$$('.dd.open').forEach(d=>{if(d!==except){d.classList.remove('open');$('.dd-btn',d).setAttribute('aria-expanded','false')}});
+const nav=$('#nav'),links=$('#links'),burger=$('#burger'); let nraf=0; const navState=()=>{nraf=0;nav.classList.toggle('is-scrolled',scrollY>24)}; addEventListener('scroll',()=>{if(!nraf)nraf=requestAnimationFrame(navState)},{passive:true});navState(); const setMenu=o=>{links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);burger.textContent=o?'Close':'Menu'}; const closeDD=except=>$$('.dd.open').forEach(d=>{if(d!==except){d.classList.remove('open');$('.dd-btn',d).setAttribute('aria-expanded','false')}});
 burger.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!openOv){closeDD();setMenu(false)}});
 document.addEventListener('click',e=>{
@@ -851,8 +848,7 @@ document.addEventListener('click',e=>{
 /* ---------- Tools marquee ---------- */
 (()=>{
   const mq=$('#marquee');if(!mq||reduce)return;
-  const track=$('.marquee-track',mq),set=$('.set',track),copy=set.cloneNode(true);
-  copy.setAttribute('aria-hidden','true');$$('img',copy).forEach(i=>{i.alt=''});
+  const track=$('.marquee-track',mq),set=$('.set',track),copy=set.cloneNode(true);   copy.setAttribute('aria-hidden','true');$$('img',copy).forEach(i=>{i.alt=''});
   track.appendChild(copy);mq.classList.add('is-live');
 })();
 
