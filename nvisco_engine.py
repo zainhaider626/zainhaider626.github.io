@@ -13,7 +13,7 @@ DOMAIN = "www.nvisco.com"
 SITE_URL = f"https://{DOMAIN}"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-GMAIL_USER = os.getenv("GMAIL_ADDRESS", "nvisco.pak@gmail.com")
+GMAIL_USER = os.getenv("GMAIL_ADDRESS") or "nvisco.pak@gmail.com"
 GMAIL_APP_PASS = os.getenv("GMAIL_APP_PASSWORD")
 RECIPIENT_EMAIL = GMAIL_USER
 
