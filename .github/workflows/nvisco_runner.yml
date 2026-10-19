@@ -7,9 +7,18 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   run-pipeline:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -31,9 +40,21 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: python nvisco_engine.py
 
-      - name: Commit Dashboard and SEO Pages
+      - name: Commit Dashboard and SEO Pages to Repo
         run: |
           git config --global user.name "Nvisco-Bot"
           git config --global user.email "nvisco.pak@gmail.com"
           git add -A
           git diff --staged --quiet || (git commit -m "Auto-update: SEO pages and dashboard" && git push)
+
+      - name: Setup Pages Deployment
+        uses: actions/configure-pages@v5
+
+      - name: Upload Site Files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy Live to Nvisco.com
+        id: deployment
+        uses: actions/deploy-pages@v4
