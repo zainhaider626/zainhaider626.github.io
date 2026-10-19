@@ -1,0 +1,39 @@
+name: Nvisco Autonomous Engine 24-7
+
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install requests
+
+      - name: Run Engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: python nvisco_engine.py
+
+      - name: Commit Dashboard and SEO Pages
+        run: |
+          git config --global user.name "Nvisco-Bot"
+          git config --global user.email "nvisco.pak@gmail.com"
+          git add -A
+          git diff --staged --quiet || (git commit -m "Auto-update: SEO pages and dashboard" && git push)
