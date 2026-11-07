@@ -341,6 +341,43 @@ html{scroll-behavior:auto}
 .is-live .logo img {animation:none !important; filter:none !important;}
 }
 .is-live .logo img{will-change:filter;transform:translateZ(0)}.slide,.w-card,.hero-media video,.cta-media video{backface-visibility:hidden;transform:translateZ(0)}.stage,.track{contain:layout paint}
+
+/* NVISCO refinements: floating glass navigation, restrained icon accents and reliable IPC rows */
+.nav-pill{transition:max-width .28s ease,transform .28s ease,filter .28s ease}
+.nav-glass{
+  -webkit-backdrop-filter:blur(10px) saturate(135%);
+  backdrop-filter:blur(10px) saturate(135%);
+  transition:background .28s ease,border-color .28s ease,box-shadow .28s ease,backdrop-filter .28s ease;
+}
+.nav.is-scrolled .nav-pill{max-width:min(1160px,calc(100% - 24px));transform:translateY(2px)}
+.nav.is-scrolled .nav-glass{
+  background:rgba(13,17,21,.70);
+  -webkit-backdrop-filter:blur(22px) saturate(165%);
+  backdrop-filter:blur(22px) saturate(165%);
+  border-color:rgba(255,255,255,.20);
+  box-shadow:0 18px 48px -20px rgba(0,0,0,.78),inset 0 1px 0 rgba(255,255,255,.09);
+}
+.nav-link svg,.nav-link .caret,.nav-link .icon,.f-col svg,.std-item .chev{
+  transition:color .22s ease,stroke .22s ease,transform .22s ease,opacity .22s ease;
+}
+@media(hover:hover){
+  .nav-link:hover svg,.nav-link:hover .caret{color:#c5ad7a}
+  .f-col a:hover,.f-col button:hover{color:#d7c49b}
+  .f-col a:hover svg,.f-col button:hover svg{color:#c5ad7a}
+  .std-item summary:hover .chev{color:#9d8658}
+}
+.std-item summary{user-select:none;-webkit-tap-highlight-color:transparent}
+.std-item summary>*{pointer-events:none}
+.std-item summary:focus-visible{outline:2px solid #a58b5a;outline-offset:3px;border-radius:14px}
+.std-item[open]{border-color:rgba(165,139,90,.42);box-shadow:0 12px 28px -24px rgba(0,0,0,.3)}
+.join-link{white-space:nowrap}
+@media(max-width:960px){
+  .join-link{justify-content:flex-start;width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .nav-pill,.nav-glass,.nav-link svg,.nav-link .caret,.std-item .chev{transition:none!important}
+}
+
 </style>
 <style id="nv-add">
 .nv-sec{border-top:1px solid var(--line)}
@@ -787,6 +824,7 @@ footer{background:#060807!important;border-top:1px solid rgba(255,255,255,.14)!i
 <button aria-controls="menuPol" aria-expanded="false" aria-haspopup="true" class="nav-link dd-btn" type="button">Policies<svg aria-hidden="true" class="caret"><use href="#i-chev"></use></svg></button>
 <div class="dd-menu" id="menuPol"></div>
 </div>
+<a class="nav-link join-link" href="join.html">Join the team</a>
 <a class="btn btn--lt btn--sm" href="#contact">Free consultation</a>
 </nav>
 </div>
@@ -955,7 +993,7 @@ footer{background:#060807!important;border-top:1px solid rgba(255,255,255,.14)!i
 </div>
 <div class="cta-media">
 <!-- Native HTML5 handles this perfectly without showing false errors on mobile -->
-<video aria-label="Nvisco hardware showcase" autoplay="" id="ctaVid" loop="" muted="" playsinline="" poster="cad11.png" preload="none" src="cadd.mp4" webkit-playsinline=""></video>
+<video aria-label="Nvisco hardware showcase" autoplay="" id="ctaVid" loop="" muted="" playsinline="" preload="auto" src="cadd.mp4" webkit-playsinline=""></video>
 </div>
 <form class="form" id="inq">
 <div class="two">
@@ -994,6 +1032,7 @@ footer{background:#060807!important;border-top:1px solid rgba(255,255,255,.14)!i
 <a href="#standards">Standards</a>
 <button data-about="" type="button">About the founder</button>
 <a href="#contact">Contact</a>
+<a href="join.html">Join the team</a>
 </div>
 <div class="f-col"><h4>For clients</h4><div id="fDocs"></div></div>
 <div class="f-col f-std-col"><h4>Engineering standards</h4><div class="f-std" id="fStd"></div></div>
@@ -1211,6 +1250,16 @@ el.scrollIntoView({behavior:smooth,block:'center'});
 setTimeout(()=>$('summary',el).focus({preventScroll:true}),reduce?0:450);
 }
 
+/* Reliable IPC standards accordions: make the full summary row activate its panel. */
+$$('.std-item').forEach(det => {
+  const summary = $('summary', det);
+  if (!summary) return;
+  summary.addEventListener('click', e => {
+    e.preventDefault();
+    det.open = !det.open;
+  });
+});
+
 /* Logic for Mobile Engineering Standards Exclusive Accordion */
 $$('.std-item').forEach(det => {  det.addEventListener('toggle', () => {  if (det.open && window.innerWidth <= 960) {  $$
 ('.std-item').forEach(other => { if (other !== det) other.open = false; });
@@ -1234,6 +1283,22 @@ if(t.closest('#aboutBtn,[data-about]')){setMenu(false);showOv(aboutOv);return}
 if(t.closest('[data-close]')){hideOv();return}
 if(!t.closest('#links,#burger')||t.closest('#links a[href^="#"]'))setMenu(false);
 });
+
+/* Start the CTA showcase as soon as the video is ready; keep the area video-only. */
+(()=>{
+  const video=$('#ctaVid');
+  if(!video)return;
+  const play=()=>{const p=video.play();if(p&&typeof p.catch==='function')p.catch(()=>{});};
+  video.addEventListener('canplay',play,{once:true});
+  if(video.readyState>=2)play();
+  else video.load();
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(([entry])=>{
+      if(entry.isIntersecting){play();io.disconnect();}
+    },{rootMargin:'240px'});
+    io.observe(video);
+  }else{play();}
+})();
 
 /* ---------- Tools marquee ---------- */
 (()=>{
