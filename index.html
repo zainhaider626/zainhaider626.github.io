@@ -884,6 +884,82 @@ footer{background:#060807!important;border-top:1px solid rgba(255,255,255,.14)!i
 @media(prefers-reduced-motion:reduce){.nav,.nav-glass{transition:none!important}}
 </style>
 
+<style>
+
+/* NVISCO — Oxford Blue homepage background edition.
+   Colour is used only as low-intensity background illumination.
+   Brand mark, text, navigation, buttons, IPC content, and media remain untouched. */
+
+#page {
+  background-color: #05070B !important;
+  background-image:
+    radial-gradient(ellipse 72% 34% at 82% 4%, rgba(0, 53, 112, .28) 0%, rgba(0, 33, 71, .12) 42%, transparent 76%),
+    linear-gradient(180deg, #05070B 0%, #080B11 48%, #050609 100%) !important;
+}
+
+/* Hero: the strongest blue-black light sits behind the main visual, not the copy. */
+#top.hero {
+  background-color: #05070B !important;
+  background-image:
+    radial-gradient(ellipse 64% 70% at 84% 34%, rgba(0, 64, 128, .34) 0%, rgba(0, 33, 71, .18) 42%, transparent 74%),
+    radial-gradient(ellipse 40% 42% at 8% 82%, rgba(0, 43, 91, .17) 0%, transparent 74%),
+    linear-gradient(118deg, #050609 0%, #090D14 54%, #05070B 100%) !important;
+}
+
+/* Process and selected work: different placement and softer illumination. */
+#story.sec {
+  background-color: #07090E !important;
+  background-image:
+    radial-gradient(ellipse 76% 58% at 6% 18%, rgba(0, 45, 94, .22) 0%, transparent 72%),
+    linear-gradient(180deg, #080B10 0%, #06080C 100%) !important;
+}
+
+#work.sec {
+  background-color: #06080C !important;
+  background-image:
+    radial-gradient(ellipse 66% 60% at 94% 44%, rgba(0, 56, 112, .25) 0%, transparent 72%),
+    linear-gradient(145deg, #06080C 0%, #0A0D13 52%, #050609 100%) !important;
+}
+
+/* Standards background only — IPC labels and descriptions retain their original styling. */
+#standards.sec {
+  background-color: #07090D !important;
+  background-image:
+    radial-gradient(ellipse 72% 62% at 78% 12%, rgba(0, 43, 91, .20) 0%, transparent 74%),
+    linear-gradient(180deg, #07090D 0%, #05070A 100%) !important;
+}
+
+/* Contact panel and footer receive a subtle, separate blue ambience. */
+#contact.cta {
+  background-color: #05070A !important;
+  background-image:
+    radial-gradient(ellipse 74% 88% at 88% 84%, rgba(0, 58, 116, .27) 0%, transparent 72%),
+    radial-gradient(ellipse 42% 48% at 8% 12%, rgba(0, 33, 71, .16) 0%, transparent 76%),
+    linear-gradient(125deg, #050609 0%, #090D13 58%, #05070A 100%) !important;
+}
+
+footer {
+  background-color: #030508 !important;
+  background-image:
+    radial-gradient(ellipse 78% 92% at 12% 100%, rgba(0, 42, 88, .22) 0%, transparent 74%),
+    linear-gradient(180deg, #05070A 0%, #030508 100%) !important;
+}
+
+/* Tool strip: a restrained blue-black surface, not a coloured component. */
+.tools {
+  background-color: #07090D !important;
+  background-image:
+    radial-gradient(ellipse 76% 100% at 50% 50%, rgba(0, 38, 80, .16) 0%, transparent 78%) !important;
+}
+
+/* Respect reduced-motion preferences; no animation is added by this theme. */
+@media (prefers-reduced-motion: reduce) {
+  #page, #top.hero, #story.sec, #work.sec, #standards.sec, #contact.cta, footer, .tools {
+    scroll-behavior: auto !important;
+  }
+}
+
+</style>
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0">
