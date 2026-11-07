@@ -378,6 +378,92 @@ html{scroll-behavior:auto}
   .nav-pill,.nav-glass,.nav-link svg,.nav-link .caret,.std-item .chev{transition:none!important}
 }
 
+
+/* NVISCO refinement: premium steel / charcoal / restrained copper */
+:root{
+  --nvisco-accent:#d58a58;
+  --nvisco-steel:#aeb8c0;
+  --nvisco-charcoal:#0b0e11;
+}
+:focus-visible{outline-color:var(--nvisco-accent)!important}
+a:hover,.nav-link:hover,.f-col a:hover,.f-col button:hover{color:var(--nvisco-accent)!important}
+.btn:hover,.pack-btn:hover{border-color:var(--nvisco-accent)!important}
+.nav.is-scrolled .nav-pill{
+  border-radius:999px!important;
+  background:rgba(12,16,20,.68)!important;
+  border:1px solid rgba(210,220,228,.22)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.10)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(150%)!important;
+  backdrop-filter:blur(22px) saturate(150%)!important;
+}
+/* Standards are available from the Standards menu and footer, not as a homepage section. */
+#standards{display:none!important}
+/* Give partner/tool marks colour without turning the page into a rainbow. */
+.is-live .logo img{animation:nviscoLogoTint 12s ease-in-out infinite alternate!important;filter:saturate(1.4) contrast(1.05)!important;opacity:.94!important}
+.logo img{
+  opacity:.94!important;
+  filter:grayscale(.08) saturate(1.45) contrast(1.04)!important;
+  animation:nviscoLogoTint 12s ease-in-out infinite alternate;
+  transition:filter .3s ease,opacity .3s ease,transform .3s ease;
+}
+.logo:nth-child(3n) img{animation-delay:-3s}
+.logo:nth-child(3n + 1) img{animation-delay:-7s}
+@keyframes nviscoLogoTint{
+  0%{filter:grayscale(.12) saturate(1.15) hue-rotate(-8deg) contrast(1.04)}
+  50%{filter:grayscale(0) saturate(1.5) hue-rotate(8deg) contrast(1.08)}
+  100%{filter:grayscale(.05) saturate(1.25) hue-rotate(22deg) contrast(1.05)}
+}
+@media(hover:hover){.logo:hover img{filter:grayscale(0) saturate(1.8) brightness(1.12)!important;transform:translateY(-2px)}}
+/* Video cut-outs: contain the subject and use screen blending to suppress black matte. */
+.hero-media,.cta-media{background:transparent!important;overflow:hidden}
+.hero-media video,.hero-media img,.cta-media video,.cta-media img{
+  background:transparent!important;
+  object-fit:contain!important;
+  mix-blend-mode:screen!important;
+  filter:contrast(1.08) brightness(1.12)!important;
+}
+/* Standards detail viewer */
+.ipc-overlay{
+  position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;
+  padding:clamp(12px,3vw,32px);background:rgba(0,0,0,.78);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+}
+.ipc-overlay.is-open{display:flex}
+.ipc-panel{
+  width:min(980px,100%);max-height:min(86vh,900px);overflow:auto;position:relative;
+  color:#edf1f3;background:linear-gradient(145deg,#171d22,#090d11 72%);
+  border:1px solid rgba(190,205,216,.22);border-radius:22px;
+  box-shadow:0 30px 100px rgba(0,0,0,.65)
+}
+.ipc-top{
+  position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:20px 24px;background:rgba(14,19,23,.9);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.12)
+}
+.ipc-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#d58a58;font-weight:700}
+.ipc-close{
+  width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.06);color:#fff;font-size:23px;cursor:pointer
+}
+.ipc-content{padding:clamp(22px,4vw,42px)}
+.ipc-content h2{font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.045em;margin:0 0 12px}
+.ipc-content .ipc-edition{color:#d58a58;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
+.ipc-content .ipc-description{font-size:16px;line-height:1.8;color:#c4cdd3;max-width:72ch}
+.ipc-content .ipc-usage{margin-top:22px;padding:20px;border-left:2px solid #d58a58;background:rgba(255,255,255,.045);border-radius:0 12px 12px 0;line-height:1.8;color:#e0e6e9}
+.ipc-content .ipc-usage b{color:#e8a477}
+.ipc-switcher{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 24px}
+.ipc-switcher button{
+  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);
+  color:#c5cdd2;border-radius:999px;padding:9px 12px;font-size:11px;cursor:pointer
+}
+.ipc-switcher button[aria-current=true]{background:rgba(213,138,88,.16);border-color:#d58a58;color:#fff}
+@media(max-width:640px){
+ .ipc-overlay{padding:8px}.ipc-panel{max-height:92vh;border-radius:16px}
+ .ipc-top{padding:15px 17px}.ipc-switcher{padding:0 17px 18px}
+}
+@media(prefers-reduced-motion:reduce){.logo img{animation:none!important}}
+
 </style>
 <style id="nv-add">
 .nv-sec{border-top:1px solid var(--line)}
@@ -718,7 +804,7 @@ h1,h2,h3{font-family:var(--sans)!important;font-weight:600!important;letter-spac
 .tools{padding-top:0!important;background:#0b0e0c!important}
 .tools-in{padding:24px 0!important;border-bottom:1px solid var(--line)!important;gap:34px!important}
 .tools-in>span{color:#aab0a8!important;font-size:10px!important;letter-spacing:.18em!important;font-weight:700!important;text-transform:uppercase}
-.logo img{filter:grayscale(1) brightness(1.4)!important;opacity:.72!important;animation:none!important}
+.logo img{filter:saturate(1.35) contrast(1.05)!important;opacity:.94!important}
 /* Alternating deep graphite sections and disciplined content hierarchy */
 .sec,.work,.std,.nv-sec{background:#090b0b!important;color:#eef0eb!important}
 .sec-head{margin-bottom:clamp(34px,5vw,60px)!important}
@@ -1044,6 +1130,17 @@ footer{background:#060807!important;border-top:1px solid rgba(255,255,255,.14)!i
 </div>
 </footer>
 </div><!-- /#page -->
+<!-- IPC standards viewer: opened by navbar and footer standards links -->
+<div class="ipc-overlay" id="ipcOv" aria-hidden="true">
+  <section class="ipc-panel" role="dialog" aria-modal="true" aria-labelledby="ipcTitle">
+    <div class="ipc-top">
+      <div><div class="ipc-kicker">NVISCO engineering reference</div><div style="font-size:13px;color:#aeb8c0;margin-top:5px">IPC standards overview</div></div>
+      <button class="ipc-close" type="button" aria-label="Close IPC standards" data-ipc-close>×</button>
+    </div>
+    <article class="ipc-content" id="ipcContent" tabindex="-1"></article>
+    <nav class="ipc-switcher" id="ipcSwitcher" aria-label="Other IPC standards"></nav>
+  </section>
+</div>
 <!-- Document drawer -->
 <div aria-hidden="true" aria-label="Nvisco documents" aria-modal="true" class="ov ov--drawer" id="docOv" role="dialog">
 <div class="sheet">
@@ -1236,29 +1333,45 @@ dn.innerHTML=h;
 pp.innerHTML=docHTML(DOCS[id]);pp.scrollTop=0;
 pp.setAttribute('aria-label',DOCS[id].title);
 if(openOv!==docOv)showOv(docOv);
-const cur=$('[aria-current="true"]',dn);  if(cur&&dn.scrollWidth>dn.clientWidth)cur.scrollIntoView({inline:'center',block:'nearest'});  }   /* ---------- Menus built from page content ---------- */  const STD=$$('.std-item').map(el=>({id:el.id.replace('std-',''),n:$('.n2',el).textContent,code:$('.code',el).textContent}));
+const cur=$('[aria-current="true"]',dn);  if(cur&&dn.scrollWidth>dn.clientWidth)cur.scrollIntoView({inline:'center',block:'nearest'});  }   /* ---------- Menus built from page content ---------- */  const STD=$$('.std-item').map(el=>({
+id:el.id.replace('std-',''),
+n:$('.n2',el)?.textContent.trim()||'',
+code:$('.code',el)?.textContent.trim()||'IPC standard',
+title:$('.ttl',el)?.textContent.trim()||'Engineering standard',
+edition:$('.ed',el)?.textContent.trim()||'IPC design reference',
+body:$('.std-body',el)?.innerHTML||'<p>Overview currently unavailable.</p>'
+}));
 const stdList=STD.map(s=>`<button type="button" data-std="${s.id}"><span class="n">${s.n}</span>${esc(s.code)}</button>`).join('');
 $('#menuStd').innerHTML=stdList;
 $('#fStd').innerHTML=stdList;
 $('#menuPol').innerHTML=POL_ORDER.map((k,i)=>`<button type="button" data-doc="${k}"><span class="n">${pad(i+1)}</span>${esc(DOCS[k].nav)}</button>`).join('');
 $('#fDocs').innerHTML=DOC_ORDER.map(k=>`<button type="button" data-doc="${k}">${esc(DOCS[k].nav)}</button>`).join('');
 
-function goStd(id){
-const el=$('#std-'+id);if(!el)return;
-el.open=true;
-el.scrollIntoView({behavior:smooth,block:'center'});
-setTimeout(()=>$('summary',el).focus({preventScroll:true}),reduce?0:450);
+const ipcOv=$('#ipcOv'),ipcContent=$('#ipcContent'),ipcSwitcher=$('#ipcSwitcher');
+let activeIPC=null,ipcReturnFocus=null;
+function openIPC(id,returnFocus=document.activeElement){
+  const item=STD.find(s=>s.id===String(id));
+  if(!item)return;
+  activeIPC=item.id;ipcReturnFocus=returnFocus;
+  ipcContent.innerHTML=`<div class="ipc-edition">${esc(item.edition)}</div>
+    <h2 id="ipcTitle">${esc(item.code)}</h2>
+    <h3 style="font-size:clamp(17px,2.3vw,23px);font-weight:500;color:#dce3e7;margin:0 0 20px">${esc(item.title)}</h3>
+    <div class="ipc-description">${item.body}</div>`;
+  ipcSwitcher.innerHTML=STD.map(s=>`<button type="button" data-ipc-switch="${s.id}"${s.id===item.id?' aria-current="true"':''}>${esc(s.code)}</button>`).join('');
+  ipcOv.classList.add('is-open');ipcOv.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  ipcContent.focus({preventScroll:true});
 }
-
-/* Reliable IPC standards accordions: make the full summary row activate its panel. */
-$$('.std-item').forEach(det => {
-  const summary = $('summary', det);
-  if (!summary) return;
-  summary.addEventListener('click', e => {
-    e.preventDefault();
-    det.open = !det.open;
-  });
+function closeIPC(){
+  ipcOv.classList.remove('is-open');ipcOv.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(ipcReturnFocus&&ipcReturnFocus.focus)ipcReturnFocus.focus({preventScroll:true});
+}
+ipcOv.addEventListener('click',e=>{if(e.target===ipcOv||e.target.closest('[data-ipc-close]'))closeIPC();});
+ipcSwitcher.addEventListener('click',e=>{
+  const b=e.target.closest('[data-ipc-switch]');if(b)openIPC(b.dataset.ipcSwitch,b);
 });
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ipcOv.classList.contains('is-open'))closeIPC();});
 
 /* Logic for Mobile Engineering Standards Exclusive Accordion */
 $$('.std-item').forEach(det => {  det.addEventListener('toggle', () => {  if (det.open && window.innerWidth <= 960) {  $$
@@ -1275,7 +1388,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!openOv){closeDD();
 document.addEventListener('click',e=>{
 const t=e.target;
 const doc=t.closest('[data-doc]');if(doc){closeDD();setMenu(false);openDoc(doc.dataset.doc);return}
-const std=t.closest('[data-std]');if(std){closeDD();setMenu(false);goStd(std.dataset.std);return}
+const std=t.closest('[data-std]');if(std){closeDD();setMenu(false);openIPC(std.dataset.std,std);return}
 const ddb=t.closest('.dd-btn');
 if(ddb){const d=ddb.closest('.dd'),o=!d.classList.contains('open');closeDD();d.classList.toggle('open',o);ddb.setAttribute('aria-expanded',o);return}
 if(!t.closest('.dd'))closeDD();
@@ -1283,22 +1396,6 @@ if(t.closest('#aboutBtn,[data-about]')){setMenu(false);showOv(aboutOv);return}
 if(t.closest('[data-close]')){hideOv();return}
 if(!t.closest('#links,#burger')||t.closest('#links a[href^="#"]'))setMenu(false);
 });
-
-/* Start the CTA showcase as soon as the video is ready; keep the area video-only. */
-(()=>{
-  const video=$('#ctaVid');
-  if(!video)return;
-  const play=()=>{const p=video.play();if(p&&typeof p.catch==='function')p.catch(()=>{});};
-  video.addEventListener('canplay',play,{once:true});
-  if(video.readyState>=2)play();
-  else video.load();
-  if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(([entry])=>{
-      if(entry.isIntersecting){play();io.disconnect();}
-    },{rootMargin:'240px'});
-    io.observe(video);
-  }else{play();}
-})();
 
 /* ---------- Tools marquee ---------- */
 (()=>{
@@ -1386,33 +1483,49 @@ location.href='mailto:'+MAIL+'?subject='+encodeURIComponent('Consultation reques
 
 })();
 </script>
-<script>addEventListener('DOMContentLoaded',()=>{  document.querySelectorAll('img').forEach(i=>{i.loading='eager';if(i.decode)i.decode().catch(()=>{})});  document.querySelectorAll('video').forEach(v=>{v.preload='auto';const p=v.play();if(p&&p.catch)p.catch(()=>{})});});</script>
-<script>
-(function(){
-  var go=function(){
-    var chev='<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    document.querySelectorAll('.std-group').forEach(function(g){
-      var intro=g.querySelector('.std-intro'),list=g.querySelector('.std-list'); if(!intro||!list)return;
-      var n=list.querySelectorAll('.std-item').length,b=document.createElement('button');
-      b.type='button';b.className='pack-btn';b.setAttribute('aria-expanded','false');
-      var set=function(o){g.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.innerHTML=(o?'Hide the '+n+' standards':'Show the '+n+' standards')+chev;};
-      g.classList.add('pack');set(false);intro.appendChild(b);
-      b.addEventListener('click',function(){set(!g.classList.contains('open'));});
-      g._open=set;
-    });
-    var reveal=function(id){var el=id&&document.getElementById(id);if(!el)return;var g=el.closest('.std-group');if(g&&g._open)g._open(true);};
-    document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#std-"]');if(a)reveal(a.getAttribute('href').slice(1));},true);
-    if(location.hash.indexOf('#std-')===0)reveal(location.hash.slice(1));
-    window.addEventListener('hashchange',function(){reveal(location.hash.slice(1));});
-  };
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
-})();
-</script>
+
+
 <script>(function(){var B="https://nvisco.com/",rel=function(u){return u&&!/^(https?:|data:|blob:|#|\/\/)/.test(u);};
 function fix(el,attr){var u=el.getAttribute(attr);if(!rel(u)||el.dataset.nvfb)return;var t=new Image();t.onerror=function(){el.dataset.nvfb=1;el.setAttribute(attr,B+u.replace(/^\.?\//,""));if(el.load)try{el.load()}catch(e){}};t.src=u;}
 function run(){document.querySelectorAll("img[src]").forEach(function(i){i.addEventListener("error",function(){if(!i.dataset.nvfb){var u=i.getAttribute("src");if(rel(u)){i.dataset.nvfb=1;i.src=B+u;}}});if(i.complete&&i.naturalWidth===0){var u=i.getAttribute("src");if(rel(u)&&!i.dataset.nvfb){i.dataset.nvfb=1;i.src=B+u;}}});
 document.querySelectorAll("video").forEach(function(v){fix(v,"poster");var u=v.getAttribute("src");if(rel(u)){v.addEventListener("error",function(){if(!v.dataset.nvv){v.dataset.nvv=1;v.src=B+u;v.load();v.play&&v.play().catch(function(){});}});}});
 document.querySelectorAll("link[rel~=icon],link[rel=preload]").forEach(function(l){var u=l.getAttribute("href");if(rel(u))l.setAttribute("href",B+u);});
 document.querySelectorAll("a[href]").forEach(function(a){var u=a.getAttribute("href");if(/\.(jpg|png|webp|gif|mp4)$/i.test(u)&&rel(u))a.setAttribute("href",B+u);});}
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run();window.addEventListener("load",run);})();</script></body>
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run();window.addEventListener("load",run);})();</script>
+<script>
+/* Performance: defer off-screen media, avoid decoding every image at startup,
+   and only start muted autoplay videos while they are near the viewport. */
+(()=> {
+  const imgs=[...document.images];
+  imgs.forEach((img,i)=>{
+    if(!img.hasAttribute('loading')) img.loading=(i<2?'eager':'lazy');
+    if(!img.hasAttribute('decoding')) img.decoding='async';
+    if(i===0) img.fetchPriority='high';
+  });
+  const videos=[...document.querySelectorAll('video')];
+  videos.forEach(v=>{
+    v.preload='none';
+    v.setAttribute('playsinline','');
+    if(!v.hasAttribute('muted'))v.muted=true;
+  });
+  if(!('IntersectionObserver' in window)){
+    videos.forEach(v=>{v.preload='metadata';});
+    return;
+  }
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      const v=entry.target;
+      if(entry.isIntersecting){
+        if(v.preload==='none'){v.preload='metadata';v.load();}
+        if(v.autoplay){const p=v.play();if(p&&p.catch)p.catch(()=>{});}
+      }else if(v.autoplay){
+        v.pause();
+      }
+    });
+  },{rootMargin:'300px 0px'});
+  videos.forEach(v=>observer.observe(v));
+})();
+</script>
+
+</body>
 </html>
