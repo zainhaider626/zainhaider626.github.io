@@ -960,6 +960,16 @@ footer {
 }
 
 </style>
+<style>
+/* Selected work carousel buttons: clearly visible on the dark theme */
+.car-nav{gap:12px}
+.car-nav .ic--glass{width:52px;height:52px;border-radius:2px;color:#f4f6f0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.5);box-shadow:0 8px 24px rgba(0,0,0,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:pointer}
+.car-nav .ic--glass svg{width:22px;height:22px;stroke-width:2.4}
+@media(hover:hover){.car-nav .ic--glass:hover{background:#e9ede3;color:#0b0e0c;border-color:#e9ede3}}
+.car-nav .ic--glass:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.car-nav .ic--glass[aria-disabled="true"]{opacity:.4}
+@media(max-width:640px){.car-nav .ic--glass{width:46px;height:46px}}
+</style>
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0">
@@ -1206,17 +1216,6 @@ footer {
 </div>
 </footer>
 </div><!-- /#page -->
-<!-- IPC standards viewer: opened by navbar and footer standards links -->
-<div class="ipc-overlay" id="ipcOv" aria-hidden="true">
-  <section class="ipc-panel" role="dialog" aria-modal="true" aria-labelledby="ipcTitle">
-    <div class="ipc-top">
-      <div><div class="ipc-kicker">NVISCO engineering reference</div><div style="font-size:13px;color:#aeb8c0;margin-top:5px">IPC standards overview</div></div>
-      <button class="ipc-close" type="button" aria-label="Close IPC standards" data-ipc-close>×</button>
-    </div>
-    <article class="ipc-content" id="ipcContent" tabindex="-1"></article>
-    <nav class="ipc-switcher" id="ipcSwitcher" aria-label="Other IPC standards"></nav>
-  </section>
-</div>
 <!-- Document drawer -->
 <div aria-hidden="true" aria-label="Nvisco documents" aria-modal="true" class="ov ov--drawer" id="docOv" role="dialog">
 <div class="sheet">
@@ -1407,7 +1406,7 @@ let h='',g='';
 DOC_ORDER.forEach(k=>{const d=DOCS[k];if(d.g!==g){g=d.g;h+=`<h4>${esc(g)}</h4>`}h+=`<button type="button" data-doc="${k}"${k===id?' aria-current="true"':''}>${esc(d.nav)}</button>`});
 dn.innerHTML=h;
 pp.innerHTML=docHTML(DOCS[id]);pp.scrollTop=0;
-pp.setAttribute('aria-label',DOCS[id].title);
+pp.setAttribute('aria-label',DOCS[id].title);docOv.setAttribute('aria-label','Nvisco documents');
 if(openOv!==docOv)showOv(docOv);
 const cur=$('[aria-current="true"]',dn);  if(cur&&dn.scrollWidth>dn.clientWidth)cur.scrollIntoView({inline:'center',block:'nearest'});  }   /* ---------- Menus built from page content ---------- */  const STD=$$('.std-item').map(el=>({
 id:el.id.replace('std-',''),
@@ -1415,6 +1414,7 @@ n:$('.n2',el)?.textContent.trim()||'',
 code:$('.code',el)?.textContent.trim()||'IPC standard',
 title:$('.ttl',el)?.textContent.trim()||'Engineering standard',
 edition:$('.ed',el)?.textContent.trim()||'IPC design reference',
+grp:$('.std-intro h3',el.closest('.std-group'))?.textContent.trim()||'Engineering standards',grpNote:$('.std-intro p',el.closest('.std-group'))?.textContent.trim()||'',
 body:$('.std-body',el)?.innerHTML||'<p>Overview currently unavailable.</p>'
 }));
 const stdList=STD.map(s=>`<button type="button" data-std="${s.id}"><span class="n">${s.n}</span>${esc(s.code)}</button>`).join('');
@@ -1423,31 +1423,36 @@ $('#fStd').innerHTML=stdList;
 $('#menuPol').innerHTML=POL_ORDER.map((k,i)=>`<button type="button" data-doc="${k}"><span class="n">${pad(i+1)}</span>${esc(DOCS[k].nav)}</button>`).join('');
 $('#fDocs').innerHTML=DOC_ORDER.map(k=>`<button type="button" data-doc="${k}">${esc(DOCS[k].nav)}</button>`).join('');
 
-const ipcOv=$('#ipcOv'),ipcContent=$('#ipcContent'),ipcSwitcher=$('#ipcSwitcher');
-let activeIPC=null,ipcReturnFocus=null;
-function openIPC(id,returnFocus=document.activeElement){
-  const item=STD.find(s=>s.id===String(id));
-  if(!item)return;
-  activeIPC=item.id;ipcReturnFocus=returnFocus;
-  ipcContent.innerHTML=`<div class="ipc-edition">${esc(item.edition)}</div>
-    <h2 id="ipcTitle">${esc(item.code)}</h2>
-    <h3 style="font-size:clamp(17px,2.3vw,23px);font-weight:500;color:#dce3e7;margin:0 0 20px">${esc(item.title)}</h3>
-    <div class="ipc-description">${item.body}</div>`;
-  ipcSwitcher.innerHTML=STD.map(s=>`<button type="button" data-ipc-switch="${s.id}"${s.id===item.id?' aria-current="true"':''}>${esc(s.code)}</button>`).join('');
-  ipcOv.classList.add('is-open');ipcOv.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
-  ipcContent.focus({preventScroll:true});
+const stdHTML=s=>{
+const box=document.createElement('div');box.innerHTML=s.body;
+const ps=$$('p',box);
+const how=ps.find(p=>/^how we use it/i.test(p.textContent.trim()));
+const what=ps.filter(p=>p!==how).map(p=>p.textContent.trim()).join(' ');
+const use=how?how.textContent.replace(/^\s*how we use it\.?\s*/i,'').trim():'';
+const items=[['What it covers',what]];if(use)items.push(['How Nvisco uses it',use]);
+const terms=items.map((x,i)=>`<div class="term"><i>${pad(i+1)}</i><div><h3>${esc(x[0])}</h3><p>${esc(x[1])}</p></div></div>`).join('');
+const note=$('.std-note')?.textContent.trim()||'';
+return `<div class="ph"><small>Nvisco</small><small>${esc(s.grp)}</small><h2>${esc(s.code)}</h2><em>${esc(s.title)}</em></div>
+<div class="pbody">
+<div class="dgrid"><div><span class="lbl">Published by</span><strong>IPC</strong><span>Global Electronics Association</span></div><div><span class="lbl">Edition</span><strong>${esc(s.edition)}</strong><span>Current edition, ${UPDATED}</span></div></div>
+<p class="dlead">${esc(s.grpNote)}</p>
+<div class="facts"><span>Standard ${esc(s.n)} of ${pad(STD.length)}</span><span>Last updated ${UPDATED}</span></div>
+<p class="lbl" style="margin-top:34px">Details</p>
+<div class="terms" style="margin-top:12px">${terms}</div>
+<p class="pnote">${esc(note)}</p>
+<p class="pnote">Questions about this standard? Write to <a href="mailto:${MAIL}">${MAIL}</a>.</p>
+</div>`;
+};
+function openStd(id){
+const cur=STD.find(x=>x.id===String(id));if(!cur)return;
+let h='',g='';
+STD.forEach(x=>{if(x.grp!==g){g=x.grp;h+=`<h4>${esc(g)}</h4>`}h+=`<button type="button" data-std="${x.id}"${x===cur?' aria-current="true"':''}>${esc(x.code)}</button>`});
+dn.innerHTML=h;
+pp.innerHTML=stdHTML(cur);pp.scrollTop=0;
+pp.setAttribute('aria-label',cur.code);docOv.setAttribute('aria-label','IPC standards');
+if(openOv!==docOv)showOv(docOv);
+const c=$('[aria-current="true"]',dn);if(c&&dn.scrollWidth>dn.clientWidth)c.scrollIntoView({inline:'center',block:'nearest'});
 }
-function closeIPC(){
-  ipcOv.classList.remove('is-open');ipcOv.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-  if(ipcReturnFocus&&ipcReturnFocus.focus)ipcReturnFocus.focus({preventScroll:true});
-}
-ipcOv.addEventListener('click',e=>{if(e.target===ipcOv||e.target.closest('[data-ipc-close]'))closeIPC();});
-ipcSwitcher.addEventListener('click',e=>{
-  const b=e.target.closest('[data-ipc-switch]');if(b)openIPC(b.dataset.ipcSwitch,b);
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ipcOv.classList.contains('is-open'))closeIPC();});
 
 /* Logic for Mobile Engineering Standards Exclusive Accordion */
 $$('.std-item').forEach(det => {  det.addEventListener('toggle', () => {  if (det.open && window.innerWidth <= 960) {  $$
@@ -1464,7 +1469,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!openOv){closeDD();
 document.addEventListener('click',e=>{
 const t=e.target;
 const doc=t.closest('[data-doc]');if(doc){closeDD();setMenu(false);openDoc(doc.dataset.doc);return}
-const std=t.closest('[data-std]');if(std){closeDD();setMenu(false);openIPC(std.dataset.std,std);return}
+const std=t.closest('[data-std]');if(std){closeDD();setMenu(false);openStd(std.dataset.std);return}
 const ddb=t.closest('.dd-btn');
 if(ddb){const d=ddb.closest('.dd'),o=!d.classList.contains('open');closeDD();d.classList.toggle('open',o);ddb.setAttribute('aria-expanded',o);return}
 if(!t.closest('.dd'))closeDD();
