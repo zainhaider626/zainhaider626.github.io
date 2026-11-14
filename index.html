@@ -970,6 +970,16 @@ footer {
 .car-nav .ic--glass[aria-disabled="true"]{opacity:.4}
 @media(max-width:640px){.car-nav .ic--glass{width:46px;height:46px}}
 </style>
+<style id="nv-image-rightclick-fix">
+/* Enable standard browser right-click context menu ("Save image as...") on all images */
+img, .w-card img, .hero-media img, .cta-media img, .slide img, .card img {
+  pointer-events: auto !important;
+  user-select: auto !important;
+  -webkit-user-select: auto !important;
+  -webkit-user-drag: auto !important;
+  -webkit-touch-callout: default !important;
+}
+</style>
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0">
@@ -1097,14 +1107,14 @@ footer {
 </div>
 <div aria-label="Selected work" aria-roledescription="carousel" class="car">
 <div aria-label="Projects. Use the arrow keys or swipe to browse." class="track" id="wTrack" tabindex="0">
-<article aria-label="1 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Advanced System Architecture" decoding="async" draggable="false" height="600" loading="lazy" src="CAD_WELD.jpg" width="800"/></div><div class="cap2"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div></article>
-<article aria-label="2 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="High Fidelity Prototyping" decoding="async" draggable="false" height="600" loading="lazy" src="po13.png" width="800"/></div><div class="cap2"><h3>High Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div></article>
-<article aria-label="3 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Unified Systems" decoding="async" draggable="false" height="600" loading="lazy" src="po2.webp" width="800"/></div><div class="cap2"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div></article>
-<article aria-label="4 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Edge AI Processing" decoding="async" draggable="false" height="600" loading="lazy" src="po8.png" width="800"/></div><div class="cap2"><h3>Edge AI Processing</h3><p>Optimized architectures for high speed computation.</p></div></article>
-<article aria-label="5 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Complex Layer Routing" decoding="async" draggable="false" height="600" loading="lazy" src="pcb.png" width="800"/></div><div class="cap2"><h3>Complex Layer Routing</h3><p>Advanced high density PCB layouts engineered for maximum performance.</p></div></article>
+<article aria-label="1 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Advanced System Architecture" decoding="async" height="600" loading="lazy" src="CAD_WELD.jpg" width="800"/></div><div class="cap2"><h3>Advanced System Architecture</h3><p>Proprietary framework design optimized for intelligent system integration.</p></div></article>
+<article aria-label="2 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="High Fidelity Prototyping" decoding="async" height="600" loading="lazy" src="po13.png" width="800"/></div><div class="cap2"><h3>High Fidelity Prototyping</h3><p>Precision 3D mechanical models and layered architectures.</p></div></article>
+<article aria-label="3 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Unified Systems" decoding="async" height="600" loading="lazy" src="po2.webp" width="800"/></div><div class="cap2"><h3>Unified Systems</h3><p>Merging mechanical hardware, electronics, and logic firmware.</p></div></article>
+<article aria-label="4 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Edge AI Processing" decoding="async" height="600" loading="lazy" src="po8.png" width="800"/></div><div class="cap2"><h3>Edge AI Processing</h3><p>Optimized architectures for high speed computation.</p></div></article>
+<article aria-label="5 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Complex Layer Routing" decoding="async" height="600" loading="lazy" src="pcb.png" width="800"/></div><div class="cap2"><h3>Complex Layer Routing</h3><p>Advanced high density PCB layouts engineered for maximum performance.</p></div></article>
 <article aria-label="6 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><video aria-label="Industrial machinery in operation" autoplay="" class="loopvid" loop="" muted="" playsinline="" preload="none" src="159021-818026286.mp4" webkit-playsinline=""></video></div><div class="cap2"><h3>Industry Machinery</h3><p>Automated systems built for continuous precision in demanding environments.</p></div></article>
-<article aria-label="7 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Mechanical Enclosures" decoding="async" draggable="false" height="600" loading="lazy" src="cad12.png" width="800"/></div><div class="cap2"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div></article>
-<article aria-label="8 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="IoT Connectivity" decoding="async" draggable="false" height="600" loading="lazy" src="po14.jpg" width="800"/></div><div class="cap2"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div></article>
+<article aria-label="7 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="Mechanical Enclosures" decoding="async" height="600" loading="lazy" src="cad12.png" width="800"/></div><div class="cap2"><h3>Mechanical Enclosures</h3><p>Precision 3D CAD modeling for industrial and consumer cases.</p></div></article>
+<article aria-label="8 of 8" aria-roledescription="slide" class="w-card" role="group"><div class="m"><img alt="IoT Connectivity" decoding="async" height="600" loading="lazy" src="po14.jpg" width="800"/></div><div class="cap2"><h3>IoT Connectivity</h3><p>Custom RF layouts and antenna tuning for robust wireless transmission.</p></div></article>
 </div>
 </div>
 </section>
